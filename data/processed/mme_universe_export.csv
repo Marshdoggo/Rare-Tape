@@ -1,84 +1,104 @@
 ticker,name,universe,category,metric_1,metric_2,metric_3,score,last_updated
-00MOUTON,2000 Château Mouton Rothschild,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-03TACHE,2003 Domaine de la Romanée-Conti La Tâche,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-05LATOUR,2005 Château Latour,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-06BRM,2006 Giacomo Conterno Barolo Riserva Monfortino,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-09BEAUX,2009 Domaine Leroy Vosne-Romanée Les Beaux Monts,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-09RBLEROY,2009 Domaine Leroy Richebourg,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-11BELAIR,2011 Domaine du Comte Liger-Belair Vosne-Romanée Aux Reignots,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-13BEAUX,2013 Domaine Leroy Vosne-Romanée Les Beaux Monts,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-14DRC,2014 Domaine de la Romanée-Conti Assortment,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-16PETRUS,2016 Château Pétrus,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-16SCREAG,2016 Screaming Eagle,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-17DUJAC,2017 Domaine Dujac Wine Collection,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-59BOND,Ian Fleming - Goldfinger (Dedication Copy),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-79STELLA,1979 Rolex Coral Stella Dial Day-Date,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-70RLEX,1970 Rolex Watch,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-93DAYTONA,1993 Rolex Zenith Daytona Inverted 6,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-ANMLFARM,George Orwell - Animal Farm (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-APROAK,Audemars Piguet Royal Oak,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-BARO,Barosaurus Skeleton,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-25
-BIRKINBLU,Hermès 25cm Blue Lizard Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-BOND1,Ian Fleming - Casino Royale (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-BONDWATCH,Pierce Brosnan Omega Seamaster James Bond Film-Worn Watch,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-BROSGRIMM,Grimms' Fairy Tales (Inscribed),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-CONGRESS,Journals of the Continental Congress (1774–1775),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-DEATON,Deaton Triceratops Skull,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-25
-DIMAGGIO2,DiMaggio 2 Watch,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-DOMINOS,Domino's Pizza Special Edition Rolex Air-King,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-DUNE,Frank Herbert - Dune (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-FAUBOURG,Hermès Faubourg,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-FAUBOURG2,Hermès Faubourg 2,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-FROST,Robert Frost - A Boy's Will (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-GATSBY,The Great Gatsby (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-GWTW,Gone with the Wind (Inscribed First Printing),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-HIMALAYA,Hermès 30cm Himalaya Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-IROBOT,"Isaac Asimov - I, Robot (First Edition)",alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-KARUIZAWA,Karuizawa Aqua of Life 50-Year-Old Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-KELLER,Helen Keller 1892 Book (Inscribed),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-KEROUAC,Jack Kerouac - On the Road (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-LOTF,William Golding - Lord of the Flies (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-LOTR,J.R.R. Tolkien - The Lord of the Rings Trilogy (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-MACALLAN1,Macallan 30-Year-Old Blue Label Scotch Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-MACALLAN2,Macallan 40-Year-Old Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-MACALLAN3,1938 Macallan Red Ribbon Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-MARX,Karl Marx - Das Kapital (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-MEGALODON,Megalodon Fossil,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-25
-MOBYDICK,Herman Melville - Moby-Dick (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-MOSASAUR,Mosasaur,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-25
-NEWTON,Isaac Newton - Principia (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-NEWWORLD,Aldous Huxley - Brave New World (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-PAPPY1,Pappy Van Winkle Bourbon Assortment,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-25
-PICNIC,Hermès 35cm Picnic Kelly,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-RABBIT,The Tale of Peter Rabbit (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-RIVIERA,1965 Rolex 1601 Datejust Joyera Riviera,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-RLEXPEPSI,Rolex GMT-Master II Pepsi Jubilee,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-SMURF,Rolex Submariner Smurf,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-SNOOPY,Omega Speedmaster Silver Snoopy,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-SOBLACK,Hermès 30cm So Black Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-25
-STEG,BCQ-24 Stegosaurus Skeleton,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-25
-TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-TORNEK,Tornek-Rayville TR-900,alternative_assets,watches,,0.0,0.45,0.0,2026-07-25
-TREASURE,Treasure Island (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-ULYSSES,James Joyce - Ulysses (Matisse Signed),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-WALDEN,Henry David Thoreau - Walden (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-WILDTHING,Where the Wild Things Are (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
-YOKO,Yoko Ono - Grapefruit (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-25
+00MOUTON,2000 Château Mouton Rothschild,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+03TACHE,2003 Domaine de la Romanée-Conti La Tâche,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+05LATOUR,2005 Château Latour,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+06BRM,2006 Giacomo Conterno Barolo Riserva Monfortino,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+09BEAUX,2009 Domaine Leroy Vosne-Romanée Les Beaux Monts,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+09RBLEROY,2009 Domaine Leroy Richebourg,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+11BELAIR,2011 Domaine du Comte Liger-Belair Vosne-Romanée Aux Reignots,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+13BEAUX,2013 Domaine Leroy Vosne-Romanée Les Beaux Monts,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+14DRC,2014 Domaine de la Romanée-Conti Assortment,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+16PETRUS,2016 Château Pétrus,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+16SCREAG,2016 Screaming Eagle,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+17DUJAC,2017 Domaine Dujac Wine Collection,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+59BOND,Ian Fleming - Goldfinger (Dedication Copy),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+79STELLA,1979 Rolex Coral Stella Dial Day-Date,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+70RLEX,1970 Rolex Watch,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+93DAYTONA,1993 Rolex Zenith Daytona Inverted 6,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+ANMLFARM,George Orwell - Animal Farm (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+APROAK,Audemars Piguet Royal Oak,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+BARO,Barosaurus Skeleton,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-02
+BIRKINBLU,Hermès 25cm Blue Lizard Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+BOND1,Ian Fleming - Casino Royale (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+BONDWATCH,Pierce Brosnan Omega Seamaster James Bond Film-Worn Watch,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+BROSGRIMM,Grimms' Fairy Tales (Inscribed),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+CONGRESS,Journals of the Continental Congress (1774–1775),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+DEATON,Deaton Triceratops Skull,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-02
+DIMAGGIO2,DiMaggio 2 Watch,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+DOMINOS,Domino's Pizza Special Edition Rolex Air-King,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+DUNE,Frank Herbert - Dune (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+FAUBOURG,Hermès Faubourg,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+FAUBOURG2,Hermès Faubourg 2,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+FROST,Robert Frost - A Boy's Will (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+GATSBY,The Great Gatsby (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+GWTW,Gone with the Wind (Inscribed First Printing),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+HIMALAYA,Hermès 30cm Himalaya Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+IROBOT,"Isaac Asimov - I, Robot (First Edition)",alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+KARUIZAWA,Karuizawa Aqua of Life 50-Year-Old Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+KELLER,Helen Keller 1892 Book (Inscribed),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+KEROUAC,Jack Kerouac - On the Road (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+LOTF,William Golding - Lord of the Flies (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+LOTR,J.R.R. Tolkien - The Lord of the Rings Trilogy (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+MACALLAN1,Macallan 30-Year-Old Blue Label Scotch Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+MACALLAN2,Macallan 40-Year-Old Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+MACALLAN3,1938 Macallan Red Ribbon Whisky,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+MARX,Karl Marx - Das Kapital (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+MEGALODON,Megalodon Fossil,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-02
+MOBYDICK,Herman Melville - Moby-Dick (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+MOSASAUR,Mosasaur,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-02
+NEWTON,Isaac Newton - Principia (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+NEWWORLD,Aldous Huxley - Brave New World (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+PAPPY1,Pappy Van Winkle Bourbon Assortment,alternative_assets,wine and whiskey,,0.0,0.45,0.0,2026-07-02
+PICNIC,Hermès 35cm Picnic Kelly,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+RABBIT,The Tale of Peter Rabbit (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+RIVIERA,1965 Rolex 1601 Datejust Joyera Riviera,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+RLEXPEPSI,Rolex GMT-Master II Pepsi Jubilee,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+SMURF,Rolex Submariner Smurf,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+SNOOPY,Omega Speedmaster Silver Snoopy,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+SOBLACK,Hermès 30cm So Black Birkin,alternative_assets,handbags,,0.0,0.45,0.0,2026-07-02
+STEG,BCQ-24 Stegosaurus Skeleton,alternative_assets,fossils,,0.0,0.45,0.0,2026-07-02
+TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+TORNEK,Tornek-Rayville TR-900,alternative_assets,watches,,0.0,0.45,0.0,2026-07-02
+TREASURE,Treasure Island (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+ULYSSES,James Joyce - Ulysses (Matisse Signed),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+WALDEN,Henry David Thoreau - Walden (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+WILDTHING,Where the Wild Things Are (Inscribed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+YOKO,Yoko Ono - Grapefruit (Signed First Edition),alternative_assets,books,,0.0,0.45,0.0,2026-07-02
+93XJ1,1993 Jaguar XJ220,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+83FB1,1983 Ferrari 512 BBi,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+63CC1,1963 Chevrolet Corvette Split Window,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+65FM1,1965 Mustang Fastback,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+55PS1,1955 Porsche 356 Speedster,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+65AG1,1965 Alfa Romeo Giulia SS,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+82AV1,1982 Aston Martin V8 Vantage Oscar India,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+94FS1,1994 Ferrari 348 Spider,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+94DV1,1994 Dodge Viper RT/10,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+99SS1,1999 Shelby Series 1,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+69BM1,1969 Boss 302 Mustang,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+92LD1,1992 Lancia Delta Martini 5,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+92CC1,1992 Chevrolet Corvette ZR-1,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+61GE1,1961 Jaguar E-Type,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+61MG1,1961 Maserati 3500 GT,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+72MC1,1972 Mazda Cosmo Sport,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+91MV1,1991 Mitsubishi 3000GT VR-4,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+75RA1,1975 Renault Alpine A110,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+77LE1,1977 Lotus Esprit S1,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02
+11BM1,2011 BMW 1M,alternative_assets,cars,,0.0,0.45,0.0,2026-07-02

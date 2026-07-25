@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-07-25",
+  "as_of": "2026-07-02",
   "purpose": "Rally-first alternative asset universe with secondary comp NAV support.",
   "diagnostics": [
     {
       "metric": "rally_assets",
-      "value": 83,
+      "value": 103,
       "notes": "Unified Rally investable asset rows"
     },
     {
@@ -14,7 +14,7 @@
     },
     {
       "metric": "assets_with_no_comps",
-      "value": 83,
+      "value": 103,
       "notes": "Rally assets without matched realized sale comps"
     },
     {

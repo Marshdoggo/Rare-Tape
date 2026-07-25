@@ -1,7 +1,7 @@
 metric,value,notes
-rally_assets,83,Unified Rally investable asset rows
+rally_assets,103,Unified Rally investable asset rows
 comparable_sales,6,Unified comparable sale rows
-assets_with_no_comps,83,Rally assets without matched realized sale comps
+assets_with_no_comps,103,Rally assets without matched realized sale comps
 comps_missing_sale_price,0,Comps missing realized sale price
 comps_missing_estimate,6,Comps missing estimate low or high
 comps_missing_size_material_color,6,Comps missing at least one matching attribute
