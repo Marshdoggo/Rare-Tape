@@ -55,6 +55,10 @@ Counts describe the committed research snapshot and are not live market coverage
 
 The normalized Rally asset master now includes 20 user-provided, currently trading Cars category records. These authoritative static records include normalized offering-month dates, share counts, offering prices, and validated offering market caps. The canonical master and research-coverage artifacts were rebuilt to include the Cars records without adding synthetic price observations; future price-history imports can link to them by ticker. Current-tradable calculations continue to require a valid recent secondary quote, so this metadata ingestion does not by itself represent the records as live quoted listings.
 
+## Manual Cars Price Coverage Update (Five Assets, 2026-07-25)
+
+The normalized Rally observations now include 150 manually transcribed dated price observations for five existing Cars assets: `rally-93xj1` (`#93XJ1`, 31 rows; 30 quarterly), `rally-83fb1` (`#83FB1`, 31; 31 quarterly), `rally-63cc1` (`#63CC1`, 28; 28 quarterly), `rally-65fm1` (`#65FM1`, 28; 27 quarterly), and `rally-55ps1` (`#55PS1`, 32; 30 quarterly). All implied market caps reconcile to the authoritative master share counts, all five offering observations reconcile to the master offering prices and initial market caps, no asset-master rows were added or changed, and no observations were rejected or quarantined. Actual observation dates and sparse histories are preserved without interpolation or forward-filling. Where multiple raw observations occupy a quarter, the closest observation to quarter-end is the quarterly representative and earlier observations remain non-quarterly evidence; this preserves both September 2020 `55PS1` observations. The Cars equal-weight and market-cap-weighted quarterly index prototypes, full-market indexes, research coverage, contribution inputs, return histories, and dependent processed analytics were rebuilt from the canonical inputs. Five of the 20 Cars master constituents now have authored price history.
+
 ## Implemented Capabilities
 
 - Canonical asset and decision-universe construction with provenance and data-quality flags.

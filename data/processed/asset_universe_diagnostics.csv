@@ -12,15 +12,15 @@ rally-14drc,14DRC,2014 Domaine de la Romanée-Conti Assortment,wine and whiskey,
 rally-16petrus,16PETRUS,2016 Château Pétrus,wine and whiskey,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-16screag,16SCREAG,2016 Screaming Eagle,wine and whiskey,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-17dujac,17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,exited,exited,True,False,True,True,17,2021-03-31,2025-06-30,True,True,True,included,True,True,True,True
-rally-55ps1,55PS1,1955 Porsche 356 Speedster,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-55ps1,55PS1,1955 Porsche 356 Speedster,cars,trading,active_tradable,True,True,False,True,30,2018-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-59bond,59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,trading,active_tradable,True,True,False,True,21,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-59jfk,59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-61ge1,61GE1,1961 Jaguar E-Type,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-61mg1,61MG1,1961 Maserati 3500 GT,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-62bond,62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),books,trading,active_tradable,True,True,False,True,22,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-63cc1,63CC1,1963 Chevrolet Corvette Split Window,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-63cc1,63CC1,1963 Chevrolet Corvette Split Window,cars,trading,active_tradable,True,True,False,True,26,2019-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-65ag1,65AG1,1965 Alfa Romeo Giulia SS,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
-rally-65fm1,65FM1,1965 Mustang Fastback,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-65fm1,65FM1,1965 Mustang Fastback,cars,trading,active_tradable,True,True,False,True,27,2019-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-69bm1,69BM1,1969 Boss 302 Mustang,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-72mc1,72MC1,1972 Mazda Cosmo Sport,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-75ra1,75RA1,1975 Renault Alpine A110,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
@@ -28,12 +28,12 @@ rally-77le1,77LE1,1977 Lotus Esprit S1,cars,trading,active_tradable,True,True,Fa
 rally-79stella,79STELLA,1979 Rolex Coral Stella Dial Day-Date,watches,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-7orlex,70RLEX,1970 Rolex Watch,watches,sold,exited,True,False,True,True,12,2019-12-31,2023-12-31,True,True,True,included,True,True,True,True
 rally-82av1,82AV1,1982 Aston Martin V8 Vantage Oscar India,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
-rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,trading,active_tradable,True,True,False,True,29,2018-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-91mv1,91MV1,1991 Mitsubishi 3000GT VR-4,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-92cc1,92CC1,1992 Chevrolet Corvette ZR-1,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-92ld1,92LD1,1992 Lancia Delta Martini 5,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-93daytona,93DAYTONA,1993 Rolex Zenith Daytona Inverted 6,watches,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,trading,active_tradable,True,True,False,True,28,2018-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-94dv1,94DV1,1994 Dodge Viper RT/10,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False

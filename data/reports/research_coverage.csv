@@ -12,15 +12,15 @@ rally-14drc,14DRC,2014 Domaine de la Romanée-Conti Assortment,wine and whiskey,
 rally-16petrus,16PETRUS,2016 Château Pétrus,wine and whiskey,True,True,True,2021-04-01,2026-06-26,23,20,0,3,0,,,,137.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
 rally-16screag,16SCREAG,2016 Screaming Eagle,wine and whiskey,True,True,True,2020-12-15,2026-06-26,23,20,0,3,0,,,,164.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
 rally-17dujac,17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,True,True,True,2021-06-17,2025-03-27,15,14,0,0,0,,,,207.0,True,True,,15,,15,,2021-06-30,2025-03-31,,,15,14
-rally-55ps1,55PS1,1955 Porsche 356 Speedster,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-55ps1,55PS1,1955 Porsche 356 Speedster,cars,True,True,True,2018-10-18,2026-06-26,31,31,0,0,0,,,,207.0,True,True,,32,,31,,2018-10-18,2026-06-30,,,31,31
 rally-59bond,59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,True,True,True,2021-06-21,2026-06-30,20,20,0,0,0,,,,141.0,True,True,,21,,20,,2021-06-30,2026-06-30,,,20,20
 rally-59jfk,59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,True,True,True,2021-03-09,2026-06-29,22,22,0,0,0,,,,126.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-61ge1,61GE1,1961 Jaguar E-Type,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-61mg1,61MG1,1961 Maserati 3500 GT,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-62bond,62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),books,True,True,True,2021-05-12,2026-06-26,21,21,0,0,0,,,,125.0,True,True,,1,,21,,2021-06-30,2026-06-30,,,21,0
-rally-63cc1,63CC1,1963 Chevrolet Corvette Split Window,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-63cc1,63CC1,1963 Chevrolet Corvette Split Window,cars,True,True,True,2019-07-11,2026-06-29,27,27,0,0,0,,,,187.0,True,True,,28,,25,,2019-09-30,2026-06-30,,2022-09-30; 2024-09-30,27,27
 rally-65ag1,65AG1,1965 Alfa Romeo Giulia SS,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-65fm1,65FM1,1965 Mustang Fastback,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-65fm1,65FM1,1965 Mustang Fastback,cars,True,True,True,2019-09-19,2026-06-30,27,27,0,0,0,,,,243.0,True,True,,28,,27,,2019-09-30,2026-06-30,,,27,27
 rally-69bm1,69BM1,1969 Boss 302 Mustang,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-72mc1,72MC1,1972 Mazda Cosmo Sport,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-75ra1,75RA1,1975 Renault Alpine A110,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
@@ -28,12 +28,12 @@ rally-77le1,77LE1,1977 Lotus Esprit S1,cars,True,True,True,,,0,0,0,0,0,,,,,False
 rally-79stella,79STELLA,1979 Rolex Coral Stella Dial Day-Date,watches,True,True,True,2021-04-15,2026-06-26,22,22,0,0,0,,,,97.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-7orlex,70RLEX,1970 Rolex Watch,watches,True,True,True,2020-05-12,2023-09-27,10,10,0,0,0,,,,486.0,True,True,,11,,10,,2020-06-30,2023-09-30,,,10,10
 rally-82av1,82AV1,1982 Aston Martin V8 Vantage Oscar India,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,True,True,True,2018-11-29,2026-06-26,30,30,0,0,0,,,,258.0,True,True,,31,,28,,2018-12-31,2026-06-30,,2022-09-30; 2024-06-30,30,30
 rally-91mv1,91MV1,1991 Mitsubishi 3000GT VR-4,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-92cc1,92CC1,1992 Chevrolet Corvette ZR-1,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-92ld1,92LD1,1992 Lancia Delta Martini 5,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-93daytona,93DAYTONA,1993 Rolex Zenith Daytona Inverted 6,watches,True,True,True,2021-01-05,2026-06-30,23,23,0,0,0,,,,147.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
-rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,True,True,True,2019-01-29,2026-06-29,30,30,0,0,0,,,,160.0,True,True,,31,,28,,2019-03-31,2026-06-30,,2024-06-30; 2025-09-30,30,30
 rally-94dv1,94DV1,1994 Dodge Viper RT/10,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
