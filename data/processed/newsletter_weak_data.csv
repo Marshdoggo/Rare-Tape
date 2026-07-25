@@ -8,7 +8,6 @@ ANMLFARM,George Orwell - Animal Farm (First Edition),books,rare books,trading,da
 BOND1,Ian Fleming - Casino Royale (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
-CATCHER,J.D. Salinger - The Catcher in the Rye (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 CONGRESS,Journals of the Continental Congress (1774–1775),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 DUNE,Frank Herbert - Dune (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
@@ -49,3 +48,4 @@ BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,birkin_lizard,sold,data_compl
 BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,handbags,birkin_crocodile,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,handbags,birkin_ostrich,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
 FAUBOURG,Hermès Faubourg,handbags,faubourg,sold,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
+FAUBOURG2,Hermès Faubourg 2,handbags,faubourg,sold,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-25
