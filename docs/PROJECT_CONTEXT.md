@@ -35,19 +35,19 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 
 | Artifact | Rows |
 | --- | ---: |
-| Canonical asset master | 84 |
-| Rally asset decision universe | 84 |
-| Normalized manual assets | 84 |
+| Canonical asset master | 83 |
+| Rally asset decision universe | 83 |
+| Normalized manual assets | 83 |
 | Normalized manual price observations | 1696 |
 | Processed price history | 1605 |
-| General Rally index rows | 522 |
+| General Rally index rows | 544 |
 | Quarterly Rally index rows | 308 |
 | SEC series context | 0 |
 | Rally exits | 0 |
 | Comparable sales universe | 6 |
 | Asset-to-comp matches | 0 |
-| Research coverage rows | 84 |
-| Asset universe diagnostics rows | 84 |
+| Research coverage rows | 83 |
+| Asset universe diagnostics rows | 83 |
 
 Counts describe the committed research snapshot and are not live market coverage.
 
@@ -93,11 +93,11 @@ Counts describe the committed research snapshot and are not live market coverage
 
 ## Books Category Expansion (2026-07-19)
 
-The normalized Rally asset master now includes 41 user-provided Books category records for rare and signed first-edition books. These rows are committed as Rally App manual asset records with offering dates, share counts, offering prices, and offering market caps. They do not currently add secondary-market price observations, so current-tradable universe calculations continue to require valid current or recent secondary quotes before treating these assets as current tradable market capitalization.
+The normalized Rally asset master now includes 40 user-provided, currently trading Books category records for rare and signed first-edition books. These rows are committed as Rally App manual asset records with offering dates, share counts, offering prices, and offering market caps. Current-tradable universe calculations continue to require valid current or recent secondary quotes before treating these assets as current tradable market capitalization.
 
 ## Production Asset Cleanup (2026-07-19)
 
-Production-facing dataset builds now exclude the legacy raw Rally asset and price seed CSVs by default. Those seed files remain available only as explicit fixtures/legacy diagnostics because their rows were illustrative bootstrap/demo records, not verified Rally Rd listings. The investable universe builder also no longer appends SEC-synthesized series rows unless a caller explicitly opts into SEC context. As a result, committed processed app artifacts now contain 84 verified normalized production asset rows, including the 41 Books category offering records and authored exit coverage rows, with corresponding Rally App/manual price observations; SEC-derived series remain filing research context rather than app-listed assets.
+Production-facing dataset builds now exclude the legacy raw Rally asset and price seed CSVs by default. Those seed files remain available only as explicit fixtures/legacy diagnostics because their rows were illustrative bootstrap/demo records, not verified Rally Rd listings. The investable universe builder also no longer appends SEC-synthesized series rows unless a caller explicitly opts into SEC context. As a result, committed processed app artifacts now contain 83 verified normalized production asset rows, including the 40 currently trading Books category records and authored exit coverage rows, with corresponding Rally App/manual price observations; SEC-derived series remain filing research context rather than app-listed assets.
 
 
 ## Manual Exit Coverage Update (2026-07-20)
@@ -233,7 +233,7 @@ The normalized Rally observations now include 115 manually transcribed price-his
 
 The normalized Rally observations now include 120 manually transcribed price-history rows for five existing Books assets: `rally-tkam` (`#TKAM`, 22 rows), `rally-ulysses` (`#ULYSSES`, 25), `rally-twocities` (`#TWOCITIES`, 27), `rally-congress` (`#CONGRESS`, 21), and `rally-yoko` (`#YOKO`, 25). All supplied market caps reconcile to the existing master-record share counts, no new assets were created, and no observations were quarantined. Actual observation dates are preserved; the July 2, 2026 TWOCITIES observation is assigned to the June 30, 2026 research period under the established nearest-quarter convention, and sparse quarters remain missing rather than forward-filled. YOKO's April 13, 2021 observation is assigned to the June 30, 2021 period so both supplied 2021 observations remain distinct quarterly evidence. CONGRESS retains its offering context and November 8, 2021 secondary observation in the same period under distinct event types.
 
-This ingestion completes the stated Books quarterly-history coverage program at 40 of 40 currently trading assets (100%). The normalized master continues to contain 41 Books records in total; `rally-catcher` is the additional master record and remains without supplied secondary-price history, so it is not counted in this 40-asset coverage program. Both Books equal-weight and market-cap-weighted quarterly index prototypes and their dependent coverage and analytics artifacts were rebuilt from the canonical inputs.
+This ingestion completes the stated Books quarterly-history coverage program at 40 of 40 currently trading assets (100%). The normalized master contains those same 40 Books records; the previously included `rally-catcher` row was removed because it is not part of Rally's 40-asset trading Books catalog. Both Books equal-weight and market-cap-weighted quarterly index prototypes and their dependent coverage and analytics artifacts were rebuilt from the canonical inputs.
 
 ## Market Table Return Screening Update (2026-07-22)
 
