@@ -35,9 +35,9 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 
 | Artifact | Rows |
 | --- | ---: |
-| Canonical asset master | 83 |
-| Rally asset decision universe | 83 |
-| Normalized manual assets | 83 |
+| Canonical asset master | 103 |
+| Rally asset decision universe | 103 |
+| Normalized manual assets | 103 |
 | Normalized manual price observations | 1696 |
 | Processed price history | 1605 |
 | General Rally index rows | 544 |
@@ -46,10 +46,14 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Rally exits | 0 |
 | Comparable sales universe | 6 |
 | Asset-to-comp matches | 0 |
-| Research coverage rows | 83 |
-| Asset universe diagnostics rows | 83 |
+| Research coverage rows | 103 |
+| Asset universe diagnostics rows | 103 |
 
 Counts describe the committed research snapshot and are not live market coverage.
+
+## Cars Category Expansion (2026-07-25)
+
+The normalized Rally asset master now includes 20 user-provided, currently trading Cars category records. These authoritative static records include normalized offering-month dates, share counts, offering prices, and validated offering market caps. The canonical master and research-coverage artifacts were rebuilt to include the Cars records without adding synthetic price observations; future price-history imports can link to them by ticker. Current-tradable calculations continue to require a valid recent secondary quote, so this metadata ingestion does not by itself represent the records as live quoted listings.
 
 ## Implemented Capabilities
 
