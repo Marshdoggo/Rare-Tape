@@ -38,10 +38,10 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 84 |
 | Rally asset decision universe | 84 |
 | Normalized manual assets | 84 |
-| Normalized manual price observations | 1461 |
-| Processed price history | 1380 |
-| General Rally index rows | 494 |
-| Quarterly Rally index rows | 306 |
+| Normalized manual price observations | 1576 |
+| Processed price history | 1490 |
+| General Rally index rows | 522 |
+| Quarterly Rally index rows | 308 |
 | SEC series context | 0 |
 | Rally exits | 0 |
 | Comparable sales universe | 6 |
@@ -223,6 +223,11 @@ The normalized Rally price observations now include manually transcribed Rally c
 ## Manual Books Price Coverage Update (Nine Assets, 2026-07-25)
 
 The normalized Rally observations now include 187 manually transcribed price-history rows for nine existing Books assets: `rally-lotf` (`#LOTF`, 17 rows), `rally-59bond` (`#59BOND`, 21), `rally-holmes` (`#HOLMES`, 19), `rally-bradbury` (`#BRADBURY`, 17), `rally-irobot` (`#IROBOT`, 19), `rally-mobydick` (`#MOBYDICK`, 19), `rally-59jfk` (`#59JFK`, 23), `rally-aghowl` (`#AGHOWL`, 27), and `rally-bond1` (`#BOND1`, 25). All market caps reconcile to the existing master-record share counts, and no new assets were created. The spoken `AGHOL` ticker was resolved to canonical `AGHOWL`. AGHOWL retains both the February 14, 2022 and March 28, 2022 observations, and both the June 26 and July 2, 2026 observations, as dated research evidence; the earlier/later same-quarter observations remain non-quarterly rows so canonical quarterly analytics select the applicable in-quarter close without inventing or forward-filling a quote. The Books quarterly-history working coverage is now 30 of 40 currently trading Books assets (75%).
+
+
+## Manual Books Price Coverage Update (GRAPES, KEROUAC, WALDEN, DUNE, FROST; 2026-07-25)
+
+The normalized Rally observations now include 115 manually transcribed price-history rows for five existing Books assets: `rally-grapes` (`#GRAPES`, 21 rows), `rally-kerouac` (`#KEROUAC`, 22), `rally-walden` (`#WALDEN`, 21), `rally-dune` (`#DUNE`, 23), and `rally-frost` (`#FROST`, 28). All market caps reconcile to the existing master-record share counts, no new assets were created, and the erroneous GRAPES March 31, 2022 transcription is excluded. GRAPES has no imputed Q3 2025 row. FROST preserves both the March 25 and April 1, 2022 observations and retains July 9, 2026 as dated non-quarterly research evidence; canonical quarterly analytics select the applicable representative without forward-filling. The Books quarterly-history working coverage is now 35 of the 40 currently trading Books assets cataloged for this coverage program (87.5%).
 
 ## Market Table Return Screening Update (2026-07-22)
 
