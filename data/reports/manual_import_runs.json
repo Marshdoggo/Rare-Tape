@@ -5818,5 +5818,29 @@
     "started_at": "2026-07-25T16:01:01Z",
     "status": "completed",
     "warning_count": 0
+  },
+  {
+    "accepted_rows": 84,
+    "completed_at": "2026-07-25T16:23:26Z",
+    "importer_version": "manual-import-v2-quarterly",
+    "input_filename": "books_final_assets.csv",
+    "input_hash": "4d923ee4be5536edc213ec537be2b0a7c956b53a6a97a2ae29e067287c308d1b",
+    "rejected_rows": 0,
+    "run_id": "e5500e876e80d828",
+    "started_at": "2026-07-25T16:23:26Z",
+    "status": "completed",
+    "warning_count": 0
+  },
+  {
+    "accepted_rows": 1696,
+    "completed_at": "2026-07-25T16:23:26Z",
+    "importer_version": "manual-import-v2-quarterly",
+    "input_filename": "books_final_prices.csv",
+    "input_hash": "d54f27c644df3b5b41f4874a0945426323afe42d50084ce6a0585cac6162911c",
+    "rejected_rows": 0,
+    "run_id": "c02b5b451b6a7e93",
+    "started_at": "2026-07-25T16:23:26Z",
+    "status": "completed",
+    "warning_count": 148
   }
 ]

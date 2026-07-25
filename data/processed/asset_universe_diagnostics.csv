@@ -31,7 +31,7 @@ rally-bradbury,BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),boo
 rally-brosgrimm,BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-catcher,CATCHER,J.D. Salinger - The Catcher in the Rye (First Edition),books,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-churchill,CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-congress,CONGRESS,Journals of the Continental Congress (1774–1775),books,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-congress,CONGRESS,Journals of the Continental Congress (1774–1775),books,trading,active_tradable,True,True,False,True,20,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-deaton,DEATON,Deaton Triceratops Skull,fossils,exit_announced,exit_announced,True,False,True,True,22,2021-01-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-dimaggio2,DIMAGGIO2,DiMaggio 2 Watch,watches,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-dominos,DOMINOS,Domino's Pizza Special Edition Rolex Air-King,watches,trading,active_tradable,True,True,False,True,22,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -74,12 +74,12 @@ rally-smurf,SMURF,Rolex Submariner Smurf,watches,trading,active_tradable,True,Tr
 rally-snoopy,SNOOPY,Omega Speedmaster Silver Snoopy,watches,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-soblack,SOBLACK,Hermès 30cm So Black Birkin,handbags,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-steg,STEG,BCQ-24 Stegosaurus Skeleton,fossils,sold,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
-rally-tkam,TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),books,trading,active_tradable,False,True,False,False,0,,,False,True,False,not_production_asset,False,False,False,False
+rally-tkam,TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),books,trading,active_tradable,False,True,False,True,22,2020-12-31,2026-06-30,True,True,False,not_production_asset,False,False,False,False
 rally-tornek,TORNEK,Tornek-Rayville TR-900,watches,trading,active_tradable,True,True,False,True,21,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-treasure,TREASURE,Treasure Island (First Edition),books,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-twocities,TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),books,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
-rally-ulysses,ULYSSES,James Joyce - Ulysses (Matisse Signed),books,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-twocities,TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),books,trading,active_tradable,True,True,False,True,27,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
+rally-ulysses,ULYSSES,James Joyce - Ulysses (Matisse Signed),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-walden,WALDEN,Henry David Thoreau - Walden (First Edition),books,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-wildthing,WILDTHING,Where the Wild Things Are (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-wzrdofoz,WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,trading,active_tradable,True,True,False,True,19,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-yoko,YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-yoko,YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False

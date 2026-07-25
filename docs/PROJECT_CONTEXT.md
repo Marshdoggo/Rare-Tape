@@ -38,8 +38,8 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 84 |
 | Rally asset decision universe | 84 |
 | Normalized manual assets | 84 |
-| Normalized manual price observations | 1576 |
-| Processed price history | 1490 |
+| Normalized manual price observations | 1696 |
+| Processed price history | 1605 |
 | General Rally index rows | 522 |
 | Quarterly Rally index rows | 308 |
 | SEC series context | 0 |
@@ -228,6 +228,12 @@ The normalized Rally observations now include 187 manually transcribed price-his
 ## Manual Books Price Coverage Update (GRAPES, KEROUAC, WALDEN, DUNE, FROST; 2026-07-25)
 
 The normalized Rally observations now include 115 manually transcribed price-history rows for five existing Books assets: `rally-grapes` (`#GRAPES`, 21 rows), `rally-kerouac` (`#KEROUAC`, 22), `rally-walden` (`#WALDEN`, 21), `rally-dune` (`#DUNE`, 23), and `rally-frost` (`#FROST`, 28). All market caps reconcile to the existing master-record share counts, no new assets were created, and the erroneous GRAPES March 31, 2022 transcription is excluded. GRAPES has no imputed Q3 2025 row. FROST preserves both the March 25 and April 1, 2022 observations and retains July 9, 2026 as dated non-quarterly research evidence; canonical quarterly analytics select the applicable representative without forward-filling. The Books quarterly-history working coverage is now 35 of the 40 currently trading Books assets cataloged for this coverage program (87.5%).
+
+## Manual Books Price Coverage Completion (TKAM, ULYSSES, TWOCITIES, CONGRESS, YOKO; 2026-07-25)
+
+The normalized Rally observations now include 120 manually transcribed price-history rows for five existing Books assets: `rally-tkam` (`#TKAM`, 22 rows), `rally-ulysses` (`#ULYSSES`, 25), `rally-twocities` (`#TWOCITIES`, 27), `rally-congress` (`#CONGRESS`, 21), and `rally-yoko` (`#YOKO`, 25). All supplied market caps reconcile to the existing master-record share counts, no new assets were created, and no observations were quarantined. Actual observation dates are preserved; the July 2, 2026 TWOCITIES observation is assigned to the June 30, 2026 research period under the established nearest-quarter convention, and sparse quarters remain missing rather than forward-filled. YOKO's April 13, 2021 observation is assigned to the June 30, 2021 period so both supplied 2021 observations remain distinct quarterly evidence. CONGRESS retains its offering context and November 8, 2021 secondary observation in the same period under distinct event types.
+
+This ingestion completes the stated Books quarterly-history coverage program at 40 of 40 currently trading assets (100%). The normalized master continues to contain 41 Books records in total; `rally-catcher` is the additional master record and remains without supplied secondary-price history, so it is not counted in this 40-asset coverage program. Both Books equal-weight and market-cap-weighted quarterly index prototypes and their dependent coverage and analytics artifacts were rebuilt from the canonical inputs.
 
 ## Market Table Return Screening Update (2026-07-22)
 
