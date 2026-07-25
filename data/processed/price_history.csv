@@ -249,6 +249,37 @@ date,asset_id,bid,ask,last,volume,market_cap_usd,source,event_type,precision_sta
 2024-09-30,rally-17dujac,,,9.85,0,32012.5,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2024-09-30,2024-09-30,quarterly
 2024-12-27,rally-17dujac,,,9.2,0,29900.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2024-12-27,2024-12-31,quarterly
 2025-03-27,rally-17dujac,,,9.4,0,30550.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2025-03-27,2025-03-31,quarterly
+2018-10-18,rally-55ps1,,,240.0,0,480000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2018-10-18T00:00:00Z,2018-10-18,weekly
+2018-12-10,rally-55ps1,,,245.0,0,490000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2018-12-10T00:00:00Z,2018-12-31,quarterly
+2019-03-05,rally-55ps1,,,245.0,0,490000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2019-03-05T00:00:00Z,2019-03-31,quarterly
+2019-06-20,rally-55ps1,,,245.0,0,490000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2019-06-20T00:00:00Z,2019-06-30,quarterly
+2019-09-05,rally-55ps1,,,246.0,0,492000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2019-09-05T00:00:00Z,2019-09-30,quarterly
+2019-11-12,rally-55ps1,,,245.0,0,490000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2019-11-12T00:00:00Z,2019-12-31,quarterly
+2020-02-04,rally-55ps1,,,246.8,0,493600.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2020-02-04T00:00:00Z,2020-03-31,quarterly
+2020-06-02,rally-55ps1,,,246.8,0,493600.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2020-06-02T00:00:00Z,2020-06-30,quarterly
+2020-09-15,rally-55ps1,,,250.0,0,500000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2020-09-15T00:00:00Z,2020-09-15,weekly
+2020-09-22,rally-55ps1,,,250.0,0,500000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2020-09-22T00:00:00Z,2020-09-30,quarterly
+2021-03-02,rally-55ps1,,,238.0,0,476000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2021-03-02T00:00:00Z,2021-03-31,quarterly
+2021-05-17,rally-55ps1,,,220.0,0,440000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2021-05-17T00:00:00Z,2021-06-30,quarterly
+2021-08-05,rally-55ps1,,,212.5,0,425000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2021-08-05T00:00:00Z,2021-09-30,quarterly
+2022-02-28,rally-55ps1,,,175.0,0,350000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2022-02-28T00:00:00Z,2022-03-31,quarterly
+2022-06-28,rally-55ps1,,,159.0,0,318000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2022-06-28T00:00:00Z,2022-06-30,quarterly
+2022-09-29,rally-55ps1,,,148.0,0,296000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2022-09-29T00:00:00Z,2022-09-30,quarterly
+2022-12-30,rally-55ps1,,,150.0,0,300000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2022-12-30T00:00:00Z,2022-12-31,quarterly
+2023-03-31,rally-55ps1,,,130.0,0,260000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2023-03-31T00:00:00Z,2023-03-31,quarterly
+2023-06-23,rally-55ps1,,,150.0,0,300000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2023-06-23T00:00:00Z,2023-06-30,quarterly
+2023-09-25,rally-55ps1,,,155.0,0,310000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2023-09-25T00:00:00Z,2023-09-30,quarterly
+2023-12-26,rally-55ps1,,,105.0,0,210000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2023-12-26T00:00:00Z,2023-12-31,quarterly
+2024-03-26,rally-55ps1,,,150.0,0,300000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2024-03-26T00:00:00Z,2024-03-31,quarterly
+2024-06-27,rally-55ps1,,,150.5,0,301000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2024-06-27T00:00:00Z,2024-06-30,quarterly
+2024-09-27,rally-55ps1,,,145.0,0,290000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2024-09-27T00:00:00Z,2024-09-30,quarterly
+2024-12-27,rally-55ps1,,,149.0,0,298000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2024-12-27T00:00:00Z,2024-12-31,quarterly
+2025-03-31,rally-55ps1,,,135.0,0,270000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2025-03-31T00:00:00Z,2025-03-31,quarterly
+2025-06-23,rally-55ps1,,,135.0,0,270000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2025-06-23T00:00:00Z,2025-06-30,quarterly
+2025-09-22,rally-55ps1,,,125.0,0,250000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2025-09-22T00:00:00Z,2025-09-30,quarterly
+2025-12-24,rally-55ps1,,,142.5,0,285000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2025-12-24T00:00:00Z,2025-12-31,quarterly
+2026-03-26,rally-55ps1,,,135.0,0,270000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2026-03-26T00:00:00Z,2026-03-31,quarterly
+2026-06-26,rally-55ps1,,,142.5,0,285000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 55PS1 price history,2026-06-26T00:00:00Z,2026-06-30,quarterly
 2021-06-21,rally-59bond,,,6.5,0,66625.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Manually transcribed Rally 59BOND price history supplied 2026-07-25,2021-06-21T00:00:00Z,2021-06-30,quarterly
 2021-11-09,rally-59bond,,,7.25,0,74312.5,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Manually transcribed Rally 59BOND price history supplied 2026-07-25,2021-11-09T00:00:00Z,2021-12-31,quarterly
 2022-03-28,rally-59bond,,,4.85,0,49712.49999999999,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Manually transcribed Rally 59BOND price history supplied 2026-07-25,2022-03-28T00:00:00Z,2022-03-31,quarterly
@@ -312,6 +343,60 @@ date,asset_id,bid,ask,last,volume,market_cap_usd,source,event_type,precision_sta
 2025-12-26,rally-62bond,,,2.85,0,44175.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User supplied Rally quarterly chart transcription for #62BOND,2025-12-26T00:00:00Z,2025-12-31,quarterly
 2026-03-27,rally-62bond,,,2.8,0,43400.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User supplied Rally quarterly chart transcription for #62BOND,2026-03-27T00:00:00Z,2026-03-31,quarterly
 2026-06-26,rally-62bond,,,2.65,0,41075.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User supplied Rally quarterly chart transcription for #62BOND,2026-06-26T00:00:00Z,2026-06-30,quarterly
+2019-07-11,rally-63cc1,,,67.65,0,135300.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2019-07-11T00:00:00Z,2019-09-30,quarterly
+2020-01-14,rally-63cc1,,,68.0,0,136000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2020-01-14T00:00:00Z,2020-03-31,quarterly
+2020-04-21,rally-63cc1,,,68.0,0,136000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2020-04-21T00:00:00Z,2020-06-30,quarterly
+2020-08-11,rally-63cc1,,,67.0,0,134000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2020-08-11T00:00:00Z,2020-09-30,quarterly
+2020-11-10,rally-63cc1,,,69.1,0,138200.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2020-11-10T00:00:00Z,2020-12-31,quarterly
+2021-02-09,rally-63cc1,,,70.0,0,140000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2021-02-09T00:00:00Z,2021-03-31,quarterly
+2021-04-22,rally-63cc1,,,70.0,0,140000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2021-04-22T00:00:00Z,2021-06-30,quarterly
+2021-07-22,rally-63cc1,,,71.0,0,142000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2021-07-22T00:00:00Z,2021-09-30,quarterly
+2021-11-04,rally-63cc1,,,78.0,0,156000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2021-11-04T00:00:00Z,2021-12-31,quarterly
+2022-04-11,rally-63cc1,,,78.0,0,156000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2022-04-11T00:00:00Z,2022-06-30,quarterly
+2022-07-01,rally-63cc1,,,60.0,0,120000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2022-07-01T00:00:00Z,2022-09-30,quarterly
+2022-09-30,rally-63cc1,,,62.0,0,124000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2022-09-30T00:00:00Z,2022-09-30,quarterly
+2022-12-30,rally-63cc1,,,51.0,0,102000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2022-12-30T00:00:00Z,2022-12-31,quarterly
+2023-03-30,rally-63cc1,,,66.0,0,132000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2023-03-30T00:00:00Z,2023-03-31,quarterly
+2023-06-28,rally-63cc1,,,63.0,0,126000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2023-06-28T00:00:00Z,2023-06-30,quarterly
+2023-09-26,rally-63cc1,,,50.0,0,100000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2023-09-26T00:00:00Z,2023-09-30,quarterly
+2023-12-29,rally-63cc1,,,49.0,0,98000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2023-12-29T00:00:00Z,2023-12-31,quarterly
+2024-03-25,rally-63cc1,,,55.0,0,110000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2024-03-25T00:00:00Z,2024-03-31,quarterly
+2024-07-01,rally-63cc1,,,70.0,0,140000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2024-07-01T00:00:00Z,2024-09-30,quarterly
+2024-09-27,rally-63cc1,,,73.0,0,146000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2024-09-27T00:00:00Z,2024-09-30,quarterly
+2024-12-27,rally-63cc1,,,74.4,0,148800.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2024-12-27T00:00:00Z,2024-12-31,quarterly
+2025-03-28,rally-63cc1,,,74.45,0,148900.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2025-03-28T00:00:00Z,2025-03-31,quarterly
+2025-06-26,rally-63cc1,,,71.0,0,142000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2025-06-26T00:00:00Z,2025-06-30,quarterly
+2025-09-24,rally-63cc1,,,68.65,0,137300.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2025-09-24T00:00:00Z,2025-09-30,quarterly
+2025-12-31,rally-63cc1,,,69.0,0,138000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2025-12-31T00:00:00Z,2025-12-31,quarterly
+2026-03-31,rally-63cc1,,,69.0,0,138000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2026-03-31T00:00:00Z,2026-03-31,quarterly
+2026-06-29,rally-63cc1,,,69.0,0,138000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 63CC1 price history,2026-06-29T00:00:00Z,2026-06-30,quarterly
+2019-09-19,rally-65fm1,,,41.35,0,82700.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2019-09-19T00:00:00Z,2019-09-30,quarterly
+2019-11-05,rally-65fm1,,,47.5,0,95000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2019-11-05T00:00:00Z,2019-12-31,quarterly
+2020-02-04,rally-65fm1,,,48.5,0,97000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2020-02-04T00:00:00Z,2020-03-31,quarterly
+2020-05-19,rally-65fm1,,,50.5,0,101000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2020-05-19T00:00:00Z,2020-06-30,quarterly
+2020-08-27,rally-65fm1,,,51.0,0,102000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2020-08-27T00:00:00Z,2020-09-30,quarterly
+2020-11-24,rally-65fm1,,,52.0,0,104000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2020-11-24T00:00:00Z,2020-12-31,quarterly
+2021-02-11,rally-65fm1,,,52.1,0,104200.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2021-02-11T00:00:00Z,2021-03-31,quarterly
+2021-05-31,rally-65fm1,,,54.9,0,109800.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2021-05-31T00:00:00Z,2021-06-30,quarterly
+2021-09-08,rally-65fm1,,,56.0,0,112000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2021-09-08T00:00:00Z,2021-09-30,quarterly
+2022-05-09,rally-65fm1,,,39.2,0,78400.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2022-05-09T00:00:00Z,2022-05-09,weekly
+2022-06-23,rally-65fm1,,,24.95,0,49900.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2022-06-23T00:00:00Z,2022-06-30,quarterly
+2022-09-27,rally-65fm1,,,26.25,0,52500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2022-09-27T00:00:00Z,2022-09-30,quarterly
+2022-12-23,rally-65fm1,,,29.85,0,59700.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2022-12-23T00:00:00Z,2022-12-31,quarterly
+2023-03-31,rally-65fm1,,,29.0,0,58000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2023-03-31T00:00:00Z,2023-03-31,quarterly
+2023-06-27,rally-65fm1,,,30.25,0,60500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2023-06-27T00:00:00Z,2023-06-30,quarterly
+2023-09-22,rally-65fm1,,,29.0,0,58000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2023-09-22T00:00:00Z,2023-09-30,quarterly
+2023-12-28,rally-65fm1,,,27.0,0,54000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2023-12-28T00:00:00Z,2023-12-31,quarterly
+2024-03-26,rally-65fm1,,,30.25,0,60500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2024-03-26T00:00:00Z,2024-03-31,quarterly
+2024-06-21,rally-65fm1,,,32.0,0,64000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2024-06-21T00:00:00Z,2024-06-30,quarterly
+2024-09-26,rally-65fm1,,,32.0,0,64000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2024-09-26T00:00:00Z,2024-09-30,quarterly
+2024-12-31,rally-65fm1,,,30.25,0,60500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2024-12-31T00:00:00Z,2024-12-31,quarterly
+2025-03-31,rally-65fm1,,,27.65,0,55300.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2025-03-31T00:00:00Z,2025-03-31,quarterly
+2025-06-26,rally-65fm1,,,34.95,0,69900.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2025-06-26T00:00:00Z,2025-06-30,quarterly
+2025-09-30,rally-65fm1,,,19.0,0,38000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2025-09-30T00:00:00Z,2025-09-30,quarterly
+2025-12-26,rally-65fm1,,,29.95,0,59900.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2025-12-26T00:00:00Z,2025-12-31,quarterly
+2026-03-26,rally-65fm1,,,34.5,0,69000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2026-03-26T00:00:00Z,2026-03-31,quarterly
+2026-06-30,rally-65fm1,,,34.9,0,69800.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 65FM1 price history,2026-06-30T00:00:00Z,2026-06-30,quarterly
 2021-04-15,rally-79stella,,,2.75,0,37950.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2021-04-15T00:00:00Z,2021-03-31,quarterly
 2021-06-28,rally-79stella,,,3.5,0,48300.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2021-06-28T00:00:00Z,2021-06-30,quarterly
 2021-09-15,rally-79stella,,,5.2,0,71760.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2021-09-15T00:00:00Z,2021-09-30,quarterly
@@ -344,6 +429,36 @@ date,asset_id,bid,ask,last,volume,market_cap_usd,source,event_type,precision_sta
 2023-03-31,rally-7orlex,,,19.8,0,19800.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2023-03-31,2023-03-31,quarterly
 2023-06-29,rally-7orlex,,,20.0,0,20000.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2023-06-29,2023-06-30,quarterly
 2023-09-27,rally-7orlex,,,19.5,0,19500.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2023-09-27,2023-09-30,quarterly
+2018-11-29,rally-83fb1,,,70.0,0,350000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2018-11-29T00:00:00Z,2018-12-31,quarterly
+2019-02-21,rally-83fb1,,,70.0,0,350000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2019-02-21T00:00:00Z,2019-03-31,quarterly
+2019-05-30,rally-83fb1,,,70.0,0,350000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2019-05-30T00:00:00Z,2019-06-30,quarterly
+2019-08-29,rally-83fb1,,,71.0,0,355000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2019-08-29T00:00:00Z,2019-09-30,quarterly
+2019-11-19,rally-83fb1,,,71.0,0,355000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2019-11-19T00:00:00Z,2019-12-31,quarterly
+2020-02-18,rally-83fb1,,,68.9,0,344500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2020-02-18T00:00:00Z,2020-03-31,quarterly
+2020-05-26,rally-83fb1,,,65.0,0,325000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2020-05-26T00:00:00Z,2020-06-30,quarterly
+2020-09-01,rally-83fb1,,,57.5,0,287500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2020-09-01T00:00:00Z,2020-09-30,quarterly
+2020-12-08,rally-83fb1,,,49.0,0,245000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2020-12-08T00:00:00Z,2020-12-31,quarterly
+2021-02-18,rally-83fb1,,,40.0,0,200000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2021-02-18T00:00:00Z,2021-03-31,quarterly
+2021-04-29,rally-83fb1,,,35.0,0,175000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2021-04-29T00:00:00Z,2021-06-30,quarterly
+2021-07-27,rally-83fb1,,,42.15,0,210750.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2021-07-27T00:00:00Z,2021-09-30,quarterly
+2022-04-11,rally-83fb1,,,41.5,0,207500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2022-04-11T00:00:00Z,2022-06-30,quarterly
+2022-07-01,rally-83fb1,,,46.5,0,232500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2022-07-01T00:00:00Z,2022-09-30,quarterly
+2022-09-28,rally-83fb1,,,41.0,0,205000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2022-09-28T00:00:00Z,2022-09-30,quarterly
+2022-12-27,rally-83fb1,,,40.0,0,200000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2022-12-27T00:00:00Z,2022-12-31,quarterly
+2023-03-24,rally-83fb1,,,40.0,0,200000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2023-03-24T00:00:00Z,2023-03-31,quarterly
+2023-06-30,rally-83fb1,,,39.0,0,195000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2023-06-30T00:00:00Z,2023-06-30,quarterly
+2023-09-27,rally-83fb1,,,40.0,0,200000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2023-09-27T00:00:00Z,2023-09-30,quarterly
+2023-12-29,rally-83fb1,,,36.5,0,182500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2023-12-29T00:00:00Z,2023-12-31,quarterly
+2024-04-01,rally-83fb1,,,58.5,0,292500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2024-04-01T00:00:00Z,2024-06-30,quarterly
+2024-06-28,rally-83fb1,,,49.0,0,245000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2024-06-28T00:00:00Z,2024-06-30,quarterly
+2024-09-26,rally-83fb1,,,51.75,0,258750.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2024-09-26T00:00:00Z,2024-09-30,quarterly
+2024-12-23,rally-83fb1,,,59.0,0,295000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2024-12-23T00:00:00Z,2024-12-31,quarterly
+2025-03-31,rally-83fb1,,,55.0,0,275000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2025-03-31T00:00:00Z,2025-03-31,quarterly
+2025-06-27,rally-83fb1,,,48.45,0,242250.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2025-06-27T00:00:00Z,2025-06-30,quarterly
+2025-09-25,rally-83fb1,,,40.0,0,200000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2025-09-25T00:00:00Z,2025-09-30,quarterly
+2025-12-31,rally-83fb1,,,46.45,0,232250.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2025-12-31T00:00:00Z,2025-12-31,quarterly
+2026-03-30,rally-83fb1,,,50.5,0,252500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2026-03-30T00:00:00Z,2026-03-31,quarterly
+2026-06-26,rally-83fb1,,,49.1,0,245500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 83FB1 price history,2026-06-26T00:00:00Z,2026-06-30,quarterly
 2021-01-05,rally-93daytona,,,23.0,0,46000.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2021-01-05T00:00:00Z,2020-12-31,quarterly
 2021-03-11,rally-93daytona,,,16.6,0,33200.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2021-03-11T00:00:00Z,2021-03-31,quarterly
 2021-05-25,rally-93daytona,,,16.6,0,33200.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2021-05-25T00:00:00Z,2021-06-30,quarterly
@@ -367,6 +482,36 @@ date,asset_id,bid,ask,last,volume,market_cap_usd,source,event_type,precision_sta
 2025-12-31,rally-93daytona,,,16.0,0,32000.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2025-12-31T00:00:00Z,2025-12-31,quarterly
 2026-03-26,rally-93daytona,,,18.1,0,36200.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2026-03-26T00:00:00Z,2026-03-31,quarterly
 2026-06-30,rally-93daytona,,,18.1,0,36200.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Rally App,2026-06-30T00:00:00Z,2026-06-30,quarterly
+2019-01-29,rally-93xj1,,,98.95,0,494750.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2019-01-29T00:00:00Z,2019-03-31,quarterly
+2019-04-25,rally-93xj1,,,95.0,0,475000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2019-04-25T00:00:00Z,2019-06-30,quarterly
+2019-07-16,rally-93xj1,,,85.0,0,425000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2019-07-16T00:00:00Z,2019-09-30,quarterly
+2019-10-03,rally-93xj1,,,69.0,0,345000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2019-10-03T00:00:00Z,2019-12-31,quarterly
+2020-01-07,rally-93xj1,,,59.0,0,295000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2020-01-07T00:00:00Z,2020-03-31,quarterly
+2020-04-28,rally-93xj1,,,52.0,0,260000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2020-04-28T00:00:00Z,2020-06-30,quarterly
+2020-08-04,rally-93xj1,,,52.0,0,260000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2020-08-04T00:00:00Z,2020-09-30,quarterly
+2020-11-03,rally-93xj1,,,52.15,0,260750.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2020-11-03T00:00:00Z,2020-12-31,quarterly
+2021-02-02,rally-93xj1,,,60.0,0,300000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2021-02-02T00:00:00Z,2021-03-31,quarterly
+2021-06-22,rally-93xj1,,,63.5,0,317500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2021-06-22T00:00:00Z,2021-06-30,quarterly
+2021-09-21,rally-93xj1,,,63.5,0,317500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2021-09-21T00:00:00Z,2021-09-30,quarterly
+2022-02-28,rally-93xj1,,,55.0,0,275000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2022-02-28T00:00:00Z,2022-02-28,weekly
+2022-03-24,rally-93xj1,,,59.0,0,295000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2022-03-24T00:00:00Z,2022-03-31,quarterly
+2022-06-29,rally-93xj1,,,66.0,0,330000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2022-06-29T00:00:00Z,2022-06-30,quarterly
+2022-09-26,rally-93xj1,,,70.0,0,350000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2022-09-26T00:00:00Z,2022-09-30,quarterly
+2022-12-30,rally-93xj1,,,59.0,0,295000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2022-12-30T00:00:00Z,2022-12-31,quarterly
+2023-03-29,rally-93xj1,,,59.0,0,295000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2023-03-29T00:00:00Z,2023-03-31,quarterly
+2023-06-26,rally-93xj1,,,67.0,0,335000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2023-06-26T00:00:00Z,2023-06-30,quarterly
+2023-09-29,rally-93xj1,,,65.5,0,327500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2023-09-29T00:00:00Z,2023-09-30,quarterly
+2023-12-26,rally-93xj1,,,58.5,0,292500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2023-12-26T00:00:00Z,2023-12-31,quarterly
+2024-04-01,rally-93xj1,,,80.0,0,400000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2024-04-01T00:00:00Z,2024-06-30,quarterly
+2024-06-28,rally-93xj1,,,69.9,0,349500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2024-06-28T00:00:00Z,2024-06-30,quarterly
+2024-09-24,rally-93xj1,,,91.5,0,457500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2024-09-24T00:00:00Z,2024-09-30,quarterly
+2024-12-30,rally-93xj1,,,94.0,0,470000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2024-12-30T00:00:00Z,2024-12-31,quarterly
+2025-03-27,rally-93xj1,,,85.0,0,425000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2025-03-27T00:00:00Z,2025-03-31,quarterly
+2025-07-02,rally-93xj1,,,91.1,0,455500.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2025-07-02T00:00:00Z,2025-09-30,quarterly
+2025-09-29,rally-93xj1,,,80.0,0,400000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2025-09-29T00:00:00Z,2025-09-30,quarterly
+2025-12-24,rally-93xj1,,,80.0,0,400000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2025-12-24T00:00:00Z,2025-12-31,quarterly
+2026-03-23,rally-93xj1,,,84.0,0,420000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2026-03-23T00:00:00Z,2026-03-31,quarterly
+2026-06-29,rally-93xj1,,,84.0,0,420000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,user-provided manual Rally 93XJ1 price history,2026-06-29T00:00:00Z,2026-06-30,quarterly
 2020-06-23,rally-aghowl,,,51.0,0,25500.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Manually transcribed Rally AGHOWL price history supplied 2026-07-25,2020-06-23T00:00:00Z,2020-06-30,quarterly
 2020-10-13,rally-aghowl,,,52.0,0,26000.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Manually transcribed Rally AGHOWL price history supplied 2026-07-25,2020-10-13T00:00:00Z,2020-09-30,quarterly
 2021-01-19,rally-aghowl,,,52.0,0,26000.0,manual:chart_observation:exact:rally_app_chart,chart_observation,exact,Manually transcribed Rally AGHOWL price history supplied 2026-07-25,2021-01-19T00:00:00Z,2020-12-31,quarterly
