@@ -1,6 +1,6 @@
 # Rally Terminal Project Context
 
-Last audited: 2026-07-23
+Last audited: 2026-07-25
 Verification baseline: Python 3.11, Streamlit 1.51.0, pandas 2.3.3, lxml 6.1.1
 
 ## Purpose And Product State
@@ -38,9 +38,9 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 84 |
 | Rally asset decision universe | 84 |
 | Normalized manual assets | 84 |
-| Normalized manual price observations | 1274 |
-| Processed price history | 1202 |
-| General Rally index rows | 466 |
+| Normalized manual price observations | 1461 |
+| Processed price history | 1380 |
+| General Rally index rows | 494 |
 | Quarterly Rally index rows | 306 |
 | SEC series context | 0 |
 | Rally exits | 0 |
@@ -219,6 +219,10 @@ The normalized Rally price observations now include manually transcribed Rally c
 ## Manual Books Price Coverage Update (ANMLFARM, 2026-07-23)
 
 The normalized Rally price observations now include manually transcribed Rally chart coverage for existing Books asset `rally-anmlfarm` (`#ANMLFARM`), George Orwell's Animal Farm, First Edition. The history preserves actual observed Rally dates from the November 2020 offering reference value through the June 26, 2026 Q2 observation at $20.70 per share / $20,700 total value. Market caps are validated against the existing 1,000-share master record. A July 23, 2026 post-Q2 observation at $23.45 per share / $23,450 total value is retained as a weekly/non-quarterly research row for future higher-frequency history; it is intentionally not used as the Q2 2026 quarterly observation. ANMLFARM now has sufficient quarterly price and market-cap history to participate in the Books equal-weight and market-cap-weighted historical index prototypes where the methodology permits. With this ingestion, the working Books manual-history coverage count is 21 of 40 currently trading Books assets cataloged (52.5%).
+
+## Manual Books Price Coverage Update (Nine Assets, 2026-07-25)
+
+The normalized Rally observations now include 187 manually transcribed price-history rows for nine existing Books assets: `rally-lotf` (`#LOTF`, 17 rows), `rally-59bond` (`#59BOND`, 21), `rally-holmes` (`#HOLMES`, 19), `rally-bradbury` (`#BRADBURY`, 17), `rally-irobot` (`#IROBOT`, 19), `rally-mobydick` (`#MOBYDICK`, 19), `rally-59jfk` (`#59JFK`, 23), `rally-aghowl` (`#AGHOWL`, 27), and `rally-bond1` (`#BOND1`, 25). All market caps reconcile to the existing master-record share counts, and no new assets were created. The spoken `AGHOL` ticker was resolved to canonical `AGHOWL`. AGHOWL retains both the February 14, 2022 and March 28, 2022 observations, and both the June 26 and July 2, 2026 observations, as dated research evidence; the earlier/later same-quarter observations remain non-quarterly rows so canonical quarterly analytics select the applicable in-quarter close without inventing or forward-filling a quote. The Books quarterly-history working coverage is now 30 of 40 currently trading Books assets (75%).
 
 ## Market Table Return Screening Update (2026-07-22)
 
