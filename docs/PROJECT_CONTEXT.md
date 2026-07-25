@@ -338,6 +338,12 @@ The Custom Index Workshop remains a descriptive index-construction surface using
 
 The homepage Rally Market Table now places Last Price, 1Q Return, 1Y Return, and Full Return immediately after Ticker and Asset Name. Market-table row selection updates the canonical `asset_explorer_selected_asset_id` session-state value before Asset Price History renders, with a guarded rerun only when the selected asset changes, so the selector and chart reflect the clicked asset without a manual refresh or stale “on rerun” message.
 
+## Modular Portfolio Components Update (2026-07-25)
+
+The Portfolio Simulator now supports a multi-index Exposure Builder. Users can select any number of category index sleeves, assign explicit component weights, equal-weight all selected sleeves, or normalize positive allocations to 100%. The reusable `alt_asset_explorer.component_portfolios` engine consumes typed component series rather than underlying asset pools, so a 50% Books / 50% Watches portfolio preserves equal capital at the category-sleeve layer and is not misrepresented as an equal-weight pool of every underlying book and watch.
+
+Component simulation uses common inception: the portfolio begins on the first valid observation date shared by all selected sleeves. It uses only subsequent dates shared by every sleeve and does not forward-fill missing component-level observations or treat a not-yet-available sleeve as cash. Existing canonical total-return indexes remain responsible for their internal point-in-time eligibility, equal- versus market-cap-weighting, exited-asset handling, and underlying price carry policy. The simulator's rebalance control separately returns top-level sleeves to their target allocations. Full-market and single custom-asset portfolio quick paths remain available; full-market, individual-asset, and custom-basket component adapters are a future extension of the typed component interface.
+
 ## Contribution Explorer Build 3 (2026-07-22)
 
 The homepage now includes a first-class Contribution Explorer that reuses existing index, custom-index, and custom-portfolio simulation outputs rather than introducing a separate portfolio/index calculation path. The reusable attribution layer lives in `alt_asset_explorer.contribution` and wraps period-level index contributions from `indices.build_index_from_selection`, full-period compatible custom-index basket contributions from `custom_indices.build_custom_index`, and holdings-through-time output from `custom_portfolios.simulate_portfolio`.
