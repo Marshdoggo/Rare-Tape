@@ -11,13 +11,13 @@ rally-14drc,14DRC,2014 Domaine de la Romanée-Conti Assortment,wine and whiskey,
 rally-16petrus,16PETRUS,2016 Château Pétrus,wine and whiskey,True,True,True,2021-04-01,2026-06-26,23,20,0,3,0,,,,137.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
 rally-16screag,16SCREAG,2016 Screaming Eagle,wine and whiskey,True,True,True,2020-12-15,2026-06-26,23,20,0,3,0,,,,164.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
 rally-17dujac,17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,True,True,True,2021-06-17,2025-03-27,15,14,0,0,0,,,,207.0,True,True,,15,,15,,2021-06-30,2025-03-31,,,15,14
-rally-59bond,59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-59jfk,59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-59bond,59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,True,True,True,2021-06-21,2026-06-30,20,20,0,0,0,,,,141.0,True,True,,21,,20,,2021-06-30,2026-06-30,,,20,20
+rally-59jfk,59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,True,True,True,2021-03-09,2026-06-29,22,22,0,0,0,,,,126.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-62bond,62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),books,True,True,True,2021-05-12,2026-06-26,21,21,0,0,0,,,,125.0,True,True,,1,,21,,2021-06-30,2026-06-30,,,21,0
 rally-79stella,79STELLA,1979 Rolex Coral Stella Dial Day-Date,watches,True,True,True,2021-04-15,2026-06-26,22,22,0,0,0,,,,97.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-7orlex,70RLEX,1970 Rolex Watch,watches,True,True,True,2020-05-12,2023-09-27,10,10,0,0,0,,,,486.0,True,True,,11,,10,,2020-06-30,2023-09-30,,,10,10
 rally-93daytona,93DAYTONA,1993 Rolex Zenith Daytona Inverted 6,watches,True,True,True,2021-01-05,2026-06-30,23,23,0,0,0,,,,147.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
-rally-aghowl,AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-aghowl,AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,True,True,True,2020-06-23,2026-07-02,26,26,0,0,0,,,,133.0,True,True,,27,,26,,2020-06-30,2026-07-02,,,26,26
 rally-alice,ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,True,True,True,2021-02-02,2026-06-25,22,21,0,0,1,,,,133.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-anmlfarm,ANMLFARM,George Orwell - Animal Farm (First Edition),books,True,True,True,2021-02-23,2026-07-23,22,22,0,0,0,,,,157.0,True,True,,1,,22,,2021-03-31,2026-07-23,,,22,0
 rally-aproak,APROAK,Audemars Piguet Royal Oak,watches,True,True,True,2020-06-02,2021-05-10,5,5,0,0,0,,,,105.0,True,True,,6,,5,,2020-06-30,2021-06-30,,,5,5
@@ -25,9 +25,9 @@ rally-baro,BARO,Barosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,,,,False
 rally-birkinblu,BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,True,True,True,2020-04-28,2025-03-24,20,20,0,0,0,,,,145.0,True,True,,21,,20,,2020-06-30,2025-03-31,,,20,20
 rally-birkinbor,BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,handbags,True,True,True,2020-12-01,2026-06-26,22,22,0,0,0,,,,197.0,True,True,,23,,22,,2020-12-31,2026-06-30,,,22,22
 rally-birkintan,BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,handbags,True,True,True,2022-09-30,2026-06-26,16,16,0,0,0,,,,96.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
-rally-bond1,BOND1,Ian Fleming - Casino Royale (First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-bond1,BOND1,Ian Fleming - Casino Royale (First Edition),books,True,True,True,2020-10-06,2026-06-26,24,24,0,0,0,,,,138.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
 rally-bondwatch,BONDWATCH,Pierce Brosnan Omega Seamaster James Bond Film-Worn Watch,watches,True,True,True,2022-10-10,2026-06-29,16,16,0,0,0,,,,95.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
-rally-bradbury,BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-bradbury,BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,True,True,True,2022-10-10,2026-06-25,16,16,0,0,0,,,,94.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-brosgrimm,BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,True,True,True,2022-01-24,2026-07-23,20,20,0,0,0,,,,96.0,True,True,,21,,20,,2021-12-31,2026-07-23,,,20,20
 rally-catcher,CATCHER,J.D. Salinger - The Catcher in the Rye (First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-churchill,CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,True,True,True,2020-11-17,2026-06-24,23,23,0,0,0,,,,141.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
@@ -45,21 +45,21 @@ rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Editio
 rally-gwtw,GWTW,Gone with the Wind (Inscribed First Printing),books,True,True,True,2022-09-26,2026-06-26,16,16,0,0,0,,,,95.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-hgwells,HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,True,True,True,2021-11-01,2026-06-29,18,0,0,18,0,,,,186.0,True,True,,2,,18,,2021-09-30,2026-06-30,,,18,1
 rally-himalaya,HIMALAYA,Hermès 30cm Himalaya Birkin,handbags,True,True,True,2020-09-15,2026-06-26,24,24,0,0,0,,,,146.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
-rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,True,True,True,2022-03-31,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,True,True,True,2021-10-28,2026-06-29,19,19,0,0,0,,,,184.0,True,True,,3,,19,,2021-09-30,2026-06-30,,,19,2
-rally-irobot,IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-irobot,IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,True,True,True,2022-03-28,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-jekyll,JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),books,True,True,True,2022-12-28,2026-06-30,15,15,0,0,0,,,,97.0,True,True,,16,,15,,2022-12-31,2026-06-30,,,15,15
 rally-karuizawa,KARUIZAWA,Karuizawa Aqua of Life 50-Year-Old Whisky,wine and whiskey,True,True,True,2022-03-31,2026-06-29,18,18,0,0,0,,,,94.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-keller,KELLER,Helen Keller 1892 Book (Inscribed),books,True,True,True,2022-10-03,2026-07-08,17,17,0,0,0,,,,96.0,True,True,,18,,17,,2022-09-30,2026-09-30,,,17,17
 rally-kerouac,KEROUAC,Jack Kerouac - On the Road (Signed First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-lotf,LOTF,William Golding - Lord of the Flies (First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-lotf,LOTF,William Golding - Lord of the Flies (First Edition),books,True,True,True,2022-09-29,2026-06-30,16,16,0,0,0,,,,94.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-lotr,LOTR,J.R.R. Tolkien - The Lord of the Rings Trilogy (First Edition),books,True,True,True,2020-09-29,2026-07-01,23,23,0,0,0,,,,172.0,True,True,,24,,23,,2020-09-30,2026-06-30,,,23,23
 rally-macallan1,MACALLAN1,Macallan 30-Year-Old Blue Label Scotch Whisky,wine and whiskey,True,True,True,2022-03-30,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-macallan2,MACALLAN2,Macallan 40-Year-Old Whisky,wine and whiskey,True,True,True,2022-06-27,2026-06-29,17,17,0,0,0,,,,94.0,True,True,,18,,17,,2022-06-30,2026-06-30,,,17,17
 rally-macallan3,MACALLAN3,1938 Macallan Red Ribbon Whisky,wine and whiskey,True,True,True,2022-12-30,2026-06-26,15,15,0,0,0,,,,95.0,True,True,,16,,15,,2022-12-31,2026-06-30,,,15,15
 rally-marx,MARX,Karl Marx - Das Kapital (First Edition),books,True,True,True,2022-02-22,2026-06-25,19,19,0,0,0,,,,95.0,True,True,,20,,19,,2021-12-31,2026-06-30,,,19,19
 rally-megalodon,MEGALODON,Megalodon Fossil,fossils,True,True,True,2022-12-30,2026-06-30,15,15,0,0,0,,,,95.0,True,True,,16,,15,,2022-12-31,2026-06-30,,,15,15
-rally-mobydick,MOBYDICK,Herman Melville - Moby-Dick (First Edition),books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-mobydick,MOBYDICK,Herman Melville - Moby-Dick (First Edition),books,True,True,True,2022-03-28,2026-06-29,18,18,0,0,0,,,,96.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-mosasaur,MOSASAUR,Mosasaur,fossils,True,True,True,2021-06-21,2026-06-29,21,21,0,0,0,,,,112.0,True,True,,22,,21,,2021-06-30,2026-06-30,,,21,21
 rally-newton,NEWTON,Isaac Newton - Principia (First Edition),books,True,True,True,2021-10-22,2026-06-29,20,20,0,0,0,,,,97.0,True,True,,21,,20,,2021-09-30,2026-06-30,,,20,20
 rally-newworld,NEWWORLD,Aldous Huxley - Brave New World (First Edition),books,True,True,True,2022-10-17,2026-07-22,17,17,0,0,0,,,,95.0,True,True,,18,,17,,2022-09-30,2026-09-30,,,17,17
