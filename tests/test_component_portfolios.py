@@ -3,7 +3,14 @@ import pytest
 
 from alt_asset_explorer.component_portfolios import (
     PortfolioComponent,
+    equal_component_weights,
+    expand_component,
+    infer_periods_per_year,
+    inverse_volatility_weights,
+    look_through_exposure,
     normalize_component_weights,
+    portfolio_risk_metrics,
+    remove_and_redistribute,
     simulate_component_portfolio,
 )
 
@@ -113,3 +120,55 @@ def test_duplicate_components_and_non_overlapping_histories_are_flagged():
     result = simulate_component_portfolio([duplicate, later])
     assert result.series.empty
     assert "common observation dates" in result.warnings[0]
+
+
+def test_builder_weight_controls_are_deterministic():
+    assert equal_component_weights(["a", "b", "c"]) == pytest.approx({"a": 1 / 3, "b": 1 / 3, "c": 1 / 3})
+    assert normalize_component_weights({"a": 60, "b": 30}) == pytest.approx({"a": 2 / 3, "b": 1 / 3})
+
+
+def test_expansion_preserves_sleeve_weight_and_removal_redistributes_pro_rata():
+    expanded = expand_component("category:books", {"category:books": 0.4, "category:watches": 0.6}, {"book-a": 0.75, "book-b": 0.25})
+    assert expanded == pytest.approx({"category:watches": 0.6, "asset:book-a": 0.3, "asset:book-b": 0.1})
+    removed = remove_and_redistribute(expanded, ["asset:book-a", "asset:book-b"], policy="pro_rata")
+    assert removed == pytest.approx({"category:watches": 1.0})
+
+
+def test_mixed_index_and_asset_portfolio_and_lookthrough_overlap():
+    books = PortfolioComponent("category:books", "category_index", "Books Index", 0.75, pd.DataFrame({"date": pd.date_range("2024-01-01", periods=3, freq="QS"), "index_level": [100, 110, 121]}), {"book-a": 0.5, "book-b": 0.5})
+    direct = PortfolioComponent("asset:book-a", "individual_asset", "BOOK-A", 0.25, pd.DataFrame({"date": pd.date_range("2024-01-01", periods=3, freq="QS"), "index_level": [10, 12, 15]}), {"book-a": 1.0})
+    result = simulate_component_portfolio([books, direct], rebalance_frequency="none")
+    assert result.series.iloc[-1]["growth_value"] == pytest.approx(128.25)
+    assert result.series.filter(like="contribution_").iloc[1:].sum().sum() == pytest.approx(result.series.iloc[-1]["cumulative_return"])
+    exposure = look_through_exposure([books, direct])
+    assert exposure["total_weight"].sum() == pytest.approx(1)
+    assert exposure.set_index("asset_id").loc["book-a", "overlap"]
+
+
+def test_frequency_aware_risk_metrics_and_drawdown_duration():
+    dates = pd.date_range("2023-03-31", periods=6, freq="QE")
+    returns = [0.0, 0.10, -0.05, -0.05, 0.12, 0.02]
+    levels = 100 * pd.Series([1 + value for value in returns]).cumprod()
+    series = pd.DataFrame({"date": dates, "period_return": returns, "growth_value": levels})
+    metrics = portfolio_risk_metrics(series)
+    expected = pd.Series(returns[1:]).std(ddof=1) * 2
+    assert infer_periods_per_year(dates) == 4
+    assert metrics["annualized_volatility"] == pytest.approx(expected)
+    assert metrics["sharpe_ratio"] == pytest.approx(pd.Series(returns[1:]).mean() / pd.Series(returns[1:]).std(ddof=1) * 2)
+    downside = pd.Series(returns[1:])[pd.Series(returns[1:]) < 0]
+    expected_downside = ((downside.pow(2).sum() / 5) ** 0.5) * 2
+    assert metrics["downside_deviation"] == pytest.approx(expected_downside)
+    assert metrics["maximum_drawdown_duration_periods"] == 2
+
+
+def test_inverse_volatility_is_long_only_and_uses_common_sample():
+    dates = pd.date_range("2023-03-31", periods=6, freq="QE")
+    frames = {
+        "a": pd.DataFrame({"date": dates, "index_level": [100, 110, 100, 115, 105, 120]}),
+        "b": pd.DataFrame({"date": dates, "index_level": [100, 102, 101, 103, 102, 104]}),
+    }
+    weights = inverse_volatility_weights(frames, minimum_observations=3)
+    assert sum(weights.values()) == pytest.approx(1)
+    assert all(value > 0 for value in weights.values())
+    with pytest.raises(ValueError, match="shared levels"):
+        inverse_volatility_weights({"a": frames["a"].iloc[:3], "b": frames["b"].iloc[-3:]}, minimum_observations=3)

@@ -69,6 +69,7 @@ The normalized Rally observations now include 150 manually transcribed dated pri
 - Exchange Market Cap & Performance reconstruction with asset-level carry-forward audit fields, assets-added hover diagnostics for issuance-driven jumps, tradable market-cap exit removals, category decomposition, exit-aware total-return indexes, reconciliation reports, and CSV exports.
 - Local and curated custom-index registries. Local JSON persistence is development-only; cloud saving is disabled through `RALLY_CUSTOM_INDEX_READ_ONLY=true`.
 - Market-table filters with asset-level trailing/full-history returns, coverage diagnostics, category performance, liquidity metrics, deterministic AI/report context, and MME/newsletter exports.
+- Unified Portfolio Construction Laboratory combining full-market and category-index sleeves with expanded category constituents and direct assets. The typed component engine preserves top-level versus internal weighting, common-inception/no-fill alignment, deterministic expansion/removal policies, overlap-aware look-through exposure, exact period-by-period arithmetic contribution, frequency-aware risk metrics, correlation research, and long-only inverse-volatility comparisons. The optimizer comparison is explicitly in-sample and is not presented as a forecast.
 
 ## Important Semantics And Constraints
 
@@ -89,6 +90,7 @@ The normalized Rally observations now include 150 manually transcribed dated pri
 - Processed CSV schemas are coupled to Streamlit views and lack a versioned migration boundary.
 - Pandas emits five forward-compatibility warnings in the current test suite around concatenation with empty/all-null values.
 - There is no production health endpoint, telemetry, durable user storage, or automated data-refresh service.
+- Portfolio construction currently uses a fixed common-inception universe for expanded assets. It does not yet model custom baskets, dynamic constituent admission, explicit cash for intentionally unallocated weights, transaction costs, or out-of-sample/walk-forward optimization.
 
 ## Near-Term Priorities
 

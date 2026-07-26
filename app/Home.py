@@ -23,8 +23,18 @@ from alt_asset_explorer.custom_index_storage import (
     custom_index_storage_is_read_only,
 )
 from alt_asset_explorer.custom_indices import build_custom_index, calculate_index_metrics, new_custom_index_definition
-from alt_asset_explorer.custom_portfolios import PortfolioDefinition, PortfolioMethodology, simulate_index_investment, simulate_portfolio
-from alt_asset_explorer.component_portfolios import PortfolioComponent, simulate_component_portfolio
+from alt_asset_explorer.custom_portfolios import PortfolioDefinition, simulate_portfolio
+from alt_asset_explorer.component_portfolios import (
+    PortfolioComponent,
+    equal_component_weights,
+    expand_component,
+    inverse_volatility_weights,
+    look_through_exposure,
+    normalize_component_weights,
+    portfolio_risk_metrics,
+    remove_and_redistribute,
+    simulate_component_portfolio,
+)
 from alt_asset_explorer.contribution import attribution_from_index_result, attribution_from_portfolio_result, breadth_metrics, concentration_metrics
 from alt_asset_explorer.indices import build_index_from_selection, prepare_quarterly_observations, summarize_contributions
 from alt_asset_explorer.universe import build_asset_universe, eligible_asset_ids
@@ -69,6 +79,7 @@ manual_price_observations = canonical_market.authored_price_observations
 liquidity = load_processed_csv("liquidity_metrics")
 coverage = load_report_csv("research_coverage")
 index_portfolio = canonical_market.total_return_portfolio
+index_constituents = canonical_market.total_return_constituents
 exit_analytics = canonical_market.exit_analytics
 exchange_market_cap = canonical_market.exchange_history.market_cap_history
 current_universe_artifact = canonical_market.current_universe
@@ -663,220 +674,240 @@ else:
 
 
 
-st.subheader("Portfolio Simulator")
-st.caption("Build investable sleeves without pooling their underlying assets, or use the quick full-market and custom-asset portfolio paths.")
-if index_portfolio.empty:
-    st.info("Total-return simulations are unavailable until canonical market data is available.")
-else:
-    sim_source = st.radio("Strategy source", ["Full Market", "Category Index", "Custom Portfolio"], horizontal=True, key="portfolio_sim_source")
-    sim_cols = st.columns([1.2, 1.2, 1.2, 1.2])
-    sim_starting_value = sim_cols[0].number_input("Starting investment", min_value=1.0, value=100.0, step=25.0, format="%.2f", key="portfolio_sim_start")
-    sim_rebalance_label = sim_cols[1].selectbox("Rebalance", ["None / Buy & Hold", "Monthly", "Quarterly", "Annual"], index=2, key="portfolio_sim_rebalance")
-    sim_universe_label = sim_cols[2].selectbox("Universe", ["Include Exited Assets", "Current Survivors Only"], key="portfolio_sim_universe")
-    weighting_options = ["Equal Weight", "Custom Weight"] if sim_source == "Custom Portfolio" else ["Equal Weight", "Market-Cap Weight"]
-    sim_weighting_label = sim_cols[3].selectbox("Internal weighting", weighting_options, key=f"portfolio_sim_weighting_{sim_source}")
-    rebalance_map = {"None / Buy & Hold": "none", "Monthly": "monthly", "Quarterly": "quarterly", "Annual": "annual"}
-    universe_map = {"Include Exited Assets": "include_exited", "Current Survivors Only": "active_only"}
-    methodology_universe_map = {"Include Exited Assets": "include_exited", "Current Survivors Only": "current_survivors_only"}
-    sim_series = pd.DataFrame()
-    comparison_frames: list[pd.DataFrame] = []
-    portfolio_result = None
-    component_result = None
-    if sim_source == "Full Market":
-        sim_category_options = ["all"] + sorted([c for c in index_portfolio["category"].dropna().astype(str).unique() if c != "all"])
-        sim_category = "all"
-        tr_method = "equal_weight" if sim_weighting_label == "Equal Weight" else "market_cap_weight"
-        tr_rebalance = "quarterly" if rebalance_map[sim_rebalance_label] in {"none", "annual"} else rebalance_map[sim_rebalance_label]
-        sim_series = index_portfolio[
-            index_portfolio["category"].astype(str).eq(sim_category)
-            & index_portfolio["weighting_method"].astype(str).eq(tr_method)
-            & index_portfolio["rebalance_frequency"].astype(str).eq(tr_rebalance)
-            & index_portfolio["universe_scope"].astype(str).eq(universe_map[sim_universe_label])
-        ].copy()
-        if rebalance_map[sim_rebalance_label] in {"none", "annual"}:
-            st.caption("Built-in total-return artifacts currently expose weekly, monthly, and quarterly schedules; simulator uses quarterly for this built-in view. Custom portfolios support buy-and-hold and annual directly.")
-        growth = simulate_index_investment(sim_series, starting_value=sim_starting_value)
-        if not growth.empty:
-            growth["Series"] = "Full Rally Market"
-            comparison_frames.append(growth)
-    elif sim_source == "Category Index":
-        st.markdown("#### Portfolio Components")
-        category_options = sorted([c for c in index_portfolio["category"].dropna().astype(str).unique() if c != "all"])
-        selected_categories = st.multiselect(
-            "Category index sleeves",
-            category_options,
-            default=[category_options[0]] if category_options else [],
-            format_func=lambda value: f"{value.replace('_', ' ').title()} Index",
-            key="portfolio_component_categories",
-        )
-        for category in selected_categories:
-            weight_key = f"portfolio_component_weight_category_{category}"
-            if weight_key not in st.session_state:
-                st.session_state[weight_key] = 100.0 / len(selected_categories)
-        action_cols = st.columns([1, 1, 3])
-        if action_cols[0].button("Equal Weight Components", disabled=not selected_categories, key="portfolio_components_equal"):
-            equal_weight = 100.0 / len(selected_categories)
-            for category in selected_categories:
-                st.session_state[f"portfolio_component_weight_category_{category}"] = equal_weight
-            st.rerun()
-        raw_total = sum(float(st.session_state.get(f"portfolio_component_weight_category_{category}", 0.0)) for category in selected_categories)
-        if action_cols[1].button("Normalize to 100%", disabled=not selected_categories or raw_total <= 0, key="portfolio_components_normalize"):
-            for category in selected_categories:
-                weight_key = f"portfolio_component_weight_category_{category}"
-                st.session_state[weight_key] = float(st.session_state[weight_key]) / raw_total * 100.0
-            st.rerun()
-        weights: dict[str, float] = {}
-        if selected_categories:
-            weight_columns = st.columns(min(4, len(selected_categories)))
-            for position, category in enumerate(selected_categories):
-                weights[category] = weight_columns[position % len(weight_columns)].number_input(
-                    f"{category.replace('_', ' ').title()} Index weight (%)",
-                    min_value=0.0,
-                    max_value=100.0,
-                    step=0.5,
-                    key=f"portfolio_component_weight_category_{category}",
-                )
-        allocation_total = sum(weights.values())
-        st.metric("Total Allocation", f"{allocation_total:.2f}%")
-        valid_allocation = bool(selected_categories) and all(weight > 0 for weight in weights.values()) and abs(allocation_total - 100.0) <= 0.01
-        if not selected_categories:
-            st.info("Add one or more category index sleeves to simulate a portfolio.")
-        elif any(weight <= 0 for weight in weights.values()):
-            st.warning("Every selected component must have a weight greater than 0%.")
-        elif not valid_allocation:
-            st.warning(f"Component weights must total 100%. Current allocation is {allocation_total:.2f}%.")
-        if valid_allocation:
-            tr_method = "equal_weight" if sim_weighting_label == "Equal Weight" else "market_cap_weight"
-            input_rebalance = "quarterly" if rebalance_map[sim_rebalance_label] in {"none", "annual"} else rebalance_map[sim_rebalance_label]
-            components = []
-            for category in selected_categories:
-                component_series = index_portfolio[
-                    index_portfolio["category"].astype(str).eq(category)
-                    & index_portfolio["weighting_method"].astype(str).eq(tr_method)
-                    & index_portfolio["rebalance_frequency"].astype(str).eq(input_rebalance)
-                    & index_portfolio["universe_scope"].astype(str).eq(universe_map[sim_universe_label])
-                ].copy()
-                components.append(PortfolioComponent(
-                    component_id=f"category_{category}",
-                    component_type="category_index",
-                    label=f"{category.replace('_', ' ').title()} Index",
-                    target_weight=weights[category] / 100.0,
-                    series=component_series,
-                ))
-            component_result = simulate_component_portfolio(
-                components,
-                starting_value=sim_starting_value,
-                rebalance_frequency=rebalance_map[sim_rebalance_label],
-            )
-            for warning in component_result.warnings:
-                st.warning(warning)
-            if not component_result.series.empty:
-                growth = component_result.series[["date", "growth_value", "period_return"]].copy()
-                growth["Series"] = "Component Portfolio"
-                comparison_frames.append(growth)
-                composition_display = component_result.composition.rename(columns={
-                    "component": "Component", "component_type": "Type", "target_weight": "Target Weight",
-                    "effective_start_date": "Effective Start Date", "ending_weight": "Ending Weight", "rebalance_count": "Rebalances",
-                })[["Component", "Type", "Target Weight", "Effective Start Date", "Ending Weight", "Rebalances"]]
-                composition_display[["Target Weight", "Ending Weight"]] *= 100
-                st.markdown("##### Portfolio Composition")
-                st.dataframe(
-                    composition_display,
-                    hide_index=True,
-                    use_container_width=True,
-                    column_config={
-                        "Target Weight": st.column_config.NumberColumn(format="%.2f%%"),
-                        "Ending Weight": st.column_config.NumberColumn(format="%.2f%%"),
-                        "Effective Start Date": st.column_config.DateColumn(format="YYYY-MM-DD"),
-                    },
-                )
-    else:
-        sim_metadata = canonical[["asset_id", "ticker", "name", "category", "subcategory"]].drop_duplicates("asset_id").copy()
-        sim_metadata["label"] = sim_metadata["ticker"].fillna(sim_metadata["asset_id"]).astype(str) + " | " + sim_metadata["name"].fillna(sim_metadata["asset_id"]).astype(str) + " · " + sim_metadata["category"].fillna("other").astype(str).str.replace("_", " ").str.title()
-        label_to_asset = dict(zip(sim_metadata["label"], sim_metadata["asset_id"].astype(str)))
-        selected_portfolio_labels = st.multiselect("Select portfolio assets", sorted(label_to_asset), placeholder="Search by ticker, asset, or category", key="portfolio_sim_assets")
-        selected_portfolio_ids = [label_to_asset[label] for label in selected_portfolio_labels]
-        custom_weights = None
-        if selected_portfolio_ids and sim_weighting_label == "Custom Weight":
-            weight_cols = st.columns(min(4, len(selected_portfolio_ids)))
-            raw_weights = {}
-            for pos, aid in enumerate(selected_portfolio_ids):
-                meta = sim_metadata[sim_metadata["asset_id"].astype(str).eq(aid)].iloc[0]
-                raw_weights[aid] = weight_cols[pos % len(weight_cols)].number_input(str(meta["ticker"]), min_value=0.0, max_value=100.0, value=100.0 / len(selected_portfolio_ids), step=0.5, key=f"portfolio_weight_{aid}")
-            total_raw = sum(raw_weights.values())
-            if total_raw > 0:
-                custom_weights = {aid: value / total_raw for aid, value in raw_weights.items()}
-                st.caption(f"Custom weights normalized from {total_raw:.2f}% raw allocation.")
-            else:
-                st.warning("Custom weights must have a positive total.")
-        if selected_portfolio_ids:
-            definition = PortfolioDefinition(
-                name="Custom Portfolio",
-                asset_ids=tuple(selected_portfolio_ids),
-                methodology=PortfolioMethodology(
-                    weighting_method="custom_weight" if sim_weighting_label == "Custom Weight" and custom_weights else "equal_weight",
-                    rebalance_frequency=rebalance_map[sim_rebalance_label],
-                    universe_policy=methodology_universe_map[sim_universe_label],
-                ),
-                custom_weights=custom_weights,
-                base_value=sim_starting_value,
-            )
-            portfolio_result = simulate_portfolio(definition, canonical, prices, canonical_market.exit_events)
-            st.session_state["active_custom_portfolio_definition"] = definition
-            for warning in portfolio_result.warnings:
-                st.warning(warning)
-            if not portfolio_result.series.empty:
-                growth = portfolio_result.series[["date", "index_level", "period_return"]].rename(columns={"index_level": "growth_value"})
-                growth["Series"] = "Custom Portfolio"
-                comparison_frames.append(growth)
-                market_benchmark = index_portfolio[
-                    index_portfolio["category"].astype(str).eq("all")
-                    & index_portfolio["weighting_method"].astype(str).eq("equal_weight")
-                    & index_portfolio["rebalance_frequency"].astype(str).eq("quarterly")
-                    & index_portfolio["universe_scope"].astype(str).eq(universe_map[sim_universe_label])
-                ].copy()
-                benchmark_growth = simulate_index_investment(market_benchmark, starting_value=sim_starting_value)
-                if not benchmark_growth.empty:
-                    benchmark_growth["Series"] = "Full Rally Market"
-                    comparison_frames.append(benchmark_growth)
-        else:
-            st.info("Select at least one asset to simulate a custom portfolio.")
-    if comparison_frames:
-        chart = pd.concat(comparison_frames, ignore_index=True).dropna(subset=["date", "growth_value"])
-        primary = chart.groupby("Series", sort=False).head(1).iloc[0]["Series"]
-        primary_chart = chart[chart["Series"].eq(primary)].sort_values("date")
-        ending_value = float(primary_chart.iloc[-1]["growth_value"])
-        total_return = ending_value / sim_starting_value - 1 if sim_starting_value else 0
-        metric_row = st.columns(5)
-        metric_row[0].metric("Starting Value", f"${sim_starting_value:,.2f}")
-        metric_row[1].metric("Ending Value", f"${ending_value:,.2f}")
-        metric_row[2].metric("Total Return", format_pct(total_return))
-        if portfolio_result is not None:
-            metric_row[3].metric("CAGR", format_pct(portfolio_result.metrics.get("cagr")))
-            metric_row[4].metric("Max Drawdown", format_pct(portfolio_result.metrics.get("maximum_drawdown")))
-        elif component_result is not None and not component_result.series.empty:
-            metric_row[3].metric("Portfolio Inception", primary_chart.iloc[0]["date"].strftime("%Y-%m-%d"))
-            metric_row[4].metric("Components", f"{len(component_result.composition):,}")
-        st.plotly_chart(px.line(chart, x="date", y="growth_value", color="Series", markers=True, title=f"What ${sim_starting_value:,.0f} Became — Normalized Growth"), use_container_width=True)
-        st.caption("Chart shows normalized growth of the starting investment, not raw index levels. Each category remains an independently weighted sleeve; its constituents are not pooled with other categories.")
-    with st.expander("Portfolio component methodology"):
-        st.markdown(
-            """
-            - **Component allocation** sets capital across category sleeves. **Internal weighting** separately selects equal- or market-cap-weighting among assets inside every selected category index.
-            - **Top-level rebalancing** returns the sleeves to their target component weights on the selected schedule. It does not change the chosen internal index methodology.
-            - **Common inception** starts the combined portfolio on the first observation date shared by every selected component. A component is never used before its history exists.
-            - **Missing observations** are not silently forward-filled at the sleeve layer: only dates observed for every selected component enter the combined series. The canonical underlying total-return indexes retain their documented point-in-time price and exit handling.
-            - **Universe** applies inside every category sleeve. Include Exited Assets preserves exit-aware proceeds and scheduled reinvestment; Current Survivors Only is a survivor diagnostic.
-            - Combining 50% Books Index and 50% Watches Index gives equal capital to two sleeves. It is not the same as pooling every book and watch asset and equal-weighting that larger asset set.
-            """
-        )
+st.subheader("Portfolio Construction Laboratory")
+st.caption("Combine canonical index sleeves and editable underlying assets in one top-level portfolio. Research only; historical results are not forecasts.")
 
+
+def _asset_level_series(asset_id: str) -> pd.DataFrame:
+    """Return observed quarterly levels only; never fill a missing asset observation."""
+    frame = prices[prices["asset_id"].astype(str).eq(asset_id)].copy()
+    value_column = "last" if "last" in frame else "price_usd"
+    if frame.empty or value_column not in frame:
+        return pd.DataFrame(columns=["date", "index_level"])
+    date_column = "period" if "period" in frame else "date"
+    frame = frame[[date_column, value_column]].rename(columns={date_column: "date", value_column: "index_level"})
+    frame["date"] = pd.to_datetime(frame["date"], errors="coerce").dt.normalize()
+    frame["index_level"] = pd.to_numeric(frame["index_level"], errors="coerce")
+    return frame.dropna().query("index_level > 0").sort_values("date").drop_duplicates("date", keep="last")
+
+
+def _canonical_index(component_type: str, reference: str, method: str, scope: str, input_rebalance: str) -> tuple[pd.DataFrame, dict[str, float]]:
+    category = "all" if component_type == "full_market" else reference
+    selected = index_portfolio[
+        index_portfolio["category"].astype(str).eq(category)
+        & index_portfolio["weighting_method"].astype(str).eq(method)
+        & index_portfolio["rebalance_frequency"].astype(str).eq(input_rebalance)
+        & index_portfolio["universe_scope"].astype(str).eq(scope)
+    ].copy()
+    holdings = index_constituents[
+        index_constituents["category"].astype(str).eq(category)
+        & index_constituents["weighting_method"].astype(str).eq(method)
+        & index_constituents["rebalance_frequency"].astype(str).eq(input_rebalance)
+        & index_constituents["universe_scope"].astype(str).eq(scope)
+    ].copy() if not index_constituents.empty else pd.DataFrame()
+    if holdings.empty:
+        return selected, {}
+    holdings["date"] = pd.to_datetime(holdings["date"], errors="coerce")
+    latest = holdings[holdings["date"].eq(holdings["date"].max())].copy()
+    weight_column = "portfolio_weight"
+    raw = latest.groupby(latest["asset_id"].astype(str))[weight_column].sum().to_dict()
+    total = sum(raw.values())
+    return selected, ({key: float(value / total) for key, value in raw.items()} if total > 0 else {})
+
+
+if index_portfolio.empty:
+    st.info("Portfolio construction is unavailable until canonical total-return artifacts exist.")
+else:
+    control_cols = st.columns(4)
+    sim_starting_value = control_cols[0].number_input("Starting investment", min_value=1.0, value=100.0, step=25.0, format="%.2f", key="lab_start")
+    sim_rebalance_label = control_cols[1].selectbox("Portfolio rebalance frequency", ["None / Buy & Hold", "Monthly", "Quarterly", "Annual"], index=2, key="lab_rebalance")
+    sim_universe_label = control_cols[2].selectbox("Universe", ["Include Exited Assets", "Exclude Exited Assets"], key="lab_universe")
+    annual_rf = control_cols[3].number_input("Annual risk-free rate (%)", value=0.0, step=0.25, key="lab_rf") / 100
+    rebalance_map = {"None / Buy & Hold": "none", "Monthly": "monthly", "Quarterly": "quarterly", "Annual": "annual"}
+    universe_map = {"Include Exited Assets": "include_exited", "Exclude Exited Assets": "active_only"}
+    scope = universe_map[sim_universe_label]
+    portfolio_rebalance = rebalance_map[sim_rebalance_label]
+    input_rebalance = "quarterly" if portfolio_rebalance in {"none", "annual"} else portfolio_rebalance
+    builder = st.session_state.setdefault("portfolio_lab_components", {})
+
+    st.markdown("#### Add Exposure")
+    add_cols = st.columns([1.2, 2.2, 1.5, 1])
+    exposure_type = add_cols[0].selectbox("Exposure type", ["Full Market Index", "Category Index", "Category Constituents", "Individual Asset"], key="lab_add_type")
+    category_options = sorted(c for c in index_portfolio["category"].dropna().astype(str).unique() if c != "all")
+    metadata_columns = [column for column in ["asset_id", "ticker", "name", "category", "offering_market_cap_usd"] if column in canonical]
+    metadata = canonical[metadata_columns].drop_duplicates("asset_id").copy()
+    metadata["label"] = metadata["ticker"].fillna(metadata["asset_id"]).astype(str) + " | " + metadata["name"].fillna(metadata["asset_id"]).astype(str)
+    asset_labels = dict(zip(metadata["label"], metadata["asset_id"].astype(str)))
+    selection = None
+    if exposure_type == "Full Market Index":
+        add_cols[1].text_input("Selection", value="Full Rally Market", disabled=True, key="lab_full_label")
+    elif exposure_type in {"Category Index", "Category Constituents"}:
+        selection = add_cols[1].selectbox("Selection", category_options, format_func=lambda x: x.replace("_", " ").title(), key="lab_category") if category_options else None
+    else:
+        selected_label = add_cols[1].selectbox("Selection", sorted(asset_labels), key="lab_asset") if asset_labels else None
+        selection = asset_labels.get(selected_label) if selected_label else None
+    internal_label = add_cols[2].selectbox("Internal index weighting", ["Equal Weight", "Market-Cap Weight"], disabled=exposure_type == "Individual Asset", key="lab_internal")
+    internal_method = "equal_weight" if internal_label == "Equal Weight" else "market_cap_weight"
+    if add_cols[3].button("Add to Portfolio", type="primary", use_container_width=True, key="lab_add"):
+        if exposure_type == "Full Market Index":
+            component_id, reference, ctype, label = f"full_market:{internal_method}", "all", "full_market", "Full Rally Market Index"
+            builder.setdefault(component_id, {"component_id": component_id, "type": ctype, "reference": reference, "label": label, "weight": 0.0, "method": internal_method})
+        elif exposure_type == "Category Index" and selection:
+            component_id = f"category:{selection}:{internal_method}"
+            builder.setdefault(component_id, {"component_id": component_id, "type": "category_index", "reference": selection, "label": f"{selection.replace('_', ' ').title()} Index", "weight": 0.0, "method": internal_method})
+        elif exposure_type == "Individual Asset" and selection:
+            meta = metadata[metadata["asset_id"].astype(str).eq(selection)].iloc[0]
+            component_id = f"asset:{selection}"
+            builder.setdefault(component_id, {"component_id": component_id, "type": "individual_asset", "reference": selection, "label": str(meta["ticker"]), "weight": 0.0, "method": "direct"})
+        elif exposure_type == "Category Constituents" and selection:
+            _, constituent_weights = _canonical_index("category_index", selection, internal_method, scope, input_rebalance)
+            available = {asset_id: weight for asset_id, weight in constituent_weights.items() if len(_asset_level_series(asset_id)) >= 2}
+            new_weights = expand_component("temporary", {"temporary": 1.0}, available, method="preserve") if available else {}
+            for asset_component_id, weight in new_weights.items():
+                asset_id = asset_component_id.removeprefix("asset:")
+                meta = metadata[metadata["asset_id"].astype(str).eq(asset_id)]
+                label = str(meta.iloc[0]["ticker"]) if not meta.empty else asset_id
+                builder.setdefault(asset_component_id, {"component_id": asset_component_id, "type": "individual_asset", "reference": asset_id, "label": label, "weight": 0.0, "method": "expanded", "origin": selection})
+                builder[asset_component_id]["weight"] += weight * max(0.0, 1 - sum(float(v["weight"]) for v in builder.values()))
+        st.rerun()
+
+    st.markdown("#### Current Portfolio")
+    action_cols = st.columns([1, 1, 1, 2])
+    if action_cols[0].button("Equal Weight Components", disabled=not builder, help="Assigns 100 / N to every top-level component."):
+        for key, value in equal_component_weights(builder).items():
+            builder[key]["weight"] = value
+        st.rerun()
+    raw_total = sum(float(item["weight"]) for item in builder.values())
+    if action_cols[1].button("Normalize to 100%", disabled=not builder or raw_total <= 0, help="Preserves relative ratios and rescales to 100%; this is not optimization."):
+        normalized = normalize_component_weights({key: item["weight"] for key, item in builder.items()})
+        for key, value in normalized.items():
+            builder[key]["weight"] = value
+        st.rerun()
+    if action_cols[2].button("Clear Portfolio", disabled=not builder):
+        builder.clear()
+        st.rerun()
+    removal_policy = action_cols[3].selectbox("Removal weight policy", ["Redistribute pro rata", "Redistribute equally", "Leave unallocated"], help="Applied whenever a top-level component or expanded asset is removed.")
+    policy_map = {"Redistribute pro rata": "pro_rata", "Redistribute equally": "equal", "Leave unallocated": "unallocated"}
+
+    for component_id in list(builder):
+        item = builder[component_id]
+        row = st.columns([2.4, 1, 1.3, 1, 1])
+        row[0].markdown(f"**{item['label']}**  \n{'Sleeve' if item['type'] != 'individual_asset' else 'Asset'} · {item['method'].replace('_', ' ')}")
+        new_weight = row[1].number_input("Portfolio allocation weight (%)", 0.0, 100.0, value=float(item["weight"]) * 100, step=0.5, key=f"lab_weight_{component_id}", label_visibility="collapsed") / 100
+        item["weight"] = new_weight
+        if item["type"] == "category_index":
+            expansion_method = row[2].selectbox("Expansion", ["Preserve index weights", "Equal weight assets", "Market-cap weight assets"], key=f"lab_expand_method_{component_id}", label_visibility="collapsed")
+            if row[3].button("Expand", key=f"lab_expand_{component_id}"):
+                _, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope, input_rebalance)
+                caps = metadata.set_index("asset_id").get("offering_market_cap_usd", pd.Series(dtype=float)).to_dict() if "offering_market_cap_usd" in metadata else {}
+                method = {"Preserve index weights": "preserve", "Equal weight assets": "equal", "Market-cap weight assets": "market_cap"}[expansion_method]
+                expanded = expand_component(component_id, {key: value["weight"] for key, value in builder.items()}, underlying, method=method, market_caps=caps)
+                del builder[component_id]
+                for key, weight in expanded.items():
+                    if key in builder:
+                        builder[key]["weight"] = weight
+                    elif key.startswith("asset:"):
+                        aid = key.removeprefix("asset:")
+                        meta = metadata[metadata["asset_id"].astype(str).eq(aid)]
+                        builder[key] = {"component_id": key, "type": "individual_asset", "reference": aid, "label": str(meta.iloc[0]["ticker"]) if not meta.empty else aid, "weight": weight, "method": "expanded", "origin": item["reference"]}
+                st.rerun()
+        else:
+            row[2].caption("Direct position" if item["method"] == "direct" else f"Expanded from {item.get('origin', 'category')}")
+        if row[4].button("Remove", key=f"lab_remove_{component_id}"):
+            updated = remove_and_redistribute({key: value["weight"] for key, value in builder.items()}, [component_id], policy=policy_map[removal_policy])
+            del builder[component_id]
+            for key, weight in updated.items():
+                builder[key]["weight"] = weight
+            st.rerun()
+
+    allocated = sum(float(item["weight"]) for item in builder.values())
+    status_cols = st.columns(5)
+    status_cols[0].metric("Allocated", f"{allocated:.2%}")
+    status_cols[1].metric("Unallocated", f"{max(0.0, 1 - allocated):.2%}")
+    status_cols[2].metric("Valid", "Yes" if builder and abs(allocated - 1) <= 0.0001 and all(float(x["weight"]) > 0 for x in builder.values()) else "No")
+    status_cols[3].metric("Top-level sleeves", sum(item["type"] != "individual_asset" for item in builder.values()))
+
+    components = []
+    for item in builder.values():
+        if item["type"] == "individual_asset":
+            series, underlying = _asset_level_series(item["reference"]), {item["reference"]: 1.0}
+        else:
+            series, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope, input_rebalance)
+        components.append(PortfolioComponent(item["component_id"], item["type"], item["label"], item["weight"], series, underlying, "Direct position" if item["type"] == "individual_asset" else item["method"]))
+    lookthrough = look_through_exposure(components) if components and all(c.target_weight > 0 for c in components) else pd.DataFrame()
+    status_cols[4].metric("Unique assets", len(lookthrough))
+    valid = bool(components) and abs(allocated - 1) <= 0.0001 and all(c.target_weight > 0 for c in components)
+    if builder and not valid:
+        st.warning("Portfolio allocation weights must be positive and total 100% before simulation.")
+
+    component_result = simulate_component_portfolio(components, starting_value=sim_starting_value, rebalance_frequency=portfolio_rebalance) if valid else None
+    if component_result:
+        for warning in component_result.warnings:
+            st.warning(warning)
+    if component_result and not component_result.series.empty:
+        result = component_result.series
+        risk = portfolio_risk_metrics(result, annual_risk_free_rate=annual_rf)
+        total_return = float(result.iloc[-1]["cumulative_return"])
+        metric_rows = st.columns(6)
+        metric_rows[0].metric("Ending value", f"${result.iloc[-1]['growth_value']:,.2f}")
+        metric_rows[1].metric("Total return", f"{total_return:.2%}")
+        metric_rows[2].metric("Annualized volatility", f"{risk['annualized_volatility']:.2%}")
+        metric_rows[3].metric("Sharpe", f"{risk['sharpe_ratio']:.2f}")
+        metric_rows[4].metric("Sortino", f"{risk['sortino_ratio']:.2f}")
+        metric_rows[5].metric("Calmar", f"{risk['calmar_ratio']:.2f}")
+        growth_chart = result[["date", "growth_value"]].rename(columns={"growth_value": "Portfolio"}).set_index("date")
+        st.line_chart(growth_chart)
+        with st.expander("Risk and drawdown analytics", expanded=True):
+            risk_display = pd.DataFrame({"Metric": ["Annualization frequency", "Downside deviation", "Best observed period", "Worst observed period", "Positive periods", "Maximum drawdown", "Maximum drawdown duration", "Recovery date"], "Value": [f"{risk['periods_per_year']} periods/year", f"{risk['downside_deviation']:.2%}", f"{risk['best_period_return']:.2%}", f"{risk['worst_period_return']:.2%}", f"{risk['positive_period_percentage']:.2%}", f"{risk['maximum_drawdown']:.2%}", f"{risk['maximum_drawdown_duration_periods']} observed periods", str(risk['recovery_date'].date()) if risk['recovery_date'] is not None else "Not yet recovered"]})
+            st.dataframe(risk_display, hide_index=True, use_container_width=True)
+        composition = component_result.composition.copy()
+        st.markdown("##### Component Attribution")
+        display = composition.rename(columns={"component": "Component", "target_weight": "Starting Target Weight", "ending_weight": "Ending Drifted Weight", "standalone_return": "Standalone Return", "cumulative_contribution": "Arithmetic Period Contribution", "rebalance_count": "Rebalances"})
+        st.dataframe(display[["Component", "Starting Target Weight", "Ending Drifted Weight", "Standalone Return", "Arithmetic Period Contribution", "Rebalances"]], hide_index=True, use_container_width=True, column_config={key: st.column_config.NumberColumn(format="%.2f%%") for key in ["Starting Target Weight", "Ending Drifted Weight", "Standalone Return", "Arithmetic Period Contribution"]})
+
+        st.markdown("##### Look-Through Exposure")
+        if not lookthrough.empty:
+            enriched = lookthrough.merge(metadata[["asset_id", "ticker", "name"]], on="asset_id", how="left")
+            if enriched["overlap"].any():
+                st.warning(f"Direct and indirect overlap detected in {int(enriched['overlap'].sum())} underlying asset(s). Overlap is allowed and quantified below.")
+            st.dataframe(enriched[["asset_id", "ticker", "name", "direct_weight", "indirect_weight", "total_weight", "source_components", "overlap"]], hide_index=True, use_container_width=True, column_config={key: st.column_config.NumberColumn(format="%.2f%%") for key in ["direct_weight", "indirect_weight", "total_weight"]})
+
+        st.markdown("##### Diversification and Allocation Research")
+        cleaned_returns = {}
+        for component in components:
+            frame = component.series[["date", "index_level"]].copy().set_index("date").pct_change().rename(columns={"index_level": component.label})
+            cleaned_returns[component.component_id] = frame
+        aligned_returns = pd.concat(cleaned_returns.values(), axis=1, join="inner").dropna()
+        st.caption(f"Correlation uses {len(aligned_returns)} shared return observations.")
+        if len(aligned_returns) >= 3:
+            st.dataframe(aligned_returns.corr().style.format("{:.2f}"), use_container_width=True)
+            try:
+                inverse = inverse_volatility_weights({c.component_id: c.series for c in components}, minimum_observations=3)
+                comparison = pd.DataFrame({"Component": [c.label for c in components], "Current manual": [c.target_weight for c in components], "Equal weight": [1 / len(components)] * len(components), "Inverse volatility": [inverse[c.component_id] for c in components]})
+                st.dataframe(comparison, hide_index=True, use_container_width=True, column_config={key: st.column_config.NumberColumn(format="%.2f%%") for key in ["Current manual", "Equal weight", "Inverse volatility"]})
+                st.caption("Inverse volatility is a long-only, 100%-invested descriptive allocation estimated from the displayed common historical sample. It is in-sample research, not a forecast or prospective performance claim.")
+            except ValueError as exc:
+                st.warning(str(exc))
+        else:
+            st.warning("At least three shared return observations are required for correlation and inverse-volatility research.")
+
+    with st.expander("Portfolio laboratory methodology"):
+        st.markdown("""
+- **Index sleeve versus expanded constituents:** a category index is one top-level allocation and retains its canonical internal weighting. Expanding replaces that sleeve with independently editable direct asset positions while preserving the sleeve's total allocation; equal-weighting every expanded asset is therefore not the same as equal-weighting categories.
+- **Allocation controls:** Equal Weight Components deliberately sets each top-level component to `100 / N`. Normalize to 100% preserves current ratios and rescales them; it is deterministic and is not optimization. Reset is achieved by clearing and rebuilding the portfolio.
+- **Weight layers:** Portfolio allocation weight controls top-level capital. Internal index weighting controls constituents inside a canonical sleeve. Portfolio rebalance frequency trades only top-level components; it does not alter canonical index construction.
+- **Expansion and removal:** expansion can preserve the latest eligible canonical index weights, equal-weight eligible assets, or use available market-cap weights. Removal redistributes the removed allocation pro rata by default; equal redistribution or intentionally unallocated capital can be selected. Cash is not modeled by this component engine.
+- **Look-through and overlap:** direct weight comes from asset components. Indirect weight is top-level sleeve weight multiplied by the sleeve's latest canonical constituent weight. Total effective weight is their sum. Direct ownership of an asset already in a sleeve is permitted and explicitly warned.
+- **Dates and missing data:** simulation uses common inception and only dates observed by every selected component. It never backfills a component before availability, silently forward-fills a missing sleeve, or treats absence as cash. Expanded assets use a fixed common-inception universe, not a dynamic universe.
+- **Exited assets:** Include Exited uses canonical exit-aware sleeve artifacts; Exclude Exited selects the canonical active-only artifacts. Expanded/direct asset histories remain observed histories and are reconciled on rebuild; terminal proceeds are not silently invented. Changing the universe can make a component unavailable and produces a warning rather than fabricated performance.
+- **Risk metrics:** annualization is inferred from median spacing (weekly 52, monthly 12, quarterly 4, annual 1). Volatility is sample standard deviation times the square root of frequency. Sharpe uses periodicized user-entered annual risk-free return. Sortino uses annualized downside deviation relative to that threshold. Calmar is annualized return divided by absolute maximum drawdown.
+- **Research allocations:** equal weight and inverse volatility are comparisons, separate from normalization. Inverse volatility is long-only and sums to 100%, but is intentionally labeled in-sample. No minimum-volatility, maximum-Sharpe, risk-parity, or train/test optimizer is shipped yet, avoiding unsupported prospective claims on sparse data.
+""")
 
 st.subheader("Contribution Explorer")
 st.caption("Explain what moved a market, category, custom portfolio, or compatible custom basket using reconciling contribution math.")
-
-category_targets = sorted([c for c in canonical["category"].dropna().astype(str).unique()]) if "category" in canonical else []
-target_options = ["Full Rally Market"] + [f"Category: {c.replace('_', ' ').title()}" for c in category_targets]
+category_targets = sorted(canonical["category"].dropna().astype(str).unique()) if "category" in canonical else []
+target_options = ["Full Rally Market"] + [f"Category: {category.replace('_', ' ').title()}" for category in category_targets]
 if st.session_state.get("active_custom_portfolio_definition") is not None:
     target_options.append("Active Custom Portfolio")
 if st.session_state.get("workshop_constituent_ids"):
