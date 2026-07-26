@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import math
 import hashlib
 import json
+import math
 from dataclasses import dataclass, field
 from typing import Literal, Mapping, Sequence
 
@@ -10,6 +10,12 @@ import pandas as pd
 
 from alt_asset_explorer.custom_portfolios import RebalanceFrequency, _rebalance_dates
 from alt_asset_explorer.components import ComponentDefinition, ResolvedComponent
+from alt_asset_explorer.portfolio_analytics import (
+    contribution_history as build_contribution_history,
+    drawdown_history as build_drawdown_history,
+    infer_periods_per_year,
+    portfolio_risk_metrics,
+)
 
 ComponentType = Literal["full_market", "category_index", "individual_asset", "custom_basket", "factor_index"]
 CalendarPolicy = Literal["observed_shared"]
@@ -69,11 +75,13 @@ class PortfolioBacktestResult:
     """UI-ready output contract; views must not reconstruct methodology."""
 
     series: pd.DataFrame
-    drawdown_series: pd.DataFrame
+    drawdown_history: pd.DataFrame
     composition: pd.DataFrame
     eligibility_history: pd.DataFrame
-    rebalance_ledger: pd.DataFrame
-    cash_ledger: pd.DataFrame
+    turnover_history: pd.DataFrame
+    rebalance_history: pd.DataFrame
+    cash_history: pd.DataFrame
+    contribution_history: pd.DataFrame
     warnings: tuple[str, ...] = ()
     errors: tuple[str, ...] = ()
     methodology: Mapping[str, object] | None = None
@@ -82,6 +90,18 @@ class PortfolioBacktestResult:
     look_through_history: pd.DataFrame = field(default_factory=pd.DataFrame)
     overlap_history: pd.DataFrame = field(default_factory=pd.DataFrame)
     reconciliation: pd.DataFrame = field(default_factory=pd.DataFrame)
+
+    @property
+    def drawdown_series(self) -> pd.DataFrame:
+        return self.drawdown_history
+
+    @property
+    def rebalance_ledger(self) -> pd.DataFrame:
+        return self.rebalance_history
+
+    @property
+    def cash_ledger(self) -> pd.DataFrame:
+        return self.cash_history
 
 
 # Compatibility name retained for callers that only annotated the former result.
@@ -241,63 +261,6 @@ def look_through_exposure(components: Sequence[ResolvedComponent | PortfolioComp
     return grouped.sort_values("total_weight", ascending=False).reset_index(drop=True)
 
 
-def infer_periods_per_year(dates: Sequence[object]) -> int:
-    """Infer a conventional annualization factor from median observation spacing."""
-
-    index = pd.DatetimeIndex(pd.to_datetime(list(dates), errors="coerce")).dropna().sort_values().unique()
-    if len(index) < 2:
-        return 1
-    median_days = float(pd.Series(index).diff().dt.total_seconds().dropna().median() / 86400)
-    if median_days <= 10:
-        return 52
-    if median_days <= 45:
-        return 12
-    if median_days <= 120:
-        return 4
-    return 1
-
-
-def portfolio_risk_metrics(series: pd.DataFrame, *, annual_risk_free_rate: float = 0.0) -> dict[str, object]:
-    """Calculate frequency-aware historical risk and drawdown statistics."""
-
-    if series.empty or not {"date", "period_return"}.issubset(series):
-        return {}
-    frame = series[["date", "period_return"]].copy().sort_values("date")
-    returns = pd.to_numeric(frame["period_return"], errors="coerce").dropna().iloc[1:]
-    periods = infer_periods_per_year(frame["date"])
-    if returns.empty:
-        return {"periods_per_year": periods}
-    annual_return = float((1 + returns).prod() ** (periods / len(returns)) - 1)
-    volatility = float(returns.std(ddof=1) * math.sqrt(periods)) if len(returns) > 1 else 0.0
-    periodic_rf = (1 + annual_risk_free_rate) ** (1 / periods) - 1
-    excess = returns - periodic_rf
-    sharpe = float(excess.mean() / returns.std(ddof=1) * math.sqrt(periods)) if len(returns) > 1 and returns.std(ddof=1) > 0 else math.nan
-    downside = returns[returns < periodic_rf] - periodic_rf
-    downside_deviation = float(math.sqrt((downside.pow(2).sum()) / len(returns)) * math.sqrt(periods))
-    sortino = float((returns.mean() - periodic_rf) * periods / downside_deviation) if downside_deviation > 0 else math.nan
-    growth = (1 + returns).cumprod()
-    drawdown = growth / growth.cummax() - 1
-    max_drawdown = float(drawdown.min())
-    calmar = annual_return / abs(max_drawdown) if max_drawdown < 0 else math.nan
-    duration = current = 0
-    trough_position = int(drawdown.values.argmin())
-    for value in drawdown:
-        current = current + 1 if value < 0 else 0
-        duration = max(duration, current)
-    peak_before_trough = growth.iloc[: trough_position + 1].idxmax()
-    later = growth.iloc[trough_position + 1 :]
-    recovered = later[later >= growth.loc[peak_before_trough]]
-    recovery_date = frame.loc[recovered.index[0], "date"] if not recovered.empty else None
-    return {
-        "periods_per_year": periods, "annualized_return": annual_return, "annualized_volatility": volatility,
-        "sharpe_ratio": sharpe, "sortino_ratio": sortino, "calmar_ratio": calmar,
-        "downside_deviation": downside_deviation, "best_period_return": float(returns.max()),
-        "worst_period_return": float(returns.min()), "positive_period_percentage": float((returns > 0).mean()),
-        "maximum_drawdown": max_drawdown, "maximum_drawdown_duration_periods": duration,
-        "recovery_date": recovery_date,
-    }
-
-
 def inverse_volatility_weights(component_series: Mapping[str, pd.DataFrame], *, minimum_observations: int = 3) -> dict[str, float]:
     """Long-only inverse-volatility weights using shared historical observations."""
 
@@ -362,8 +325,9 @@ def backtest_component_portfolio(request: PortfolioBacktestRequest) -> Portfolio
     rebalance_frequency = request.rebalance_schedule
     empty = pd.DataFrame(columns=["date", "growth_value", "period_return", "cumulative_return", "rebalance_flag"])
     empty_result = lambda errors: PortfolioBacktestResult(
-        series=empty, drawdown_series=pd.DataFrame(columns=["date", "drawdown"]), composition=pd.DataFrame(),
-        eligibility_history=pd.DataFrame(), rebalance_ledger=pd.DataFrame(), cash_ledger=pd.DataFrame(),
+        series=empty, drawdown_history=pd.DataFrame(columns=["date", "growth_value", "peak_value", "drawdown"]), composition=pd.DataFrame(),
+        eligibility_history=pd.DataFrame(), turnover_history=pd.DataFrame(), rebalance_history=pd.DataFrame(),
+        cash_history=pd.DataFrame(), contribution_history=pd.DataFrame(),
         warnings=tuple(errors), errors=tuple(errors), methodology=_methodology(request), configuration_fingerprint=_fingerprint(request), summary_metrics={},
     )
     if not components:
@@ -405,6 +369,8 @@ def backtest_component_portfolio(request: PortfolioBacktestRequest) -> Portfolio
     rows: list[dict[str, object]] = []
     prior_value: float | None = None
     rebalance_count = 0
+    turnover_rows: list[dict[str, object]] = []
+    rebalance_rows: list[dict[str, object]] = []
     for row_number, observation in aligned.iterrows():
         date = pd.Timestamp(observation["date"])
         values = {component_id: units[component_id] * float(observation[component_id]) for component_id in ids}
@@ -416,6 +382,17 @@ def backtest_component_portfolio(request: PortfolioBacktestRequest) -> Portfolio
         }
         is_rebalance = row_number > 0 and date in rebalance_dates
         if is_rebalance:
+            pre_weights = {component_id: values[component_id] / total_value for component_id in ids}
+            turnover = 0.5 * sum(abs(weights[component_id] - pre_weights[component_id]) for component_id in ids)
+            turnover_rows.append({"date": date, "turnover": turnover, "traded_value": turnover * total_value})
+            for component_id in ids:
+                rebalance_rows.append({
+                    "date": date, "component_id": component_id,
+                    "pre_rebalance_weight": pre_weights[component_id], "target_weight": weights[component_id],
+                    "weight_change": weights[component_id] - pre_weights[component_id],
+                    "trade_value": (weights[component_id] - pre_weights[component_id]) * total_value,
+                    "schedule": rebalance_frequency,
+                })
             units = {component_id: total_value * weights[component_id] / float(observation[component_id]) for component_id in ids}
             values = {component_id: total_value * weights[component_id] for component_id in ids}
             rebalance_count += 1
@@ -451,25 +428,23 @@ def backtest_component_portfolio(request: PortfolioBacktestRequest) -> Portfolio
             for component in components
         ]
     )
-    drawdown = result_series[["date", "growth_value"]].copy()
-    drawdown["peak_value"] = drawdown["growth_value"].cummax()
-    drawdown["drawdown"] = drawdown["growth_value"] / drawdown["peak_value"] - 1
+    drawdown = build_drawdown_history(result_series)
     eligibility = pd.DataFrame(
         ({"date": date, "component_id": component.component_id, "eligible": True, "policy": request.eligibility_policy}
          for date in aligned["date"] for component in components)
     )
-    rebalance_ledger = result_series.loc[result_series["rebalance_flag"], ["date", "growth_value"]].copy()
-    if not rebalance_ledger.empty:
-        rebalance_ledger["schedule"] = rebalance_frequency
-        rebalance_ledger["target_weights"] = [dict(weights)] * len(rebalance_ledger)
+    rebalance_ledger = pd.DataFrame(rebalance_rows, columns=["date", "component_id", "pre_rebalance_weight", "target_weight", "weight_change", "trade_value", "schedule"])
+    turnover_history = pd.DataFrame(turnover_rows, columns=["date", "turnover", "traded_value"])
     cash_ledger = result_series[["date"]].copy()
     cash_ledger["cash_balance"] = 0.0
     cash_ledger["cash_flow"] = 0.0
     cash_ledger["policy"] = request.exit_cash_policy
+    contributions = build_contribution_history(result_series, {c.component_id: c.label for c in components})
     metrics = portfolio_risk_metrics(result_series, annual_risk_free_rate=request.annual_risk_free_rate)
     metrics = dict(metrics) | {
         "starting_value": float(starting_value), "ending_value": float(result_series.iloc[-1]["growth_value"]),
         "total_return": float(result_series.iloc[-1]["cumulative_return"]),
+        "total_turnover": float(turnover_history["turnover"].sum()) if not turnover_history.empty else 0.0,
     }
     look_rows: list[pd.DataFrame] = []
     overlap_rows: list[pd.DataFrame] = []
@@ -505,8 +480,9 @@ def backtest_component_portfolio(request: PortfolioBacktestRequest) -> Portfolio
             "reconciled": abs(difference) <= 1e-10,
         })
     return PortfolioBacktestResult(
-        series=result_series, drawdown_series=drawdown, composition=composition,
-        eligibility_history=eligibility, rebalance_ledger=rebalance_ledger, cash_ledger=cash_ledger,
+        series=result_series, drawdown_history=drawdown, composition=composition,
+        eligibility_history=eligibility, turnover_history=turnover_history,
+        rebalance_history=rebalance_ledger, cash_history=cash_ledger, contribution_history=contributions,
         methodology=_methodology(request), configuration_fingerprint=_fingerprint(request), summary_metrics=metrics,
         look_through_history=pd.concat(look_rows, ignore_index=True) if look_rows else pd.DataFrame(),
         overlap_history=pd.concat(overlap_rows, ignore_index=True) if overlap_rows else pd.DataFrame(),
