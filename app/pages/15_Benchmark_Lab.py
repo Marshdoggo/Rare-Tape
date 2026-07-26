@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -12,7 +13,8 @@ sys.path.insert(0, str(ROOT / "app")); sys.path.insert(0, str(ROOT / "src"))
 
 from app_data import get_canonical_market, render_data_diagnostics
 from alt_asset_explorer.benchmark_lab import (BENCHMARKS, BenchmarkDataError, align_series,
-    comparison_dataset, download_benchmark, normalize_to_100, relative_metrics, series_metrics)
+    comparison_dataset, download_benchmark, load_persisted_benchmarks, normalize_to_100,
+    relative_metrics, select_local_benchmark, series_metrics)
 
 st.set_page_config(page_title="Benchmark Lab | Rally Terminal", layout="wide")
 render_data_diagnostics()
@@ -60,15 +62,40 @@ end = pd.Timestamp.utcnow().tz_localize(None).normalize(); start = rally.index.m
 def cached_download(ticker: str, start_date: str, end_date: str) -> pd.DataFrame:
     return download_benchmark(ticker, start_date, end_date)
 
+@st.cache_data(show_spinner=False)
+def cached_local_history():
+    return load_persisted_benchmarks()
+
 benchmarks = {}
 errors = []
+benchmark_sources = {}
+local = cached_local_history()
+allow_live = os.getenv("RALLY_ALLOW_LIVE_BENCHMARK_FALLBACK", "false").strip().lower() in {"1", "true", "yes"}
+if local.source is None:
+    st.info("Benchmark history has not been initialized. Run `python scripts/update_benchmark_data.py`.")
 for ticker in benchmark_labels:
+    frame = select_local_benchmark(local.data, ticker, start, end)
+    if not frame.empty:
+        benchmarks[ticker] = frame.set_index("date")["raw_value"]
+        benchmark_sources[ticker] = local.source
+        continue
+    if not allow_live:
+        errors.append(f"No local benchmark history is available for {ticker}. Live fallback is disabled.")
+        continue
     try:
         frame = cached_download(ticker, str(start.date()), str(end.date()))
         benchmarks[ticker] = frame.set_index("date")["raw_value"]
-    except BenchmarkDataError as error: errors.append(str(error))
+        benchmark_sources[ticker] = "live Yahoo fallback"
+    except BenchmarkDataError as error:
+        errors.append(str(error))
 for error in errors: st.warning(error)
 if not benchmarks: st.error("No selected benchmark returned usable data."); st.stop()
+latest_market_date = max(series.index.max() for series in benchmarks.values())
+source_labels = ", ".join(sorted(set(str(value) for value in benchmark_sources.values())))
+updated = ""
+if not local.data.empty and local.data["fetched_at"].notna().any():
+    updated = f" · updated: {local.data['fetched_at'].max().strftime('%Y-%m-%d %H:%M UTC')}"
+st.caption(f"Benchmark data: {source_labels} · latest market date: {latest_market_date.date()}{updated}")
 aligned = align_series(rally, benchmarks, method)
 if len(aligned) < 2:
     st.warning("Fewer than two common observations exist. Performance statistics are unavailable for this selection and alignment method.")
@@ -110,6 +137,6 @@ with tabs[5]: st.dataframe(dataset, use_container_width=True)
 st.download_button("Download aligned comparison CSV", dataset.to_csv(index=False).encode(), "benchmark_lab_aligned.csv", "text/csv")
 with st.expander("Methodology, data quality, and reproducibility"):
     st.write(f"**Subject:** {subject_label}  \n**Subject methodology:** {methodology}  \n**Benchmarks:** {', '.join(benchmarks)}  \n**Primary:** {primary_col}  \n**Alignment:** {alignment_label}  \n**Effective range:** {aligned.index.min().date()} to {aligned.index.max().date()}  \n**Observations:** {len(aligned)}  \n**Inferred periods/year:** {series_metrics(aligned['Rally subject']).get('periods_per_year', 'Unavailable')}")
-    st.write("Benchmark prices come from Yahoo Finance's unauthenticated chart endpoint and are cached for 24 hours. Adjusted close is preferred when supplied. Availability and corrections are provider-dependent.")
+    st.write(f"Benchmark prices were loaded from {source_labels}. Committed local history is preferred; live Yahoo retrieval is used only when `RALLY_ALLOW_LIVE_BENCHMARK_FALLBACK=true` and a requested ticker is absent locally. Adjusted close is preferred when supplied. Availability and corrections are provider-dependent.")
     st.write("Returns are simple period returns on common observations. Annualization uses elapsed time for CAGR and median observation spacing for volatility and relative statistics. Missing rows are dropped; Rally values are never forward-filled. Previous-close alignment uses only information available on or before each Rally observation.")
     st.warning("Rally observations are manually researched, irregular valuation/trade events and may include offering or terminal exit values. They are neither a live Rally feed nor directly comparable in liquidity, price discovery, costs, or investability to exchange-traded securities.")
