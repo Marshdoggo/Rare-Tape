@@ -38,8 +38,8 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 103 |
 | Rally asset decision universe | 103 |
 | Normalized manual assets | 103 |
-| Normalized manual price observations | 1696 |
-| Processed price history | 1605 |
+| Normalized manual price observations | 1846 |
+| Processed price history | 1750 |
 | General Rally index rows | 544 |
 | Quarterly Rally index rows | 308 |
 | SEC series context | 0 |
@@ -95,6 +95,12 @@ The normalized Rally observations now include 150 manually transcribed dated pri
 ## Portfolio Frequency-Layer Correction (2026-07-26)
 
 The Portfolio Construction Laboratory now treats canonical category-index construction and top-level portfolio rebalancing as separate methodology layers. Category sleeves and category-constituent expansion use the canonical quarterly total-return series and its quarterly constituent history, selected by category, internal weighting method, and universe scope. The portfolio control independently applies buy-and-hold, monthly, quarterly, or annual rebalancing to the selected top-level components; it is no longer used as a constituent-table filter. Runtime constituent data is validated against its actual schema with a controlled diagnostic, and the canonical builder retains one quarterly constituent history rather than concatenating indistinguishable constituent rows from weekly, monthly, and quarterly source-series builds.
+
+## Portfolio Phase 0 Production Diagnostic (2026-07-26)
+
+The Portfolio Laboratory now has a deterministic Phase 0 diagnostic over the committed normalized schemas, before any backtest or derived-index transformation. The verified Books snapshot contains exactly 40 normalized asset IDs and 850 authored observation rows. All 40 IDs resolve; a deliberately unknown test ID remains explicitly missing. There are no common actual `observed_at` dates across all 40 assets. After selecting quarterly rows and resolving four asset/period collisions by retaining the latest actual observation in each canonical period, 837 canonical rows remain from 841 quarterly rows and the all-asset canonical-period intersection contains 12 periods: 2023 Q1 through 2024 Q4, 2025 Q1, 2025 Q4, 2026 Q1, and 2026 Q2. There are no duplicate asset/actual-observation-date rows in this snapshot. Canonical launch periods range from 2019 Q4 through 2022 Q3, while every Books series currently ends at the 2026 Q2 canonical period.
+
+These diagnostics do not imply that the 40 assets traded on common real dates, that missing quarters may be filled, or that canonical period labels are quote timestamps. The canonical-period intersection is a research alignment over authored quarterly assignments; it notably excludes 2025 Q2 and Q3 because at least one selected asset lacks each period. Post-quarter weekly observations remain dated evidence and are excluded from canonical quarterly collision counts. Offering rows may share a canonical quarter with later chart observations; both remain in the normalized source, while the diagnostic's canonical view deterministically keeps the later actual observation.
 
 ## Near-Term Priorities
 
