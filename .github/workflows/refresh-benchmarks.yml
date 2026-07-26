@@ -1,0 +1,42 @@
+name: Refresh benchmark history
+
+on:
+  schedule:
+    - cron: "23 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-benchmark-history
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install runtime dependencies
+        run: pip install -r requirements.txt
+      - name: Update benchmark history
+        run: python scripts/update_benchmark_data.py
+      - name: Validate benchmark history
+        run: python scripts/update_benchmark_data.py --validate-only
+      - name: Commit changed history
+        run: |
+          if git diff --quiet -- data/processed/benchmark_history.parquet data/processed/benchmark_history.csv; then
+            echo "Benchmark history is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- 'data/processed/benchmark_history.*'
+          git commit -m "data: refresh benchmark history"
+          git push

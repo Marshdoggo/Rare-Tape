@@ -4,11 +4,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
+from pathlib import Path
+import time
 from typing import Mapping
 
 import pandas as pd
 import requests
 
+from alt_asset_explorer.paths import DATA_PROCESSED
 from alt_asset_explorer.portfolio_analytics import infer_periods_per_year
 
 
@@ -35,6 +38,100 @@ class BenchmarkDataError(RuntimeError):
     """A controlled external-data failure suitable for display in the UI."""
 
 
+BENCHMARK_PARQUET_PATH = DATA_PROCESSED / "benchmark_history.parquet"
+BENCHMARK_CSV_PATH = DATA_PROCESSED / "benchmark_history.csv"
+BENCHMARK_COLUMNS = ["date", "ticker", "display_name", "asset_class", "adjusted_close", "data_source", "fetched_at"]
+
+
+@dataclass(frozen=True)
+class BenchmarkLoadResult:
+    data: pd.DataFrame
+    source: str | None
+    path: Path | None
+
+
+def earliest_rally_observation_date(observations: pd.DataFrame) -> pd.Timestamp:
+    """Return the first genuine, priced authored Rally observation date."""
+    required = {"asset_id", "observed_at", "price_per_share"}
+    missing = required.difference(observations.columns)
+    if missing:
+        raise BenchmarkDataError(f"Rally observations are missing required columns: {', '.join(sorted(missing))}.")
+    dates = pd.to_datetime(observations["observed_at"], errors="coerce", utc=True, format="mixed").dt.tz_localize(None).dt.normalize()
+    prices = pd.to_numeric(observations["price_per_share"], errors="coerce")
+    asset_ids = observations["asset_id"].astype("string").str.strip()
+    usable = dates.notna() & prices.gt(0) & asset_ids.notna() & asset_ids.ne("")
+    if "source_type" in observations:
+        sources = observations["source_type"].astype("string").str.lower()
+        usable &= ~sources.str.contains(r"placeholder|synthetic|demo|test", na=False)
+    valid = dates[usable]
+    if valid.empty:
+        raise BenchmarkDataError("No valid Rally historical observation dates were found.")
+    return valid.min()
+
+
+def validate_benchmark_history(frame: pd.DataFrame, *, allow_empty: bool = False) -> pd.DataFrame:
+    """Normalize and validate persisted long-format benchmark prices."""
+    missing = set(BENCHMARK_COLUMNS).difference(frame.columns)
+    if missing:
+        raise BenchmarkDataError(f"Benchmark history is missing columns: {', '.join(sorted(missing))}.")
+    result = frame[BENCHMARK_COLUMNS].copy()
+    result["date"] = pd.to_datetime(result["date"], errors="coerce").dt.normalize()
+    result["fetched_at"] = pd.to_datetime(result["fetched_at"], errors="coerce", utc=True)
+    result["ticker"] = result["ticker"].astype("string").str.strip().str.upper()
+    result["adjusted_close"] = pd.to_numeric(result["adjusted_close"], errors="coerce")
+    result = result[result["date"].notna() & result["ticker"].ne("") & result["adjusted_close"].gt(0)]
+    result = result.drop_duplicates(["ticker", "date"], keep="last").sort_values(["ticker", "date"]).reset_index(drop=True)
+    if result.empty and not allow_empty:
+        raise BenchmarkDataError("Benchmark history contains no usable positive prices.")
+    return result
+
+
+def load_persisted_benchmarks(
+    parquet_path: Path = BENCHMARK_PARQUET_PATH, csv_path: Path = BENCHMARK_CSV_PATH
+) -> BenchmarkLoadResult:
+    """Read committed benchmark history, preferring Parquet over CSV."""
+    if parquet_path.exists():
+        try:
+            return BenchmarkLoadResult(validate_benchmark_history(pd.read_parquet(parquet_path)), "local Parquet", parquet_path)
+        except (ImportError, OSError, ValueError) as exc:
+            if not csv_path.exists():
+                raise BenchmarkDataError(f"Could not read local benchmark Parquet: {exc}") from exc
+    if csv_path.exists():
+        return BenchmarkLoadResult(validate_benchmark_history(pd.read_csv(csv_path)), "local CSV", csv_path)
+    return BenchmarkLoadResult(pd.DataFrame(columns=BENCHMARK_COLUMNS), None, None)
+
+
+def select_local_benchmark(frame: pd.DataFrame, ticker: str, start: object, end: object) -> pd.DataFrame:
+    symbol = str(ticker).strip().upper()
+    dates = pd.to_datetime(frame.get("date"), errors="coerce")
+    selected = frame[frame.get("ticker", pd.Series(index=frame.index, dtype=str)).astype(str).str.upper().eq(symbol) & dates.between(pd.Timestamp(start), pd.Timestamp(end))].copy()
+    if selected.empty:
+        return pd.DataFrame(columns=["date", "ticker", "raw_value"])
+    return selected.assign(raw_value=pd.to_numeric(selected["adjusted_close"], errors="coerce"))[["date", "ticker", "raw_value"]].reset_index(drop=True)
+
+
+def merge_benchmark_history(existing: pd.DataFrame, additions: pd.DataFrame) -> pd.DataFrame:
+    return validate_benchmark_history(pd.concat([existing, additions], ignore_index=True), allow_empty=True)
+
+
+def write_benchmark_history_atomic(frame: pd.DataFrame, output: Path = BENCHMARK_PARQUET_PATH) -> Path:
+    """Validate and atomically replace Parquet, falling back to CSV without partial files."""
+    clean = validate_benchmark_history(frame)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary = output.with_name(f".{output.name}.tmp")
+    try:
+        clean.to_parquet(temporary, index=False)
+        temporary.replace(output)
+        return output
+    except (ImportError, ModuleNotFoundError):
+        temporary.unlink(missing_ok=True)
+        fallback = output.with_suffix(".csv")
+        csv_temporary = fallback.with_name(f".{fallback.name}.tmp")
+        clean.to_csv(csv_temporary, index=False)
+        csv_temporary.replace(fallback)
+        return fallback
+
+
 def parse_yahoo_chart(payload: object, ticker: str) -> pd.DataFrame:
     """Normalize a Yahoo chart response to date/raw_value without deriving returns."""
     try:
@@ -54,7 +151,8 @@ def parse_yahoo_chart(payload: object, ticker: str) -> pd.DataFrame:
     return frame[["date", "ticker", "raw_value"]].reset_index(drop=True)
 
 
-def download_benchmark(ticker: str, start: object, end: object, *, session=requests) -> pd.DataFrame:
+def download_benchmark(ticker: str, start: object, end: object, *, session=requests, attempts: int = 3,
+                       backoff_seconds: float = 1.0, sleep=time.sleep) -> pd.DataFrame:
     """Download one daily benchmark history. Caching belongs at the application boundary."""
     symbol = str(ticker).strip().upper()
     if not symbol or not all(c.isalnum() or c in ".^-=" for c in symbol):
@@ -62,14 +160,22 @@ def download_benchmark(ticker: str, start: object, end: object, *, session=reque
     period1 = int(pd.Timestamp(start, tz="UTC").timestamp())
     period2 = int((pd.Timestamp(end, tz="UTC") + pd.Timedelta(days=1)).timestamp())
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
-    try:
-        response = session.get(url, params={"period1": period1, "period2": period2, "interval": "1d", "events": "div,splits"}, timeout=15)
-        response.raise_for_status()
-        return parse_yahoo_chart(response.json(), symbol)
-    except BenchmarkDataError:
-        raise
-    except (requests.RequestException, ValueError) as exc:
-        raise BenchmarkDataError(f"Benchmark provider unavailable for {symbol}: {exc}") from exc
+    headers = {"User-Agent": "RallyTerminalBenchmarkUpdater/1.0"}
+    last_error: Exception | None = None
+    for attempt in range(max(1, attempts)):
+        try:
+            response = session.get(url, params={"period1": period1, "period2": period2, "interval": "1d", "events": "div,splits"}, headers=headers, timeout=15)
+            if response.status_code == 429:
+                raise BenchmarkDataError(f"Benchmark provider rate limited {symbol} (HTTP 429).")
+            response.raise_for_status()
+            return parse_yahoo_chart(response.json(), symbol)
+        except (BenchmarkDataError, requests.RequestException, ValueError) as exc:
+            last_error = exc
+            if attempt + 1 < max(1, attempts):
+                sleep(backoff_seconds * (2 ** attempt))
+    if isinstance(last_error, BenchmarkDataError):
+        raise last_error
+    raise BenchmarkDataError(f"Benchmark provider unavailable for {symbol}: {last_error}") from last_error
 
 
 def _clean_series(series: pd.Series) -> pd.Series:
