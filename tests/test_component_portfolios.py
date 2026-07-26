@@ -71,6 +71,9 @@ def test_rebalancing_restores_target_sleeve_weights():
     assert held.series.iloc[-1]["growth_value"] == pytest.approx(200)
     assert rebalanced.series.iloc[-1]["growth_value"] == pytest.approx(225)
     assert rebalanced.composition["rebalance_count"].unique().tolist() == [2]
+    assert rebalanced.turnover_history["turnover"].tolist() == pytest.approx([1 / 6, 1 / 6])
+    assert rebalanced.rebalance_history.groupby("date")["trade_value"].sum().tolist() == pytest.approx([0.0, 0.0])
+    assert rebalanced.summary_metrics["total_turnover"] == pytest.approx(1 / 3)
 
 
 def test_weight_normalization_sums_to_one_and_invalid_weights_are_rejected():
@@ -190,6 +193,10 @@ def test_typed_backtest_contract_is_complete_and_fingerprinted():
     assert set(result.drawdown_series) == {"date", "growth_value", "peak_value", "drawdown"}
     assert not result.eligibility_history.empty
     assert set(result.cash_ledger["cash_balance"]) == {0.0}
+    assert set(result.contribution_history) == {"date", "component_id", "component", "period_contribution", "cumulative_contribution"}
+    assert result.contribution_history.groupby("date")["period_contribution"].sum().tolist() == pytest.approx(result.series["period_return"].tolist())
+    assert result.turnover_history.empty
+    assert result.rebalance_history.empty
     assert result.methodology["missing_observation_policy"] == "drop_date"
     assert result.summary_metrics["starting_value"] == 250
     assert len(result.configuration_fingerprint) == 64
