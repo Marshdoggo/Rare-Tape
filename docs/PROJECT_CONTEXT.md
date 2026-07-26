@@ -108,6 +108,10 @@ The Portfolio Laboratory now has a canonical history resolver that returns uncha
 
 ## Near-Term Priorities
 
+## Category-Constituent Strategy Simulator (2026-07-26)
+
+The research engine now composes the canonical quarterly-history resolver and canonical exit normalization to simulate category constituent strategies. It supports equal, observed-market-cap, and absolute custom selected-asset weights; quarterly, annual, or initial-only internal rebalancing; point-in-time launch admission; explicit inclusion and exclusion sets; terminal proceeds; and intentional residual cash. Canonical missing quarters are not manufactured: existing positions retain their last sourced valuation solely for portfolio accounting, while the constituent audit identifies whether each period contains a source observation. Integration coverage exercises the complete committed 40-asset Books universe and a deterministic Books-minus-two universe directly from normalized production inputs.
+
 1. Validate the private GitHub and Streamlit deployment without exposing excluded research inputs.
 2. Reconcile manual Rally identities and offering facts against SEC context.
 3. Add an asset-detail foundation keyed by canonical `asset_id`.
