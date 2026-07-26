@@ -27,18 +27,24 @@ from alt_asset_explorer.custom_portfolios import PortfolioDefinition, simulate_p
 from alt_asset_explorer.component_portfolios import (
     PortfolioBacktestRequest,
     backtest_component_portfolio,
-    equal_component_weights,
     expand_component,
     inverse_volatility_weights,
     look_through_exposure,
-    normalize_component_weights,
-    remove_and_redistribute,
 )
 from alt_asset_explorer.components import (
     CanonicalIndexResolver,
     ComponentDefinition,
     ResolutionContext,
     ResolvedComponent,
+)
+from alt_asset_explorer.builder_state import (
+    add_components,
+    bulk_edit_weights,
+    empty_builder_state,
+    grouped_components,
+    migrate_builder_state,
+    normalize_weights,
+    remove_components,
 )
 from alt_asset_explorer.contribution import attribution_from_index_result, attribution_from_portfolio_result, breadth_metrics, concentration_metrics
 from alt_asset_explorer.indices import build_index_from_selection, prepare_quarterly_observations, summarize_contributions
@@ -718,7 +724,14 @@ else:
     universe_map = {"Include Exited Assets": "include_exited", "Exclude Exited Assets": "active_only"}
     scope = universe_map[sim_universe_label]
     portfolio_rebalance = rebalance_map[sim_rebalance_label]
-    builder = st.session_state.setdefault("portfolio_lab_components", {})
+    builder_state, migrated_builder = migrate_builder_state(st.session_state.get("portfolio_lab_components"))
+    st.session_state["portfolio_lab_components"] = builder_state
+    builder = builder_state["components"]
+    if migrated_builder:
+        st.info("Portfolio builder state was upgraded to the current version. Unknown legacy state is reset once for safety.")
+
+    def save_builder(state: dict) -> None:
+        st.session_state["portfolio_lab_components"] = state
 
     st.markdown("#### Add Exposure")
     add_cols = st.columns([1.2, 2.2, 1.5, 1])
@@ -741,74 +754,78 @@ else:
     if add_cols[3].button("Add to Portfolio", type="primary", use_container_width=True, key="lab_add"):
         if exposure_type == "Full Market Index":
             component_id, reference, ctype, label = f"full_market:{internal_method}", "all", "full_market", "Full Rally Market Index"
-            builder.setdefault(component_id, {"component_id": component_id, "type": ctype, "reference": reference, "label": label, "weight": 0.0, "method": internal_method})
+            save_builder(add_components(builder_state, [{"component_id": component_id, "type": ctype, "reference": reference, "label": label, "weight": 0.0, "method": internal_method}]))
         elif exposure_type == "Category Index" and selection:
             component_id = f"category:{selection}:{internal_method}"
-            builder.setdefault(component_id, {"component_id": component_id, "type": "category_index", "reference": selection, "label": f"{selection.replace('_', ' ').title()} Index", "weight": 0.0, "method": internal_method})
+            save_builder(add_components(builder_state, [{"component_id": component_id, "type": "category_index", "reference": selection, "label": f"{selection.replace('_', ' ').title()} Index", "weight": 0.0, "method": internal_method}]))
         elif exposure_type == "Individual Asset" and selection:
             meta = metadata[metadata["asset_id"].astype(str).eq(selection)].iloc[0]
             component_id = f"asset:{selection}"
-            builder.setdefault(component_id, {"component_id": component_id, "type": "individual_asset", "reference": selection, "label": str(meta["ticker"]), "weight": 0.0, "method": "direct"})
+            save_builder(add_components(builder_state, [{"component_id": component_id, "type": "individual_asset", "reference": selection, "label": str(meta["ticker"]), "weight": 0.0, "method": "direct"}]))
         elif exposure_type == "Category Constituents" and selection:
             _, constituent_weights = _canonical_index("category_index", selection, internal_method, scope)
             available = {asset_id: weight for asset_id, weight in constituent_weights.items() if len(_asset_level_series(asset_id)) >= 2}
             new_weights = expand_component("temporary", {"temporary": 1.0}, available, method="preserve") if available else {}
+            additions = []
+            remaining = max(0.0, 1 - sum(float(v["weight"]) for v in builder.values()))
             for asset_component_id, weight in new_weights.items():
                 asset_id = asset_component_id.removeprefix("asset:")
                 meta = metadata[metadata["asset_id"].astype(str).eq(asset_id)]
                 label = str(meta.iloc[0]["ticker"]) if not meta.empty else asset_id
-                builder.setdefault(asset_component_id, {"component_id": asset_component_id, "type": "individual_asset", "reference": asset_id, "label": label, "weight": 0.0, "method": "expanded", "origin": selection})
-                builder[asset_component_id]["weight"] += weight * max(0.0, 1 - sum(float(v["weight"]) for v in builder.values()))
+                additions.append({"component_id": asset_component_id, "type": "individual_asset", "reference": asset_id, "label": label, "weight": weight * remaining, "method": "expanded", "origin": selection})
+            save_builder(add_components(builder_state, additions))
         st.rerun()
 
     st.markdown("#### Current Portfolio")
     action_cols = st.columns([1, 1, 1, 2])
     if action_cols[0].button("Equal Weight Components", disabled=not builder, help="Assigns 100 / N to every top-level component."):
-        for key, value in equal_component_weights(builder).items():
-            builder[key]["weight"] = value
+        save_builder(normalize_weights(builder_state, equal=True))
         st.rerun()
     raw_total = sum(float(item["weight"]) for item in builder.values())
     if action_cols[1].button("Normalize to 100%", disabled=not builder or raw_total <= 0, help="Preserves relative ratios and rescales to 100%; this is not optimization."):
-        normalized = normalize_component_weights({key: item["weight"] for key, item in builder.items()})
-        for key, value in normalized.items():
-            builder[key]["weight"] = value
+        save_builder(normalize_weights(builder_state))
         st.rerun()
     if action_cols[2].button("Clear Portfolio", disabled=not builder):
-        builder.clear()
+        save_builder(empty_builder_state())
         st.rerun()
     removal_policy = action_cols[3].selectbox("Removal weight policy", ["Redistribute pro rata", "Redistribute equally", "Leave unallocated"], help="Applied whenever a top-level component or expanded asset is removed.")
     policy_map = {"Redistribute pro rata": "pro_rata", "Redistribute equally": "equal", "Leave unallocated": "unallocated"}
 
-    for component_id in list(builder):
-        item = builder[component_id]
-        row = st.columns([2.4, 1, 1.3, 1, 1])
-        row[0].markdown(f"**{item['label']}**  \n{'Sleeve' if item['type'] != 'individual_asset' else 'Asset'} · {item['method'].replace('_', ' ')}")
-        new_weight = row[1].number_input("Portfolio allocation weight (%)", 0.0, 100.0, value=float(item["weight"]) * 100, step=0.5, key=f"lab_weight_{component_id}", label_visibility="collapsed") / 100
-        item["weight"] = new_weight
-        if item["type"] == "category_index":
-            expansion_method = row[2].selectbox("Expansion", ["Preserve index weights", "Equal weight assets", "Market-cap weight assets"], key=f"lab_expand_method_{component_id}", label_visibility="collapsed")
-            if row[3].button("Expand", key=f"lab_expand_{component_id}"):
-                _, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope)
-                caps = metadata.set_index("asset_id").get("offering_market_cap_usd", pd.Series(dtype=float)).to_dict() if "offering_market_cap_usd" in metadata else {}
-                method = {"Preserve index weights": "preserve", "Equal weight assets": "equal", "Market-cap weight assets": "market_cap"}[expansion_method]
-                expanded = expand_component(component_id, {key: value["weight"] for key, value in builder.items()}, underlying, method=method, market_caps=caps)
-                del builder[component_id]
-                for key, weight in expanded.items():
-                    if key in builder:
-                        builder[key]["weight"] = weight
-                    elif key.startswith("asset:"):
-                        aid = key.removeprefix("asset:")
-                        meta = metadata[metadata["asset_id"].astype(str).eq(aid)]
-                        builder[key] = {"component_id": key, "type": "individual_asset", "reference": aid, "label": str(meta.iloc[0]["ticker"]) if not meta.empty else aid, "weight": weight, "method": "expanded", "origin": item["reference"]}
+    groups = grouped_components(builder_state)
+    for group_name, component_ids in groups.items():
+        title = "Top-level components" if group_name == "top_level" else f"{group_name.removeprefix('category:').replace('_', ' ').title()} strategy constituents"
+        st.markdown(f"##### {title}")
+        st.caption("Portfolio allocation sleeves and direct positions." if group_name == "top_level" else "Assets expanded from this category strategy; edit or remove constituents individually.")
+        for component_id in component_ids:
+            item = builder[component_id]
+            row = st.columns([2.4, 1, 1.3, 1, 1])
+            row[0].markdown(f"**{item['label']}**  \n{'Sleeve' if item['type'] != 'individual_asset' else 'Asset'} · {item['method'].replace('_', ' ')}")
+            new_weight = row[1].number_input("Portfolio allocation weight (%)", 0.0, 100.0, value=float(item["weight"]) * 100, step=0.5, key=f"lab_weight_{component_id}", label_visibility="collapsed") / 100
+            if new_weight != float(item["weight"]):
+                save_builder(bulk_edit_weights(builder_state, {component_id: new_weight}))
                 st.rerun()
-        else:
-            row[2].caption("Direct position" if item["method"] == "direct" else f"Expanded from {item.get('origin', 'category')}")
-        if row[4].button("Remove", key=f"lab_remove_{component_id}"):
-            updated = remove_and_redistribute({key: value["weight"] for key, value in builder.items()}, [component_id], policy=policy_map[removal_policy])
-            del builder[component_id]
-            for key, weight in updated.items():
-                builder[key]["weight"] = weight
-            st.rerun()
+            if item["type"] == "category_index":
+                expansion_method = row[2].selectbox("Expansion", ["Preserve index weights", "Equal weight assets", "Market-cap weight assets"], key=f"lab_expand_method_{component_id}", label_visibility="collapsed")
+                if row[3].button("Expand", key=f"lab_expand_{component_id}"):
+                    _, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope)
+                    caps = metadata.set_index("asset_id").get("offering_market_cap_usd", pd.Series(dtype=float)).to_dict() if "offering_market_cap_usd" in metadata else {}
+                    method = {"Preserve index weights": "preserve", "Equal weight assets": "equal", "Market-cap weight assets": "market_cap"}[expansion_method]
+                    expanded = expand_component(component_id, {key: value["weight"] for key, value in builder.items()}, underlying, method=method, market_caps=caps)
+                    next_state = remove_components(builder_state, [component_id])
+                    additions = []
+                    for key, weight in expanded.items():
+                        if key not in next_state["components"] and key.startswith("asset:"):
+                            aid = key.removeprefix("asset:")
+                            meta = metadata[metadata["asset_id"].astype(str).eq(aid)]
+                            additions.append({"component_id": key, "type": "individual_asset", "reference": aid, "label": str(meta.iloc[0]["ticker"]) if not meta.empty else aid, "weight": weight, "method": "expanded", "origin": item["reference"]})
+                    next_state = add_components(next_state, additions)
+                    save_builder(bulk_edit_weights(next_state, expanded))
+                    st.rerun()
+            else:
+                row[2].caption("Direct position" if item["method"] == "direct" else f"Expanded from {item.get('origin', 'category')}")
+            if row[4].button("Remove", key=f"lab_remove_{component_id}"):
+                save_builder(remove_components(builder_state, [component_id], policy=policy_map[removal_policy]))
+                st.rerun()
 
     allocated = sum(float(item["weight"]) for item in builder.values())
     status_cols = st.columns(5)
