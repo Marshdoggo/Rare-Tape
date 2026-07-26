@@ -25,15 +25,15 @@ from alt_asset_explorer.custom_index_storage import (
 from alt_asset_explorer.custom_indices import build_custom_index, calculate_index_metrics, new_custom_index_definition
 from alt_asset_explorer.custom_portfolios import PortfolioDefinition, simulate_portfolio
 from alt_asset_explorer.component_portfolios import (
+    PortfolioBacktestRequest,
     PortfolioComponent,
+    backtest_component_portfolio,
     equal_component_weights,
     expand_component,
     inverse_volatility_weights,
     look_through_exposure,
     normalize_component_weights,
-    portfolio_risk_metrics,
     remove_and_redistribute,
-    simulate_component_portfolio,
 )
 from alt_asset_explorer.contribution import attribution_from_index_result, attribution_from_portfolio_result, breadth_metrics, concentration_metrics
 from alt_asset_explorer.indices import build_index_from_selection, prepare_quarterly_observations, summarize_contributions
@@ -825,14 +825,26 @@ else:
     if builder and not valid:
         st.warning("Portfolio allocation weights must be positive and total 100% before simulation.")
 
-    component_result = simulate_component_portfolio(components, starting_value=sim_starting_value, rebalance_frequency=portfolio_rebalance) if valid else None
+    backtest_request = PortfolioBacktestRequest(
+        components=components,
+        starting_value=sim_starting_value,
+        calendar="observed_shared",
+        rebalance_schedule=portfolio_rebalance,
+        alignment_policy="common_inception",
+        missing_observation_policy="drop_date",
+        eligibility_policy="fixed_at_inception",
+        exit_cash_policy="component_series",
+        annual_risk_free_rate=annual_rf,
+        as_of_cutoff=pd.Timestamp.utcnow().tz_localize(None).normalize(),
+    )
+    component_result = backtest_component_portfolio(backtest_request) if valid else None
     if component_result:
         for warning in component_result.warnings:
             st.warning(warning)
     if component_result and not component_result.series.empty:
         result = component_result.series
-        risk = portfolio_risk_metrics(result, annual_risk_free_rate=annual_rf)
-        total_return = float(result.iloc[-1]["cumulative_return"])
+        risk = component_result.summary_metrics
+        total_return = float(risk["total_return"])
         metric_rows = st.columns(6)
         metric_rows[0].metric("Ending value", f"${result.iloc[-1]['growth_value']:,.2f}")
         metric_rows[1].metric("Total return", f"{total_return:.2%}")
@@ -845,6 +857,7 @@ else:
         with st.expander("Risk and drawdown analytics", expanded=True):
             risk_display = pd.DataFrame({"Metric": ["Annualization frequency", "Downside deviation", "Best observed period", "Worst observed period", "Positive periods", "Maximum drawdown", "Maximum drawdown duration", "Recovery date"], "Value": [f"{risk['periods_per_year']} periods/year", f"{risk['downside_deviation']:.2%}", f"{risk['best_period_return']:.2%}", f"{risk['worst_period_return']:.2%}", f"{risk['positive_period_percentage']:.2%}", f"{risk['maximum_drawdown']:.2%}", f"{risk['maximum_drawdown_duration_periods']} observed periods", str(risk['recovery_date'].date()) if risk['recovery_date'] is not None else "Not yet recovered"]})
             st.dataframe(risk_display, hide_index=True, use_container_width=True)
+            st.line_chart(component_result.drawdown_series.set_index("date")[["drawdown"]])
         composition = component_result.composition.copy()
         st.markdown("##### Component Attribution")
         display = composition.rename(columns={"component": "Component", "target_weight": "Starting Target Weight", "ending_weight": "Ending Drifted Weight", "standalone_return": "Standalone Return", "cumulative_contribution": "Arithmetic Period Contribution", "rebalance_count": "Rebalances"})
@@ -876,18 +889,17 @@ else:
         else:
             st.warning("At least three shared return observations are required for correlation and inverse-volatility research.")
 
-    with st.expander("Portfolio laboratory methodology"):
-        st.markdown("""
-- **Index sleeve versus expanded constituents:** a category index is one top-level allocation and retains its canonical internal weighting. Expanding replaces that sleeve with independently editable direct asset positions while preserving the sleeve's total allocation; equal-weighting every expanded asset is therefore not the same as equal-weighting categories.
-- **Allocation controls:** Equal Weight Components deliberately sets each top-level component to `100 / N`. Normalize to 100% preserves current ratios and rescales them; it is deterministic and is not optimization. Reset is achieved by clearing and rebuilding the portfolio.
-- **Weight layers:** Portfolio allocation weight controls top-level capital. Internal index weighting controls constituents inside a canonical sleeve. Portfolio rebalance frequency trades only top-level components; it does not alter canonical index construction.
-- **Expansion and removal:** expansion can preserve the latest eligible canonical index weights, equal-weight eligible assets, or use available market-cap weights. Removal redistributes the removed allocation pro rata by default; equal redistribution or intentionally unallocated capital can be selected. Cash is not modeled by this component engine.
-- **Look-through and overlap:** direct weight comes from asset components. Indirect weight is top-level sleeve weight multiplied by the sleeve's latest canonical constituent weight. Total effective weight is their sum. Direct ownership of an asset already in a sleeve is permitted and explicitly warned.
-- **Dates and missing data:** simulation uses common inception and only dates observed by every selected component. It never backfills a component before availability, silently forward-fills a missing sleeve, or treats absence as cash. Expanded assets use a fixed common-inception universe, not a dynamic universe.
-- **Exited assets:** Include Exited uses canonical exit-aware sleeve artifacts; Exclude Exited selects the canonical active-only artifacts. Expanded/direct asset histories remain observed histories and are reconciled on rebuild; terminal proceeds are not silently invented. Changing the universe can make a component unavailable and produces a warning rather than fabricated performance.
-- **Risk metrics:** annualization is inferred from median spacing (weekly 52, monthly 12, quarterly 4, annual 1). Volatility is sample standard deviation times the square root of frequency. Sharpe uses periodicized user-entered annual risk-free return. Sortino uses annualized downside deviation relative to that threshold. Calmar is annualized return divided by absolute maximum drawdown.
-- **Research allocations:** equal weight and inverse volatility are comparisons, separate from normalization. Inverse volatility is long-only and sums to 100%, but is intentionally labeled in-sample. No minimum-volatility, maximum-Sharpe, risk-parity, or train/test optimizer is shipped yet, avoiding unsupported prospective claims on sparse data.
-""")
+        with st.expander("Backtest audit contract"):
+            st.caption(f"Configuration fingerprint: `{component_result.configuration_fingerprint}`")
+            st.json(component_result.methodology)
+            st.markdown("**Eligibility history**")
+            st.dataframe(component_result.eligibility_history, hide_index=True, use_container_width=True)
+            st.markdown("**Rebalance ledger**")
+            st.dataframe(component_result.rebalance_ledger, hide_index=True, use_container_width=True)
+            st.markdown("**Cash ledger**")
+            st.dataframe(component_result.cash_ledger, hide_index=True, use_container_width=True)
+
+    # Simulation methodology and ledgers are rendered from PortfolioBacktestResult above.
 
 st.subheader("Contribution Explorer")
 st.caption("Explain what moved a market, category, custom portfolio, or compatible custom basket using reconciling contribution math.")
