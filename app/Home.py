@@ -38,6 +38,7 @@ from alt_asset_explorer.component_portfolios import (
 from alt_asset_explorer.contribution import attribution_from_index_result, attribution_from_portfolio_result, breadth_metrics, concentration_metrics
 from alt_asset_explorer.indices import build_index_from_selection, prepare_quarterly_observations, summarize_contributions
 from alt_asset_explorer.universe import build_asset_universe, eligible_asset_ids
+from alt_asset_explorer.portfolio_lab import canonical_index, validate_index_constituent_schema
 from alt_asset_explorer.market_table import build_market_table, filter_market_table
 from alt_asset_explorer.research import calculate_sector_performance, completed_categories
 
@@ -80,6 +81,11 @@ liquidity = load_processed_csv("liquidity_metrics")
 coverage = load_report_csv("research_coverage")
 index_portfolio = canonical_market.total_return_portfolio
 index_constituents = canonical_market.total_return_constituents
+try:
+    validate_index_constituent_schema(index_constituents)
+except ValueError as error:
+    st.error(str(error))
+    st.stop()
 exit_analytics = canonical_market.exit_analytics
 exchange_market_cap = canonical_market.exchange_history.market_cap_history
 current_universe_artifact = canonical_market.current_universe
@@ -691,28 +697,8 @@ def _asset_level_series(asset_id: str) -> pd.DataFrame:
     return frame.dropna().query("index_level > 0").sort_values("date").drop_duplicates("date", keep="last")
 
 
-def _canonical_index(component_type: str, reference: str, method: str, scope: str, input_rebalance: str) -> tuple[pd.DataFrame, dict[str, float]]:
-    category = "all" if component_type == "full_market" else reference
-    selected = index_portfolio[
-        index_portfolio["category"].astype(str).eq(category)
-        & index_portfolio["weighting_method"].astype(str).eq(method)
-        & index_portfolio["rebalance_frequency"].astype(str).eq(input_rebalance)
-        & index_portfolio["universe_scope"].astype(str).eq(scope)
-    ].copy()
-    holdings = index_constituents[
-        index_constituents["category"].astype(str).eq(category)
-        & index_constituents["weighting_method"].astype(str).eq(method)
-        & index_constituents["rebalance_frequency"].astype(str).eq(input_rebalance)
-        & index_constituents["universe_scope"].astype(str).eq(scope)
-    ].copy() if not index_constituents.empty else pd.DataFrame()
-    if holdings.empty:
-        return selected, {}
-    holdings["date"] = pd.to_datetime(holdings["date"], errors="coerce")
-    latest = holdings[holdings["date"].eq(holdings["date"].max())].copy()
-    weight_column = "portfolio_weight"
-    raw = latest.groupby(latest["asset_id"].astype(str))[weight_column].sum().to_dict()
-    total = sum(raw.values())
-    return selected, ({key: float(value / total) for key, value in raw.items()} if total > 0 else {})
+def _canonical_index(component_type: str, reference: str, method: str, scope: str) -> tuple[pd.DataFrame, dict[str, float]]:
+    return canonical_index(index_portfolio, index_constituents, component_type, reference, method, scope)
 
 
 if index_portfolio.empty:
@@ -727,7 +713,6 @@ else:
     universe_map = {"Include Exited Assets": "include_exited", "Exclude Exited Assets": "active_only"}
     scope = universe_map[sim_universe_label]
     portfolio_rebalance = rebalance_map[sim_rebalance_label]
-    input_rebalance = "quarterly" if portfolio_rebalance in {"none", "annual"} else portfolio_rebalance
     builder = st.session_state.setdefault("portfolio_lab_components", {})
 
     st.markdown("#### Add Exposure")
@@ -760,7 +745,7 @@ else:
             component_id = f"asset:{selection}"
             builder.setdefault(component_id, {"component_id": component_id, "type": "individual_asset", "reference": selection, "label": str(meta["ticker"]), "weight": 0.0, "method": "direct"})
         elif exposure_type == "Category Constituents" and selection:
-            _, constituent_weights = _canonical_index("category_index", selection, internal_method, scope, input_rebalance)
+            _, constituent_weights = _canonical_index("category_index", selection, internal_method, scope)
             available = {asset_id: weight for asset_id, weight in constituent_weights.items() if len(_asset_level_series(asset_id)) >= 2}
             new_weights = expand_component("temporary", {"temporary": 1.0}, available, method="preserve") if available else {}
             for asset_component_id, weight in new_weights.items():
@@ -798,7 +783,7 @@ else:
         if item["type"] == "category_index":
             expansion_method = row[2].selectbox("Expansion", ["Preserve index weights", "Equal weight assets", "Market-cap weight assets"], key=f"lab_expand_method_{component_id}", label_visibility="collapsed")
             if row[3].button("Expand", key=f"lab_expand_{component_id}"):
-                _, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope, input_rebalance)
+                _, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope)
                 caps = metadata.set_index("asset_id").get("offering_market_cap_usd", pd.Series(dtype=float)).to_dict() if "offering_market_cap_usd" in metadata else {}
                 method = {"Preserve index weights": "preserve", "Equal weight assets": "equal", "Market-cap weight assets": "market_cap"}[expansion_method]
                 expanded = expand_component(component_id, {key: value["weight"] for key, value in builder.items()}, underlying, method=method, market_caps=caps)
@@ -832,7 +817,7 @@ else:
         if item["type"] == "individual_asset":
             series, underlying = _asset_level_series(item["reference"]), {item["reference"]: 1.0}
         else:
-            series, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope, input_rebalance)
+            series, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope)
         components.append(PortfolioComponent(item["component_id"], item["type"], item["label"], item["weight"], series, underlying, "Direct position" if item["type"] == "individual_asset" else item["method"]))
     lookthrough = look_through_exposure(components) if components and all(c.target_weight > 0 for c in components) else pd.DataFrame()
     status_cols[4].metric("Unique assets", len(lookthrough))

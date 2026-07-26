@@ -172,7 +172,7 @@ def scheduled_rebalance_dates(dates: pd.DatetimeIndex, frequency: str) -> set[pd
     return {pd.Timestamp(d).normalize() for d in out}
 
 
-def build_total_return_indexes(assets: pd.DataFrame, prices: pd.DataFrame, exits: pd.DataFrame | None = None, *, frequency: Frequency = "native", config: TotalReturnConfig | None = None, include_exited: bool = True) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def build_total_return_indexes(assets: pd.DataFrame, prices: pd.DataFrame, exits: pd.DataFrame | None = None, *, frequency: Frequency = "native", config: TotalReturnConfig | None = None, include_exited: bool = True, include_constituents: bool = True) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     config = config or TotalReturnConfig()
     required = {"asset_id", "offering_date", "share_count", "offering_price_usd"}
     if assets is None or assets.empty or not required.issubset(assets.columns):
@@ -255,8 +255,9 @@ def build_total_return_indexes(assets: pd.DataFrame, prices: pd.DataFrame, exits
           else:
             period_return=(total_value/prev_value-1) if prev_value else 0.0; level*=1+period_return; prev_value=total_value
           port_rows.append({"date":d,"universe":"full_market" if cat is None else "category","category":cat or "all","universe_scope":"include_exited" if include_exited else "active_only","weighting_method":method,"rebalance_frequency":config.rebalance_frequency,"index_level":level,"portfolio_value":total_value,"invested_asset_value":invested,"cash_value":cash,"pending_settlement_value":sum(pending.values()),"eligible_constituent_count":len([aid for aid in ids if offer_map[aid]<=d]),"active_constituent_count":len(units),"exited_constituent_count":len([1 for ex in exit_by_asset.values() if pd.notna(ex["exit_effective_date"]) and d>=ex["exit_effective_date"] and ex["exit_status"]!="cancelled_exit"]),"realized_exit_proceeds":cash,"period_return":period_return,"cumulative_return":level/config.base_index_level-1,"rebalance_flag":is_rebal,"calculation_version":CALCULATION_VERSION})
-          for aid,u in units.items():
-            val=u*price_map.get(aid,0); const_rows.append({"date":d,"universe":"full_market" if cat is None else "category","category":cat or "all","universe_scope":"include_exited" if include_exited else "active_only","weighting_method":method,"asset_id":aid,"ticker":ticker_map.get(aid, aid),"constituent_status":"included_in_index","units_held":u,"price":price_map.get(aid),"price_source":"asof_observed_or_offering","position_value":val,"portfolio_weight":val/total_value if total_value else 0,"entry_date":offer_map[aid],"exit_date":pd.NaT,"terminal_proceeds":0.0,"realized_pl":0.0,"rebalance_trade_value":np.nan})
+          if include_constituents:
+            for aid,u in units.items():
+              val=u*price_map.get(aid,0); const_rows.append({"date":d,"universe":"full_market" if cat is None else "category","category":cat or "all","universe_scope":"include_exited" if include_exited else "active_only","weighting_method":method,"asset_id":aid,"ticker":ticker_map.get(aid, aid),"constituent_status":"included_in_index","units_held":u,"price":price_map.get(aid),"price_source":"asof_observed_or_offering","position_value":val,"portfolio_weight":val/total_value if total_value else 0,"entry_date":offer_map[aid],"exit_date":pd.NaT,"terminal_proceeds":0.0,"realized_pl":0.0,"rebalance_trade_value":np.nan})
     portfolio=pd.DataFrame(port_rows)
     if not portfolio.empty:
       portfolio["drawdown"] = portfolio.groupby(["universe_scope","universe","category","weighting_method","rebalance_frequency"])["index_level"].transform(lambda s: s/s.cummax()-1)

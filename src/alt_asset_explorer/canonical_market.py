@@ -136,10 +136,14 @@ def build_canonical_market_data(*, as_of: date | None = None) -> CanonicalMarket
                 frequency="native",
                 config=TotalReturnConfig(rebalance_frequency=rebalance_frequency),
                 include_exited=include_exited,
+                include_constituents=rebalance_frequency == "quarterly",
             )
             if not portfolio_part.empty:
                 portfolio_frames.append(portfolio_part)
-            if not constituents_part.empty:
+            # Constituents are the canonical quarterly index membership/weights.
+            # Other portfolio series frequencies are source-series variants, not
+            # separate constituent universes for the Portfolio Laboratory.
+            if rebalance_frequency == "quarterly" and not constituents_part.empty:
                 constituent_frames.append(constituents_part)
             if include_exited and exit_events.empty and not exit_events_part.empty:
                 exit_events = exit_events_part
