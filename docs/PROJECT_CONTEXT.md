@@ -92,6 +92,10 @@ The normalized Rally observations now include 150 manually transcribed dated pri
 - There is no production health endpoint, telemetry, durable user storage, or automated data-refresh service.
 - Portfolio construction currently uses a fixed common-inception universe for expanded assets. It does not yet model custom baskets, dynamic constituent admission, explicit cash for intentionally unallocated weights, transaction costs, or out-of-sample/walk-forward optimization.
 
+## Portfolio Frequency-Layer Correction (2026-07-26)
+
+The Portfolio Construction Laboratory now treats canonical category-index construction and top-level portfolio rebalancing as separate methodology layers. Category sleeves and category-constituent expansion use the canonical quarterly total-return series and its quarterly constituent history, selected by category, internal weighting method, and universe scope. The portfolio control independently applies buy-and-hold, monthly, quarterly, or annual rebalancing to the selected top-level components; it is no longer used as a constituent-table filter. Runtime constituent data is validated against its actual schema with a controlled diagnostic, and the canonical builder retains one quarterly constituent history rather than concatenating indistinguishable constituent rows from weekly, monthly, and quarterly source-series builds.
+
 ## Near-Term Priorities
 
 1. Validate the private GitHub and Streamlit deployment without exposing excluded research inputs.
