@@ -26,7 +26,6 @@ from alt_asset_explorer.custom_indices import build_custom_index, calculate_inde
 from alt_asset_explorer.custom_portfolios import PortfolioDefinition, simulate_portfolio
 from alt_asset_explorer.component_portfolios import (
     PortfolioBacktestRequest,
-    PortfolioComponent,
     backtest_component_portfolio,
     equal_component_weights,
     expand_component,
@@ -34,6 +33,12 @@ from alt_asset_explorer.component_portfolios import (
     look_through_exposure,
     normalize_component_weights,
     remove_and_redistribute,
+)
+from alt_asset_explorer.components import (
+    CanonicalIndexResolver,
+    ComponentDefinition,
+    ResolutionContext,
+    ResolvedComponent,
 )
 from alt_asset_explorer.contribution import attribution_from_index_result, attribution_from_portfolio_result, breadth_metrics, concentration_metrics
 from alt_asset_explorer.indices import build_index_from_selection, prepare_quarterly_observations, summarize_contributions
@@ -812,13 +817,20 @@ else:
     status_cols[2].metric("Valid", "Yes" if builder and abs(allocated - 1) <= 0.0001 and all(float(x["weight"]) > 0 for x in builder.values()) else "No")
     status_cols[3].metric("Top-level sleeves", sum(item["type"] != "individual_asset" for item in builder.values()))
 
-    components = []
+    components: list[ResolvedComponent] = []
+    canonical_resolver = CanonicalIndexResolver(index_portfolio, index_constituents)
     for item in builder.values():
+        definition = ComponentDefinition(
+            item["component_id"], item["type"], item["label"], item["weight"], item["reference"],
+            "Direct position" if item["type"] == "individual_asset" else item["method"],
+            {"universe_scope": scope} if item["type"] != "individual_asset" else {},
+        )
         if item["type"] == "individual_asset":
-            series, underlying = _asset_level_series(item["reference"]), {item["reference"]: 1.0}
+            series = _asset_level_series(item["reference"])
+            constituents = pd.DataFrame({"date": series["date"], "asset_id": item["reference"], "portfolio_weight": 1.0})
+            components.append(ResolvedComponent(definition, series, constituents, {"resolver": "HomeDirectAssetAdapter", "missing_price_policy": "no_fill"}))
         else:
-            series, underlying = _canonical_index(item["type"], item["reference"], item["method"], scope)
-        components.append(PortfolioComponent(item["component_id"], item["type"], item["label"], item["weight"], series, underlying, "Direct position" if item["type"] == "individual_asset" else item["method"]))
+            components.append(canonical_resolver.resolve(definition, ResolutionContext()))
     lookthrough = look_through_exposure(components) if components and all(c.target_weight > 0 for c in components) else pd.DataFrame()
     status_cols[4].metric("Unique assets", len(lookthrough))
     valid = bool(components) and abs(allocated - 1) <= 0.0001 and all(c.target_weight > 0 for c in components)
