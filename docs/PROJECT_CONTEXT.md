@@ -102,6 +102,10 @@ The Portfolio Laboratory now has a deterministic Phase 0 diagnostic over the com
 
 These diagnostics do not imply that the 40 assets traded on common real dates, that missing quarters may be filled, or that canonical period labels are quote timestamps. The canonical-period intersection is a research alignment over authored quarterly assignments; it notably excludes 2025 Q2 and Q3 because at least one selected asset lacks each period. Post-quarter weekly observations remain dated evidence and are excluded from canonical quarterly collision counts. Offering rows may share a canonical quarter with later chart observations; both remain in the normalized source, while the diagnostic's canonical view deterministically keeps the later actual observation.
 
+## Canonical History And Eligibility Contract (2026-07-26)
+
+The Portfolio Laboratory now has a canonical history resolver that returns unchanged source evidence separately from its canonical research view. Canonical rows expose `source_observed_at`, `canonical_period`, and `available_at`; as-of cutoffs are enforced against actual information availability rather than the period label, and same-asset/period collisions deterministically retain the latest observation available by that cutoff. Typed alignment rules make intersection versus union explicit and enforce the production no-fill/no-carry policy. An asset/period eligibility timeline records whether each canonical period has sourced evidence and explains missing observations instead of manufacturing values. A narrow compatibility adapter still emits the legacy `date`/`index_level` component-series shape while retaining both date meanings for callers that have not migrated.
+
 ## Near-Term Priorities
 
 1. Validate the private GitHub and Streamlit deployment without exposing excluded research inputs.
