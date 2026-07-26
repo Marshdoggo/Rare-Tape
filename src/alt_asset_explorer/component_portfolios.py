@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import math
+import hashlib
+import json
 from dataclasses import dataclass
 from typing import Literal, Mapping, Sequence
 
@@ -9,6 +11,11 @@ import pandas as pd
 from alt_asset_explorer.custom_portfolios import RebalanceFrequency, _rebalance_dates
 
 ComponentType = Literal["full_market", "category_index", "individual_asset", "custom_basket", "factor_index"]
+CalendarPolicy = Literal["observed_shared"]
+AlignmentPolicy = Literal["common_inception"]
+MissingObservationPolicy = Literal["drop_date"]
+EligibilityPolicy = Literal["fixed_at_inception"]
+ExitCashPolicy = Literal["component_series", "hold_cash", "reinvest_on_rebalance"]
 
 
 @dataclass(frozen=True)
@@ -25,10 +32,40 @@ class PortfolioComponent:
 
 
 @dataclass(frozen=True)
-class ComponentPortfolioResult:
+class PortfolioBacktestRequest:
+    """Complete, typed methodology input for a component portfolio backtest."""
+
+    components: Sequence[PortfolioComponent]
+    starting_value: float = 100.0
+    calendar: CalendarPolicy = "observed_shared"
+    rebalance_schedule: RebalanceFrequency = "quarterly"
+    alignment_policy: AlignmentPolicy = "common_inception"
+    missing_observation_policy: MissingObservationPolicy = "drop_date"
+    eligibility_policy: EligibilityPolicy = "fixed_at_inception"
+    exit_cash_policy: ExitCashPolicy = "component_series"
+    annual_risk_free_rate: float = 0.0
+    as_of_cutoff: pd.Timestamp | str | None = None
+
+
+@dataclass(frozen=True)
+class PortfolioBacktestResult:
+    """UI-ready output contract; views must not reconstruct methodology."""
+
     series: pd.DataFrame
+    drawdown_series: pd.DataFrame
     composition: pd.DataFrame
+    eligibility_history: pd.DataFrame
+    rebalance_ledger: pd.DataFrame
+    cash_ledger: pd.DataFrame
     warnings: tuple[str, ...] = ()
+    errors: tuple[str, ...] = ()
+    methodology: Mapping[str, object] | None = None
+    configuration_fingerprint: str = ""
+    summary_metrics: Mapping[str, object] | None = None
+
+
+# Compatibility name retained for callers that only annotated the former result.
+ComponentPortfolioResult = PortfolioBacktestResult
 
 
 def equal_component_weights(component_ids: Sequence[str]) -> dict[str, float]:
@@ -216,12 +253,7 @@ def _clean_component_series(component: PortfolioComponent) -> pd.DataFrame:
     return cleaned.rename(columns={"index_level": component.component_id})
 
 
-def simulate_component_portfolio(
-    components: Sequence[PortfolioComponent],
-    *,
-    starting_value: float = 100.0,
-    rebalance_frequency: RebalanceFrequency = "quarterly",
-) -> ComponentPortfolioResult:
+def backtest_component_portfolio(request: PortfolioBacktestRequest) -> PortfolioBacktestResult:
     """Combine sleeve index levels without flattening their underlying constituents.
 
     The portfolio starts on the first date shared by every component. Later dates are
@@ -230,23 +262,34 @@ def simulate_component_portfolio(
     to their target allocations on the selected schedule.
     """
 
+    components = request.components
+    starting_value = request.starting_value
+    rebalance_frequency = request.rebalance_schedule
     empty = pd.DataFrame(columns=["date", "growth_value", "period_return", "cumulative_return", "rebalance_flag"])
+    empty_result = lambda errors: PortfolioBacktestResult(
+        series=empty, drawdown_series=pd.DataFrame(columns=["date", "drawdown"]), composition=pd.DataFrame(),
+        eligibility_history=pd.DataFrame(), rebalance_ledger=pd.DataFrame(), cash_ledger=pd.DataFrame(),
+        warnings=tuple(errors), errors=tuple(errors), methodology=_methodology(request), configuration_fingerprint=_fingerprint(request), summary_metrics={},
+    )
     if not components:
-        return ComponentPortfolioResult(empty, pd.DataFrame(), ("Select at least one portfolio component.",))
+        return empty_result(("Select at least one portfolio component.",))
     ids = [component.component_id for component in components]
     if len(ids) != len(set(ids)):
-        return ComponentPortfolioResult(empty, pd.DataFrame(), ("Duplicate portfolio components are not allowed.",))
+        return empty_result(("Duplicate portfolio components are not allowed.",))
     if starting_value <= 0:
-        return ComponentPortfolioResult(empty, pd.DataFrame(), ("Starting investment must be greater than zero.",))
+        return empty_result(("Starting investment must be greater than zero.",))
     try:
         weights = normalize_component_weights({component.component_id: component.target_weight for component in components})
     except ValueError as exc:
-        return ComponentPortfolioResult(empty, pd.DataFrame(), (str(exc),))
+        return empty_result((str(exc),))
 
     cleaned = {component.component_id: _clean_component_series(component) for component in components}
+    if request.as_of_cutoff is not None:
+        cutoff = pd.Timestamp(request.as_of_cutoff).normalize()
+        cleaned = {key: frame[frame["date"] <= cutoff].copy() for key, frame in cleaned.items()}
     unavailable = [component.label for component in components if len(cleaned[component.component_id]) < 2]
     if unavailable:
-        return ComponentPortfolioResult(empty, pd.DataFrame(), ("Components need at least two valid observations: " + ", ".join(unavailable),))
+        return empty_result(("Components need at least two valid observations: " + ", ".join(unavailable),))
 
     aligned: pd.DataFrame | None = None
     for component in components:
@@ -255,7 +298,7 @@ def simulate_component_portfolio(
     assert aligned is not None
     aligned = aligned.sort_values("date").reset_index(drop=True)
     if len(aligned) < 2:
-        return ComponentPortfolioResult(empty, pd.DataFrame(), ("Selected components do not have at least two common observation dates.",))
+        return empty_result(("Selected components do not have at least two common observation dates.",))
 
     dates = pd.DatetimeIndex(aligned["date"])
     rebalance_dates = _rebalance_dates(dates, rebalance_frequency)
@@ -313,4 +356,60 @@ def simulate_component_portfolio(
             for component in components
         ]
     )
-    return ComponentPortfolioResult(result_series, composition)
+    drawdown = result_series[["date", "growth_value"]].copy()
+    drawdown["peak_value"] = drawdown["growth_value"].cummax()
+    drawdown["drawdown"] = drawdown["growth_value"] / drawdown["peak_value"] - 1
+    eligibility = pd.DataFrame(
+        ({"date": date, "component_id": component.component_id, "eligible": True, "policy": request.eligibility_policy}
+         for date in aligned["date"] for component in components)
+    )
+    rebalance_ledger = result_series.loc[result_series["rebalance_flag"], ["date", "growth_value"]].copy()
+    if not rebalance_ledger.empty:
+        rebalance_ledger["schedule"] = rebalance_frequency
+        rebalance_ledger["target_weights"] = [dict(weights)] * len(rebalance_ledger)
+    cash_ledger = result_series[["date"]].copy()
+    cash_ledger["cash_balance"] = 0.0
+    cash_ledger["cash_flow"] = 0.0
+    cash_ledger["policy"] = request.exit_cash_policy
+    metrics = portfolio_risk_metrics(result_series, annual_risk_free_rate=request.annual_risk_free_rate)
+    metrics = dict(metrics) | {
+        "starting_value": float(starting_value), "ending_value": float(result_series.iloc[-1]["growth_value"]),
+        "total_return": float(result_series.iloc[-1]["cumulative_return"]),
+    }
+    return PortfolioBacktestResult(
+        series=result_series, drawdown_series=drawdown, composition=composition,
+        eligibility_history=eligibility, rebalance_ledger=rebalance_ledger, cash_ledger=cash_ledger,
+        methodology=_methodology(request), configuration_fingerprint=_fingerprint(request), summary_metrics=metrics,
+    )
+
+
+def _methodology(request: PortfolioBacktestRequest) -> dict[str, object]:
+    return {
+        "calendar": request.calendar, "top_level_rebalance_schedule": request.rebalance_schedule,
+        "alignment_inception_policy": request.alignment_policy,
+        "missing_observation_policy": request.missing_observation_policy,
+        "eligibility_policy": request.eligibility_policy, "exit_cash_policy": request.exit_cash_policy,
+        "annual_risk_free_rate": request.annual_risk_free_rate,
+        "as_of_cutoff": str(pd.Timestamp(request.as_of_cutoff).date()) if request.as_of_cutoff is not None else None,
+        "component_count": len(request.components),
+    }
+
+
+def _fingerprint(request: PortfolioBacktestRequest) -> str:
+    payload = _methodology(request) | {
+        "starting_value": request.starting_value,
+        "components": [{"id": c.component_id, "type": c.component_type, "weight": c.target_weight,
+                        "internal_method": c.internal_method} for c in request.components],
+    }
+    return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+
+def simulate_component_portfolio(
+    components: Sequence[PortfolioComponent], *, starting_value: float = 100.0,
+    rebalance_frequency: RebalanceFrequency = "quarterly",
+) -> PortfolioBacktestResult:
+    """Backward-compatible convenience wrapper around the typed request API."""
+
+    return backtest_component_portfolio(PortfolioBacktestRequest(
+        components=components, starting_value=starting_value, rebalance_schedule=rebalance_frequency,
+    ))

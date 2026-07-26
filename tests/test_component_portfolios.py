@@ -172,3 +172,25 @@ def test_inverse_volatility_is_long_only_and_uses_common_sample():
     assert all(value > 0 for value in weights.values())
     with pytest.raises(ValueError, match="shared levels"):
         inverse_volatility_weights({"a": frames["a"].iloc[:3], "b": frames["b"].iloc[-3:]}, minimum_observations=3)
+
+
+def test_typed_backtest_contract_is_complete_and_fingerprinted():
+    from alt_asset_explorer.component_portfolios import PortfolioBacktestRequest, backtest_component_portfolio
+
+    request = PortfolioBacktestRequest(
+        components=[_component("books", [100, 110, 90])],
+        starting_value=250,
+        rebalance_schedule="none",
+        annual_risk_free_rate=0.02,
+        as_of_cutoff="2025-12-31",
+    )
+    result = backtest_component_portfolio(request)
+
+    assert not result.series.empty
+    assert set(result.drawdown_series) == {"date", "growth_value", "peak_value", "drawdown"}
+    assert not result.eligibility_history.empty
+    assert set(result.cash_ledger["cash_balance"]) == {0.0}
+    assert result.methodology["missing_observation_policy"] == "drop_date"
+    assert result.summary_metrics["starting_value"] == 250
+    assert len(result.configuration_fingerprint) == 64
+    assert not result.errors
