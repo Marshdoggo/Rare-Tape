@@ -43,9 +43,39 @@ def test_precious_minerals_and_coins_master_records():
         assert row["offering_date"] == offering_date
 
 
-def test_new_master_records_have_no_price_history():
+def test_coins_price_histories_reconcile_to_existing_master_without_duplicates():
     assets = pd.read_csv(DATA_NORMALIZED / "assets.csv")
-    asset_ids = set(assets.loc[assets["ticker"].isin(EXPECTED), "asset_id"])
+    coins_master = assets[assets["category"].eq("coins")]
     observations = pd.read_csv(DATA_NORMALIZED / "price_observations.csv")
+    coins = observations[observations["asset_id"].isin(coins_master["asset_id"])].copy()
 
-    assert observations[observations["asset_id"].isin(asset_ids)].empty
+    assert len(coins_master) == 3
+    assert coins_master["ticker"].is_unique
+    assert coins_master["asset_id"].is_unique
+    assert not coins.duplicated(["asset_id", "observed_at"]).any()
+    assert coins.groupby(["asset_id", "frequency"]).size().to_dict() == {
+        ("rally-1857coin", "quarterly"): 16,
+        ("rally-1857coin", "weekly"): 4,
+        ("rally-croesus", "quarterly"): 16,
+        ("rally-justinian", "quarterly"): 18,
+    }
+
+    shares = coins_master.set_index("asset_id")["shares_outstanding"]
+    expected_caps = coins["price_per_share"] * coins["asset_id"].map(shares)
+    assert coins["market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+    assert coins["implied_market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+
+    quarterly = coins[coins["frequency"].eq("quarterly")].set_index(["asset_id", "observed_at"])
+    assert quarterly.loc[("rally-1857coin", "2026-06-26T00:00:00Z"), "market_cap"] == pytest.approx(80_000)
+    assert quarterly.loc[("rally-justinian", "2026-06-26T00:00:00Z"), "market_cap"] == pytest.approx(30_000)
+    assert quarterly.loc[("rally-croesus", "2026-06-30T00:00:00Z"), "market_cap"] == pytest.approx(66_400)
+    assert quarterly.loc[("rally-croesus", "2026-04-01T00:00:00Z"), "period_end"] == "2026-03-31"
+
+    intraperiod = coins[
+        coins["asset_id"].eq("rally-1857coin") & coins["frequency"].eq("weekly")
+    ]
+    assert set(intraperiod["observed_at"]) == {
+        "2026-04-13T00:00:00Z", "2026-04-17T00:00:00Z",
+        "2026-04-21T00:00:00Z", "2026-04-30T00:00:00Z",
+    }
+    assert set(intraperiod["price_per_share"]) == {25.0}

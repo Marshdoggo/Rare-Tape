@@ -1,14 +1,16 @@
 ticker,name,category,subcategory,status,metric,value,source_url,notes,last_updated
 PAPPY1,Pappy Van Winkle Bourbon Assortment,wine and whiskey,bourbon,trading,premium_to_offering,3.6500000000000004,,Live Rally market cap compared with SEC offering cap.,2026-07-27
+1857COIN,1857 “Ship of Gold” Coin,coins,coins,trading,premium_to_offering,2.2,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,rare books,trading,premium_to_offering,2.15,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 LOTR,J.R.R. Tolkien - The Lord of the Rings Trilogy (First Edition),books,rare books,trading,premium_to_offering,1.5862068965517242,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 ANMLFARM,George Orwell - Animal Farm (First Edition),books,rare books,trading,premium_to_offering,1.3450000000000002,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,rare books,trading,premium_to_offering,1.0,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 DUNE,Frank Herbert - Dune (Inscribed First Edition),books,rare books,trading,premium_to_offering,0.9886792452830189,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,art,trading,premium_to_offering,-0.8,,Live Rally market cap compared with SEC offering cap.,2026-07-27
-KEROUAC,Jack Kerouac - On the Road (Signed First Edition),books,rare books,trading,premium_to_offering,-0.7025,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 MEGALODON,Megalodon Fossil,fossils,shark,trading,premium_to_offering,-0.7025,,Live Rally market cap compared with SEC offering cap.,2026-07-27
+KEROUAC,Jack Kerouac - On the Road (Signed First Edition),books,rare books,trading,premium_to_offering,-0.7025,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 MARX,Karl Marx - Das Kapital (First Edition),books,rare books,trading,premium_to_offering,-0.6933333333333334,,Live Rally market cap compared with SEC offering cap.,2026-07-27
+JUSTINIAN,First Depiction of Christ on a Coin,coins,ancient coins,trading,premium_to_offering,0.6666666666666667,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,rare books,trading,premium_to_offering,-0.6290322580645161,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 BOND1,Ian Fleming - Casino Royale (First Edition),books,rare books,trading,premium_to_offering,-0.6128205128205129,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,rare books,trading,premium_to_offering,-0.5900000000000001,,Live Rally market cap compared with SEC offering cap.,2026-07-27
@@ -22,5 +24,3 @@ HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,rare 
 PICNIC,Hermès 35cm Picnic Kelly,handbags,kelly_picnic,trading,premium_to_offering,-0.5074074074074074,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 BONDWATCH,Pierce Brosnan Omega Seamaster James Bond Film-Worn Watch,watches,omega,trading,premium_to_offering,-0.48750000000000004,,Live Rally market cap compared with SEC offering cap.,2026-07-27
 YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,rare books,trading,premium_to_offering,-0.474375,,Live Rally market cap compared with SEC offering cap.,2026-07-27
-BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,birkin_lizard,exited,premium_to_offering,-0.4672413793103448,,Live Rally market cap compared with SEC offering cap.,2026-07-27
-LOTF,William Golding - Lord of the Flies (First Edition),books,rare books,trading,premium_to_offering,-0.4642857142857143,,Live Rally market cap compared with SEC offering cap.,2026-07-27
