@@ -8,11 +8,24 @@ python scripts/build_quarterly_leaderboards.py --full-refresh
 
 ## Source and frequency
 
-The canonical asset inputs are `data/normalized/assets.csv` and `data/normalized/price_observations.csv`. The current observation table is mixed but overwhelmingly authored quarterly evidence; actual `observed_at` timestamps are preserved. Weekly and unclassified rows are not overwritten. Existing committed equal-weight, market-cap-weighted, and full-market quarterly index prototypes are reused from `data/processed/rally_quarterly_indices.csv`; public benchmarks are read from Benchmark Lab's committed local history. Runtime page requests never fetch benchmark data or rebuild rankings.
+The canonical asset inputs are `data/normalized/assets.csv` and `data/normalized/price_observations.csv`. The current observation table is mixed but overwhelmingly authored quarterly evidence; actual `observed_at` timestamps are preserved. Weekly and unclassified rows are not overwritten. Existing committed equal-weight, market-cap-weighted, and full-market quarterly index prototypes are reused from `data/processed/rally_quarterly_indices.csv`; public benchmarks are read from Benchmark Lab's committed local history. Runtime page requests never fetch benchmark data. The standard rebuild writes the large leaderboard archive only to ignored `data/cache/`; when that local cache is absent, the Streamlit process reconstructs the same archive once from committed canonical inputs and caches it in memory.
+
+The Individual Rally Asset subject universe is discovered by joining every asset
+with authored observations in those two canonical tables. There is no category
+allowlist or separately curated subject registry: category labels are carried
+through exactly as normalized at ingestion, so a newly ingested category flows
+into the next standard rebuild automatically.
 
 ## Point-in-time snapshots
 
 Snapshots occur at March 31, June 30, September 30, and December 31. At snapshot `T`, source series are truncated at actual source date `<= T`. A quarterly as-of series selects the latest known value on or before each quarter-end. Values more than 186 days old are unavailable by default. No later observation is moved backward into a prior snapshot. Metrics use only the truncated quarterly series.
+
+For an individual asset, since-inception total return is the simple price return
+from its first eligible authored value through the latest eligible as-of value.
+An authored offering-price observation can therefore establish inception. This
+matches the Rally Market Table's full-return price ratio when both surfaces have
+the same first and latest canonical values; neither calculation includes cash
+distributions or claims to be an investor total-return portfolio simulation.
 
 Historical Rally tradability/status history is not available. Individual eligibility is therefore inferred from price inception, metric history, metric validity, and staleness; current known status is stored separately and must not be interpreted as historical status. Existing index prototypes use their committed artifact dates and retain their research-prototype label. Historical market capitalization is estimated as the latest as-of price times available canonical share count; the repository does not contain a point-in-time share-count history.
 

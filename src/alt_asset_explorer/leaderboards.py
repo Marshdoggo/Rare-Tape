@@ -15,7 +15,9 @@ from .paths import DATA_NORMALIZED, DATA_PROCESSED
 from .portfolio_analytics import portfolio_risk_metrics
 
 METHODOLOGY_VERSION = "rally-leaderboards-v1"
-ARCHIVE_PATH = DATA_PROCESSED / "quarterly_leaderboard_history.parquet"
+# This archive is deterministic but large and binary.  Keep it in the ignored
+# rebuild cache rather than making a generated Parquet file a deployment input.
+ARCHIVE_PATH = DATA_PROCESSED.parent / "cache" / "quarterly_leaderboard_history.parquet"
 ARCHIVE_CSV_PATH = ARCHIVE_PATH.with_suffix(".csv")
 DEFAULT_STALENESS_DAYS = 186
 
@@ -231,6 +233,11 @@ def write_archive_atomic(frame: pd.DataFrame, path: Path = ARCHIVE_PATH) -> Path
 def load_archive(path: Path = ARCHIVE_PATH) -> pd.DataFrame:
     if path.exists(): return pd.read_parquet(path)
     if path.with_suffix(".csv").exists(): return pd.read_csv(path.with_suffix(".csv"),parse_dates=["snapshot_date","latest_observation_date","effective_start_date","effective_end_date","generated_at"])
+    # Deployed checkouts intentionally do not commit the generated archive.
+    # Reconstruct it from the same committed normalized inputs used by the
+    # Market Table; Streamlit caches this result for the process lifetime.
+    if path == ARCHIVE_PATH:
+        return build_default_archive()
     return pd.DataFrame()
 
 

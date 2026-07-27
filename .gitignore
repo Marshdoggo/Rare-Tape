@@ -27,6 +27,9 @@ data/custom_indices/local/*.json
 
 # Deterministic rebuildable analytics; Streamlit computes these from canonical inputs.
 data/cache/
+# Leaderboard archives are reproducible caches, never reviewable source data.
+data/processed/quarterly_leaderboard_history.parquet
+data/processed/quarterly_leaderboard_history.csv
 data/processed/current_asset_universe.csv
 data/processed/current_universe_summary.csv
 data/processed/current_universe_reconciliation.csv
