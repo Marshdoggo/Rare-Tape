@@ -35,9 +35,9 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 
 | Artifact | Rows |
 | --- | ---: |
-| Canonical asset master | 108 |
-| Rally asset decision universe | 108 |
-| Normalized manual assets | 108 |
+| Canonical asset master | 114 |
+| Rally asset decision universe | 114 |
+| Normalized manual assets | 114 |
 | Normalized manual price observations | 1846 |
 | Processed price history | 1750 |
 | General Rally index rows | 632 |
@@ -46,14 +46,18 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Rally exits | 11 |
 | Comparable sales universe | 6 |
 | Asset-to-comp matches | 0 |
-| Research coverage rows | 108 |
-| Asset universe diagnostics rows | 108 |
+| Research coverage rows | 114 |
+| Asset universe diagnostics rows | 114 |
 
 Counts describe the committed research snapshot and are not live market coverage.
 
 ## Cars Category Expansion (2026-07-25)
 
 The normalized Rally asset master now includes 20 user-provided, currently trading Cars category records. These authoritative static records include normalized offering-month dates, share counts, offering prices, and validated offering market caps. The canonical master and research-coverage artifacts were rebuilt to include the Cars records without adding synthetic price observations; future price-history imports can link to them by ticker. Current-tradable calculations continue to require a valid recent secondary quote, so this metadata ingestion does not by itself represent the records as live quoted listings.
+
+## Art Category Master Coverage (2026-07-27)
+
+The normalized Rally asset master now includes six user-provided Art records (`WARHOL1`, `GRATEFUL1`, `WARHOL2`, `SACHS1`, `ANDYPELE`, and `HIRST1`), all recorded as currently trading and none as exited. Their month-only offering dates use the established first-of-month normalization, and their supplied share counts, offering prices, and offering market caps reconcile exactly. Canonical master, decision-universe, diagnostics, export, scoring, and research-coverage artifacts were rebuilt without adding price observations. Art therefore appears in metadata-driven selectors and historical-master coverage, while price-dependent indices, returns, current-quoted universes, and contribution analytics remain unavailable until authored ticker-linked price history is ingested.
 
 ## Manual Cars Price Coverage Update (Five Assets, 2026-07-25)
 

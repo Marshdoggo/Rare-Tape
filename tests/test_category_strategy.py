@@ -18,7 +18,10 @@ def production_books_inputs():
 @pytest.fixture(scope="module")
 def production_books_minus_two(production_books_inputs):
     assets, observations, book_ids = production_books_inputs
-    return assets, observations, book_ids, frozenset(book_ids[-2:])
+    trading_book_ids = assets.loc[
+        assets["asset_id"].isin(book_ids) & assets["status"].eq("trading"), "asset_id"
+    ]
+    return assets, observations, book_ids, frozenset(trading_book_ids.iloc[-2:])
 
 
 def test_full_production_books_admits_all_launches(production_books_inputs):
