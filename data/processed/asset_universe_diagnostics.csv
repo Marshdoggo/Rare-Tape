@@ -66,7 +66,7 @@ rally-federal,FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Editio
 rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,trading,active_tradable,True,True,False,True,26,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-gmtblack1,GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,watches,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-gold1,GOLD1,172 GM Gold Nugget,precious minerals,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-gold1,GOLD1,172 GM Gold Nugget,precious minerals,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,21,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-grateful1,GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,trading,active_tradable,True,True,False,True,15,2022-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gwtw,GWTW,Gone with the Wind (Inscribed First Printing),books,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -89,7 +89,7 @@ rally-macallan2,MACALLAN2,Macallan 40-Year-Old Whisky,wine and whiskey,trading,a
 rally-macallan3,MACALLAN3,1938 Macallan Red Ribbon Whisky,wine and whiskey,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-marx,MARX,Karl Marx - Das Kapital (First Edition),books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-megalodon,MEGALODON,Megalodon Fossil,fossils,trading,active_tradable,True,True,False,True,16,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-meteorite,METEORITE,Lunar Meteorite,precious minerals,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-meteorite,METEORITE,Lunar Meteorite,precious minerals,trading,active_tradable,True,True,False,True,19,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-mobydick,MOBYDICK,Herman Melville - Moby-Dick (First Edition),books,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-mosasaur,MOSASAUR,Mosasaur,fossils,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-newton,NEWTON,Isaac Newton - Principia (First Edition),books,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False

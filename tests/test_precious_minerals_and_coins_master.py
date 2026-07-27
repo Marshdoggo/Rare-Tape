@@ -79,3 +79,29 @@ def test_coins_price_histories_reconcile_to_existing_master_without_duplicates()
         "2026-04-21T00:00:00Z", "2026-04-30T00:00:00Z",
     }
     assert set(intraperiod["price_per_share"]) == {25.0}
+
+
+def test_precious_minerals_price_histories_reconcile_without_duplicates():
+    assets = pd.read_csv(DATA_NORMALIZED / "assets.csv")
+    master = assets[assets["category"].eq("precious minerals")]
+    observations = pd.read_csv(DATA_NORMALIZED / "price_observations.csv")
+    minerals = observations[observations["asset_id"].isin(master["asset_id"])].copy()
+
+    assert len(master) == 2
+    assert master["ticker"].is_unique
+    assert master["asset_id"].is_unique
+    assert not minerals.duplicated(["asset_id", "observed_at"]).any()
+    assert minerals.groupby("asset_id").size().to_dict() == {
+        "rally-gold1": 17,
+        "rally-meteorite": 20,
+    }
+
+    shares = master.set_index("asset_id")["shares_outstanding"]
+    expected_caps = minerals["price_per_share"] * minerals["asset_id"].map(shares)
+    assert minerals["market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+    assert minerals["implied_market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+
+    final = minerals.sort_values("observed_at").groupby("asset_id").tail(1).set_index("asset_id")
+    assert final.loc["rally-gold1", "market_cap"] == pytest.approx(40_000)
+    assert final.loc["rally-meteorite", "market_cap"] == pytest.approx(126_875)
+    assert set(minerals["frequency"]) == {"quarterly"}
