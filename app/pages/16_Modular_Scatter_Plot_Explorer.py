@@ -15,11 +15,17 @@ from app_data import get_canonical_market, render_data_diagnostics  # noqa: E402
 from alt_asset_explorer.scatter_explorer import (  # noqa: E402
     AXIS_METRICS,
     COLOR_METRICS,
+    DEFAULT_COLOR_METRIC,
+    DEFAULT_MINIMUM_RETURNS,
+    DEFAULT_SIZE_METRIC,
+    DEFAULT_X_METRIC,
+    DEFAULT_Y_METRIC,
     METRICS,
     SIZE_METRICS,
     build_asset_metric_table,
     export_scatter_csv,
     filter_universe,
+    median_guides,
     prepare_scatter_data,
 )
 
@@ -56,23 +62,25 @@ def label(key: str) -> str:
 x_metric = controls[0].selectbox(
     "X-axis metric",
     AXIS_METRICS,
-    index=AXIS_METRICS.index("annualized_mean_return"),
+    index=AXIS_METRICS.index(DEFAULT_X_METRIC),
     format_func=label,
 )
 y_metric = controls[1].selectbox(
     "Y-axis metric",
     AXIS_METRICS,
-    index=AXIS_METRICS.index("annualized_volatility"),
+    index=AXIS_METRICS.index(DEFAULT_Y_METRIC),
     format_func=label,
 )
 size_metric = controls[2].selectbox(
     "Dot-size metric",
     SIZE_METRICS,
+    index=SIZE_METRICS.index(DEFAULT_SIZE_METRIC),
     format_func=lambda k: "Equal size / none" if k == "equal_size" else label(k),
 )
 color_metric = controls[3].selectbox(
     "Dot-color dimension",
     COLOR_METRICS,
+    index=COLOR_METRICS.index(DEFAULT_COLOR_METRIC),
     format_func=lambda k: "Single color / none" if k == "single_color" else label(k),
 )
 
@@ -127,11 +135,19 @@ with filter_col.expander("Universe and quality filters", expanded=True):
     statuses = b.multiselect(
         "Trading statuses",
         statuses_all,
-        default=statuses_all
-        if include_exited
-        else [s for s in statuses_all if s == "trading"],
+        default=(
+            statuses_all
+            if include_exited
+            else [s for s in statuses_all if s == "trading"]
+        ),
     )
-    minimum_returns = c.number_input("Minimum valid return observations", 1, 40, 4)
+    minimum_returns = c.number_input(
+        "Minimum valid return observations", 1, 40, DEFAULT_MINIMUM_RETURNS
+    )
+    c.caption(
+        "Lower thresholds include more assets; higher thresholds improve estimate "
+        "stability. Sparse collectible observations may understate or distort volatility."
+    )
     minimum_history = c.number_input(
         "Minimum history length (years)", 0.0, 10.0, 0.0, 0.25
     )
@@ -223,7 +239,7 @@ summary[1].metric("Plotted subjects", counts["plotted"])
 summary[2].metric("Excluded subjects", eligible_before_observations - counts["plotted"])
 summary[3].metric("Insufficient observations", insufficient)
 
-options = st.columns(4)
+options = st.columns(5)
 x_log = options[0].toggle("Log X-axis", disabled=not METRICS[x_metric].log_allowed)
 y_log = options[1].toggle("Log Y-axis", disabled=not METRICS[y_metric].log_allowed)
 show_labels = options[2].toggle("Show ticker labels")
@@ -234,6 +250,7 @@ robust_color = options[3].toggle(
     or METRICS[color_metric].metric_type != "numeric",
     help="Clips display colors to the 5th–95th percentiles; raw values remain in hover and CSV.",
 )
+show_medians = options[4].toggle("Show median guides", value=True)
 
 if scatter.empty:
     st.warning(
@@ -253,8 +270,6 @@ else:
         scatter,
         x=x_metric,
         y=y_metric,
-        size="marker_size",
-        size_max=42,
         color="display_color",
         text="ticker" if show_labels else None,
         range_color=range_color,
@@ -262,9 +277,15 @@ else:
         labels={
             x_metric: label(x_metric),
             y_metric: label(y_metric),
-            "display_color": "All assets"
-            if color_metric == "single_color"
-            else label(color_metric),
+            "display_color": (
+                "All assets" if color_metric == "single_color" else label(color_metric)
+            ),
+            "marker_size_hover": (
+                "Marker size"
+                if size_metric == "equal_size"
+                else f"Raw {label(size_metric)}"
+            ),
+            "median_observation_gap_days": "Median observation gap (days)",
         },
         hover_name="asset_name",
         hover_data={
@@ -272,28 +293,56 @@ else:
             "category": True,
             "subcategory": True,
             "status": True,
-            x_metric: ":.3f",
-            y_metric: ":.3f",
+            x_metric: ":.1%" if METRICS[x_metric].format_style == "percent" else ":.3f",
+            y_metric: ":.1%" if METRICS[y_metric].format_style == "percent" else ":.3f",
             "market_cap": ":,.0f",
+            "annualized_volatility": ":.1%",
+            "annualized_mean_return": ":.1%",
             "effective_start": True,
             "effective_end": True,
+            "history_years": ":.2f",
+            "median_observation_gap_days": ":.0f",
+            "latest_observation_date": True,
             "observation_count": True,
             "marker_size": False,
+            "marker_size_hover": True,
         },
     )
-    figure.update_traces(
-        marker={"sizemode": "diameter", "line": {"width": 0.5, "color": "white"}},
-        textposition="top center",
-    )
-    figure.update_xaxes(type="log" if x_log else "linear")
-    figure.update_yaxes(type="log" if y_log else "linear")
+    # marker_size is already a safe pixel diameter. Do not let Plotly Express
+    # calculate a second sizeref (the source of the former giant bubbles).
+    for trace in figure.data:
+        trace_rows = scatter
+        if not color_continuous and color_metric != "single_color":
+            trace_rows = scatter[scatter["display_color"].astype(str).eq(trace.name)]
+        trace.update(
+            marker={
+                "size": trace_rows["marker_size"].tolist(),
+                "sizemode": "diameter",
+                "opacity": 0.78,
+                "line": {"width": 0.6, "color": "rgba(255,255,255,0.75)"},
+            },
+            textposition="top center",
+        )
+    x_tick = ".0%" if METRICS[x_metric].format_style == "percent" else None
+    y_tick = ".0%" if METRICS[y_metric].format_style == "percent" else None
+    figure.update_xaxes(type="log" if x_log else "linear", tickformat=x_tick)
+    figure.update_yaxes(type="log" if y_log else "linear", tickformat=y_tick)
+    guides = median_guides(scatter, x_metric, y_metric) if show_medians else None
+    if guides is not None:
+        figure.add_vline(
+            x=guides[0], line_width=1, line_dash="dot", line_color="#8b949e"
+        )
+        figure.add_hline(
+            y=guides[1], line_width=1, line_dash="dot", line_color="#8b949e"
+        )
     figure.update_layout(
-        height=680,
+        height=620,
+        margin={"l": 55, "r": 30, "t": 35, "b": 55},
         legend_title_text=label(color_metric) if color_metric != "single_color" else "",
     )
     st.plotly_chart(figure, use_container_width=True)
 
-if x_metric == "annualized_mean_return" and y_metric == "annualized_volatility":
+if x_metric == "annualized_volatility" and y_metric == "annualized_mean_return":
     st.info(
         "Higher and farther left generally indicates higher return with lower volatility. A ray from the risk-free-rate intercept would represent an equal approximate Sharpe ratio; the coordinates are not themselves Sharpe ratios. Sparse collectible valuations may understate true economic volatility."
     )
