@@ -102,3 +102,8 @@ rally-91mv1,91MV1,1991 Mitsubishi 3000GT VR-4,cars,classic cars,,,2018-11-01,19.
 rally-75ra1,75RA1,1975 Renault Alpine A110,cars,classic cars,,,2019-03-01,28.0,3000,,,,1.0,0.5,trading,Currently trading. Submitted offering_date was 2019-03.,,,,
 rally-77le1,77LE1,1977 Lotus Esprit S1,cars,classic cars,,,2016-11-01,38.85,2000,,,,1.0,0.5,trading,Currently trading. Submitted offering_date was 2016-11.,,,,
 rally-11bm1,11BM1,2011 BMW 1M,cars,classic cars,,,2019-01-01,42.0,2000,,,,1.0,0.5,trading,Currently trading. Submitted offering_date was 2019-01.,,,,
+rally-catcher,CATCHER,J.D. Salinger's The Catcher in the Rye,books,rare books,,,2020-06-01,25.0,500,,,,1.0,0.5,exited,Exited Books asset; no quarterly price observations added.,2026-07-20,27.95,13975.0,other
+rally-einstein,EINSTEIN,"Albert Einstein's Philosopher-Scientist, Signed First Edition",books,rare books,,,2019-12-01,7.25,2000,,,,1.0,0.5,exited,Exited Books asset; no quarterly price observations added.,2026-02-09,8.27,16540.0,other
+rally-federal,FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,rare books,,,2021-01-01,15.0,10000,,,,1.0,0.5,exited,Exited Books asset; no quarterly price observations added.,2024-09-19,19.5,195000.0,other
+rally-hobbit,HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,rare books,,,2021-12-01,8.0,10000,,,,1.0,0.5,exited,Exited Books asset; no quarterly price observations added.,2024-11-13,9.0,90000.0,other
+rally-potter,POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,rare books,,,2019-11-01,24.0,3000,,,,1.0,0.5,exited,Exited Books asset; no quarterly price observations added. Exact total exit value is authoritative; per-share exit price is derived from it.,2024-02-13,44.16666666666666,132500.0,other

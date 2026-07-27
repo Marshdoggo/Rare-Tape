@@ -40,7 +40,7 @@ class CanonicalMarketData:
     exit_analytics: pd.DataFrame
 
 
-def _manual_exits_from_assets(manual_assets: pd.DataFrame) -> pd.DataFrame:
+def manual_exits_from_assets(manual_assets: pd.DataFrame) -> pd.DataFrame:
     if manual_assets.empty or "exit_date" not in manual_assets:
         return pd.DataFrame()
     rows = []
@@ -63,6 +63,16 @@ def _manual_exits_from_assets(manual_assets: pd.DataFrame) -> pd.DataFrame:
                 "exit_price_per_share": row.get("exit_price_per_share"),
                 "exit_total_value": row.get("exit_value_total"),
                 "shares_at_exit": row.get("shares_outstanding"),
+                "realized_return": (
+                    float(row.get("exit_value_total"))
+                    / float(row.get("shares_outstanding"))
+                    / float(row.get("offering_price_per_share"))
+                    - 1
+                    if pd.notna(row.get("exit_value_total"))
+                    and pd.notna(row.get("shares_outstanding"))
+                    and pd.notna(row.get("offering_price_per_share"))
+                    else pd.NA
+                ),
                 "source_reference": row.get("source_reference"),
                 "notes": row.get("notes"),
                 "is_confirmed": True,
@@ -119,7 +129,7 @@ def build_canonical_market_data(*, as_of: date | None = None) -> CanonicalMarket
     secondary_prices = load_secondary_prices()
     authored_price_observations = load_authored_price_observations()
     master = build_canonical_asset_master(authored_assets, secondary_prices, as_of=as_of)
-    manual_exits = _manual_exits_from_assets(pd.read_csv(DATA_NORMALIZED / "assets.csv") if (DATA_NORMALIZED / "assets.csv").exists() else pd.DataFrame())
+    manual_exits = manual_exits_from_assets(pd.read_csv(DATA_NORMALIZED / "assets.csv") if (DATA_NORMALIZED / "assets.csv").exists() else pd.DataFrame())
     exchange = rebuild_exchange_history(master, quarterly_prices, manual_exits, frequency="native", persist=False)
     current = build_current_asset_universe(master, exchange.asset_history, as_of_date=as_of)
     summary = pd.DataFrame([calculate_current_universe_summary(current)])

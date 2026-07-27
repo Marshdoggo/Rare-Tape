@@ -23,6 +23,10 @@ CANONICAL_ASSET_COLUMNS = [
     "offering_date",
     "offering_price_usd",
     "offering_valuation_usd",
+    "exit_date",
+    "exit_price_per_share",
+    "exit_value_usd",
+    "total_return_at_exit",
     "acquisition_cost_usd",
     "rally_url",
     "sec_filing_url",
@@ -145,6 +149,10 @@ def build_canonical_asset_master(
             "offering_date": _date_iso(item.get("offering_date")),
             "offering_price_usd": None,
             "offering_valuation_usd": _num(item.get("offering_market_cap_usd")),
+            "exit_date": _date_iso(item.get("exit_date")),
+            "exit_price_per_share": _num(item.get("exit_price_per_share")),
+            "exit_value_usd": _num(item.get("exit_market_cap_usd")) or _num(item.get("exit_value_total")),
+            "total_return_at_exit": _num(item.get("total_return_at_exit")),
             "acquisition_cost_usd": _num(item.get("acquisition_cost_usd")),
             "rally_url": source_url if source_url and "rally" in source_url.lower() else None,
             "sec_filing_url": sec_url if sec_url and "sec.gov" in sec_url.lower() else sec_url,
@@ -158,6 +166,8 @@ def build_canonical_asset_master(
         shares = row["share_count"]
         valuation = row["offering_valuation_usd"]
         row["offering_price_usd"] = valuation / shares if shares and valuation else None
+        if row["total_return_at_exit"] is None and shares and row["offering_price_usd"] and row["exit_value_usd"]:
+            row["total_return_at_exit"] = row["exit_value_usd"] / shares / row["offering_price_usd"] - 1
         row["source_type"] = _source_type(pd.Series(row))
         row["data_quality_status"], row["data_quality_warnings"] = _quality(pd.Series(row), as_of=as_of)
         rows.append(row)

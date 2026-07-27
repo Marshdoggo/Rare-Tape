@@ -33,7 +33,9 @@ RALLY_ASSET_COLUMNS = [
     "sec_filing_url",
     "status",
     "exit_date",
+    "exit_price_per_share",
     "exit_market_cap_usd",
+    "total_return_at_exit",
     "source_notes",
 ]
 
@@ -454,6 +456,13 @@ def build_rally_asset_universe(
         status = "trading" if status_raw in {"active", "live", "trading"} else status_raw
         if exit_row is not None:
             status = "exited"
+        exit_price = _num(exit_row.get("exit_price_per_share")) if exit_row is not None else _num(asset.get("exit_price_per_share"))
+        exit_value = _num(exit_row.get("exit_total_value")) if exit_row is not None else _num(asset.get("exit_value_total"))
+        total_return = (
+            exit_value / shares / offering_price - 1
+            if exit_value and shares and offering_price
+            else None
+        )
         rows.append(
             {
                 "asset_id": asset.get("asset_id"),
@@ -479,7 +488,9 @@ def build_rally_asset_universe(
                 "sec_filing_url": sec.get("filing_url") if sec is not None else asset.get("source_url"),
                 "status": status,
                 "exit_date": _date(exit_row.get("sale_date")) if exit_row is not None else None,
-                "exit_market_cap_usd": _num(exit_row.get("sale_price")) if exit_row is not None else None,
+                "exit_price_per_share": exit_price,
+                "exit_market_cap_usd": exit_value,
+                "total_return_at_exit": total_return,
                 "source_notes": asset.get("notes") or asset.get("source_url"),
             }
         )

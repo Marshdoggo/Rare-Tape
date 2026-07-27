@@ -43,7 +43,10 @@ def test_phase_zero_uses_exact_committed_production_schemas_and_books_snapshot(n
     assets, observations = normalized_sources
     assert tuple(assets.columns) == NORMALIZED_ASSET_COLUMNS
     assert tuple(observations.columns) == NORMALIZED_OBSERVATION_COLUMNS
-    assert tuple(sorted(assets.loc[assets["category"].eq("books"), "asset_id"])) == BOOK_IDS
+    trading_books = assets.loc[
+        assets["category"].eq("books") & assets["status"].eq("trading"), "asset_id"
+    ]
+    assert tuple(sorted(trading_books)) == BOOK_IDS
 
 
 def test_phase_zero_books_resolution_and_alignment_contract(normalized_sources):
