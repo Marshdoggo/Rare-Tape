@@ -35,9 +35,9 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 
 | Artifact | Rows |
 | --- | ---: |
-| Canonical asset master | 114 |
-| Rally asset decision universe | 114 |
-| Normalized manual assets | 114 |
+| Canonical asset master | 119 |
+| Rally asset decision universe | 119 |
+| Normalized manual assets | 119 |
 | Normalized manual price observations | 1941 |
 | Processed price history | 1839 |
 | General Rally index rows | 636 |
@@ -46,10 +46,14 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Rally exits | 11 |
 | Comparable sales universe | 6 |
 | Asset-to-comp matches | 0 |
-| Research coverage rows | 114 |
-| Asset universe diagnostics rows | 114 |
+| Research coverage rows | 119 |
+| Asset universe diagnostics rows | 119 |
 
 Counts describe the committed research snapshot and are not live market coverage.
+
+## Precious Minerals And Coins Master Coverage (2026-07-27)
+
+The normalized Rally asset master includes two currently trading Precious Minerals records (`GOLD1` and `METEORITE`) and three currently trading Coins records (`1857COIN`, `JUSTINIAN`, and `CROESUS`), with no exited records in either category. The user-facing 1857 coin label is normalized to the canonical ticker `1857COIN`. Month-only offering dates use first-of-month normalization, and all supplied share counts, offering prices, and initial market caps reconcile exactly. These metadata-only additions register both categories for schema validation and data-driven application selectors, portfolio tools, custom baskets, and future category index construction. No price observations were added, so price-dependent indexes and benchmark comparisons remain unavailable until authored history is ingested.
 
 ## Cars Category Expansion (2026-07-25)
 

@@ -12,6 +12,7 @@ rally-14drc,14DRC,2014 Domaine de la Romanée-Conti Assortment,wine and whiskey,
 rally-16petrus,16PETRUS,2016 Château Pétrus,wine and whiskey,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-16screag,16SCREAG,2016 Screaming Eagle,wine and whiskey,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-17dujac,17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,exited,exited,True,False,True,True,17,2021-03-31,2025-06-30,True,True,True,included,True,True,True,True
+rally-1857coin,1857COIN,1857 “Ship of Gold” Coin,coins,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-55ps1,55PS1,1955 Porsche 356 Speedster,cars,trading,active_tradable,True,True,False,True,30,2018-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-59bond,59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,trading,active_tradable,True,True,False,True,21,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-59jfk,59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -53,6 +54,7 @@ rally-brosgrimm,BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,trading,active_t
 rally-catcher,CATCHER,J.D. Salinger's The Catcher in the Rye,books,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-churchill,CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-congress,CONGRESS,Journals of the Continental Congress (1774–1775),books,trading,active_tradable,True,True,False,True,20,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
+rally-croesus,CROESUS,561–546 BC First Gold Coin,coins,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-deaton,DEATON,Deaton Triceratops Skull,fossils,exit_announced,exit_announced,True,False,True,True,22,2021-01-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-dimaggio2,DIMAGGIO2,DiMaggio 2 Watch,watches,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-dominos,DOMINOS,Domino's Pizza Special Edition Rolex Air-King,watches,trading,active_tradable,True,True,False,True,22,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -64,6 +66,7 @@ rally-federal,FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Editio
 rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,trading,active_tradable,True,True,False,True,26,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-gmtblack1,GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,watches,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
+rally-gold1,GOLD1,172 GM Gold Nugget,precious minerals,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,21,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-grateful1,GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,trading,active_tradable,True,True,False,True,15,2022-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gwtw,GWTW,Gone with the Wind (Inscribed First Printing),books,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -75,6 +78,7 @@ rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-irobot,IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-jekyll,JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),books,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
+rally-justinian,JUSTINIAN,First Depiction of Christ on a Coin,coins,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-karuizawa,KARUIZAWA,Karuizawa Aqua of Life 50-Year-Old Whisky,wine and whiskey,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-keller,KELLER,Helen Keller 1892 Book (Inscribed),books,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-kerouac,KEROUAC,Jack Kerouac - On the Road (Signed First Edition),books,trading,active_tradable,True,True,False,True,22,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -85,6 +89,7 @@ rally-macallan2,MACALLAN2,Macallan 40-Year-Old Whisky,wine and whiskey,trading,a
 rally-macallan3,MACALLAN3,1938 Macallan Red Ribbon Whisky,wine and whiskey,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-marx,MARX,Karl Marx - Das Kapital (First Edition),books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-megalodon,MEGALODON,Megalodon Fossil,fossils,trading,active_tradable,True,True,False,True,16,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
+rally-meteorite,METEORITE,Lunar Meteorite,precious minerals,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-mobydick,MOBYDICK,Herman Melville - Moby-Dick (First Edition),books,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-mosasaur,MOSASAUR,Mosasaur,fossils,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-newton,NEWTON,Isaac Newton - Principia (First Edition),books,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
