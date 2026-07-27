@@ -6,6 +6,13 @@ import pytest
 from alt_asset_explorer.scatter_explorer import (
     AXIS_METRICS,
     COLOR_METRICS,
+    DEFAULT_COLOR_METRIC,
+    DEFAULT_MINIMUM_RETURNS,
+    DEFAULT_SIZE_METRIC,
+    DEFAULT_X_METRIC,
+    DEFAULT_Y_METRIC,
+    MAX_MARKER_SIZE,
+    MIN_MARKER_SIZE,
     METRICS,
     build_asset_metric_table,
     calculate_series_metrics,
@@ -13,6 +20,7 @@ from alt_asset_explorer.scatter_explorer import (
     filter_date_range,
     filter_universe,
     marker_sizes,
+    median_guides,
     prepare_scatter_data,
     validate_registry,
 )
@@ -131,10 +139,42 @@ def test_universe_category_active_exited_and_search_filters():
 
 
 def test_marker_size_is_bounded_for_extremes_and_missing_values():
-    result = marker_sizes(pd.Series([1, 100, 10**12, None]))
-    assert result.between(9, 42).all()
-    assert result.iloc[-1] == 9
-    assert result.iloc[2] <= 42
+    result = marker_sizes(pd.Series([1, 100, 10**12, None, 0, -5, math.inf]))
+    assert result.between(MIN_MARKER_SIZE, MAX_MARKER_SIZE).all()
+    assert result.iloc[-4] == MIN_MARKER_SIZE
+    assert result.iloc[2] <= MAX_MARKER_SIZE
+
+
+def test_marker_size_constant_and_uniform_defaults_are_safe():
+    constant = marker_sizes(pd.Series([100, 100, 100]))
+    assert constant.nunique() == 1 and constant.map(math.isfinite).all()
+    table = pd.DataFrame(
+        {
+            "annualized_volatility": [0.1, 0.2],
+            "annualized_mean_return": [0.2, 0.3],
+            "category": ["a", "b"],
+        }
+    )
+    scatter, _ = prepare_scatter_data(
+        table,
+        DEFAULT_X_METRIC,
+        DEFAULT_Y_METRIC,
+        DEFAULT_SIZE_METRIC,
+        DEFAULT_COLOR_METRIC,
+    )
+    assert scatter["marker_size"].nunique() == 1
+
+
+def test_defaults_and_filtered_median_guides():
+    assert (
+        DEFAULT_X_METRIC,
+        DEFAULT_Y_METRIC,
+        DEFAULT_SIZE_METRIC,
+        DEFAULT_COLOR_METRIC,
+    ) == ("annualized_volatility", "annualized_mean_return", "equal_size", "category")
+    assert DEFAULT_MINIMUM_RETURNS == 6
+    plotted = pd.DataFrame({"x": [1.0, 10.0, 100.0], "y": [-2.0, 2.0, 8.0]})
+    assert median_guides(plotted.iloc[:2], "x", "y") == (5.5, 0.0)
 
 
 def test_categorical_and_continuous_color_preparation_and_no_valid_points():

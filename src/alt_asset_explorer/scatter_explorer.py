@@ -8,6 +8,15 @@ from typing import Literal
 
 import pandas as pd
 
+DEFAULT_X_METRIC = "annualized_volatility"
+DEFAULT_Y_METRIC = "annualized_mean_return"
+DEFAULT_SIZE_METRIC = "equal_size"
+DEFAULT_COLOR_METRIC = "category"
+DEFAULT_MINIMUM_RETURNS = 6
+UNIFORM_MARKER_SIZE = 10.0
+MIN_MARKER_SIZE = 8.0
+MAX_MARKER_SIZE = 30.0
+
 
 @dataclass(frozen=True)
 class MetricDefinition:
@@ -254,13 +263,13 @@ AXIS_METRICS = tuple(
     k for k, m in METRICS.items() if m.metric_type in {"numeric", "date"}
 )
 SIZE_METRICS = (
+    "equal_size",
     "market_cap",
     "offering_valuation",
     "shares_outstanding",
     "current_price",
     "history_years",
     "observation_count",
-    "equal_size",
 )
 COLOR_METRICS = (
     "category",
@@ -282,7 +291,11 @@ def validate_registry(registry: dict[str, MetricDefinition] = METRICS) -> None:
         raise ValueError("Metric registry keys must match metric definitions")
     if len({metric.display_name for metric in registry.values()}) != len(registry):
         raise ValueError("Metric display names must be unique")
-    for key in (*AXIS_METRICS, *SIZE_METRICS[:-1], *COLOR_METRICS[:-1]):
+    for key in (
+        *AXIS_METRICS,
+        *(k for k in SIZE_METRICS if k != "equal_size"),
+        *COLOR_METRICS[:-1],
+    ):
         if key not in registry:
             raise ValueError(f"Unknown registered metric: {key}")
 
@@ -298,11 +311,7 @@ def _frequency(dates: pd.DatetimeIndex) -> tuple[float, str]:
         periods = (
             52.0
             if median <= 10
-            else 12.0
-            if median <= 45
-            else 4.0
-            if median <= 120
-            else 1.0
+            else 12.0 if median <= 45 else 4.0 if median <= 120 else 1.0
         )
         return (
             periods,
@@ -345,6 +354,11 @@ def calculate_series_metrics(
         "current_price": clean.iloc[-1] if len(clean) else math.nan,
         "periods_per_year": periods,
         "frequency_methodology": methodology,
+        "median_observation_gap_days": (
+            float(pd.Series(clean.index).diff().dt.days.dropna().median())
+            if len(clean) > 1
+            else math.nan
+        ),
     }
     keys = (
         "annualized_mean_return",
@@ -382,12 +396,14 @@ def calculate_series_metrics(
             "total_return": total,
             "mean_period_return": mean,
             "period_volatility": std,
-            "sharpe_ratio": (mean - periodic_rf) / std * math.sqrt(periods)
-            if std > 0
-            else math.nan,
-            "sortino_ratio": (mean - periodic_rf) * periods / downside_deviation
-            if downside_deviation > 0
-            else math.nan,
+            "sharpe_ratio": (
+                (mean - periodic_rf) / std * math.sqrt(periods) if std > 0 else math.nan
+            ),
+            "sortino_ratio": (
+                (mean - periodic_rf) * periods / downside_deviation
+                if downside_deviation > 0
+                else math.nan
+            ),
             "maximum_drawdown": max_drawdown,
             "calmar_ratio": cagr / abs(max_drawdown) if max_drawdown < 0 else math.nan,
             "positive_period_percentage": (returns > 0).mean(),
@@ -521,21 +537,50 @@ def filter_universe(
 
 
 def marker_sizes(
-    values: pd.Series, *, minimum: float = 9, maximum: float = 42, scale: float = 1.0
+    values: pd.Series,
+    *,
+    minimum: float = MIN_MARKER_SIZE,
+    maximum: float = MAX_MARKER_SIZE,
+    scale: float = 1.0,
 ) -> pd.Series:
-    numeric = pd.to_numeric(values, errors="coerce").clip(lower=0)
+    """Return explicit, bounded pixel diameters while leaving raw values untouched.
+
+    Plotly must receive this result directly rather than through Express's ``size``
+    argument; otherwise Express adds a ``sizeref`` and scales these pixels again.
+    """
+    numeric = pd.to_numeric(values, errors="coerce").replace(
+        [math.inf, -math.inf], math.nan
+    )
+    numeric = numeric.where(numeric.gt(0))
     positive = numeric[numeric.gt(0)]
     if positive.empty:
-        return pd.Series(minimum * scale, index=values.index, dtype=float)
-    transformed = numeric.pow(0.5)
-    low, high = transformed[transformed.gt(0)].quantile([0.05, 0.95])
+        return pd.Series(UNIFORM_MARKER_SIZE, index=values.index, dtype=float)
+    # Upper winsorization is display-only. log1p keeps highly skewed monetary and
+    # count metrics legible without changing raw hover/export values.
+    clipped = numeric.clip(upper=positive.quantile(0.95))
+    transformed = clipped.map(
+        lambda value: math.log1p(value) if pd.notna(value) else math.nan
+    )
+    low, high = transformed.min(), transformed.max()
     if high <= low:
-        scaled = pd.Series((minimum + maximum) / 2, index=values.index)
+        scaled = pd.Series(UNIFORM_MARKER_SIZE, index=values.index, dtype=float)
     else:
-        scaled = minimum + (transformed.clip(low, high) - low) / (high - low) * (
-            maximum - minimum
-        )
-    return scaled.fillna(minimum).clip(minimum, maximum) * scale
+        scaled = minimum + (transformed - low) / (high - low) * (maximum - minimum)
+    # Intensity may only move diameters within the same hard safety bounds.
+    return (scaled.fillna(minimum) * scale).clip(minimum, maximum).astype(float)
+
+
+def median_guides(table: pd.DataFrame, x: str, y: str) -> tuple[float, float] | None:
+    """Return finite medians from the currently plotted rows only."""
+    x_values = pd.to_numeric(table.get(x), errors="coerce").replace(
+        [math.inf, -math.inf], math.nan
+    )
+    y_values = pd.to_numeric(table.get(y), errors="coerce").replace(
+        [math.inf, -math.inf], math.nan
+    )
+    if x_values.dropna().empty or y_values.dropna().empty:
+        return None
+    return float(x_values.median()), float(y_values.median())
 
 
 def prepare_scatter_data(
@@ -552,7 +597,16 @@ def prepare_scatter_data(
     valid = valid_axis(x) & valid_axis(y)
     missing = int((~valid).sum())
     result = result[valid].copy()
-    result["marker_size"] = 18.0 if size == "equal_size" else marker_sizes(result[size])
+    result["marker_size"] = (
+        UNIFORM_MARKER_SIZE if size == "equal_size" else marker_sizes(result[size])
+    )
+    result["marker_size_hover"] = (
+        "uniform"
+        if size == "equal_size"
+        else result[size].map(
+            lambda value: f"{value:,.3g}" if pd.notna(value) else "unavailable"
+        )
+    )
     if color == "single_color":
         result["display_color"] = "All assets"
     elif METRICS[color].metric_type == "numeric":
@@ -569,7 +623,10 @@ def prepare_scatter_data(
 
 def export_scatter_csv(table: pd.DataFrame) -> bytes:
     return (
-        table.drop(columns=["marker_size", "display_color"], errors="ignore")
+        table.drop(
+            columns=["marker_size", "marker_size_hover", "display_color"],
+            errors="ignore",
+        )
         .to_csv(index=False)
         .encode("utf-8")
     )
