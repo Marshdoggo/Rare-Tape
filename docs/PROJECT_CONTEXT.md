@@ -38,10 +38,10 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 114 |
 | Rally asset decision universe | 114 |
 | Normalized manual assets | 114 |
-| Normalized manual price observations | 1846 |
-| Processed price history | 1750 |
-| General Rally index rows | 632 |
-| Quarterly Rally index rows | 386 |
+| Normalized manual price observations | 1941 |
+| Processed price history | 1839 |
+| General Rally index rows | 636 |
+| Quarterly Rally index rows | 422 |
 | SEC series context | 0 |
 | Rally exits | 11 |
 | Comparable sales universe | 6 |
@@ -57,7 +57,7 @@ The normalized Rally asset master now includes 20 user-provided, currently tradi
 
 ## Art Category Master Coverage (2026-07-27)
 
-The normalized Rally asset master now includes six user-provided Art records (`WARHOL1`, `GRATEFUL1`, `WARHOL2`, `SACHS1`, `ANDYPELE`, and `HIRST1`), all recorded as currently trading and none as exited. Their month-only offering dates use the established first-of-month normalization, and their supplied share counts, offering prices, and offering market caps reconcile exactly. Canonical master, decision-universe, diagnostics, export, scoring, and research-coverage artifacts were rebuilt without adding price observations. Art therefore appears in metadata-driven selectors and historical-master coverage, while price-dependent indices, returns, current-quoted universes, and contribution analytics remain unavailable until authored ticker-linked price history is ingested.
+The normalized Rally asset master includes six user-provided Art records (`WARHOL1`, `GRATEFUL1`, `WARHOL2`, `SACHS1`, `ANDYPELE`, and `HIRST1`), all recorded as currently trading and none as exited. Their month-only master offering dates use the established first-of-month normalization, and their supplied share counts, offering prices, and offering market caps reconcile exactly. The normalized observation layer now contains 95 manually transcribed observations across all six assets: 17 for WARHOL1, 15 for GRATEFUL1, 16 for WARHOL2, 16 for SACHS1, 15 for ANDYPELE, and 16 for HIRST1. The quarterly methodology selects 16, 15, 16, 16, 15, and 15 observations respectively; WARHOL1’s October 31, 2022 and HIRST1’s October 10, 2022 observations remain non-quarterly evidence because later observations in the same quarters are closer to quarter-end. HIRST1 has no Q1 2024 observation, and no missing periods are interpolated or forward-filled. Every price-derived market cap reconciles to authoritative master shares, and every offering observation reconciles to its master offering price and initial market cap. Canonical Art equal-weight and market-cap-weighted quarterly indexes, full-market indexes, coverage, leaderboards, return and contribution inputs, market-cap analytics, and dependent processed artifacts were rebuilt.
 
 ## Manual Cars Price Coverage Update (Five Assets, 2026-07-25)
 

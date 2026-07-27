@@ -39,7 +39,7 @@ rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,trading,active_tradable,True,True
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-aghowl,AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-alice,ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-andypele,ANDYPELE,1977 Andy Warhol Pelé Polaroid,art,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-andypele,ANDYPELE,1977 Andy Warhol Pelé Polaroid,art,trading,active_tradable,True,True,False,True,15,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-anmlfarm,ANMLFARM,George Orwell - Animal Farm (First Edition),books,trading,active_tradable,True,True,False,True,22,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-aproak,APROAK,Audemars Piguet Royal Oak,watches,exited,exited,True,False,True,True,6,2019-12-31,2021-06-30,True,True,True,included,True,True,True,True
 rally-baro,BARO,Barosaurus Skeleton,fossils,sold,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
@@ -65,11 +65,11 @@ rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,trading,acti
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-gmtblack1,GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,watches,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,21,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-grateful1,GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-grateful1,GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,trading,active_tradable,True,True,False,True,15,2022-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gwtw,GWTW,Gone with the Wind (Inscribed First Printing),books,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-hgwells,HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,19,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-himalaya,HIMALAYA,Hermès 30cm Himalaya Birkin,handbags,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-hirst1,HIRST1,"Damien Hirst, The Currency, Painting",art,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-hirst1,HIRST1,"Damien Hirst, The Currency, Painting",art,trading,active_tradable,True,True,False,True,15,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-hobbit,HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -96,7 +96,7 @@ rally-rabbit,RABBIT,The Tale of Peter Rabbit (First Edition),books,trading,activ
 rally-riviera,RIVIERA,1965 Rolex 1601 Datejust Joyera Riviera,watches,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-rlexpepsi,RLEXPEPSI,Rolex GMT-Master II Pepsi Jubilee,watches,trading,active_tradable,True,True,False,True,27,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-roosevelt,ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-sachs1,SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-sachs1,SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-shkspr4,SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",books,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-smurf,SMURF,Rolex Submariner Smurf,watches,trading,active_tradable,True,True,False,True,24,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-snoopy,SNOOPY,Omega Speedmaster Silver Snoopy,watches,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -108,8 +108,8 @@ rally-treasure,TREASURE,Treasure Island (First Edition),books,trading,active_tra
 rally-twocities,TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),books,trading,active_tradable,True,True,False,True,27,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-ulysses,ULYSSES,James Joyce - Ulysses (Matisse Signed),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-walden,WALDEN,Henry David Thoreau - Walden (First Edition),books,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-warhol1,WARHOL1,"1967 Andy Warhol Marilyn Monroe Print, Signed",art,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
-rally-warhol2,WARHOL2,"1969 Andy Warhol Campbell’s Soup Print, Signed",art,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-warhol1,WARHOL1,"1967 Andy Warhol Marilyn Monroe Print, Signed",art,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
+rally-warhol2,WARHOL2,"1969 Andy Warhol Campbell’s Soup Print, Signed",art,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-wildthing,WILDTHING,Where the Wild Things Are (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-wzrdofoz,WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,trading,active_tradable,True,True,False,True,19,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-yoko,YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
