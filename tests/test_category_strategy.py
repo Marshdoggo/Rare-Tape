@@ -24,7 +24,7 @@ def production_books_minus_two(production_books_inputs):
 def test_full_production_books_admits_all_launches(production_books_inputs):
     assets, observations, book_ids = production_books_inputs
     result = simulate_category_strategy(CategoryStrategyDefinition("Books"), assets, observations)
-    assert len(book_ids) == 40
+    assert len(book_ids) == 45
     assert result.eligible_asset_ids == book_ids
     assert result.series.iloc[-1]["active_constituent_count"] == 40
     assert result.series["portfolio_value"].gt(0).all()

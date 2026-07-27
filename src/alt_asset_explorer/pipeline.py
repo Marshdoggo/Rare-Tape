@@ -24,9 +24,10 @@ from alt_asset_explorer.indices import build_quarterly_rally_indices, build_rall
 from alt_asset_explorer.universe import build_asset_universe_diagnostics
 from alt_asset_explorer.exchange_history import rebuild_exchange_history
 from alt_asset_explorer.current_universe import build_current_asset_universe, calculate_current_universe_summary
+from alt_asset_explorer.canonical_market import manual_exits_from_assets
 from alt_asset_explorer.liquidity import compute_liquidity_metrics
 from alt_asset_explorer.normalization import normalize_comps
-from alt_asset_explorer.paths import DATA_PROCESSED, ensure_dirs
+from alt_asset_explorer.paths import DATA_NORMALIZED, DATA_PROCESSED, ensure_dirs
 from alt_asset_explorer.scoring import compute_scores, load_scoring_config
 from alt_asset_explorer.valuation import estimate_navs
 
@@ -47,6 +48,10 @@ def build_dataset(*, as_of: date | None = None) -> dict[str, pd.DataFrame]:
     liquidity = compute_liquidity_metrics(assets, price_history, as_of=as_of)
     scores = compute_scores(assets, navs, liquidity)
     sec_series, exits = build_sec_outputs(EdgarClient(user_agent="cache-only", cache_only=True))
+    manual_exits = manual_exits_from_assets(pd.read_csv(DATA_NORMALIZED / "assets.csv"))
+    if not manual_exits.empty:
+        exits = pd.concat([exits, manual_exits], ignore_index=True)
+        exits = exits.drop_duplicates(subset=["asset_id"], keep="last")
     if exits.empty:
         exits = pd.DataFrame(columns=["exit_id", "asset_id", "series_name", "sale_price", "sale_date", "realized_return", "source_url", "source_confidence"])
     if sec_series.empty:

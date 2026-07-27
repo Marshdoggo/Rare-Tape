@@ -29,6 +29,7 @@ ASSET_STATUSES = {
     "delisted",
     "sold",
     "buyout",
+    "exited",
     "unknown",
 }
 
