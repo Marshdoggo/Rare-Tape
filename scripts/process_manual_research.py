@@ -12,8 +12,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from alt_asset_explorer.manual_imports import import_assets, import_price_history
 from alt_asset_explorer.paths import DATA_NORMALIZED, ensure_dirs
-from alt_asset_explorer.pipeline import build_dataset
-from build_research_coverage import build_research_coverage
+from rebuild_all import rebuild_all
 
 
 def _copy_normalized(source: Path, target: Path) -> None:
@@ -79,15 +78,15 @@ def main() -> int:
         tolerance=args.materiality_tolerance,
         max_quarter_lookback_days=args.max_quarter_lookback_days,
     )
-    coverage = build_research_coverage()
-    outputs = build_dataset()
-    quarterly_indices = outputs.get("rally_quarterly_indices")
+    rebuild = rebuild_all()
+    quarterly_indices = rebuild.processed.get("rally_quarterly_indices")
 
     print("Manual research processing complete.")
     print(_summary_line("Assets", len(asset_outcome.accepted), len(asset_outcome.rejected), len(asset_outcome.warnings)))
     print(_summary_line("Quarterly prices", len(price_outcome.accepted), len(price_outcome.rejected), len(price_outcome.warnings)))
-    print(f"Coverage assets: {len(coverage)}")
+    print(f"Coverage assets: {len(rebuild.research_coverage)}")
     print(f"Quarterly index rows: {len(quarterly_indices) if quarterly_indices is not None else 0}")
+    print(f"Leaderboard states: {len(rebuild.leaderboard_archive)}")
     if asset_outcome.quarantine_path:
         print(f"Asset quarantine: {asset_outcome.quarantine_path}")
     if price_outcome.quarantine_path:

@@ -6,11 +6,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from alt_asset_explorer.pipeline import build_dataset
+from rebuild_all import rebuild_all
 
 
 if __name__ == "__main__":
-    outputs = build_dataset()
-    print("Built processed datasets:")
-    for name, frame in outputs.items():
+    result = rebuild_all()
+    print("Built canonical downstream datasets:")
+    for name, frame in result.processed.items():
         print(f"- {name}: {len(frame)} rows")
+    print(f"- research_coverage: {len(result.research_coverage)} rows")
+    print(f"- quarterly_leaderboard_history: {len(result.leaderboard_archive)} rows")
