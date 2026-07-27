@@ -33,6 +33,43 @@ def test_art_master_has_six_trading_records_with_valid_offerings():
         assert row["offering_date"] == offering_date
 
 
-def test_art_master_has_no_authored_price_observations():
+def test_art_price_histories_reconcile_to_master_without_duplicates():
+    assets = pd.read_csv(DATA_NORMALIZED / "assets.csv").set_index("ticker")
     observations = pd.read_csv(DATA_NORMALIZED / "price_observations.csv")
-    assert set(observations["asset_id"]).isdisjoint({f"rally-{ticker.lower()}" for ticker in EXPECTED})
+    art_ids = {ticker: assets.loc[ticker, "asset_id"] for ticker in EXPECTED}
+    art = observations[observations["asset_id"].isin(art_ids.values())].copy()
+
+    assert len(art) == 95
+    assert not art.duplicated(["asset_id", "observed_at"]).any()
+    assert art.groupby("asset_id").size().to_dict() == {
+        "rally-andypele": 15,
+        "rally-grateful1": 15,
+        "rally-hirst1": 16,
+        "rally-sachs1": 16,
+        "rally-warhol1": 17,
+        "rally-warhol2": 16,
+    }
+    assert art[art["frequency"].eq("quarterly")].groupby("asset_id").size().to_dict() == {
+        "rally-andypele": 15,
+        "rally-grateful1": 15,
+        "rally-hirst1": 15,
+        "rally-sachs1": 16,
+        "rally-warhol1": 16,
+        "rally-warhol2": 16,
+    }
+
+    shares = assets.set_index("asset_id")["shares_outstanding"]
+    expected_caps = art["price_per_share"] * art["asset_id"].map(shares)
+    assert art["market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+    assert art["implied_market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+
+    offerings = art[art["event_type"].eq("offering_price")].set_index("asset_id")
+    for ticker, (_, offer_price, offer_value, _) in EXPECTED.items():
+        row = offerings.loc[art_ids[ticker]]
+        assert row["price_per_share"] == pytest.approx(offer_price)
+        assert row["market_cap"] == pytest.approx(offer_value)
+
+    hirst = art[art["asset_id"].eq("rally-hirst1")]
+    assert not hirst["observed_at"].astype(str).str.startswith("2024-03").any()
+    sachs = art.set_index(["asset_id", "observed_at"])
+    assert sachs.loc[("rally-sachs1", "2025-09-29T00:00:00Z"), "price_per_share"] == pytest.approx(2.50)
