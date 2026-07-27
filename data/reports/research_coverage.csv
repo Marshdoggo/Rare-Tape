@@ -39,6 +39,7 @@ rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,True,True,True,,,0,0,0,0,0,,,,,Fa
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-aghowl,AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,True,True,True,2020-06-23,2026-07-02,26,26,0,0,0,,,,133.0,True,True,,27,,26,,2020-06-30,2026-07-02,,,26,26
 rally-alice,ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,True,True,True,2021-02-02,2026-06-25,22,21,0,0,1,,,,133.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
+rally-andypele,ANDYPELE,1977 Andy Warhol Pelé Polaroid,art,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-anmlfarm,ANMLFARM,George Orwell - Animal Farm (First Edition),books,True,True,True,2021-02-23,2026-07-23,22,22,0,0,0,,,,157.0,True,True,,1,,22,,2021-03-31,2026-07-23,,,22,0
 rally-aproak,APROAK,Audemars Piguet Royal Oak,watches,True,True,True,2020-06-02,2021-05-10,5,5,0,0,0,,,,105.0,True,True,,6,,5,,2020-06-30,2021-06-30,,,5,5
 rally-baro,BARO,Barosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
@@ -64,9 +65,11 @@ rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,True,True,Tr
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,True,True,True,2021-01-05,2026-06-26,22,22,0,0,0,,,,171.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-gmtblack1,GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,watches,True,True,True,2020-10-13,2026-06-30,24,24,0,0,0,,,,144.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
 rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,True,True,True,2021-03-16,2026-06-29,20,20,0,0,0,,,,188.0,True,True,,21,,20,,2021-03-31,2026-06-30,,,20,20
+rally-grateful1,GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-gwtw,GWTW,Gone with the Wind (Inscribed First Printing),books,True,True,True,2022-09-26,2026-06-26,16,16,0,0,0,,,,95.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-hgwells,HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,True,True,True,2021-11-01,2026-06-29,18,0,0,18,0,,,,186.0,True,True,,2,,18,,2021-09-30,2026-06-30,,,18,1
 rally-himalaya,HIMALAYA,Hermès 30cm Himalaya Birkin,handbags,True,True,True,2020-09-15,2026-06-26,24,24,0,0,0,,,,146.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
+rally-hirst1,HIRST1,"Damien Hirst, The Currency, Painting",art,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-hobbit,HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,True,True,True,2022-03-31,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,True,True,True,2021-10-28,2026-06-29,19,19,0,0,0,,,,184.0,True,True,,3,,19,,2021-09-30,2026-06-30,,,19,2
@@ -93,6 +96,7 @@ rally-rabbit,RABBIT,The Tale of Peter Rabbit (First Edition),books,True,True,Tru
 rally-riviera,RIVIERA,1965 Rolex 1601 Datejust Joyera Riviera,watches,True,True,True,2021-09-30,2026-06-26,20,20,0,0,0,,,,95.0,True,True,,21,,20,,2021-09-30,2026-06-30,,,20,20
 rally-rlexpepsi,RLEXPEPSI,Rolex GMT-Master II Pepsi Jubilee,watches,True,True,True,2020-03-17,2026-06-29,26,26,0,0,0,,,,152.0,True,True,,27,,26,,2020-03-31,2026-06-30,,,26,26
 rally-roosevelt,ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),books,True,True,True,2020-06-09,2026-06-30,24,24,0,0,0,,,,157.0,True,True,,25,,24,,2020-06-30,2026-06-30,,,24,24
+rally-sachs1,SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-shkspr4,SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",books,True,True,True,2020-11-10,2026-06-24,23,23,0,0,0,,,,185.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
 rally-smurf,SMURF,Rolex Submariner Smurf,watches,True,True,True,2020-05-05,2026-06-29,23,23,0,0,0,,,,221.0,True,True,,24,,23,,2020-03-31,2026-06-30,,,23,23
 rally-snoopy,SNOOPY,Omega Speedmaster Silver Snoopy,watches,True,True,True,2020-08-18,2026-06-29,24,24,0,0,0,,,,155.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
@@ -104,6 +108,8 @@ rally-treasure,TREASURE,Treasure Island (First Edition),books,True,True,True,202
 rally-twocities,TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),books,True,True,True,2020-04-14,2026-07-02,26,26,0,0,0,,,,125.0,True,True,,27,,26,,2020-03-31,2026-06-30,,,26,26
 rally-ulysses,ULYSSES,James Joyce - Ulysses (Matisse Signed),books,True,True,True,2020-06-16,2026-06-26,24,24,0,0,0,,,,173.0,True,True,,25,,24,,2020-06-30,2026-06-30,,,24,24
 rally-walden,WALDEN,Henry David Thoreau - Walden (First Edition),books,True,True,True,2021-10-26,2026-07-01,20,20,0,0,0,,,,111.0,True,True,,21,,20,,2021-09-30,2026-06-30,,,20,20
+rally-warhol1,WARHOL1,"1967 Andy Warhol Marilyn Monroe Print, Signed",art,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-warhol2,WARHOL2,"1969 Andy Warhol Campbell’s Soup Print, Signed",art,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-wildthing,WILDTHING,Where the Wild Things Are (Inscribed First Edition),books,True,True,True,2022-03-29,2026-06-25,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-wzrdofoz,WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,True,True,True,2021-10-05,2026-06-29,18,18,0,0,0,,,,183.0,True,True,,19,,18,,2021-12-31,2026-06-30,,,18,18
 rally-yoko,YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,True,True,True,2020-09-08,2026-06-26,24,24,0,0,0,,,,168.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
