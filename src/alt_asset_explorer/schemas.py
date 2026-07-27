@@ -20,6 +20,8 @@ class Category(str, Enum):
     natural_history = "natural_history"
     art = "art"
     instruments = "instruments"
+    precious_minerals = "precious minerals"
+    coins = "coins"
     other = "other"
 
 
