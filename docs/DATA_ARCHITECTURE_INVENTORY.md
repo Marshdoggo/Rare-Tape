@@ -1,6 +1,57 @@
 # Rally Terminal Data Architecture Inventory
 
-Last audited: 2026-07-19
+Last audited: 2026-07-27
+
+## Canonical Rebuild Graph
+
+`python scripts/build_dataset.py` is the standard, system-wide rebuild command.
+It delegates to `scripts/rebuild_all.py`; successful manual ingestion invokes the
+same function. The ordered graph is:
+
+```text
+data/normalized/assets.csv + data/normalized/price_observations.csv
+  + comparable sources + cached SEC context + persisted benchmark history
+        ↓
+processed master/history, quarterly and daily indexes, valuation/liquidity,
+decision universe, diagnostics, exports, and AI/report contexts
+        ↓
+research coverage reports
+        ↓
+quarterly leaderboard archive (reads the newly built quarterly indexes)
+        ↓
+Streamlit semantic loaders and runtime analytics
+```
+
+Correlation, scatter, Portfolio Construction Laboratory, custom indexes,
+Benchmark Lab comparisons, contribution analysis, the market table, and sector
+performance do not own separate Rally-history snapshots. They calculate from the
+normalized inputs, the canonical market object, and/or the regenerated quarterly
+index output. Benchmark price history is intentionally an independently refreshed
+external input; the Rally side of Benchmark Lab is canonical and needs no second
+snapshot.
+
+## Module Dependency Matrix
+
+| Consumer | Rally dependencies | Rebuild behavior |
+| --- | --- | --- |
+| Home market table, asset history, sector performance | normalized assets and observations via `get_canonical_market()`; regenerated decision universe, liquidity, and coverage | canonical runtime calculation plus standard rebuild |
+| Rally Assets and category pages | regenerated `assets.csv`, NAV, scores, comps, and SEC-context outputs | standard rebuild |
+| Index Explorer and equal-/market-cap-weight indexes | regenerated `rally_quarterly_indices.csv`; canonical total-return series in memory | standard rebuild / semantic loader |
+| Portfolio Construction Laboratory and custom indexes | canonical market observations and canonical index resolvers | runtime calculation; no private snapshot |
+| Exchange Market Cap | canonical market object from normalized inputs | runtime deterministic calculation |
+| Rally Leaderboards Lab | normalized assets/observations, regenerated quarterly indexes, persisted external benchmarks | archive rebuilt last by standard rebuild |
+| Correlation Structure Lab | normalized assets/observations, regenerated quarterly indexes, canonical total-return series, persisted external benchmarks | runtime calculation; quality cap 300 |
+| Modular Scatter Plot Explorer | canonical asset master and authored observations | runtime calculation; no private snapshot |
+| AI Report Context | regenerated `ai_context.json` and `ai_report_context.json` | standard rebuild |
+| MME/newsletter/universe exports | regenerated decision universe, canonical history, liquidity | standard rebuild |
+| Contribution Analysis | current built-in/custom index or portfolio result over canonical observations | runtime calculation; no private snapshot |
+| Research Coverage | normalized assets and observations | rebuilt after processed outputs |
+| Benchmark Lab | canonical Rally subjects plus independently refreshed `benchmark_history.parquet` | Rally side automatic; external prices intentionally refreshed separately |
+
+The only cached intermediate inputs are the optional ignored `data/cache/` SEC
+cache and external benchmark history. SEC content remains contextual rather than
+canonical Rally listing data. Curated custom-index definitions are durable user
+definitions, not derived market datasets.
 
 ## Before Architecture
 

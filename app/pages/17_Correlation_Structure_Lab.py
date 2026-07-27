@@ -123,7 +123,7 @@ with st.sidebar:
     heat_order = st.selectbox(
         "Heatmap order", ["Clustered", "Alphabetical", "Subject type / category"]
     )
-    maximum = st.slider("Maximum subjects (quality-ranked)", 10, 150, 100, 5)
+    maximum = st.slider("Maximum subjects (quality-ranked)", 10, 300, 300, 5)
 
 selected = metadata[metadata["subject_type"].isin(types)].copy()
 if categories:
