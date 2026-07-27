@@ -11,6 +11,7 @@ dependencies = [
   "requests>=2.31",
   "streamlit>=1.35",
   "plotly>=5.20",
+  "scipy>=1.13",
 ]
 
 [project.optional-dependencies]
