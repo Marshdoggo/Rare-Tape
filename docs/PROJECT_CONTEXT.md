@@ -38,10 +38,10 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 119 |
 | Rally asset decision universe | 119 |
 | Normalized manual assets | 119 |
-| Normalized manual price observations | 1995 |
-| Processed price history | 1891 |
-| General Rally index rows | 648 |
-| Quarterly Rally index rows | 458 |
+| Normalized manual price observations | 2126 |
+| Processed price history | 2053 |
+| General Rally index rows | 704 |
+| Quarterly Rally index rows | 504 |
 | SEC series context | 0 |
 | Rally exits | 11 |
 | Comparable sales universe | 6 |
@@ -66,6 +66,10 @@ The normalized Rally asset master includes six user-provided Art records (`WARHO
 ## Manual Cars Price Coverage Update (Five Assets, 2026-07-25)
 
 The normalized Rally observations now include 150 manually transcribed dated price observations for five existing Cars assets: `rally-93xj1` (`#93XJ1`, 31 rows; 30 quarterly), `rally-83fb1` (`#83FB1`, 31; 31 quarterly), `rally-63cc1` (`#63CC1`, 28; 28 quarterly), `rally-65fm1` (`#65FM1`, 28; 27 quarterly), and `rally-55ps1` (`#55PS1`, 32; 30 quarterly). All implied market caps reconcile to the authoritative master share counts, all five offering observations reconcile to the master offering prices and initial market caps, no asset-master rows were added or changed, and no observations were rejected or quarantined. Actual observation dates and sparse histories are preserved without interpolation or forward-filling. Where multiple raw observations occupy a quarter, the closest observation to quarter-end is the quarterly representative and earlier observations remain non-quarterly evidence; this preserves both September 2020 `55PS1` observations. The Cars equal-weight and market-cap-weighted quarterly index prototypes, full-market indexes, research coverage, contribution inputs, return histories, and dependent processed analytics were rebuilt from the canonical inputs. Five of the 20 Cars master constituents now have authored price history.
+
+## Manual Cars Price Coverage Update (Five Additional Assets, 2026-07-30)
+
+The normalized Rally observation layer now includes 131 manually transcribed dated observations for five additional existing Cars masters: `65AG1` (26), `82AV1` (18), `69BM1` (29), `92LD1` (29), and `92CC1` (29). Their authoritative master metadata was not changed. All price-derived market caps reconcile to master shares outstanding, and offering observations that match master offering terms retain offering-event semantics. Exact observation dates and sparse histories are preserved without interpolation or forward-filling. The closest-to-quarter-end methodology selects 127 quarterly representatives while retaining four additional same-quarter observations as weekly evidence, including both `92CC1` observations around the 2024 Q1 and Q2 boundaries. Cars now has 20 master assets, ten of which have authored price history. Equal-weighted and market-cap-weighted Cars indexes, coverage, leaderboards, market-cap and return analytics, correlation inputs, portfolio inputs, and dependent processed artifacts were rebuilt.
 
 ## Implemented Capabilities
 
