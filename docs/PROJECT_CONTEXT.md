@@ -1,6 +1,6 @@
 # Rally Terminal Project Context
 
-Last audited: 2026-07-27
+Last audited: 2026-07-30
 Verification baseline: Python 3.11, Streamlit 1.51.0, pandas 2.3.3, lxml 6.1.1
 
 ## Purpose And Product State
@@ -74,6 +74,7 @@ The normalized Rally observation layer now includes 131 manually transcribed dat
 ## Implemented Capabilities
 
 - Canonical asset and decision-universe construction with provenance and data-quality flags.
+- Rally Derivatives Lab dynamically discovers sufficiently supported canonical authored assets and committed equal-/market-cap-weighted category and full-market quarterly index prototypes. It defaults to canonical `rally-marx` / `MARX` when eligible and provides research-only European Black-Scholes-Merton prices and analytic Greeks, Cox-Ross-Rubinstein comparison values, Actual/365 date controls, frequency-aware historical volatility without interpolation or forward-filling, scenario charts, and a prominently non-executable illustrative term sheet. Index claims are labeled synthetic/non-tradable and all outputs explicitly retain legal, settlement, liquidity, stale-price, and model-risk caveats.
 - Validated manual research imports with dry runs, archives, quarantine outputs, conflict handling, and run records.
 - SEC filing cache/parser for offering-series and exit context.
 - Secondary comparable normalization, similarity matching, and experimental NAV estimates.

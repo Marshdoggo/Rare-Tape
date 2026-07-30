@@ -112,6 +112,15 @@ with st.expander("Data caveats", expanded=True):
         "Legacy interactive index diagnostics may differ from exit-aware total-return indexes when constituent, rebalance, or price-fill rules differ."
     )
 
+with st.container(border=True):
+    feature_copy, feature_link = st.columns([4, 1])
+    with feature_copy:
+        st.markdown('<div class="research-kicker">New Research Laboratory</div>', unsafe_allow_html=True)
+        st.markdown("### Rally Derivatives Lab")
+        st.write("Explore how conventional option-pricing models behave when applied to collectible assets and Rally Terminal indexes.")
+    with feature_link:
+        st.page_link("pages/19_Derivatives_Lab.py", label="Open Derivatives Lab →", icon="🧪")
+
 if canonical.empty or decision.empty:
     empty_state()
     st.stop()
