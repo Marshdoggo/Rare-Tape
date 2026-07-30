@@ -1950,7 +1950,6 @@ date,asset_id,bid,ask,last,volume,market_cap_usd,source,event_type,precision_sta
 2025-12-30,rally-65ag1,,,45.05,0,90100.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 65AG1 Cars price history,2025-12-30T00:00:00Z,2025-12-31,quarterly
 2026-03-30,rally-65ag1,,,50.0,0,100000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 65AG1 Cars price history,2026-03-30T00:00:00Z,2026-03-31,quarterly
 2026-06-26,rally-65ag1,,,45.0,0,90000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 65AG1 Cars price history,2026-06-26T00:00:00Z,2026-06-30,quarterly
-2017-11-21,rally-69bm1,,,115.0,0,230000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 69BM1 Cars price history,2017-11-21T00:00:00Z,2017-12-31,quarterly
 2018-08-09,rally-69bm1,,,59.6,0,119200.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 69BM1 Cars price history,2018-08-09T00:00:00Z,2018-06-30,quarterly
 2018-10-22,rally-69bm1,,,60.0,0,120000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 69BM1 Cars price history,2018-10-22T00:00:00Z,2018-09-30,quarterly
 2019-01-09,rally-69bm1,,,60.0,0,120000.0,manual:chart_observation:exact:manual_research,chart_observation,exact,User-provided manual Rally 69BM1 Cars price history,2019-01-09T00:00:00Z,2018-12-31,quarterly
