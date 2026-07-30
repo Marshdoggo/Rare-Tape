@@ -47,6 +47,18 @@ def test_cars_quarterly_selection_preserves_raw_dates_sparse_periods_and_same_qu
     assert not history[history["asset_id"].eq("rally-69bm1")]["period_end"].eq("2022-06-30").any()
 
 
+def test_69bm1_first_row_uses_offering_price_not_offering_market_cap():
+    observations = pd.read_csv(DATA_NORMALIZED / "price_observations.csv")
+    history = observations[observations["asset_id"].eq("rally-69bm1")].sort_values("observed_at")
+    first = history.iloc[0]
+
+    assert first["observed_at"] == "2017-11-21T00:00:00Z"
+    assert first["event_type"] == "offering_price"
+    assert first["price_per_share"] == pytest.approx(57.5)
+    assert first["market_cap"] == pytest.approx(115_000)
+    assert first["implied_market_cap"] == pytest.approx(115_000)
+
+
 def test_cars_equal_and_market_cap_weighted_indexes_are_rebuilt():
     indexes = pd.read_csv(DATA_PROCESSED / "rally_quarterly_indices.csv")
     cars = indexes[indexes["category"].eq("cars")]
