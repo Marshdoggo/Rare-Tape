@@ -19,7 +19,7 @@ from alt_asset_explorer.derivatives import (
     bootstrap_probability_of_profit,
     contract_capacity,
     crr_price,
-    default_underlying_index,
+    default_underlying_id,
     discover_underlyings,
     expiration_from_days,
     historical_volatility,
@@ -28,9 +28,12 @@ from alt_asset_explorer.derivatives import (
     liquidity_score,
     model_confidence_score,
     numerical_greeks,
+    reset_underlying_state,
     risk_neutral_itm_probability,
     strategy_analytics,
     strategy_profit,
+    underlying_availability,
+    underlying_by_id,
     year_fraction,
 )
 
@@ -48,43 +51,114 @@ st.error(
 @st.cache_data(show_spinner=False)
 def load_underlyings():
     m = get_canonical_market()
-    return discover_underlyings(
+    indices = load_processed_csv("rally_quarterly_indices")
+    underlyings, discovery_warnings = discover_underlyings(
         m.asset_master,
         m.authored_price_observations,
-        load_processed_csv("rally_quarterly_indices"),
+        indices,
     )
+    availability = underlying_availability(
+        m.asset_master, m.authored_price_observations, indices, underlyings
+    )
+    return underlyings, discovery_warnings, availability
 
 
-items, warnings = load_underlyings()
+items, warnings, availability = load_underlyings()
 for warning in warnings:
     st.warning(warning)
 if not items:
     st.stop()
-with st.sidebar:
-    st.header("1 · Underlying")
-    selected = st.selectbox(
-        "Eligible canonical catalog",
-        items,
-        index=default_underlying_index(items),
-        format_func=lambda x: (
-            f"{x.short_label} · {x.category.title()} · {'Synthetic Index' if x.is_synthetic else 'Asset'}"
-        ),
-        key="derivatives_underlying_v2",
+ids = [item.underlying_id for item in items]
+if len(ids) != len(set(ids)):
+    st.error(
+        "Underlying discovery returned duplicate canonical IDs; selection is disabled."
     )
-    history = selected.history
-    latest = history.date.max().date()
-    earliest = history.date.min().date()
-    stale = max((date.today() - latest).days, 0)
+    st.stop()
+
+st.subheader("Underlying")
+label_lookup = {item.underlying_id: item.selector_label for item in items}
+selected_id = st.selectbox(
+    "Search eligible assets and synthetic indexes",
+    options=ids,
+    index=ids.index(default_underlying_id(items)),
+    format_func=label_lookup.__getitem__,
+    key="derivatives_underlying_id",
+    help="Type to search by display name, ticker, canonical ID, category, or type.",
+)
+underlying_changed = reset_underlying_state(st.session_state, selected_id)
+selected = underlying_by_id(items, selected_id)
+if underlying_changed:
+    st.toast(
+        "Underlying changed; price-, volatility-, strike-, and term-dependent defaults were refreshed."
+    )
+if len(items) == 1:
+    st.warning(
+        "Only one eligible underlying was discovered. Review Underlying availability below; this is not an intentional MARX-only catalog."
+    )
+with st.expander("Underlying availability", expanded=False):
+    st.write(
+        f"**{availability.eligible_assets} eligible assets · "
+        f"{availability.eligible_indices} eligible indexes · "
+        f"{len(availability.excluded)} excluded**"
+    )
+    if availability.exclusion_reasons:
+        st.caption(
+            "Common reasons: "
+            + "; ".join(
+                f"{reason} ({count})"
+                for reason, count in sorted(
+                    availability.exclusion_reasons.items(),
+                    key=lambda item: (-item[1], item[0]),
+                )
+            )
+        )
+        st.dataframe(
+            pd.DataFrame(availability.excluded, columns=["Underlying", "Reason"]),
+            hide_index=True,
+            width="stretch",
+        )
+    else:
+        st.caption("No cataloged assets or registered indexes were excluded.")
+
+history = selected.history
+latest = history.date.max().date()
+earliest = history.date.min().date()
+stale = max((date.today() - latest).days, 0)
+
+st.info(selected.instrument_label)
+meta = st.columns(7)
+meta[0].metric(
+    "Latest level" if selected.is_synthetic else "Latest price",
+    f"${history.iloc[-1].value:,.2f}",
+)
+meta[1].metric("Observation", str(latest))
+meta[2].metric("Observations", len(history))
+initial_est = historical_volatility(history)
+meta[3].metric("Frequency", initial_est.frequency_label)
+meta[4].metric("Category", selected.category.title())
+meta[5].metric(
+    "Market cap",
+    "Not available"
+    if selected.is_synthetic or selected.market_cap is None
+    else f"${selected.market_cap:,.0f}",
+)
+meta[6].metric(
+    "Shares",
+    "Not available"
+    if selected.is_synthetic or selected.shares_outstanding is None
+    else f"{selected.shares_outstanding:,.0f}",
+)
+with st.sidebar:
+    st.header("Contract Design")
     valuation = st.date_input(
         "Valuation date",
         latest,
         min_value=earliest,
         max_value=max(date.today(), latest),
-        key=f"valuation_{selected.underlying_id}",
+        key="derivatives_valuation",
     )
     observed = history[history.date.dt.date <= valuation]
     spot = float((observed if len(observed) else history).iloc[-1].value)
-    st.header("2 · Contract Design")
     option_type = st.radio(
         "Option type", ["call", "put"], horizontal=True, format_func=str.title
     )
@@ -119,26 +193,31 @@ with st.sidebar:
         0.0001,
         value=spot,
         format="%.4f",
-        key=f"spot_{selected.underlying_id}",
+        key="derivatives_spot",
     )
     preset = st.selectbox(
         "Strike preset",
         [0.8, 0.9, 1.0, 1.1, 1.2, "Custom"],
         index=2,
         format_func=lambda x: "Custom" if x == "Custom" else f"{x:.0%} of spot",
+        key="derivatives_strike_preset",
     )
     strike = st.number_input(
         "Strike",
         0.0001,
         value=float(spot if preset == "Custom" else spot * float(preset)),
         format="%.4f",
+        key="derivatives_strike",
     )
-    horizon = st.selectbox("Duration", [30, 60, 90, 180, 365], index=2)
+    horizon = st.selectbox(
+        "Duration", [30, 60, 90, 180, 365], index=2, key="derivatives_duration"
+    )
     expiration = st.date_input(
         "Expiration",
         expiration_from_days(valuation, horizon),
         min_value=valuation,
         max_value=valuation + timedelta(days=3650),
+        key="derivatives_expiration",
     )
     time = year_fraction(valuation, expiration)
     rate = st.number_input("Risk-free rate", -1.0, 2.0, 0.04, 0.0025, format="%.4f")
@@ -146,24 +225,7 @@ with st.sidebar:
         "Carrying / distribution yield", -1.0, 2.0, 0.0, 0.0025, format="%.4f"
     )
     steps = st.slider("CRR steps", 50, 1000, 300, 50)
-st.info(selected.instrument_label)
-meta = st.columns(7)
-meta[0].metric("Latest", f"${history.iloc[-1].value:,.2f}")
-meta[1].metric("Observation", str(latest))
-meta[2].metric("Observations", len(history))
 est = historical_volatility(observed)
-meta[3].metric("Frequency", est.frequency_label)
-meta[4].metric("Category", selected.category.title())
-meta[5].metric(
-    "Market cap",
-    "N/A" if selected.market_cap is None else f"${selected.market_cap:,.0f}",
-)
-meta[6].metric(
-    "Shares",
-    "N/A"
-    if selected.shares_outstanding is None
-    else f"{selected.shares_outstanding:,.0f}",
-)
 if selected.is_synthetic:
     st.warning(
         "Synthetic, non-tradable Rally Terminal research underlying; share capacity and physical hedging are unavailable."
@@ -184,6 +246,7 @@ manual = vc[1].number_input(
     float(est.annualized_volatility or 0.30),
     0.01,
     format="%.4f",
+    key="derivatives_manual_volatility",
 )
 entered = vc[2].number_input(
     "Hypothetical premium / share",
@@ -191,6 +254,7 @@ entered = vc[2].number_input(
     value=0.0,
     step=0.01,
     help="Required for implied volatility; never inferred from price history.",
+    key="derivatives_hypothetical_premium",
 )
 solved = None
 try:
