@@ -8,11 +8,15 @@ from alt_asset_explorer.derivatives import (
     Underlying,
     black_scholes_merton,
     crr_price,
+    default_underlying_id,
     default_underlying_index,
     discover_underlyings,
     expiration_from_days,
     historical_volatility,
+    reset_underlying_state,
     term_sheet,
+    underlying_availability,
+    underlying_by_id,
     year_fraction,
 )
 
@@ -149,6 +153,93 @@ def test_dynamic_discovery_deduplicates_dates_and_labels_assets_and_indices():
     assert default_underlying_index(underlyings) == 0
     assert "transferability unconfirmed" in underlyings[0].instrument_label
     assert "non-tradable" in underlyings[1].instrument_label
+    assert underlyings[0].selector_label == "Das Kapital · MARX · Books · Asset"
+    assert "Synthetic Index" in underlyings[1].selector_label
+    assert default_underlying_id(underlyings) == "asset:rally-marx"
+    assert (
+        underlying_by_id(underlyings, "index:books_equal").history.iloc[-1].value == 105
+    )
+
+
+def test_discovery_supports_multiple_assets_unique_ids_and_marx_fallback():
+    assets = pd.DataFrame(
+        [
+            {"asset_id": "rally-marx", "ticker": "MARX", "asset_name": "Marx"},
+            {"asset_id": "rally-other", "ticker": "OTHER", "asset_name": "Other"},
+        ]
+    )
+    observations = pd.DataFrame(
+        [
+            {
+                "asset_id": asset_id,
+                "observed_at": f"2024-0{month}-01",
+                "price_per_share": price,
+            }
+            for asset_id, base in [("rally-marx", 10), ("rally-other", 100)]
+            for month, price in enumerate(range(base, base + 4), start=1)
+        ]
+    )
+    underlyings, _ = discover_underlyings(assets, observations, pd.DataFrame())
+    assert len(underlyings) == 2
+    assert len({item.underlying_id for item in underlyings}) == 2
+    assert default_underlying_id(underlyings) == "asset:rally-marx"
+    other = underlying_by_id(underlyings, "asset:rally-other")
+    assert other.history.iloc[-1].value == 103
+    assert (
+        historical_volatility(other.history).annualized_volatility
+        != historical_volatility(
+            underlying_by_id(underlyings, "asset:rally-marx").history
+        ).annualized_volatility
+    )
+    without_marx = [other]
+    assert default_underlying_id(without_marx) == "asset:rally-other"
+
+
+def test_underlying_change_clears_dependent_state_but_preserves_contract_choices():
+    state = {
+        "derivatives_active_underlying_id": "asset:rally-marx",
+        "derivatives_strike": 42.0,
+        "derivatives_manual_volatility": 0.9,
+        "derivatives_hypothetical_premium": 3.0,
+        "option_type": "put",
+        "strategy": "long_put",
+        "multiplier": 100,
+    }
+    assert reset_underlying_state(state, "asset:rally-other")
+    assert "derivatives_strike" not in state
+    assert "derivatives_manual_volatility" not in state
+    assert "derivatives_hypothetical_premium" not in state
+    assert state["option_type"] == "put"
+    assert state["strategy"] == "long_put"
+    assert state["multiplier"] == 100
+    assert not reset_underlying_state(state, "asset:rally-other")
+
+
+def test_underlying_availability_reports_exclusion_reasons():
+    assets = pd.DataFrame(
+        [
+            {"asset_id": "good", "ticker": "GOOD"},
+            {"asset_id": "sparse", "ticker": "SPARSE"},
+            {"asset_id": "missing", "ticker": "MISSING"},
+        ]
+    )
+    observations = pd.DataFrame(
+        [
+            {"asset_id": "good", "observed_at": f"2024-0{i}-01", "price_per_share": i}
+            for i in range(1, 5)
+        ]
+        + [{"asset_id": "sparse", "observed_at": "2024-01-01", "price_per_share": 2}]
+    )
+    underlyings, _ = discover_underlyings(assets, observations, pd.DataFrame())
+    availability = underlying_availability(
+        assets, observations, pd.DataFrame(), underlyings
+    )
+    assert availability.eligible_assets == 1
+    assert availability.eligible_indices == 0
+    assert availability.exclusion_reasons == {
+        "fewer than 4 valid observations": 1,
+        "missing canonical price series": 1,
+    }
 
 
 def test_discovery_handles_missing_and_sparse_data():

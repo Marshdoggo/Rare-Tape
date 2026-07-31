@@ -10,7 +10,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, timedelta
 import math
-from typing import Literal
+from collections.abc import MutableMapping
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
@@ -53,6 +54,27 @@ class Underlying:
             if self.is_synthetic
             else "Theoretical option on a Rally share (transferability unconfirmed)"
         )
+
+    @property
+    def selector_label(self) -> str:
+        """Human-readable label; canonical IDs remain the selector values."""
+        identity = self.ticker or self.underlying_id.removeprefix("index:")
+        kind = "Synthetic Index" if self.is_synthetic else "Asset"
+        return f"{self.display_name} · {identity} · {self.category.title()} · {kind}"
+
+
+@dataclass(frozen=True)
+class UnderlyingAvailability:
+    eligible_assets: int
+    eligible_indices: int
+    excluded: tuple[tuple[str, str], ...]
+
+    @property
+    def exclusion_reasons(self) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for _, reason in self.excluded:
+            counts[reason] = counts.get(reason, 0) + 1
+        return counts
 
 
 @dataclass(frozen=True)
@@ -199,6 +221,104 @@ def discover_underlyings(
     return sorted(
         results, key=lambda x: (x.kind != "asset", x.short_label.lower())
     ), warnings
+
+
+def underlying_availability(
+    assets: pd.DataFrame,
+    observations: pd.DataFrame,
+    indices: pd.DataFrame,
+    underlyings: list[Underlying],
+    *,
+    minimum_prices: int = MINIMUM_PRICES,
+) -> UnderlyingAvailability:
+    """Explain catalog exclusions without changing canonical eligibility policy."""
+    eligible_ids = {item.underlying_id for item in underlyings}
+    excluded: list[tuple[str, str]] = []
+    date_col = "observed_at" if "observed_at" in observations else "date"
+    value_col = "price_per_share" if "price_per_share" in observations else "last"
+    observation_groups = (
+        {
+            str(key): value
+            for key, value in observations.groupby(observations["asset_id"].astype(str))
+        }
+        if "asset_id" in observations
+        else {}
+    )
+    if "asset_id" in assets:
+        for _, row in assets.drop_duplicates("asset_id", keep="last").iterrows():
+            asset_id = str(row["asset_id"])
+            canonical_id = f"asset:{asset_id}"
+            if canonical_id in eligible_ids:
+                continue
+            rows = observation_groups.get(asset_id, pd.DataFrame())
+            history = clean_history(rows, date_column=date_col, value_column=value_col)
+            label = str(row.get("ticker") or asset_id).lstrip("#")
+            if rows.empty:
+                reason = "missing canonical price series"
+            elif history.empty:
+                reason = "no positive latest price"
+            elif len(history) < minimum_prices:
+                reason = f"fewer than {minimum_prices} valid observations"
+            else:
+                reason = "invalid or duplicate-only history"
+            excluded.append((f"{label} ({asset_id})", reason))
+    if "index_id" in indices:
+        for index_id, rows in indices.groupby(indices["index_id"].astype(str)):
+            if f"index:{index_id}" in eligible_ids:
+                continue
+            history = clean_history(
+                rows, date_column="date", value_column="index_level"
+            )
+            reason = (
+                "missing canonical price series"
+                if history.empty
+                else f"fewer than {minimum_prices} valid observations"
+            )
+            excluded.append((str(index_id), reason))
+    return UnderlyingAvailability(
+        sum(item.kind == "asset" for item in underlyings),
+        sum(item.kind == "index" for item in underlyings),
+        tuple(sorted(excluded)),
+    )
+
+
+def underlying_by_id(underlyings: list[Underlying], underlying_id: str) -> Underlying:
+    """Resolve a stable canonical selector value, rejecting ambiguous catalogs."""
+    matches = [item for item in underlyings if item.underlying_id == underlying_id]
+    if len(matches) != 1:
+        raise ValueError(
+            f"Expected one underlying for {underlying_id!r}; found {len(matches)}."
+        )
+    return matches[0]
+
+
+def default_underlying_id(underlyings: list[Underlying]) -> str:
+    if not underlyings:
+        raise ValueError("No eligible underlyings are available.")
+    return underlyings[default_underlying_index(underlyings)].underlying_id
+
+
+UNDERLYING_SENSITIVE_STATE_KEYS = (
+    "derivatives_valuation",
+    "derivatives_spot",
+    "derivatives_strike_preset",
+    "derivatives_strike",
+    "derivatives_duration",
+    "derivatives_expiration",
+    "derivatives_manual_volatility",
+    "derivatives_hypothetical_premium",
+)
+
+
+def reset_underlying_state(state: MutableMapping[str, Any], selected_id: str) -> bool:
+    """Clear only price/history-dependent controls when the underlying changes."""
+    previous = state.get("derivatives_active_underlying_id")
+    changed = previous is not None and previous != selected_id
+    if changed:
+        for key in UNDERLYING_SENSITIVE_STATE_KEYS:
+            state.pop(key, None)
+    state["derivatives_active_underlying_id"] = selected_id
+    return changed
 
 
 def default_underlying_index(underlyings: list[Underlying]) -> int:
