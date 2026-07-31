@@ -52,6 +52,7 @@ from alt_asset_explorer.universe import build_asset_universe, eligible_asset_ids
 from alt_asset_explorer.portfolio_lab import canonical_index, validate_index_constituent_schema
 from alt_asset_explorer.market_table import build_market_table, filter_market_table
 from alt_asset_explorer.research import calculate_sector_performance, completed_categories
+from alt_asset_explorer.integer_replication import homepage_summary
 
 
 st.set_page_config(page_title="Rally Terminal", layout="wide")
@@ -124,6 +125,24 @@ with st.container(border=True):
 if canonical.empty or decision.empty:
     empty_state()
     st.stop()
+
+with st.container(border=True):
+    replication_copy, replication_link = st.columns([4, 1])
+    with replication_copy:
+        st.markdown('<div class="research-kicker">Whole-Share Research</div>', unsafe_allow_html=True)
+        st.markdown("### Integer Index Replication")
+        replication = homepage_summary(canonical, prices)
+        if replication:
+            replication_metrics = st.columns(5)
+            replication_metrics[0].metric("Eligible constituents", f"{int(replication['constituent_count']):,}")
+            replication_metrics[1].metric("Tolerance-search capital", format_money(replication["minimum_capital"]))
+            replication_metrics[2].metric("Initial weight RMSE", format_pct(replication["weight_rmse"]))
+            replication_metrics[3].metric("Latest portfolio value", format_money(replication["latest_value"]))
+            replication_metrics[4].metric("Cumulative return", format_pct(replication["return"]), delta=format_money(replication["pnl"]))
+        else:
+            st.caption("The summary appears when canonical active assets have valid authored price observations.")
+    with replication_link:
+        st.page_link("pages/20_Integer_Index_Replication.py", label="Open Replication Lab →", icon="🧮")
 
 market = build_market_table(canonical, decision, prices, liquidity)
 current = current_universe_artifact.copy() if not current_universe_artifact.empty else market[market["is_current_listed"].fillna(False)]
