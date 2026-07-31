@@ -120,7 +120,7 @@ with st.container(border=True):
         st.markdown("### Rally Derivatives Lab")
         st.write("Explore how conventional option-pricing models behave when applied to collectible assets and Rally Terminal indexes.")
     with feature_link:
-        st.page_link("pages/19_Derivatives_Lab.py", label="Open Derivatives Lab →", icon="🧪")
+        st.page_link("pages/6_Derivatives_Lab.py", label="Open Derivatives Lab →", icon="🧪")
 
 if canonical.empty or decision.empty:
     empty_state()
@@ -142,7 +142,7 @@ with st.container(border=True):
         else:
             st.caption("The summary appears when canonical active assets have valid authored price observations.")
     with replication_link:
-        st.page_link("pages/20_Integer_Index_Replication.py", label="Open Replication Lab →", icon="🧮")
+        st.page_link("pages/7_Integer_Index_Replication.py", label="Open Replication Lab →", icon="🧮")
 
 market = build_market_table(canonical, decision, prices, liquidity)
 current = current_universe_artifact.copy() if not current_universe_artifact.empty else market[market["is_current_listed"].fillna(False)]

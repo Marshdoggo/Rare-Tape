@@ -158,7 +158,7 @@ They can be recalculated from canonical inputs and should not be committed after
 ## App Dependency Changes
 
 - `app/Home.py` uses `app_data.get_canonical_market()` for the current universe, current tradable market cap, represented exchange value, total-return indexes, and exit analytics.
-- `app/pages/14_Exchange_Market_Cap.py` uses the same canonical market object and no longer reads committed exchange/index/current-universe snapshots.
+- `app/pages/1_Exchange_Market_Cap.py` uses the same canonical market object and no longer reads committed exchange/index/current-universe snapshots.
 - Shared Streamlit caching is provided by `app/app_data.py`, so cache invalidation follows source CSV changes instead of committed generated artifact changes.
 
 ## Exit Data Decision
