@@ -37,6 +37,12 @@ RALLY_ASSET_COLUMNS = [
     "exit_market_cap_usd",
     "total_return_at_exit",
     "source_notes",
+    "trading_state", "lifecycle_event_type", "lifecycle_event_status",
+    "lifecycle_event_date", "status_updated_at", "buyout_offer_date",
+    "buyout_offer_price_per_share", "buyout_offer_total_value",
+    "buyout_reference_price", "buyout_reference_price_date", "buyout_premium_pct",
+    "buyout_vote_yes_pct", "buyout_vote_no_pct", "buyout_vote_advisory_pct",
+    "buyout_vote_as_of", "buyout_vote_provisional", "buyout_notes",
 ]
 
 COMPARABLE_SALE_COLUMNS = [
@@ -492,6 +498,7 @@ def build_rally_asset_universe(
                 "exit_market_cap_usd": exit_value,
                 "total_return_at_exit": total_return,
                 "source_notes": asset.get("notes") or asset.get("source_url"),
+                **{field: asset.get(field) for field in RALLY_ASSET_COLUMNS if field.startswith("lifecycle_") or field.startswith("buyout_") or field in {"trading_state", "status_updated_at"}},
             }
         )
     if include_sec_context:

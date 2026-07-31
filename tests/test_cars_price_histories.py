@@ -24,7 +24,7 @@ def test_five_cars_histories_match_authoritative_master_and_reconcile_market_cap
     assert len(cars) == 20
     assert set(selected["ticker"]) == TICKERS
     assert selected["ticker"].is_unique and selected["asset_id"].is_unique
-    assert selected["status"].eq("trading").all()
+    assert selected["status"].isin(["trading", "buyout_pending"]).all()
     assert history.groupby("asset_id").size().to_dict() == EXPECTED_COUNTS
     assert not history.duplicated(["asset_id", "observed_at"]).any()
 
@@ -111,7 +111,7 @@ def test_final_cars_histories_complete_category_without_duplicate_records_or_obs
     assert "61JE1" in set(cars["ticker"])
     assert "61GE1" not in set(cars["ticker"])
     assert selected["ticker"].is_unique and selected["asset_id"].is_unique
-    assert selected["status"].eq("trading").all()
+    assert selected["status"].isin(["trading", "buyout_pending"]).all()
     assert history.groupby("asset_id").size().to_dict() == FINAL_EXPECTED_COUNTS
     assert not history.duplicated(["asset_id", "observed_at"]).any()
 
@@ -141,9 +141,11 @@ def test_final_cars_quarterly_normalization_keeps_sparse_and_same_quarter_eviden
 def test_all_twenty_trading_cars_have_history_and_rebuilt_indexes():
     assets = pd.read_csv(DATA_NORMALIZED / "assets.csv")
     observations = pd.read_csv(DATA_NORMALIZED / "price_observations.csv")
-    cars = assets[(assets["category"].eq("cars")) & (assets["status"].eq("trading"))]
+    cars = assets[assets["category"].eq("cars")]
 
     assert len(cars) == 20
+    assert cars["status"].eq("trading").sum() == 15
+    assert cars["status"].eq("buyout_pending").sum() == 5
     assert set(cars["asset_id"]) <= set(observations["asset_id"])
 
     indexes = pd.read_csv(DATA_PROCESSED / "rally_quarterly_indices.csv")

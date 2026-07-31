@@ -1,5 +1,11 @@
 # Data Dictionary
 
+## Canonical Asset Registry
+
+`data/normalized/assets.csv` contains exactly one authoritative row per `asset_id` and ticker. `status` is the broad lifecycle (`trading`, `buyout_pending`, `exit_pending`, or `exited`); `trading_state` is `active`, `halted`, or `inactive`; and `lifecycle_event_type` / `lifecycle_event_status` describe the current normalized event. `lifecycle_event_date` and `status_updated_at` retain event timing without manufacturing dates that are not known.
+
+Pending-offer fields are `buyout_offer_date`, `buyout_offer_price_per_share`, `buyout_offer_total_value`, `buyout_reference_price`, `buyout_reference_price_date`, `buyout_premium_pct`, provisional vote percentages and their `buyout_vote_as_of`, `buyout_vote_provisional`, and `buyout_notes`. These are lifecycle metadata, never executed price observations. Existing `exit_date`, `exit_price_per_share`, `exit_value_total`, and `exit_type` remain the compatibility contract for completed legacy exits and must be null for pending offers.
+
 ## Normalized Comparable Sales
 
 `comp_id, category, subcategory, asset_id, source, source_url, date, price_usd, currency, condition, exactness_score, source_confidence, notes`

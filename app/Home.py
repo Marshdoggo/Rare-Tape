@@ -650,6 +650,13 @@ else:
             "premium_discount_to_fair_value": "Premium / discount to FV",
             "nav_confidence": "FV confidence",
             "last_quote_observed_at": "Last quote update",
+            "status": "Status",
+            "trading_state": "Trading state",
+            "buyout_offer_price_per_share": "Offer price",
+            "buyout_offer_total_value": "Total offer value",
+            "buyout_premium_pct": "Offer premium / discount",
+            "buyout_vote_as_of": "Vote snapshot as of",
+            "buyout_notes": "Buyout notes",
             "data_quality_status": "Data quality",
             "data_quality_warnings": "Data warnings",
         }
@@ -658,6 +665,11 @@ else:
         "Ticker",
         "Asset name",
         "Last price",
+        "Status",
+        "Trading state",
+        "Offer price",
+        "Offer premium / discount",
+        "Total offer value",
         "1Q Return",
         "1Y Return",
         "Full Return",
@@ -678,7 +690,7 @@ else:
         "Data quality",
         "Data warnings",
     ]
-    for percent_col in ("1Q Return", "1Y Return", "Full Return", "Bid-ask spread", "Premium / discount to FV", "FV confidence"):
+    for percent_col in ("1Q Return", "1Y Return", "Full Return", "Bid-ask spread", "Premium / discount to FV", "FV confidence", "Offer premium / discount"):
         if percent_col in display:
             display[percent_col] = pd.to_numeric(display[percent_col], errors="coerce") * 100
     market_display = display[[col for col in columns if col in display.columns]].sort_values("Ticker").reset_index(drop=True)
@@ -698,6 +710,9 @@ else:
             "Market cap": st.column_config.NumberColumn(format="$%.0f"),
             "Offering price": st.column_config.NumberColumn(format="$%.2f"),
             "Offering valuation": st.column_config.NumberColumn(format="$%.0f"),
+            "Offer price": st.column_config.NumberColumn(format="$%.2f"),
+            "Total offer value": st.column_config.NumberColumn(format="$%.0f"),
+            "Offer premium / discount": st.column_config.NumberColumn(format="%+.2f%%"),
             "Experimental estimated fair value": st.column_config.NumberColumn(format="$%.0f"),
             "Premium / discount to FV": st.column_config.NumberColumn(format="%.1f%%"),
             "FV confidence": st.column_config.NumberColumn(format="%.0f%%"),

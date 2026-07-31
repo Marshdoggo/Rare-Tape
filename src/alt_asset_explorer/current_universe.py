@@ -32,13 +32,13 @@ def normalize_asset_status(value: object) -> Status:
     raw = _norm_text(value).replace(" ", "_").replace("-", "_")
     if raw in {"trading", "active", "active_tradable", "accepting_orders", "listed", "live"}:
         return "active_tradable"
-    if raw in {"paused", "trading_paused", "halted"}:
+    if raw in {"paused", "trading_paused", "halted", "buyout_pending"}:
         return "trading_paused"
     if raw in {"sold", "redeemed", "liquidated", "exited", "delisted", "buyout"}:
         return "exited"
     if raw in {"pending_settlement", "pending_approval"}:
         return "pending_settlement"
-    if raw in {"exit_announced", "sale_announced"}:
+    if raw in {"exit_announced", "sale_announced", "exit_pending"}:
         return "exit_announced"
     if raw in {"cancelled", "cancelled_exit"}:
         return "cancelled"

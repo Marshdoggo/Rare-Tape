@@ -20,6 +20,8 @@ ASSET_STATUSES = {
     "funded",
     "holding_period",
     "trading",
+    "buyout_pending",
+    "exit_pending",
     "accepting_orders",
     "suspended",
     "asset_sale_pending",
@@ -87,7 +89,14 @@ PRICE_COLUMNS = [
     "notes",
 ]
 
-OPTIONAL_ASSET_COLUMNS = ["rally_url", "currency"]
+OPTIONAL_ASSET_COLUMNS = [
+    "rally_url", "currency", "trading_state", "lifecycle_event_type",
+    "lifecycle_event_status", "lifecycle_event_date", "status_updated_at",
+    "buyout_offer_date", "buyout_offer_price_per_share", "buyout_offer_total_value",
+    "buyout_reference_price", "buyout_reference_price_date", "buyout_premium_pct",
+    "buyout_vote_yes_pct", "buyout_vote_no_pct", "buyout_vote_advisory_pct",
+    "buyout_vote_as_of", "buyout_vote_provisional", "buyout_notes",
+]
 OPTIONAL_PRICE_COLUMNS = ["volume"]
 
 RUN_COLUMNS = [
