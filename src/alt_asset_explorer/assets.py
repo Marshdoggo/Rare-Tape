@@ -36,6 +36,12 @@ CANONICAL_ASSET_COLUMNS = [
     "last_quote_observed_at",
     "data_quality_status",
     "data_quality_warnings",
+    "trading_state", "lifecycle_event_type", "lifecycle_event_status",
+    "lifecycle_event_date", "status_updated_at", "buyout_offer_date",
+    "buyout_offer_price_per_share", "buyout_offer_total_value",
+    "buyout_reference_price", "buyout_reference_price_date", "buyout_premium_pct",
+    "buyout_vote_yes_pct", "buyout_vote_no_pct", "buyout_vote_advisory_pct",
+    "buyout_vote_as_of", "buyout_vote_provisional", "buyout_notes",
 ]
 
 
@@ -162,6 +168,7 @@ def build_canonical_asset_master(
             "last_quote_observed_at": _date_iso(item.get("last_quote_observed_at")),
             "data_quality_status": None,
             "data_quality_warnings": None,
+            **{field: item.get(field) for field in CANONICAL_ASSET_COLUMNS if field.startswith("lifecycle_") or field.startswith("buyout_") or field in {"trading_state", "status_updated_at"}},
         }
         shares = row["share_count"]
         valuation = row["offering_valuation_usd"]

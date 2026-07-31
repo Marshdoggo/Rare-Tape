@@ -50,6 +50,23 @@ class Asset(BaseModel):
     source_confidence: float = Field(ge=0, le=1)
     rarity_score: float = Field(default=0.5, ge=0, le=1)
     status: str = "active"
+    trading_state: Optional[str] = None
+    lifecycle_event_type: Optional[str] = None
+    lifecycle_event_status: Optional[str] = None
+    lifecycle_event_date: Optional[date] = None
+    status_updated_at: Optional[str] = None
+    buyout_offer_date: Optional[date] = None
+    buyout_offer_price_per_share: Optional[float] = Field(default=None, gt=0)
+    buyout_offer_total_value: Optional[float] = Field(default=None, gt=0)
+    buyout_reference_price: Optional[float] = Field(default=None, gt=0)
+    buyout_reference_price_date: Optional[date] = None
+    buyout_premium_pct: Optional[float] = None
+    buyout_vote_yes_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    buyout_vote_no_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    buyout_vote_advisory_pct: Optional[float] = Field(default=None, ge=0, le=100)
+    buyout_vote_as_of: Optional[str] = None
+    buyout_vote_provisional: Optional[bool] = None
+    buyout_notes: Optional[str] = None
     notes: Optional[str] = None
 
 

@@ -27,6 +27,12 @@ NORMALIZED_ASSET_COLUMNS = (
     "exit_price_per_share", "exit_value_total", "exit_type", "source_reference",
     "verified_at", "notes", "rally_url", "currency",
     "implied_offering_market_cap", "warning_reason",
+    "trading_state", "lifecycle_event_type", "lifecycle_event_status",
+    "lifecycle_event_date", "status_updated_at", "buyout_offer_date",
+    "buyout_offer_price_per_share", "buyout_offer_total_value",
+    "buyout_reference_price", "buyout_reference_price_date", "buyout_premium_pct",
+    "buyout_vote_yes_pct", "buyout_vote_no_pct", "buyout_vote_advisory_pct",
+    "buyout_vote_as_of", "buyout_vote_provisional", "buyout_notes",
 )
 NORMALIZED_OBSERVATION_COLUMNS = (
     "asset_id", "period_end", "observed_at", "price_per_share", "market_cap",
