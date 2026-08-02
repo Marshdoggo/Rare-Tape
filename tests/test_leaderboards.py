@@ -109,6 +109,29 @@ def test_current_coin_assets_flow_into_latest_canonical_leaderboard():
     assert coin_1857.latest_observation_date == pd.Timestamp("2026-06-26")
 
 
+def test_current_comic_assets_flow_into_latest_canonical_leaderboard():
+    """Integration guard for the five Comics histories added to canonical data."""
+    assets = pd.read_csv("data/normalized/assets.csv")
+    observations = pd.read_csv("data/normalized/price_observations.csv")
+    latest = latest_completed_quarter("2026-08-02")
+    archive = build_archive(assets, observations, snapshots=pd.DatetimeIndex([latest]), generated_at="2026-08-02", source_version="integration")
+    total = archive[(archive.snapshot_date == latest) & (archive.metric_key == "total_return")]
+    comics = total[(total.subject_type == "Individual Rally asset") & (total.category == "comics")]
+    expected = {"SUPER21", "BATMAN3", "STARWARS1", "AVENGERS57", "FAN45"}
+    assert set(comics.loc[comics.eligible, "ticker"]) >= expected
+
+
+def test_default_loader_rebuilds_a_stale_cache(monkeypatch, tmp_path):
+    stale = pd.DataFrame({"source_data_version": ["old"], "subject_id": ["asset:old"]})
+    cache = tmp_path / "archive.parquet"
+    stale.to_parquet(cache, index=False)
+    expected = pd.DataFrame({"source_data_version": ["new"], "subject_id": ["asset:new"]})
+    monkeypatch.setattr("alt_asset_explorer.leaderboards.ARCHIVE_PATH", cache)
+    monkeypatch.setattr("alt_asset_explorer.leaderboards.current_source_version", lambda: "new")
+    monkeypatch.setattr("alt_asset_explorer.leaderboards.build_default_archive", lambda: expected)
+    assert load_archive(cache).equals(expected)
+
+
 def test_rebuild_adds_assets_absent_from_an_older_snapshot_and_is_deterministic():
     assets, observations = fixture_data()
     kwargs = {"snapshots": pd.to_datetime(["2021-06-30"]), "generated_at": "2026-01-01", "source_version": "same-inputs"}
