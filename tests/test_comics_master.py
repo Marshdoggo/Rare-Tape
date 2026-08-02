@@ -73,9 +73,26 @@ def test_comics_collectible_identity_keeps_related_securities_distinct():
     assert comics.loc["BATMAN1", "grade"] == "CGC 1.5"
 
 
-def test_comics_have_no_fabricated_price_history_or_invented_exit_dates():
+def test_comics_price_history_is_limited_to_authored_assets_and_pending_events_are_not_prices():
     comics = _comics()
     observations = pd.read_csv(OBSERVATIONS_PATH)
-    assert observations["asset_id"].isin(comics["asset_id"]).sum() == 0
+    comics_observations = observations[observations["asset_id"].isin(comics["asset_id"])]
+    expected_counts = {
+        "rally-super21": 25,
+        "rally-batman3": 25,
+        "rally-starwars1": 23,
+        "rally-avengers57": 22,
+        "rally-fan45": 21,
+    }
+
+    assert comics_observations.groupby("asset_id").size().to_dict() == expected_counts
+    assert not comics_observations.duplicated(["asset_id", "observed_at"]).any()
+    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 112, "weekly": 4}
+
+    shares = comics.set_index("asset_id")["shares_outstanding"]
+    expected_caps = comics_observations["price_per_share"] * comics_observations["asset_id"].map(shares)
+    assert comics_observations["market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+    assert comics_observations["implied_market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+
     assert comics.query("status == 'exited'")["exit_date"].isna().all()
     assert not observations["event_type"].isin(["buyout_offer", "pending_buyout"]).any()

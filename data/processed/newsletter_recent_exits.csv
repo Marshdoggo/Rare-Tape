@@ -1,12 +1,25 @@
 ticker,name,category,subcategory,status,metric,value,source_url,notes,last_updated
-CATCHER,J.D. Salinger's The Catcher in the Rye,books,rare books,exited,exit_return_vs_offering,0.1180000000000001,,Exit date: 2026-07-20,2026-07-02
-EINSTEIN,"Albert Einstein's Philosopher-Scientist, Signed First Edition",books,rare books,exited,exit_return_vs_offering,0.14068965517241372,,Exit date: 2026-02-09,2026-07-02
-17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,wine,exited,exit_return_vs_offering,0.3653846153846154,,Exit date: 2025-05-13,2026-07-02
-BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,birkin_lizard,exited,exit_return_vs_offering,0.17241379310344818,,Exit date: 2025-04-10,2026-07-02
-FAUBOURG2,Hermès Faubourg 2,handbags,faubourg,exited,exit_return_vs_offering,0.10000000000000009,,Exit date: 2025-01-06,2026-07-02
-HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,rare books,exited,exit_return_vs_offering,0.125,,Exit date: 2024-11-13,2026-07-02
-FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,rare books,exited,exit_return_vs_offering,0.30000000000000004,,Exit date: 2024-09-19,2026-07-02
-POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,rare books,exited,exit_return_vs_offering,0.8402777777777777,,Exit date: 2024-02-13,2026-07-02
-70RLEX,1970 Rolex Watch,watches,rolex,exited,exit_return_vs_offering,0.5,,Exit date: 2023-12-12,2026-07-02
-FAUBOURG,Hermès Faubourg,handbags,faubourg,exited,exit_return_vs_offering,0.16666666666666674,,Exit date: 2023-05-30,2026-07-02
-APROAK,Audemars Piguet Royal Oak,watches,audemars piguet,exited,exit_return_vs_offering,0.46666666666666656,,Exit date: 2021-06-30,2026-07-02
+CATCHER,J.D. Salinger's The Catcher in the Rye,books,rare books,exited,exit_return_vs_offering,0.1180000000000001,,Exit date: 2026-07-20,2026-08-02
+EINSTEIN,"Albert Einstein's Philosopher-Scientist, Signed First Edition",books,rare books,exited,exit_return_vs_offering,0.14068965517241372,,Exit date: 2026-02-09,2026-08-02
+17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,wine,exited,exit_return_vs_offering,0.3653846153846154,,Exit date: 2025-05-13,2026-08-02
+BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,birkin_lizard,exited,exit_return_vs_offering,0.17241379310344818,,Exit date: 2025-04-10,2026-08-02
+FAUBOURG2,Hermès Faubourg 2,handbags,faubourg,exited,exit_return_vs_offering,0.10000000000000009,,Exit date: 2025-01-06,2026-08-02
+HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,rare books,exited,exit_return_vs_offering,0.125,,Exit date: 2024-11-13,2026-08-02
+FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,rare books,exited,exit_return_vs_offering,0.30000000000000004,,Exit date: 2024-09-19,2026-08-02
+POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,rare books,exited,exit_return_vs_offering,0.8402777777777777,,Exit date: 2024-02-13,2026-08-02
+70RLEX,1970 Rolex Watch,watches,rolex,exited,exit_return_vs_offering,0.5,,Exit date: 2023-12-12,2026-08-02
+FAUBOURG,Hermès Faubourg,handbags,faubourg,exited,exit_return_vs_offering,0.16666666666666674,,Exit date: 2023-05-30,2026-08-02
+APROAK,Audemars Piguet Royal Oak,watches,audemars piguet,exited,exit_return_vs_offering,0.46666666666666656,,Exit date: 2021-06-30,2026-08-02
+BATMAN,"1940 DC Comics Batman #1, CGC 8.0",comics,comics,exited,exit_return_vs_offering,0.11111111111111116,,Exit date: None,2026-08-02
+BATMAN1,"1940 DC Comics Batman #1, CGC 1.5",comics,comics,exited,exit_return_vs_offering,0.46408450704225346,,Exit date: None,2026-08-02
+JUSTISE1,1960 DC Comics Justice League of America #1,comics,comics,exited,exit_return_vs_offering,0.04651162790697683,,Exit date: None,2026-08-02
+THOR,1962 Marvel Journey into Mystery #83,comics,comics,exited,exit_return_vs_offering,0.21395348837209305,,Exit date: None,2026-08-02
+TMNT1,1984 Teenage Mutant Ninja Turtles #1,comics,comics,exited,exit_return_vs_offering,0.5384615384615385,,Exit date: None,2026-08-02
+AF15,1962 Marvel Amazing Fantasy #15,comics,comics,exited,exit_return_vs_offering,0.19999999999999996,,Exit date: None,2026-08-02
+FAN41,1961 Marvel Fantastic Four #1,comics,comics,exited,exit_return_vs_offering,0.19999999999999996,,Exit date: None,2026-08-02
+XMEN1,1963 Marvel X-Men #1,comics,comics,exited,exit_return_vs_offering,0.35416666666666674,,Exit date: None,2026-08-02
+AVENGERS1,1963 Marvel The Avengers #1,comics,comics,exited,exit_return_vs_offering,0.20370370370370372,,Exit date: None,2026-08-02
+TOS39,1963 Marvel Tales of Suspense #39,comics,comics,exited,exit_return_vs_offering,0.7777777777777777,,Exit date: None,2026-08-02
+HULK1,1962 Marvel The Incredible Hulk #1,comics,comics,exited,exit_return_vs_offering,0.303370786516854,,Exit date: None,2026-08-02
+DAREDEV1,1964 Marvel Daredevil #1,comics,comics,exited,exit_return_vs_offering,0.9199999999999999,,Exit date: None,2026-08-02
+SUPER14,1942 DC Comics Superman #14,comics,comics,exited,exit_return_vs_offering,0.19999999999999996,,Exit date: None,2026-08-02
