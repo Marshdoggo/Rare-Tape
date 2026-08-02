@@ -1,6 +1,6 @@
 # Rally Terminal Project Context
 
-Last audited: 2026-07-31
+Last audited: 2026-08-02
 Verification baseline: Python 3.11, Streamlit 1.51.0, pandas 2.3.3, lxml 6.1.1
 
 ## Purpose And Product State
@@ -43,7 +43,7 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | --- | ---: |
 | Canonical asset master | 119 |
 | Rally asset decision universe | 119 |
-| Normalized manual assets | 119 |
+| Normalized manual assets | 157 |
 | Normalized manual price observations | 2126 |
 | Processed price history | 2053 |
 | General Rally index rows | 704 |
@@ -60,6 +60,12 @@ Counts describe the committed research snapshot and are not live market coverage
 ## Precious Minerals And Coins Master Coverage (2026-07-27)
 
 The normalized Rally asset master includes two currently trading Precious Minerals records (`GOLD1` and `METEORITE`) and three currently trading Coins records (`1857COIN`, `JUSTINIAN`, and `CROESUS`), with no exited records in either category. The user-facing 1857 coin label is normalized to the canonical ticker `1857COIN`. Month-only offering dates use first-of-month normalization, and all supplied share counts, offering prices, and initial market caps reconcile exactly. The Coins observation layer now preserves 50 manually transcribed quarterly observations: 16 for `1857COIN`, 18 for `JUSTINIAN`, and 16 for `CROESUS`. Four additional exact `1857COIN` observations at $25 during April 2026 are retained as higher-frequency evidence and do not replace the supplied June 26 quarterly representative of $16. `CROESUS`'s April 1, 2026 source date is preserved while the established nearest-quarter convention assigns it to Q1 2026. `JUSTINIAN` uses its month-only master offering record for launch validation without inventing a dated December 2021 observation. No missing periods are interpolated or forward-filled. The Precious Minerals observation layer now preserves all 37 manually transcribed observations: 17 for `GOLD1` and 20 for `METEORITE`. METEORITE retains both supplied Q1 2022 observations; the established closest-to-quarter-end methodology selects March 28 for quarterly analytics while February 14 remains dated evidence, so its normalized quarterly history contains 19 rows. GOLD1 contains 17 normalized quarterly observations. No missing periods are interpolated or forward-filled. All implied market caps reconcile to canonical shares, and the Precious Minerals and Coins equal-weight and market-cap-weighted quarterly indexes, full-market indexes, coverage, return/contribution inputs, market-cap analytics, leaderboards, and dependent processed artifacts were rebuilt; all assets are latest constituents in their respective category methodologies.
+
+## Comics Asset Registry Coverage (2026-08-02)
+
+The canonical normalized Asset Registry includes 38 historical Comics securities: 23 trading/active, two buyout-pending/halted (`BATMAN6` and `WOLVERINE`), and 13 exited/inactive completed buyouts. `JUSTISE1` is retained as the canonical Rally ticker supplied; source-style `AF-15` and `TOS-39` labels are normalized to `AF15` and `TOS39`. Every row carries a lightweight `underlying_collectible` identity, with grade distinguishing the two physical Batman #1 copies and issue identity distinguishing `HULK180` from `WOLVERINE`. Month-only offerings use the established first-of-month normalization. Offering totals, completed-exit totals, and pending-offer totals reconcile; authoritative exit totals are retained for `BATMAN`, `THOR`, and `XMEN1` where displayed per-share prices are rounded.
+
+No Comics quarterly or other historical price observations were added. Pending offer values remain non-trade registry metadata and do not populate exit fields, realized returns, or price history. Consequently, metadata and historical-universe consumers can discover Comics immediately, while return-dependent modules correctly have no Comics series to calculate until authored observations are supplied. Generated processed snapshots were not rebuilt for this master-only change.
 
 ## Cars Category Expansion (2026-07-25)
 
@@ -89,7 +95,7 @@ The normalized Rally observation layer now includes all 281 supplied dated obser
 
 Five Cars records (`63CC1`, `94FS1`, `94DV1`, `99SS1`, and `91MV1`) carry pending buyout-offer metadata and remain in the historical universe, but are excluded from the active-trading universe. Their offer premiums reference and validate against the latest canonical observations dated June 23–29, 2026. The `99SS1` vote snapshot is explicitly approximate, provisional, non-final, and timestamped as observed on July 31, 2026. Offer prices and vote metadata are registry fields only: they are not price observations, exit records, index inputs, or realized returns. Halted pending offers therefore retain their last actual observation under existing stale-price/carry policies until an independently documented completed exit enters the established exit pipeline.
 
-The snapshot contains 100 active trading records, five halted pending-buyout records, one other halted pending-exit record, 13 completed exits, 119 total historical registry records, and 112 assets with authored price history.
+The normalized registry contains 123 active trading records, seven halted pending-buyout records, one other halted pending-exit record, 26 completed exits, 157 total historical registry records, and 112 assets with authored price history.
 
 - Integer Index Replication Lab provides a canonical-data-driven bridge from theoretical Rally index weights to whole-share research portfolios. It dynamically supports full-market, category, and custom universes; equal- and observed-market-cap targets; no-look-ahead as-of pricing; common-universe and launch-aware inception diagnostics; an explicitly heuristic maximum-price anchor, bounded minimum-capital tolerance search, fixed-budget integer tracker, residual-cash accounting, fractional buy-and-hold benchmark, constituent P&L, weight errors, tracking error, drawdown, and a bounded capital/error frontier. The homepage uses the same reusable calculation for its full-market equal-weight summary. These constructions are research estimates rather than executable portfolios or globally optimal solutions, and periodic integer rebalancing remains gated pending exact reconciliation with canonical exit and expanding-membership cash ledgers.
 - Canonical asset and decision-universe construction with provenance and data-quality flags.

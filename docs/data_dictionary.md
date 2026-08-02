@@ -6,6 +6,8 @@
 
 Pending-offer fields are `buyout_offer_date`, `buyout_offer_price_per_share`, `buyout_offer_total_value`, `buyout_reference_price`, `buyout_reference_price_date`, `buyout_premium_pct`, provisional vote percentages and their `buyout_vote_as_of`, `buyout_vote_provisional`, and `buyout_notes`. These are lifecycle metadata, never executed price observations. Existing `exit_date`, `exit_price_per_share`, `exit_value_total`, and `exit_type` remain the compatibility contract for completed legacy exits and must be null for pending offers.
 
+Collectible identity is preserved in `underlying_collectible`; lightweight category-compatible descriptors may also use `significance`, `publisher`, `publication_year`, `issue_number`, and `grade`. These fields describe the physical collectible represented by the security and do not constitute a price observation or thematic-index taxonomy.
+
 ## Normalized Comparable Sales
 
 `comp_id, category, subcategory, asset_id, source, source_url, date, price_usd, currency, condition, exactness_score, source_confidence, notes`

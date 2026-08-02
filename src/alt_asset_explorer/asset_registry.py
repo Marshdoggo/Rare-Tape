@@ -53,6 +53,26 @@ def validate_asset_registry(registry: pd.DataFrame, observations: pd.DataFrame) 
         if invalid:
             errors.append(f"invalid_{field}: {', '.join(sorted(invalid))}")
 
+    for _, row in registry.iterrows():
+        ticker = str(row["ticker"])
+        shares = pd.to_numeric(row.get("shares_outstanding"), errors="coerce")
+        offering_price = pd.to_numeric(row.get("offering_price_per_share"), errors="coerce")
+        offering_total = pd.to_numeric(row.get("offering_market_cap"), errors="coerce")
+        if any(pd.isna(value) for value in (shares, offering_price, offering_total)) or not math.isclose(
+            offering_total, shares * offering_price, abs_tol=0.01
+        ):
+            errors.append(f"{ticker}: offering total does not reconcile")
+
+        if str(row.get("lifecycle_event_status")).lower() == "completed":
+            exit_price = pd.to_numeric(row.get("exit_price_per_share"), errors="coerce")
+            exit_total = pd.to_numeric(row.get("exit_value_total"), errors="coerce")
+            # Some legacy completed records intentionally lack per-share exit
+            # economics. When both values are authored, validate their arithmetic.
+            if pd.notna(exit_price) and pd.notna(exit_total) and not math.isclose(
+                exit_total, shares * exit_price, abs_tol=max(0.01, shares * 0.005 + 0.01)
+            ):
+                errors.append(f"{ticker}: exit total exceeds rounded-price tolerance")
+
     prices = observations.copy()
     prices["observed_at"] = pd.to_datetime(prices["observed_at"], errors="coerce")
     for _, row in registry.iterrows():
@@ -68,13 +88,14 @@ def validate_asset_registry(registry: pd.DataFrame, observations: pd.DataFrame) 
             errors.append(f"{ticker}: nonpositive offer")
         if pd.isna(shares) or pd.isna(total) or not math.isclose(total, offer * shares, abs_tol=0.01):
             errors.append(f"{ticker}: offer total does not reconcile")
-        history = prices[prices["asset_id"].astype(str).eq(str(row["asset_id"]))].sort_values("observed_at")
-        latest = history.iloc[-1] if not history.empty else None
-        ref_date = pd.to_datetime(row.get("buyout_reference_price_date"), errors="coerce")
-        if latest is None or not math.isclose(float(latest["price_per_share"]), reference, abs_tol=1e-9) or latest["observed_at"].date() != ref_date.date():
-            errors.append(f"{ticker}: reference does not match latest canonical observation")
-        if pd.isna(reference) or pd.isna(premium) or not math.isclose(premium, offer / reference - 1, abs_tol=1e-9):
-            errors.append(f"{ticker}: premium does not reconcile")
+        if pd.notna(reference) or pd.notna(premium) or pd.notna(row.get("buyout_reference_price_date")):
+            history = prices[prices["asset_id"].astype(str).eq(str(row["asset_id"]))].sort_values("observed_at")
+            latest = history.iloc[-1] if not history.empty else None
+            ref_date = pd.to_datetime(row.get("buyout_reference_price_date"), errors="coerce")
+            if latest is None or pd.isna(reference) or pd.isna(ref_date) or not math.isclose(float(latest["price_per_share"]), reference, abs_tol=1e-9) or latest["observed_at"].date() != ref_date.date():
+                errors.append(f"{ticker}: reference does not match latest canonical observation")
+            if pd.isna(reference) or pd.isna(premium) or not math.isclose(premium, offer / reference - 1, abs_tol=1e-9):
+                errors.append(f"{ticker}: premium does not reconcile")
         if str(row["status"]).lower() == "buyout_pending" and str(row["trading_state"]).lower() != "halted":
             errors.append(f"{ticker}: pending buyout is not halted")
         if str(row["lifecycle_event_status"]).lower() == "pending" and any(pd.notna(row.get(c)) for c in ("exit_date", "exit_price_per_share", "exit_value_total")):

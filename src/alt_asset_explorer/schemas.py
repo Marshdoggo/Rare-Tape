@@ -68,6 +68,12 @@ class Asset(BaseModel):
     buyout_vote_provisional: Optional[bool] = None
     buyout_notes: Optional[str] = None
     notes: Optional[str] = None
+    underlying_collectible: Optional[str] = None
+    significance: Optional[str] = None
+    publisher: Optional[str] = None
+    publication_year: Optional[int] = None
+    issue_number: Optional[int] = None
+    grade: Optional[str] = None
 
 
 class RallySnapshot(BaseModel):
