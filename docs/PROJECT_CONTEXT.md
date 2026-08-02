@@ -41,19 +41,19 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 
 | Artifact | Rows |
 | --- | ---: |
-| Canonical asset master | 119 |
-| Rally asset decision universe | 119 |
+| Canonical asset master | 157 |
+| Rally asset decision universe | 157 |
 | Normalized manual assets | 157 |
-| Normalized manual price observations | 2126 |
-| Processed price history | 2053 |
-| General Rally index rows | 704 |
-| Quarterly Rally index rows | 504 |
+| Normalized manual price observations | 2560 |
+| Processed price history | 2441 |
+| General Rally index rows | 790 |
+| Quarterly Rally index rows | 558 |
 | SEC series context | 0 |
 | Rally exits | 11 |
 | Comparable sales universe | 6 |
 | Asset-to-comp matches | 0 |
-| Research coverage rows | 119 |
-| Asset universe diagnostics rows | 119 |
+| Research coverage rows | 157 |
+| Asset universe diagnostics rows | 157 |
 
 Counts describe the committed research snapshot and are not live market coverage.
 
@@ -65,7 +65,9 @@ The normalized Rally asset master includes two currently trading Precious Minera
 
 The canonical normalized Asset Registry includes 38 historical Comics securities: 23 trading/active, two buyout-pending/halted (`BATMAN6` and `WOLVERINE`), and 13 exited/inactive completed buyouts. `JUSTISE1` is retained as the canonical Rally ticker supplied; source-style `AF-15` and `TOS-39` labels are normalized to `AF15` and `TOS39`. Every row carries a lightweight `underlying_collectible` identity, with grade distinguishing the two physical Batman #1 copies and issue identity distinguishing `HULK180` from `WOLVERINE`. Month-only offerings use the established first-of-month normalization. Offering totals, completed-exit totals, and pending-offer totals reconcile; authoritative exit totals are retained for `BATMAN`, `THOR`, and `XMEN1` where displayed per-share prices are rounded.
 
-No Comics quarterly or other historical price observations were added. Pending offer values remain non-trade registry metadata and do not populate exit fields, realized returns, or price history. Consequently, metadata and historical-universe consumers can discover Comics immediately, while return-dependent modules correctly have no Comics series to calculate until authored observations are supplied. Generated processed snapshots were not rebuilt for this master-only change.
+The normalized observation layer now includes all 116 supplied dated price observations for five existing Comics securities: `SUPER21` (25), `BATMAN3` (25), `STARWARS1` (23), `AVENGERS57` (22), and `FAN45` (21). Authoritative registry metadata was not changed. All implied market caps reconcile to registry shares outstanding, and `SUPER21`'s first observation reconciles to its offering price and initial market cap. Exact observation dates and sparse histories are preserved without interpolation or forward-filling. The established closest-to-quarter-end methodology selects 112 quarterly representatives while retaining four earlier same-quarter observations (`SUPER21` on January 5, 2021, `BATMAN3` on January 5, 2021, `AVENGERS57` on November 19, 2021, and `FAN45` on October 19, 2021) as dated non-quarterly evidence.
+
+Comics price-history coverage increased from zero to five of 38 registry assets. Comics equal-weight and market-cap-weighted indexes, full-market indexes, exchange market-cap history, research coverage, leaderboards, correlation, scatter, benchmark, portfolio, integer-replication, contribution, and export consumers were rebuilt or refreshed through their canonical inputs. Pending offer values remain non-trade registry metadata and do not populate exit fields, realized returns, or price history.
 
 ## Cars Category Expansion (2026-07-25)
 
@@ -95,7 +97,7 @@ The normalized Rally observation layer now includes all 281 supplied dated obser
 
 Five Cars records (`63CC1`, `94FS1`, `94DV1`, `99SS1`, and `91MV1`) carry pending buyout-offer metadata and remain in the historical universe, but are excluded from the active-trading universe. Their offer premiums reference and validate against the latest canonical observations dated June 23–29, 2026. The `99SS1` vote snapshot is explicitly approximate, provisional, non-final, and timestamped as observed on July 31, 2026. Offer prices and vote metadata are registry fields only: they are not price observations, exit records, index inputs, or realized returns. Halted pending offers therefore retain their last actual observation under existing stale-price/carry policies until an independently documented completed exit enters the established exit pipeline.
 
-The normalized registry contains 123 active trading records, seven halted pending-buyout records, one other halted pending-exit record, 26 completed exits, 157 total historical registry records, and 112 assets with authored price history.
+The normalized registry contains 123 active trading records, seven halted pending-buyout records, one other halted pending-exit record, 26 completed exits, 157 total historical registry records, and 117 assets with authored price history.
 
 - Integer Index Replication Lab provides a canonical-data-driven bridge from theoretical Rally index weights to whole-share research portfolios. It dynamically supports full-market, category, and custom universes; equal- and observed-market-cap targets; no-look-ahead as-of pricing; common-universe and launch-aware inception diagnostics; an explicitly heuristic maximum-price anchor, bounded minimum-capital tolerance search, fixed-budget integer tracker, residual-cash accounting, fractional buy-and-hold benchmark, constituent P&L, weight errors, tracking error, drawdown, and a bounded capital/error frontier. The homepage uses the same reusable calculation for its full-market equal-weight summary. These constructions are research estimates rather than executable portfolios or globally optimal solutions, and periodic integer rebalancing remains gated pending exact reconciliation with canonical exit and expanding-membership cash ledgers.
 - Canonical asset and decision-universe construction with provenance and data-quality flags.
