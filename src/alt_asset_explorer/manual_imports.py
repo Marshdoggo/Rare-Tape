@@ -90,7 +90,9 @@ PRICE_COLUMNS = [
 ]
 
 OPTIONAL_ASSET_COLUMNS = [
-    "rally_url", "currency", "trading_state", "lifecycle_event_type",
+    "rally_url", "currency", "underlying_collectible", "significance",
+    "publisher", "publication_year", "issue_number", "grade",
+    "trading_state", "lifecycle_event_type",
     "lifecycle_event_status", "lifecycle_event_date", "status_updated_at",
     "buyout_offer_date", "buyout_offer_price_per_share", "buyout_offer_total_value",
     "buyout_reference_price", "buyout_reference_price_date", "buyout_premium_pct",

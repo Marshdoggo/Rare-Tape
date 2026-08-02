@@ -33,6 +33,8 @@ NORMALIZED_ASSET_COLUMNS = (
     "buyout_reference_price", "buyout_reference_price_date", "buyout_premium_pct",
     "buyout_vote_yes_pct", "buyout_vote_no_pct", "buyout_vote_advisory_pct",
     "buyout_vote_as_of", "buyout_vote_provisional", "buyout_notes",
+    "underlying_collectible", "significance", "publisher", "publication_year",
+    "issue_number", "grade",
 )
 NORMALIZED_OBSERVATION_COLUMNS = (
     "asset_id", "period_end", "observed_at", "price_per_share", "market_cap",
