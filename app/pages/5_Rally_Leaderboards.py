@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "app"))
 
 from app_data import render_data_diagnostics
-from alt_asset_explorer.leaderboards import ARCHIVE_PATH, METRICS, load_archive, movement_table, rank_history_data
+from alt_asset_explorer.leaderboards import ARCHIVE_PATH, METRICS, current_source_version, load_archive, movement_table, rank_history_data
 
 st.set_page_config(page_title="Rally Leaderboards Lab", layout="wide")
 render_data_diagnostics()
@@ -22,11 +22,12 @@ st.caption("Point-in-time quarterly rankings over committed Rally research artif
 
 
 @st.cache_data(show_spinner=False)
-def cached_archive() -> pd.DataFrame:
-    return load_archive()
+def cached_archive(source_version: str) -> pd.DataFrame:
+    """Cache only while the complete canonical leaderboard input set is unchanged."""
+    return load_archive(expected_source_version=source_version)
 
 
-archive = cached_archive()
+archive = cached_archive(current_source_version())
 if archive.empty:
     st.info("Quarterly leaderboard history has not been initialized. Run `python scripts/build_quarterly_leaderboards.py --full-refresh`.")
     st.stop()

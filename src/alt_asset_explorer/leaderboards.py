@@ -22,6 +22,21 @@ ARCHIVE_CSV_PATH = ARCHIVE_PATH.with_suffix(".csv")
 DEFAULT_STALENESS_DAYS = 186
 
 
+def leaderboard_source_paths() -> list[Path]:
+    """Return every committed input whose change invalidates the archive."""
+    return [
+        DATA_NORMALIZED / "assets.csv",
+        DATA_NORMALIZED / "price_observations.csv",
+        DATA_PROCESSED / "rally_quarterly_indices.csv",
+        DATA_PROCESSED / "benchmark_history.parquet",
+    ]
+
+
+def current_source_version() -> str:
+    """Fingerprint the canonical inputs used to construct leaderboards."""
+    return source_fingerprint(leaderboard_source_paths())
+
+
 @dataclass(frozen=True)
 class LeaderboardMetric:
     key: str
@@ -230,9 +245,19 @@ def write_archive_atomic(frame: pd.DataFrame, path: Path = ARCHIVE_PATH) -> Path
         tmp.unlink(missing_ok=True); fallback=path.with_suffix(".csv"); csv_tmp=fallback.with_name(f".{fallback.name}.tmp"); frame.to_csv(csv_tmp,index=False); csv_tmp.replace(fallback); return fallback
 
 
-def load_archive(path: Path = ARCHIVE_PATH) -> pd.DataFrame:
-    if path.exists(): return pd.read_parquet(path)
-    if path.with_suffix(".csv").exists(): return pd.read_csv(path.with_suffix(".csv"),parse_dates=["snapshot_date","latest_observation_date","effective_start_date","effective_end_date","generated_at"])
+def load_archive(path: Path = ARCHIVE_PATH, *, expected_source_version: str | None = None) -> pd.DataFrame:
+    archive = None
+    if path.exists(): archive = pd.read_parquet(path)
+    elif path.with_suffix(".csv").exists(): archive = pd.read_csv(path.with_suffix(".csv"),parse_dates=["snapshot_date","latest_observation_date","effective_start_date","effective_end_date","generated_at"])
+    if archive is not None:
+        expected = expected_source_version or (current_source_version() if path == ARCHIVE_PATH else None)
+        versions = set(archive.get("source_data_version", pd.Series(dtype=str)).dropna().astype(str))
+        if expected is None or versions == {expected}:
+            return archive
+        # A locally generated archive can outlive a canonical data refresh.
+        # Rebuild in memory rather than serving subjects from the old snapshot.
+        if path != ARCHIVE_PATH:
+            return pd.DataFrame()
     # Deployed checkouts intentionally do not commit the generated archive.
     # Reconstruct it from the same committed normalized inputs used by the
     # Market Table; Streamlit caches this result for the process lifetime.
@@ -262,7 +287,7 @@ def rank_history_data(frame: pd.DataFrame, metric_key: str, subject_ids: list[st
 
 
 def build_default_archive(*, from_date: object | None = None) -> pd.DataFrame:
-    paths=[DATA_NORMALIZED/"assets.csv",DATA_NORMALIZED/"price_observations.csv",DATA_PROCESSED/"rally_quarterly_indices.csv"]
+    paths=leaderboard_source_paths()
     assets=pd.read_csv(paths[0]); observations=pd.read_csv(paths[1]); indices=pd.read_csv(paths[2]); benchmarks=load_persisted_benchmarks().data
     dates=pd.to_datetime(observations.observed_at,errors="coerce",format="mixed",utc=True).dt.tz_localize(None).dropna(); start=max(dates.min(),pd.Timestamp(from_date)) if from_date else dates.min()
-    return build_archive(assets,observations,indices,benchmarks,snapshots=quarter_ends(start,latest_completed_quarter()),source_version=source_fingerprint(paths+[DATA_PROCESSED/"benchmark_history.parquet"]))
+    return build_archive(assets,observations,indices,benchmarks,snapshots=quarter_ends(start,latest_completed_quarter()),source_version=source_fingerprint(paths))
