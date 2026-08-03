@@ -83,11 +83,16 @@ def test_comics_price_history_is_limited_to_authored_assets_and_pending_events_a
         "rally-starwars1": 23,
         "rally-avengers57": 22,
         "rally-fan45": 21,
+        "rally-batman2": 21,
+        "rally-spider1": 25,
+        "rally-batman181": 18,
+        "rally-penguin": 18,
+        "rally-surfer4": 18,
     }
 
     assert comics_observations.groupby("asset_id").size().to_dict() == expected_counts
     assert not comics_observations.duplicated(["asset_id", "observed_at"]).any()
-    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 112, "weekly": 4}
+    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 210, "weekly": 6}
 
     shares = comics.set_index("asset_id")["shares_outstanding"]
     expected_caps = comics_observations["price_per_share"] * comics_observations["asset_id"].map(shares)
@@ -96,3 +101,28 @@ def test_comics_price_history_is_limited_to_authored_assets_and_pending_events_a
 
     assert comics.query("status == 'exited'")["exit_date"].isna().all()
     assert not observations["event_type"].isin(["buyout_offer", "pending_buyout"]).any()
+
+
+def test_second_comics_price_batch_preserves_dates_prices_and_offering_boundary():
+    observations = pd.read_csv(OBSERVATIONS_PATH)
+    batch = observations[observations["asset_id"].isin({
+        "rally-batman2", "rally-spider1", "rally-batman181", "rally-penguin", "rally-surfer4"
+    })].copy()
+
+    assert len(batch) == 100
+    assert not batch.duplicated(["asset_id", "observed_at"]).any()
+    batman2 = batch.query("asset_id == 'rally-batman2'").set_index(batch.query("asset_id == 'rally-batman2'")["observed_at"].str[:10])
+    spider1 = batch.query("asset_id == 'rally-spider1'").set_index(batch.query("asset_id == 'rally-spider1'")["observed_at"].str[:10])
+    penguin = batch.query("asset_id == 'rally-penguin'").set_index(batch.query("asset_id == 'rally-penguin'")["observed_at"].str[:10])
+
+    assert batman2.loc["2021-05-10", "price_per_share"] == pytest.approx(10.00)
+    assert batman2.loc["2021-05-10", "event_type"] == "offering_price"
+    assert batman2.loc["2021-10-27", "frequency"] == "weekly"
+    assert spider1.loc["2020-06-02", "price_per_share"] == pytest.approx(27.00)
+    assert spider1.loc["2020-06-02", "event_type"] == "chart_observation"
+    assert spider1.loc["2022-01-24", "frequency"] == "weekly"
+    assert spider1.loc["2023-03-31", "price_per_share"] == pytest.approx(86.00)
+    assert spider1.loc["2023-12-28", "price_per_share"] == pytest.approx(20.00)
+    assert penguin.loc["2022-09-30", "price_per_share"] == pytest.approx(3.75)
+    assert penguin.loc["2022-12-29", "price_per_share"] == pytest.approx(3.75)
+    assert penguin.loc["2024-06-25", "price_per_share"] == pytest.approx(4.50)
