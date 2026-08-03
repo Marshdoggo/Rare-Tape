@@ -93,6 +93,10 @@ The normalized Rally observation layer now includes all 281 supplied dated obser
 
 ## Implemented Capabilities
 
+### Local Video History Ingestion Laboratory (2026-08-03)
+
+An experimental private Streamlit page and modular `alt_asset_explorer.video_ingestion` service layer can locally sample Rally iOS chart recordings, detect changed tooltip crops, run optional Tesseract OCR, conservatively parse dates/prices/market caps, reconcile repeated readings by logical observation date, validate implied share counts, review source evidence, export staging and diagnostic CSVs, and compare extraction with a manual history. The laboratory reads canonical asset metadata for identity and validation but never appends to or overwrites normalized or processed datasets. OpenCV, pytesseract, and the Tesseract executable are isolated as local optional dependencies and are not part of the deployed Streamlit requirements. Diagnostic crops use temporary local storage and are opt-in.
+
 ### Canonical Asset Registry And Pending Offers (2026-07-31)
 
 `data/normalized/assets.csv` is now explicitly the authoritative Asset Registry / Security Master: one row per canonical Rally ticker for identity, static offering metadata, lifecycle state, and non-trade corporate-event metadata. Its normalized lifecycle contract distinguishes `trading`/`active`, `buyout_pending`/`halted`, `exit_pending`/`halted`, and `exited`/`inactive`, with typed event and event-status fields. Legacy exit economics remain in the existing `exit_*` columns as a compatibility layer; completed legacy `sold` records were safely normalized to `exited` without changing their dates or values.
