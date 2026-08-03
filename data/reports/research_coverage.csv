@@ -51,8 +51,8 @@ rally-avengers57,AVENGERS57,1968 Marvel The Avengers #57,comics,True,True,True,2
 rally-baro,BARO,Barosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-batman,BATMAN,"1940 DC Comics Batman #1, CGC 8.0",comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-batman1,BATMAN1,"1940 DC Comics Batman #1, CGC 1.5",comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-batman181,BATMAN181,1966 DC Comics Batman #181,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-batman2,BATMAN2,1940 DC Comics Batman #2,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-batman181,BATMAN181,1966 DC Comics Batman #181,comics,True,True,True,2022-03-30,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
+rally-batman2,BATMAN2,1940 DC Comics Batman #2,comics,True,True,True,2021-10-27,2026-06-29,20,20,0,0,0,,,,98.0,True,True,,21,,19,,2021-12-31,2026-06-30,,2021-12-31,20,20
 rally-batman3,BATMAN3,1940 DC Comics Batman #3,comics,True,True,True,2020-06-09,2026-06-29,25,25,0,0,0,,,,135.0,True,True,,26,,24,,2020-06-30,2026-06-30,,2022-03-31,25,25
 rally-batman6,BATMAN6,1941 DC Comics Batman #6,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-birkinblu,BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,True,True,True,2020-04-28,2025-03-24,20,20,0,0,0,,,,145.0,True,True,,21,,20,,2020-06-30,2025-03-31,,,20,20
@@ -116,7 +116,7 @@ rally-mosasaur,MOSASAUR,Mosasaur,fossils,True,True,True,2021-06-21,2026-06-29,21
 rally-newton,NEWTON,Isaac Newton - Principia (First Edition),books,True,True,True,2021-10-22,2026-06-29,20,20,0,0,0,,,,97.0,True,True,,21,,20,,2021-09-30,2026-06-30,,,20,20
 rally-newworld,NEWWORLD,Aldous Huxley - Brave New World (First Edition),books,True,True,True,2022-10-17,2026-07-22,17,17,0,0,0,,,,95.0,True,True,,18,,17,,2022-09-30,2026-09-30,,,17,17
 rally-pappy1,PAPPY1,Pappy Van Winkle Bourbon Assortment,wine and whiskey,True,True,True,2022-12-28,2026-06-26,15,15,0,0,0,,,,95.0,True,True,,16,,15,,2022-12-31,2026-06-30,,,15,15
-rally-penguin,PENGUIN,1941 DC Comics Detective Comics #58,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-penguin,PENGUIN,1941 DC Comics Detective Comics #58,comics,True,True,True,2022-03-28,2026-06-26,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-picnic,PICNIC,Hermès 35cm Picnic Kelly,handbags,True,True,True,2021-04-29,2026-06-29,21,21,0,0,0,,,,208.0,True,True,,22,,21,,2021-03-31,2026-06-30,,,21,21
 rally-potter,POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-rabbit,RABBIT,The Tale of Peter Rabbit (First Edition),books,True,True,True,2023-03-13,2026-07-09,15,15,0,0,0,,,,109.0,True,True,,1,,15,,2023-03-31,2026-07-09,,,15,0
@@ -129,7 +129,7 @@ rally-showcase4,SHOWCASE4,1956 DC Comics Showcase #4,comics,True,True,True,,,0,0
 rally-smurf,SMURF,Rolex Submariner Smurf,watches,True,True,True,2020-05-05,2026-06-29,23,23,0,0,0,,,,221.0,True,True,,24,,23,,2020-03-31,2026-06-30,,,23,23
 rally-snoopy,SNOOPY,Omega Speedmaster Silver Snoopy,watches,True,True,True,2020-08-18,2026-06-29,24,24,0,0,0,,,,155.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
 rally-soblack,SOBLACK,Hermès 30cm So Black Birkin,handbags,True,True,True,2021-01-05,2026-06-26,23,23,0,0,0,,,,164.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
-rally-spider1,SPIDER1,1963 Marvel The Amazing Spider-Man #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-spider1,SPIDER1,1963 Marvel The Amazing Spider-Man #1,comics,True,True,True,2020-06-02,2026-06-29,25,25,0,0,0,,,,133.0,True,True,,26,,24,,2020-06-30,2026-06-30,,2022-03-31,25,25
 rally-spider10,SPIDER10,1964 Marvel The Amazing Spider-Man #10,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-spider129,SPIDER129,1974 Marvel The Amazing Spider-Man #129,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-starwars1,STARWARS1,1977 Marvel Star Wars #1,comics,True,True,True,2020-11-03,2026-06-26,23,23,0,0,0,,,,123.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
@@ -137,7 +137,7 @@ rally-steg,STEG,BCQ-24 Stegosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,
 rally-super14,SUPER14,1942 DC Comics Superman #14,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-super21,SUPER21,1943 DC Comics Superman #21,comics,True,True,True,2020-10-06,2026-06-26,24,24,0,0,0,,,,130.0,True,True,,25,,23,,2020-12-31,2026-06-30,,2022-03-31,24,24
 rally-superman6,SUPERMAN6,1940 DC Comics Superman #6,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-surfer4,SURFER4,1968 Marvel Silver Surfer #4,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-surfer4,SURFER4,1968 Marvel Silver Surfer #4,comics,True,True,True,2022-03-25,2026-06-26,18,18,0,0,0,,,,96.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-thor,THOR,1962 Marvel Journey into Mystery #83,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-tkam,TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),books,True,True,True,2021-04-13,2026-06-29,21,21,0,0,0,,,,141.0,True,True,,22,,21,,2021-03-31,2026-06-30,,,21,21
 rally-tmnt1,TMNT1,1984 Teenage Mutant Ninja Turtles #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
