@@ -88,11 +88,19 @@ def test_comics_price_history_is_limited_to_authored_assets_and_pending_events_a
         "rally-batman181": 18,
         "rally-penguin": 18,
         "rally-surfer4": 18,
+        "rally-spider129": 19,
+        "rally-showcase4": 17,
+        "rally-hulk180": 18,
+        "rally-59flash": 21,
+        "rally-ac23": 20,
+        "rally-spider10": 22,
+        "rally-flash123": 21,
+        "rally-xlxmen1": 19,
     }
 
     assert comics_observations.groupby("asset_id").size().to_dict() == expected_counts
     assert not comics_observations.duplicated(["asset_id", "observed_at"]).any()
-    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 210, "weekly": 6}
+    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 366, "weekly": 7}
 
     shares = comics.set_index("asset_id")["shares_outstanding"]
     expected_caps = comics_observations["price_per_share"] * comics_observations["asset_id"].map(shares)
@@ -126,3 +134,39 @@ def test_second_comics_price_batch_preserves_dates_prices_and_offering_boundary(
     assert penguin.loc["2022-09-30", "price_per_share"] == pytest.approx(3.75)
     assert penguin.loc["2022-12-29", "price_per_share"] == pytest.approx(3.75)
     assert penguin.loc["2024-06-25", "price_per_share"] == pytest.approx(4.50)
+
+
+def test_third_comics_price_batch_preserves_canonical_tickers_and_off_quarter_evidence():
+    assets = _comics().set_index("ticker")
+    observations = pd.read_csv(OBSERVATIONS_PATH)
+    expected = {
+        "SPIDER129": 19, "SHOWCASE4": 17, "HULK180": 18, "59FLASH": 21,
+        "AC23": 20, "SPIDER10": 22, "FLASH123": 21, "XLXMEN1": 19,
+    }
+
+    batch_ids = assets.loc[list(expected), "asset_id"]
+    batch = observations[observations["asset_id"].isin(batch_ids)]
+    actual = batch.groupby("asset_id").size()
+    assert {ticker: int(actual[assets.loc[ticker, "asset_id"]]) for ticker in expected} == expected
+    assert len(batch) == 157
+    assert batch["frequency"].value_counts().to_dict() == {"quarterly": 156, "weekly": 1}
+    assert not batch.duplicated(["asset_id", "observed_at"]).any()
+
+    shares = assets["shares_outstanding"]
+    ticker_by_id = assets.reset_index().set_index("asset_id")["ticker"]
+    expected_caps = batch["price_per_share"] * batch["asset_id"].map(ticker_by_id).map(shares)
+    assert batch["market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+    assert batch["implied_market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+
+    flash123 = batch.query("asset_id == 'rally-flash123'").set_index("observed_at")
+    spider10 = batch.query("asset_id == 'rally-spider10'").set_index("observed_at")
+    assert flash123.loc["2025-01-02T00:00:00Z", "price_per_share"] == pytest.approx(6.40)
+    assert flash123.loc["2025-01-02T00:00:00Z", "frequency"] == "quarterly"
+    assert flash123.loc["2025-01-02T00:00:00Z", "period_end"] == "2024-12-31"
+    assert flash123.loc["2024-12-26T00:00:00Z", "frequency"] == "weekly"
+    assert spider10.loc["2026-07-01T00:00:00Z", "price_per_share"] == pytest.approx(3.40)
+    assert spider10.loc["2026-07-01T00:00:00Z", "period_end"] == "2026-06-30"
+    assert "FLASH59" not in assets.index
+    assert assets.loc["59FLASH", "asset_id"] == "rally-59flash"
+    assert assets.loc["HULK180", "asset_id"] != assets.loc["WOLVERINE", "asset_id"]
+    assert not batch["event_type"].eq("offering_price").any()

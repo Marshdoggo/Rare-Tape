@@ -15,7 +15,7 @@ rally-17dujac,17DUJAC,2017 Domaine Dujac Wine Collection,wine and whiskey,exited
 rally-1857coin,1857COIN,1857 “Ship of Gold” Coin,coins,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-55ps1,55PS1,1955 Porsche 356 Speedster,cars,trading,active_tradable,True,True,False,True,30,2018-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-59bond,59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,trading,active_tradable,True,True,False,True,21,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-59flash,59FLASH,1959 DC Comics The Flash #105,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-59flash,59FLASH,1959 DC Comics The Flash #105,comics,trading,active_tradable,True,True,False,True,21,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-59jfk,59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-61je1,61JE1,1961 Jaguar E-Type,cars,trading,active_tradable,True,True,False,True,28,2019-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-61mg1,61MG1,1961 Maserati 3500 GT,cars,trading,active_tradable,True,True,False,True,25,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -39,7 +39,7 @@ rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,trading,active_tradable,True,True,False
 rally-94dv1,94DV1,1994 Dodge Viper RT/10,cars,buyout_pending,trading_paused,True,False,False,True,29,2019-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,buyout_pending,trading_paused,True,False,False,True,26,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,buyout_pending,trading_paused,True,False,False,True,27,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-ac23,AC23,1940 DC Comics Action Comics #23,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-ac23,AC23,1940 DC Comics Action Comics #23,comics,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-af15,AF15,1962 Marvel Amazing Fantasy #15,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-aghowl,AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-alice,ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -79,7 +79,7 @@ rally-fan45,FAN45,1962 Marvel Fantastic Four #5,comics,trading,active_tradable,T
 rally-faubourg,FAUBOURG,Hermès Faubourg,handbags,exited,exited,True,False,True,True,11,2020-09-30,2023-06-30,True,True,True,included,True,True,True,True
 rally-faubourg2,FAUBOURG2,Hermès Faubourg 2,handbags,exited,exited,True,False,True,True,16,2021-03-31,2025-03-31,True,True,True,included,True,True,True,True
 rally-federal,FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
-rally-flash123,FLASH123,1961 DC Comics The Flash #123,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-flash123,FLASH123,1961 DC Comics The Flash #123,comics,trading,active_tradable,True,True,False,True,20,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,trading,active_tradable,True,True,False,True,26,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-ghost1,GHOST1,1973 Marvel Ghost Rider #1,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
@@ -95,7 +95,7 @@ rally-hobbit,HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,exited,ex
 rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-hulk1,HULK1,1962 Marvel The Incredible Hulk #1,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
-rally-hulk180,HULK180,1974 Marvel The Incredible Hulk #180,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-hulk180,HULK180,1974 Marvel The Incredible Hulk #180,comics,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-irobot,IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-jekyll,JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),books,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-justinian,JUSTINIAN,First Depiction of Christ on a Coin,coins,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -125,13 +125,13 @@ rally-rlexpepsi,RLEXPEPSI,Rolex GMT-Master II Pepsi Jubilee,watches,trading,acti
 rally-roosevelt,ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-sachs1,SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-shkspr4,SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",books,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-showcase4,SHOWCASE4,1956 DC Comics Showcase #4,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-showcase4,SHOWCASE4,1956 DC Comics Showcase #4,comics,trading,active_tradable,True,True,False,True,17,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-smurf,SMURF,Rolex Submariner Smurf,watches,trading,active_tradable,True,True,False,True,24,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-snoopy,SNOOPY,Omega Speedmaster Silver Snoopy,watches,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-soblack,SOBLACK,Hermès 30cm So Black Birkin,handbags,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-spider1,SPIDER1,1963 Marvel The Amazing Spider-Man #1,comics,trading,active_tradable,True,True,False,True,24,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-spider10,SPIDER10,1964 Marvel The Amazing Spider-Man #10,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
-rally-spider129,SPIDER129,1974 Marvel The Amazing Spider-Man #129,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-spider10,SPIDER10,1964 Marvel The Amazing Spider-Man #10,comics,trading,active_tradable,True,True,False,True,22,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
+rally-spider129,SPIDER129,1974 Marvel The Amazing Spider-Man #129,comics,trading,active_tradable,True,True,False,True,19,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-starwars1,STARWARS1,1977 Marvel Star Wars #1,comics,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-steg,STEG,BCQ-24 Stegosaurus Skeleton,fossils,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-super14,SUPER14,1942 DC Comics Superman #14,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
@@ -152,7 +152,7 @@ rally-warhol2,WARHOL2,"1969 Andy Warhol Campbell’s Soup Print, Signed",art,tra
 rally-wildthing,WILDTHING,Where the Wild Things Are (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-wolverine,WOLVERINE,1974 Marvel The Incredible Hulk #181,comics,buyout_pending,trading_paused,True,False,False,False,0,,,False,True,True,included,False,False,False,False
 rally-wzrdofoz,WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,trading,active_tradable,True,True,False,True,19,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-xlxmen1,XLXMEN1,1975 Marvel Giant-Size X-Men #1,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-xlxmen1,XLXMEN1,1975 Marvel Giant-Size X-Men #1,comics,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-xmen1,XMEN1,1963 Marvel X-Men #1,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-xmen94,XMEN94,1975 Marvel X-Men #94,comics,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
 rally-yoko,YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
