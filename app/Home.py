@@ -127,6 +127,15 @@ if canonical.empty or decision.empty:
     st.stop()
 
 with st.container(border=True):
+    valuation_copy, valuation_link = st.columns([4, 1])
+    with valuation_copy:
+        st.markdown('<div class="research-kicker">Asset Research Library</div>', unsafe_allow_html=True)
+        st.markdown("### Asset Valuation Library")
+        st.write("Browse manual fair-value research packages, validate factors and comparable evidence, run deterministic valuations, and render saved asset reports.")
+    with valuation_link:
+        st.page_link("pages/8_Valuation_Library.py", label="Open Valuation Library →", icon="📚")
+
+with st.container(border=True):
     replication_copy, replication_link = st.columns([4, 1])
     with replication_copy:
         st.markdown('<div class="research-kicker">Whole-Share Research</div>', unsafe_allow_html=True)
