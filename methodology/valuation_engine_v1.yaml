@@ -1,0 +1,28 @@
+methodology_version: "1.0"
+engine_version: "1.0"
+provisional: true
+minimum_eligible_comparables: 2
+one_comparable_allows_diagnostic_only: true
+unsupported_currency_policy: exclude_without_price_usd
+unverified_weight_multiplier: 0.65
+max_recency_years: 5
+recency_floor: 0.25
+confidence_base: 0.75
+confidence_penalties:
+  one_comparable: 0.35
+  most_unverified: 0.15
+  extreme_dispersion: 0.2
+  missing_condition: 0.1
+  missing_history: 0.1
+extreme_dispersion_pct: 0.75
+estimate_quantiles:
+  conservative: 0.25
+  base: 0.5
+  optimistic: 0.75
+adjustments:
+  time_adjustment_pct_per_year: 0.0
+  market_adjustment_multiplier: 1.0
+  condition_adjustment_multiplier: 1.0
+  rarity_adjustment_multiplier: 1.0
+  provenance_adjustment_multiplier: 1.0
+  liquidity_adjustment_multiplier: 1.0

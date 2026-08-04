@@ -1,0 +1,198 @@
+{
+  "asset_id": "SYNTHETIC-ASSET",
+  "calculation_summary": {
+    "dispersion_pct": 0.18181818181818182,
+    "eligible_comparable_count": 2,
+    "median_adjusted_comparable_usd": 11000.0,
+    "weighted_comparable_value_usd": 10408.357062944819
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "fossils_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "fossils",
+          "category_model_version": "fossils_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          }
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "f91ccdd808fabd7eaa3c0c412378a19430c8e384bc72cd8b762e5413ec2ce280",
+        "research": "2d92eaafded77a5c9532362d85ad95b588b5a2073366c578a75fb1fcae911ef4"
+      },
+      "methodology_version": "1.0",
+      "run_timestamp": "2026-08-04T22:33:19.572995+00:00"
+    },
+    {
+      "adjusted_price_usd": 11000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "SYN-COMP-001",
+      "currency": "USD",
+      "evidence_quality_score": 0.8,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_reported_price": 11000.0,
+      "premium_treatment": true,
+      "raw_weight": 0.4736810403832991,
+      "recency_weight": 0.8001368925393566,
+      "reported_price_usd": 11000.0,
+      "similarity_score": 0.74,
+      "verification_treatment": 1.0,
+      "warnings": []
+    },
+    {
+      "adjusted_price_usd": 9000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "SYN-COMP-002",
+      "currency": "USD",
+      "evidence_quality_score": 0.75,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_reported_price": 9000.0,
+      "premium_treatment": true,
+      "raw_weight": 0.19899075975359345,
+      "recency_weight": 0.6002737850787132,
+      "reported_price_usd": 9000.0,
+      "similarity_score": 0.68,
+      "verification_treatment": 0.65,
+      "warnings": []
+    }
+  ],
+  "category_model_version": "fossils_v1",
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 11000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "SYN-COMP-001",
+      "final_weight": 0.7041785314724095,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 11000.0,
+      "warnings": []
+    },
+    {
+      "adjusted_price_usd": 9000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "SYN-COMP-002",
+      "final_weight": 0.29582146852759056,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 9000.0,
+      "warnings": []
+    }
+  ],
+  "market_comparison": {
+    "initial_offering_value_usd": 10000.0,
+    "last_observed_market_value_usd": null,
+    "premium_discount_to_base_pct": null
+  },
+  "methodology_version": "1.0",
+  "results": {
+    "base_value_usd": 11000.0,
+    "confidence_score": 0.75,
+    "conservative_value_usd": 9000.0,
+    "official_value_available": true,
+    "optimistic_value_usd": 11000.0
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-04",
+  "valuation_status": "completed",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "unknown_asset_id:SYNTHETIC-ASSET"
+  ]
+}

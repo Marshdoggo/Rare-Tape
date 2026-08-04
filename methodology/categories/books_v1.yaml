@@ -1,0 +1,21 @@
+category_model_version: "books_v1"
+category: "books"
+provisional: true
+similarity_components:
+  identity_similarity: 0.35
+  condition_similarity: 0.25
+  provenance_similarity: 0.20
+  presentation_similarity: 0.20
+required_factor_fields:
+  - identity
+  - condition
+evidence_thresholds:
+  minimum_overall_similarity: 0.35
+  minimum_evidence_quality: 0.30
+adjustment_limits:
+  min_multiplier: 0.5
+  max_multiplier: 1.5
+confidence_penalties:
+  category_specific_uncertainty: 0.05
+category_warnings:
+  - "Category model is provisional and requires methodological review."
