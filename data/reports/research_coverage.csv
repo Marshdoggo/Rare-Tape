@@ -54,7 +54,7 @@ rally-batman1,BATMAN1,"1940 DC Comics Batman #1, CGC 1.5",comics,True,True,True,
 rally-batman181,BATMAN181,1966 DC Comics Batman #181,comics,True,True,True,2022-03-30,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-batman2,BATMAN2,1940 DC Comics Batman #2,comics,True,True,True,2021-10-27,2026-06-29,20,20,0,0,0,,,,98.0,True,True,,21,,19,,2021-12-31,2026-06-30,,2021-12-31,20,20
 rally-batman3,BATMAN3,1940 DC Comics Batman #3,comics,True,True,True,2020-06-09,2026-06-29,25,25,0,0,0,,,,135.0,True,True,,26,,24,,2020-06-30,2026-06-30,,2022-03-31,25,25
-rally-batman6,BATMAN6,1941 DC Comics Batman #6,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-batman6,BATMAN6,1941 DC Comics Batman #6,comics,True,True,True,2021-04-27,2026-06-25,20,20,0,0,0,,,,186.0,True,True,,21,,20,,2021-03-31,2026-06-30,,,20,20
 rally-birkinblu,BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,True,True,True,2020-04-28,2025-03-24,20,20,0,0,0,,,,145.0,True,True,,21,,20,,2020-06-30,2025-03-31,,,20,20
 rally-birkinbor,BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,handbags,True,True,True,2020-12-01,2026-06-26,22,22,0,0,0,,,,197.0,True,True,,23,,22,,2020-12-31,2026-06-30,,,22,22
 rally-birkintan,BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,handbags,True,True,True,2022-09-30,2026-06-26,16,16,0,0,0,,,,96.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
@@ -62,7 +62,7 @@ rally-bond1,BOND1,Ian Fleming - Casino Royale (First Edition),books,True,True,Tr
 rally-bondwatch,BONDWATCH,Pierce Brosnan Omega Seamaster James Bond Film-Worn Watch,watches,True,True,True,2022-10-10,2026-06-29,16,16,0,0,0,,,,95.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-bradbury,BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,True,True,True,2022-10-10,2026-06-25,16,16,0,0,0,,,,94.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-brosgrimm,BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,True,True,True,2022-01-24,2026-07-23,20,20,0,0,0,,,,96.0,True,True,,21,,20,,2021-12-31,2026-07-23,,,20,20
-rally-captain3,CAPTAIN3,1941 Timely Comics Captain America Comics #3,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-captain3,CAPTAIN3,1941 Timely Comics Captain America Comics #3,comics,True,True,True,2020-07-24,2026-07-01,24,24,0,0,0,,,,227.0,True,True,,25,,23,,2020-06-30,2026-06-30,,2020-12-31,24,24
 rally-catcher,CATCHER,J.D. Salinger's The Catcher in the Rye,books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-churchill,CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,True,True,True,2020-11-17,2026-06-24,23,23,0,0,0,,,,141.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
 rally-congress,CONGRESS,Journals of the Continental Congress (1774–1775),books,True,True,True,2021-11-08,2026-06-26,20,20,0,0,0,,,,96.0,True,True,,21,,20,,2021-09-30,2026-06-30,,,20,20
@@ -71,7 +71,7 @@ rally-daredev1,DAREDEV1,1964 Marvel Daredevil #1,comics,True,True,True,,,0,0,0,0
 rally-deaton,DEATON,Deaton Triceratops Skull,fossils,True,True,True,2021-05-24,2026-06-22,21,21,0,0,0,,,,147.0,True,True,,1,,21,,2021-06-30,2026-06-30,,,0,0
 rally-dimaggio2,DIMAGGIO2,DiMaggio 2 Watch,watches,True,True,True,2021-02-18,2026-06-30,22,22,0,0,0,,,,188.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-dominos,DOMINOS,Domino's Pizza Special Edition Rolex Air-King,watches,True,True,True,2021-05-04,2026-06-25,21,21,0,0,0,,,,158.0,True,True,,22,,21,,2021-06-30,2026-06-30,,,21,21
-rally-dracula10,DRACULA10,1973 Marvel Tomb of Dracula #10,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-dracula10,DRACULA10,1973 Marvel Tomb of Dracula #10,comics,True,True,True,2022-11-07,2026-06-29,16,16,0,0,0,,,,94.0,True,True,,17,,16,,2022-09-30,2026-06-30,,,16,16
 rally-dune,DUNE,Frank Herbert - Dune (Inscribed First Edition),books,True,True,True,2021-03-23,2026-06-29,22,22,0,0,0,,,,125.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
 rally-einstein,EINSTEIN,"Albert Einstein's Philosopher-Scientist, Signed First Edition",books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-fan41,FAN41,1961 Marvel Fantastic Four #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
@@ -82,7 +82,7 @@ rally-federal,FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Editio
 rally-flash123,FLASH123,1961 DC Comics The Flash #123,comics,True,True,True,2021-10-28,2026-06-30,21,21,0,0,0,,,,97.0,True,True,,22,,20,,2021-09-30,2026-06-30,,2024-12-31,21,21
 rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,True,True,True,2020-04-21,2026-07-09,27,27,0,0,0,,,,161.0,True,True,,28,,27,,2020-03-31,2026-07-09,,,27,27
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,True,True,True,2021-01-05,2026-06-26,22,22,0,0,0,,,,171.0,True,True,,23,,22,,2021-03-31,2026-06-30,,,22,22
-rally-ghost1,GHOST1,1973 Marvel Ghost Rider #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-ghost1,GHOST1,1973 Marvel Ghost Rider #1,comics,True,True,True,2022-02-07,2026-06-26,19,19,0,0,0,,,,96.0,True,True,,20,,19,,2021-12-31,2026-06-30,,,19,19
 rally-gmtblack1,GMTBLACK1,1983 Rolex GMT-Master Nipple Dial,watches,True,True,True,2020-10-13,2026-06-30,24,24,0,0,0,,,,144.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24
 rally-gold1,GOLD1,172 GM Gold Nugget,precious minerals,True,True,True,2022-10-17,2026-06-29,16,16,0,0,0,,,,96.0,True,True,,17,,15,,2022-12-31,2026-06-30,,2022-12-31,16,16
 rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,True,True,True,2021-03-16,2026-06-29,20,20,0,0,0,,,,188.0,True,True,,21,,20,,2021-03-31,2026-06-30,,,20,20
@@ -136,7 +136,7 @@ rally-starwars1,STARWARS1,1977 Marvel Star Wars #1,comics,True,True,True,2020-11
 rally-steg,STEG,BCQ-24 Stegosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-super14,SUPER14,1942 DC Comics Superman #14,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-super21,SUPER21,1943 DC Comics Superman #21,comics,True,True,True,2020-10-06,2026-06-26,24,24,0,0,0,,,,130.0,True,True,,25,,23,,2020-12-31,2026-06-30,,2022-03-31,24,24
-rally-superman6,SUPERMAN6,1940 DC Comics Superman #6,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-superman6,SUPERMAN6,1940 DC Comics Superman #6,comics,True,True,True,2022-07-05,2026-06-29,17,17,0,0,0,,,,139.0,True,True,,18,,16,,2022-06-30,2026-06-30,,2022-12-31,17,17
 rally-surfer4,SURFER4,1968 Marvel Silver Surfer #4,comics,True,True,True,2022-03-25,2026-06-26,18,18,0,0,0,,,,96.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
 rally-thor,THOR,1962 Marvel Journey into Mystery #83,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-tkam,TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),books,True,True,True,2021-04-13,2026-06-29,21,21,0,0,0,,,,141.0,True,True,,22,,21,,2021-03-31,2026-06-30,,,21,21
@@ -154,5 +154,5 @@ rally-wolverine,WOLVERINE,1974 Marvel The Incredible Hulk #181,comics,True,True,
 rally-wzrdofoz,WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,True,True,True,2021-10-05,2026-06-29,18,18,0,0,0,,,,183.0,True,True,,19,,18,,2021-12-31,2026-06-30,,,18,18
 rally-xlxmen1,XLXMEN1,1975 Marvel Giant-Size X-Men #1,comics,True,True,True,2022-01-31,2026-06-26,19,19,0,0,0,,,,95.0,True,True,,20,,19,,2021-12-31,2026-06-30,,,19,19
 rally-xmen1,XMEN1,1963 Marvel X-Men #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-xmen94,XMEN94,1975 Marvel X-Men #94,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-xmen94,XMEN94,1975 Marvel X-Men #94,comics,True,True,True,2021-10-13,2026-06-25,20,20,0,0,0,,,,95.0,True,True,,21,,20,,2021-09-30,2026-06-30,,,20,20
 rally-yoko,YOKO,Yoko Ono - Grapefruit (Signed First Edition),books,True,True,True,2020-09-08,2026-06-26,24,24,0,0,0,,,,168.0,True,True,,25,,24,,2020-09-30,2026-06-30,,,24,24

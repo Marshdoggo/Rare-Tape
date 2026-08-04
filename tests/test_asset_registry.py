@@ -52,7 +52,7 @@ def test_five_cars_are_halted_pending_buyouts_with_reconciled_offers():
 
 def test_offer_metadata_does_not_change_or_extend_canonical_history():
     registry, observations = _data()
-    assert len(observations) == 2660
+    assert len(observations) == 2933
     for ticker, (date, price, offer, _, _) in OFFERS.items():
         asset_id = registry.loc[registry["ticker"].eq(ticker), "asset_id"].item()
         history = observations[observations["asset_id"].eq(asset_id)].sort_values("observed_at")

@@ -96,11 +96,17 @@ def test_comics_price_history_is_limited_to_authored_assets_and_pending_events_a
         "rally-spider10": 22,
         "rally-flash123": 21,
         "rally-xlxmen1": 19,
+        "rally-xmen94": 20,
+        "rally-dracula10": 16,
+        "rally-ghost1": 19,
+        "rally-batman6": 20,
+        "rally-captain3": 24,
+        "rally-superman6": 17,
     }
 
     assert comics_observations.groupby("asset_id").size().to_dict() == expected_counts
     assert not comics_observations.duplicated(["asset_id", "observed_at"]).any()
-    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 366, "weekly": 7}
+    assert comics_observations["frequency"].value_counts().to_dict() == {"quarterly": 480, "weekly": 9}
 
     shares = comics.set_index("asset_id")["shares_outstanding"]
     expected_caps = comics_observations["price_per_share"] * comics_observations["asset_id"].map(shares)
@@ -170,3 +176,34 @@ def test_third_comics_price_batch_preserves_canonical_tickers_and_off_quarter_ev
     assert assets.loc["59FLASH", "asset_id"] == "rally-59flash"
     assert assets.loc["HULK180", "asset_id"] != assets.loc["WOLVERINE", "asset_id"]
     assert not batch["event_type"].eq("offering_price").any()
+
+
+def test_final_comics_batch_preserves_sparse_history_and_pending_offer_boundary():
+    assets = _comics().set_index("ticker")
+    observations = pd.read_csv(OBSERVATIONS_PATH)
+    expected = {
+        "XMEN94": (20, 20), "DRACULA10": (16, 16), "GHOST1": (19, 19),
+        "BATMAN6": (20, 20), "CAPTAIN3": (24, 23), "SUPERMAN6": (17, 16),
+    }
+    batch_ids = assets.loc[list(expected), "asset_id"]
+    batch = observations[observations["asset_id"].isin(batch_ids)]
+
+    for ticker, (raw_count, quarterly_count) in expected.items():
+        asset_id = assets.loc[ticker, "asset_id"]
+        history = batch[batch["asset_id"].eq(asset_id)]
+        assert len(history) == raw_count
+        assert history["frequency"].eq("quarterly").sum() == quarterly_count
+    assert len(batch) == 116
+    assert not batch.duplicated(["asset_id", "observed_at"]).any()
+
+    captain3 = batch.query("asset_id == 'rally-captain3'").set_index("observed_at")
+    batman6 = batch.query("asset_id == 'rally-batman6'").set_index("observed_at")
+    assert captain3.loc["2026-07-01T00:00:00Z", "period_end"] == "2026-06-30"
+    assert captain3.loc["2026-07-01T00:00:00Z", "price_per_share"] == pytest.approx(21.25)
+    assert "2021-12-09T00:00:00Z" not in batman6.index
+    assert "2025-06-30" not in set(batman6["period_end"])
+    assert not batman6["price_per_share"].eq(11.00).any()
+    assert assets.loc["BATMAN6", "status"] == "buyout_pending"
+    assert assets.loc["BATMAN6", "trading_state"] == "halted"
+    assert assets.loc["BATMAN6", "buyout_offer_price_per_share"] == pytest.approx(11.00)
+    assert pd.isna(assets.loc["BATMAN6", "exit_price_per_share"])
