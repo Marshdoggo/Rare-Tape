@@ -6,11 +6,11 @@ import streamlit as st
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'src')); sys.path.insert(0,str(ROOT/'app'))
 from app_data import get_canonical_market, render_data_diagnostics
-from alt_asset_explorer.valuation_library.storage import library_assets, load_asset_files, save_json, ingest_report, regenerate_manifest, build_report_package, asset_dir
-from alt_asset_explorer.valuation_library.engine import run_valuation
-from alt_asset_explorer.valuation_library.models import Factors, Research
+from alt_asset_explorer.valuation_library.storage import library_assets, load_asset_files, ingest_report, regenerate_manifest, build_report_package, asset_dir, normalize_document_identity, save_intake_and_run_valuation
+from alt_asset_explorer.valuation_library.models import Research
 from alt_asset_explorer.valuation_library.resolver import get_asset_financial_context
 from alt_asset_explorer.valuation_library.assembler import build_factors
+from alt_asset_explorer.valuation_library.display import display_safe_dataframe
 
 st.set_page_config(page_title='Valuation Library', layout='wide')
 render_data_diagnostics()
@@ -44,7 +44,7 @@ with tab_library:
         if cat!='All': f=f[f['category'].eq(cat)]
         if status!='All': f=f[f['status'].eq(status)]
         if report!='All': f=f[f['report_available'].eq(report=='Available')]
-        st.dataframe(f, use_container_width=True, hide_index=True)
+        st.dataframe(display_safe_dataframe(f), use_container_width=True, hide_index=True)
 with tab_detail:
     ids=library_assets(); aid=st.selectbox('Select valuation-library asset', ids) if ids else None
     if aid:
@@ -61,7 +61,7 @@ with tab_detail:
         if files.get('factors'):
             st.markdown('### Observed facts, analyst judgments, and factors'); st.json(files['factors'], expanded=False)
         if files.get('research'):
-            st.markdown('### Research evidence and comparable sales'); st.dataframe(pd.DataFrame(files['research'].get('comparable_sales',[])), use_container_width=True)
+            st.markdown('### Research evidence and comparable sales'); st.dataframe(display_safe_dataframe(files['research'].get('comparable_sales',[])), use_container_width=True)
         if files.get('valuation'):
             st.markdown('### Calculation trace'); st.json(files['valuation'].get('calculation_trace',[]), expanded=False)
         if files.get('report'):
@@ -73,6 +73,9 @@ with tab_intake:
     cm=get_canonical_market().asset_master
     options=sorted(set(cm['ticker'].astype(str)) | set(library_assets())) if not cm.empty else library_assets()
     selected=st.selectbox('Select existing Rally ticker or valuation asset ID', options, key='intake_asset')
+    if st.session_state.get('last_intake_selection') != selected:
+        st.session_state.pop('validated_asset_id', None)
+        st.session_state['last_intake_selection'] = selected
     ctx=get_asset_financial_context(selected) if selected else {}
     st.markdown('### Existing Rally Terminal Data')
     if ctx.get('resolution_status') in ('unknown','ambiguous'):
@@ -84,18 +87,38 @@ with tab_intake:
         'Latest share price':ctx.get('latest_share_price_usd'),'Latest market value':ctx.get('latest_market_value_usd'),'Last trade date':ctx.get('last_trade_date'),
         'Number of quarterly observations':len(hist),'First quarterly observation':hist[0] if hist else 'Unavailable','Latest quarterly observation':hist[-1] if hist else 'Unavailable','Asset status':ctx.get('asset_status')
     }
-    st.dataframe(pd.DataFrame([{'field':k,'value':'Unavailable' if v is None else v} for k,v in panel.items()]), hide_index=True, use_container_width=True)
+    st.dataframe(display_safe_dataframe([{'field':k,'value':v} for k,v in panel.items()]), hide_index=True, use_container_width=True)
     specs_txt=st.text_area('Paste supplemental asset specifications JSON', height=220, help='Rally Terminal will automatically merge existing financial, identity, and price-history data for the selected asset. Paste only the additional collectible specifications available from Rally Rd.')
     research_txt=st.text_area('Paste research.json', height=220)
     overwrite=st.checkbox('Overwrite existing files with timestamped revision backups')
+    aid_for_summary=ctx.get('asset_id')
+    if aid_for_summary:
+        targets={k: asset_dir(aid_for_summary)/f'{k}.json' for k in ('factors','research')}
+        existing={k: p.exists() for k,p in targets.items()}
+        st.info(f"Selected canonical asset: {ctx.get('asset_name') or aid_for_summary} | canonical asset_id: {aid_for_summary} | ticker: {ctx.get('ticker')} | overwrite: {'enabled' if overwrite else 'disabled'} | valuation will run after save.")
+        st.dataframe(display_safe_dataframe([{'file':k,'target_path':str(p),'already_exists':existing[k]} for k,p in targets.items()]), hide_index=True, use_container_width=True)
     if st.button('Validate intake JSON'):
         try:
-            raw=json.loads(specs_txt or '{}'); f=build_factors(selected, raw); r=Research.model_validate(json.loads(research_txt)); st.success('Supplemental specifications were auto-enriched and research.json is valid.'); st.json({'input_mode':'full_factors' if 'rally_data' in raw or 'asset_id' in raw else 'supplemental_only','factors_asset_id':f.asset_id,'research_asset_id':r.asset_id,'merge_warnings':f.merge_warnings})
+            raw=json.loads(specs_txt or '{}')
+            f=build_factors(selected, raw)
+            r=Research.model_validate(normalize_document_identity('research', json.loads(research_txt), f.asset_id))
+            stale_key=st.session_state.get('validated_asset_id')
+            st.session_state['validated_asset_id']=f.asset_id
+            st.success('Supplemental specifications were auto-enriched and research.json is valid.')
+            st.json({'selected_canonical_asset_id':f.asset_id,'ticker':f.rally_symbol,'research_asset_id':r.asset_id,'input_research_asset_id':(r.provenance or {}).get('input_asset_id'),'merge_warnings':f.merge_warnings,'prior_validated_asset_cleared': bool(stale_key and stale_key != f.asset_id)})
         except Exception as e: st.error(str(e))
     if st.button('Save valid JSON and run valuation'):
         try:
-            raw=json.loads(specs_txt or '{}'); f=build_factors(selected, raw); r=json.loads(research_txt); aid=f.asset_id; save_json(aid,'factors',f.model_dump(mode='json'),overwrite=overwrite); save_json(aid,'research',r,overwrite=overwrite); val=run_valuation(aid,write=True); st.success(f'Wrote valuation.json for {aid}: {val.valuation_status}'); st.json(val.model_dump(mode='json'))
-        except Exception as e: st.error(str(e))
+            raw=json.loads(specs_txt or '{}')
+            f=build_factors(selected, raw)
+            steps, val=save_intake_and_run_valuation(f.asset_id, f.model_dump(mode='json'), json.loads(research_txt), overwrite=overwrite)
+            for step in steps:
+                st.success(f"{step['step']}: {step['status']}")
+            st.json(val.model_dump(mode='json'))
+        except FileExistsError as e:
+            st.error(str(e))
+        except Exception as e:
+            st.error(str(e))
 with tab_report:
     aid=st.selectbox('Select asset for report.md', library_assets(), key='report_asset') if library_assets() else None
     if aid:

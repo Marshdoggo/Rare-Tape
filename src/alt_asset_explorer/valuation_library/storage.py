@@ -2,7 +2,7 @@ from __future__ import annotations
 import json, shutil, tempfile, zipfile, re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 from pydantic import ValidationError
 from alt_asset_explorer.paths import PROJECT_ROOT
 from .models import Factors, Research, Valuation, Manifest
@@ -17,6 +17,39 @@ def _json_default(o):
     return o.isoformat() if hasattr(o,'isoformat') else o
 
 def read_json(path: Path) -> dict[str, Any]: return json.loads(path.read_text())
+
+
+def resolve_canonical_asset_id(identifier: str, *, selected_asset_id: str | None = None, expected_category: str | None = None) -> str:
+    res = resolve_asset(identifier, expected_category=expected_category)
+    selected = resolve_asset(selected_asset_id) if selected_asset_id is not None else None
+    if selected is not None and selected.status in {'unknown', 'ambiguous'} and str(identifier) == str(selected_asset_id):
+        return str(selected_asset_id)
+    if res.status in {'unknown', 'ambiguous'}:
+        raise ValueError(f'unresolved asset alias {identifier!r}: {"; ".join(res.warnings or [])}')
+    canonical = res.asset_id
+    if selected is not None:
+        if selected.status in {'unknown', 'ambiguous'}:
+            raise ValueError(f'selected asset {selected_asset_id!r} could not be resolved: {"; ".join(selected.warnings or [])}')
+        if canonical != selected.asset_id:
+            raise ValueError(f'document asset_id {identifier} resolves to {canonical}, not selected asset {selected.asset_id}')
+        canonical = selected.asset_id
+    return canonical
+
+def normalize_document_identity(kind: str, data: dict[str, Any], selected_asset_id: str) -> dict[str, Any]:
+    raw = dict(data)
+    input_asset_id = str(raw.get('asset_id', '')).strip()
+    if not input_asset_id:
+        raise ValueError(f'{kind} document is missing asset_id')
+    category = raw.get('category') if kind == 'factors' else None
+    canonical = resolve_canonical_asset_id(input_asset_id, selected_asset_id=selected_asset_id, expected_category=category)
+    raw['asset_id'] = canonical
+    provenance = dict(raw.get('provenance') or {})
+    provenance.setdefault('input_asset_id', input_asset_id)
+    provenance['canonical_asset_id'] = canonical
+    raw['provenance'] = provenance
+    if kind == 'factors' and isinstance(raw.get('rally_data'), dict):
+        raw['rally_data'] = {**raw['rally_data'], 'asset_id': canonical}
+    return raw
 
 def validate_document(kind: str, data: dict[str, Any]):
     return {'factors':Factors,'research':Research,'valuation':Valuation,'manifest':Manifest}[kind].model_validate(data)
@@ -36,8 +69,8 @@ def create_revision(path: Path) -> Path:
     shutil.copy2(path,dest); return dest
 
 def save_json(asset_id: str, kind: str, data: dict[str, Any], *, overwrite: bool=False) -> Path:
+    data = normalize_document_identity(kind, data, asset_id)
     obj=validate_document(kind, data)
-    if obj.asset_id != asset_id: raise ValueError(f'document asset_id {obj.asset_id} does not match selected asset {asset_id}')
     text=json.dumps(obj.model_dump(mode='json'), indent=2, sort_keys=True, default=_json_default)+'\n'
     path=asset_dir(asset_id)/FILENAMES[kind]
     out=atomic_write_text(path,text,overwrite=overwrite)
@@ -62,6 +95,7 @@ def load_asset_files(asset_id: str) -> dict[str, Any]:
 
 def workflow_status(files: dict[str, bool], warnings: list[str]) -> str:
     if any(w.startswith('stale') for w in warnings): return 'stale'
+    if files.get('factors') and files.get('research') and any(w.startswith('valuation_error:') for w in warnings): return 'valuation_error'
     if files.get('report'): return 'report_ready'
     if files.get('valuation'): return 'valuation_ready'
     if files.get('factors') and files.get('research'): return 'research_ready'
@@ -99,3 +133,63 @@ def build_report_package(asset_id: str) -> bytes:
             if p.exists(): z.write(p, fn)
         z.writestr('report_generation_instructions.md', '# Rally Terminal Report Drafting Package\nUse factors.json, research.json, valuation.json, and the methodology document to draft report.md. Do not treat report prose as authoritative structured data.\n')
     data=zpath.read_bytes(); zpath.unlink(missing_ok=True); return data
+
+
+def existing_intake_files(asset_id: str, kinds: tuple[str, ...] = ('factors', 'research', 'valuation', 'manifest')) -> list[Path]:
+    d = asset_dir(asset_id)
+    name_by_kind = {**FILENAMES, 'manifest': 'manifest.json'}
+    return [d / name_by_kind[k] for k in kinds if (d / name_by_kind[k]).exists()]
+
+def save_intake_and_run_valuation(asset_id: str, factors_data: dict[str, Any], research_data: dict[str, Any], *, overwrite: bool = False, valuation_runner: Callable[[str], Any] | None = None) -> tuple[list[dict[str, str]], Any | None]:
+    canonical = resolve_canonical_asset_id(asset_id)
+    factors_norm = normalize_document_identity('factors', factors_data, canonical)
+    research_norm = normalize_document_identity('research', research_data, canonical)
+    factors_obj = validate_document('factors', factors_norm)
+    research_obj = validate_document('research', research_norm)
+    existing = existing_intake_files(canonical, ('factors', 'research', 'valuation'))
+    if existing and not overwrite:
+        names = ', '.join(str(p) for p in existing)
+        raise FileExistsError(f'Existing valuation-library files would be overwritten: {names}. Enable revision-safe overwrite to create timestamped backups before replacing them. No files were written.')
+    d = asset_dir(canonical); d.mkdir(parents=True, exist_ok=True); (d/'source_material').mkdir(exist_ok=True)
+    staged = {
+        FILENAMES['factors']: json.dumps(factors_obj.model_dump(mode='json'), indent=2, sort_keys=True, default=_json_default)+'\n',
+        FILENAMES['research']: json.dumps(research_obj.model_dump(mode='json'), indent=2, sort_keys=True, default=_json_default)+'\n',
+    }
+    steps: list[dict[str, str]] = []
+    with tempfile.TemporaryDirectory(dir=d) as tmpdir:
+        tmp = Path(tmpdir)
+        for fn, text in staged.items():
+            (tmp/fn).write_text(text, encoding='utf-8')
+        backups = []
+        try:
+            if overwrite:
+                for fn in staged:
+                    p=d/fn
+                    if p.exists(): backups.append(create_revision(p))
+            for fn in staged:
+                (tmp/fn).replace(d/fn)
+                steps.append({'step': fn, 'status': 'saved'})
+            manifest = regenerate_manifest(canonical)
+            steps.append({'step': 'manifest.json', 'status': manifest.publication_status})
+        except Exception:
+            raise
+    runner = valuation_runner
+    if runner is None:
+        from .engine import run_valuation
+        runner = lambda aid: run_valuation(aid, write=True)
+    try:
+        val = runner(canonical)
+        steps.append({'step': 'valuation_engine', 'status': 'executed'})
+        steps.append({'step': 'valuation.json', 'status': 'saved'})
+        steps.append({'step': 'final_valuation_status', 'status': getattr(val, 'valuation_status', 'completed')})
+        regenerate_manifest(canonical)
+        return steps, val
+    except Exception as e:
+        m = regenerate_manifest(canonical)
+        md = m.model_dump(mode='json')
+        md['publication_status'] = 'valuation_error'
+        md['validation_status'] = 'error'
+        md['warnings'] = sorted(set(list(md.get('warnings') or []) + [f'valuation_error:{e}']))
+        atomic_write_text(d/'manifest.json', json.dumps(md, indent=2, sort_keys=True, default=_json_default)+'\n', overwrite=True)
+        steps.append({'step': 'valuation_engine', 'status': f'failed: {e}'})
+        raise RuntimeError(f'valuation generation failed after saving factors/research: {e}') from e

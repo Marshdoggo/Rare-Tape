@@ -2,6 +2,7 @@ from __future__ import annotations
 import json, math, shutil
 from pathlib import Path
 import pytest
+import pandas as pd
 from pydantic import ValidationError
 from alt_asset_explorer.valuation_library.models import Factors, Research
 from alt_asset_explorer.valuation_library.engine import run_valuation
@@ -148,3 +149,107 @@ def test_report_package_contains_enriched_factors(tmp_path):
     assert fd['rally_data']['quarterly_price_history']
     assert fd['field_provenance']['rally_data']=='rally_terminal_existing_data'
     shutil.rmtree(d)
+
+from datetime import date
+from alt_asset_explorer.valuation_library.display import display_safe_dataframe
+from alt_asset_explorer.valuation_library.storage import save_intake_and_run_valuation, normalize_document_identity
+
+
+def _minimal_handbag_research(asset_id='SOBLACK'):
+    r=research(asset_id='SYNTHETIC-ASSET')
+    r['asset_id']=asset_id
+    r['comparable_sales']=[{
+        'comparable_id':'soblack-comp-1','title':'Comparable Birkin sale','sale_date':'2025-01-01','venue':'Test Auction','sale_status':'sold','currency':'USD','reported_price':75000,'buyers_premium_included':True,'price_usd':75000,
+        'similarity_scores':{'identity_similarity':0.9,'condition_similarity':0.8,'provenance_similarity':0.7,'presentation_similarity':0.7},'overall_similarity':0.82,'evidence_quality':0.8,'source_url':'https://example.com/sale','verified':True
+    },{
+        'comparable_id':'soblack-comp-2','title':'Second comparable Birkin sale','sale_date':'2024-01-01','venue':'Test Auction','sale_status':'sold','currency':'USD','reported_price':68000,'buyers_premium_included':True,'price_usd':68000,
+        'similarity_scores':{'identity_similarity':0.8,'condition_similarity':0.8,'provenance_similarity':0.7,'presentation_similarity':0.7},'overall_similarity':0.78,'evidence_quality':0.75,'source_url':'https://example.com/sale2','verified':True
+    }]
+    return r
+
+
+def _snapshot_dir(d: Path):
+    snap={}
+    if d.exists():
+        for p in d.rglob('*'):
+            if p.is_file(): snap[p.relative_to(d)] = p.read_bytes()
+    return snap
+
+
+def _restore_dir(d: Path, snap: dict[Path, bytes]):
+    if d.exists(): shutil.rmtree(d)
+    if snap:
+        d.mkdir(parents=True, exist_ok=True)
+        for rel, data in snap.items():
+            (d/rel).parent.mkdir(parents=True, exist_ok=True)
+            (d/rel).write_bytes(data)
+
+
+def test_soblack_aliases_resolve_to_canonical_identity():
+    for alias in ('SOBLACK','soblack','rally-soblack'):
+        r=resolve_asset(alias)
+        assert r.status == 'matched'
+        assert r.asset_id == 'rally-soblack'
+        assert r.ticker == 'SOBLACK'
+    assert normalize_document_identity('research', _minimal_handbag_research('SOBLACK'), 'rally-soblack')['asset_id'] == 'rally-soblack'
+    assert normalize_document_identity('research', _minimal_handbag_research('soblack'), 'rally-soblack')['asset_id'] == 'rally-soblack'
+    assert normalize_document_identity('research', _minimal_handbag_research('rally-soblack'), 'rally-soblack')['asset_id'] == 'rally-soblack'
+    with pytest.raises(ValueError):
+        normalize_document_identity('research', _minimal_handbag_research('00MOUTON'), 'rally-soblack')
+
+
+def test_soblack_save_overwrite_backup_and_valuation_rerun():
+    aid='rally-soblack'; d=asset_dir(aid); snap=_snapshot_dir(d)
+    try:
+        if d.exists(): shutil.rmtree(d)
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json')
+        steps, val=save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=False)
+        assert val.asset_id == aid
+        assert (d/'factors.json').exists() and (d/'research.json').exists() and (d/'valuation.json').exists() and (d/'manifest.json').exists()
+        with pytest.raises(FileExistsError) as exc:
+            save_intake_and_run_valuation(aid, f, _minimal_handbag_research('soblack'), overwrite=False)
+        assert 'No files were written' in str(exc.value)
+        steps, val2=save_intake_and_run_valuation(aid, f, _minimal_handbag_research('rally-soblack'), overwrite=True)
+        assert val2.asset_id == aid
+        assert any((d/'revisions').glob('factors_*.json'))
+        assert any(s['step']=='final_valuation_status' for s in steps)
+    finally:
+        _restore_dir(d, snap)
+
+
+def test_partial_prior_directory_atomic_failure_cleanup_and_recoverable_valuation_error():
+    aid='rally-soblack'; d=asset_dir(aid); snap=_snapshot_dir(d)
+    try:
+        if d.exists(): shutil.rmtree(d)
+        d.mkdir(parents=True); (d/'factors.json').write_text('{"partial": true}\n')
+        f=build_factors('SOBLACK', {}).model_dump(mode='json')
+        with pytest.raises(FileExistsError):
+            save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=False)
+        assert json.loads((d/'factors.json').read_text()) == {'partial': True}
+        def boom(_aid): raise RuntimeError('engine exploded')
+        with pytest.raises(RuntimeError):
+            save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=True, valuation_runner=boom)
+        m=json.loads((d/'manifest.json').read_text())
+        assert m['publication_status']=='valuation_error'
+        assert any('engine exploded' in w for w in m['warnings'])
+        steps, val=save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=True)
+        assert val.asset_id==aid
+    finally:
+        _restore_dir(d, snap)
+
+
+def test_mixed_type_dataframe_display_rendering_values_are_strings():
+    df=pd.DataFrame({'field':['text','integer','float','none','date','list','dict'], 'value':['abc', 1000, 35.05, None, date(2026,8,5), [1,'x'], {'a':1}]})
+    safe=display_safe_dataframe(df)
+    assert safe['value'].tolist() == ['abc','1,000','35.05','Unavailable','2026-08-05','[1, "x"]','{"a": 1}']
+    assert all(str(dtype) == 'string' for dtype in safe.dtypes)
+
+
+def test_switching_assets_clears_prior_canonical_state_model():
+    state={'validated_asset_id':'rally-00mouton','last_intake_selection':'00MOUTON'}
+    selected='SOBLACK'
+    if state.get('last_intake_selection') != selected:
+        state.pop('validated_asset_id', None)
+        state['last_intake_selection'] = selected
+    assert 'validated_asset_id' not in state
+    assert state['last_intake_selection'] == 'SOBLACK'

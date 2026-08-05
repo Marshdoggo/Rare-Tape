@@ -4,7 +4,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
 Category = Literal['fossils','watches','books','handbags','wine and whiskey']
-WorkflowStatus = Literal['intake_missing','factors_ready','research_ready','valuation_ready','report_ready','published','needs_review','stale','error']
+WorkflowStatus = Literal['intake_missing','factors_ready','research_ready','valuation_ready','report_ready','published','needs_review','stale','valuation_error','error']
 SaleStatus = Literal['sold','unsold','passed','withdrawn','unknown']
 Currency = Literal['USD','EUR','GBP','CHF','HKD']
 ValuationStatus = Literal['completed','completed_with_limitations','provisional','manual_review_required','insufficient_evidence','error','needs_review']
