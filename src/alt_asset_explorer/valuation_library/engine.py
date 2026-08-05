@@ -70,6 +70,8 @@ def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=Tru
     vals=[v for v,w in zip(adjusted,norm) if _finite(v) and w>0]; weights=[w for v,w in zip(adjusted,norm) if _finite(v) and w>0]
     count=len(vals); status='completed'; official=True
     if count < int(engine_cfg['minimum_eligible_comparables']): status='insufficient_evidence'; official=False; warnings.append('insufficient_eligible_comparables')
+    elif not factors.condition or factors.missing_fields:
+        status='completed_with_limitations'; warnings.append('valuation_completed_with_optional_evidence_limitations')
     dispersion=None
     if vals:
         base=weighted_quantile(vals,weights,engine_cfg['estimate_quantiles']['base']); cons=weighted_quantile(vals,weights,engine_cfg['estimate_quantiles']['conservative']); opt=weighted_quantile(vals,weights,engine_cfg['estimate_quantiles']['optimistic']); median=base; wmean=sum(v*w for v,w in zip(vals,weights))/sum(weights)
@@ -83,14 +85,20 @@ def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=Tru
     if 'missing_historical_price_data' in warnings: confidence-=float(engine_cfg['confidence_penalties']['missing_history'])
     if 'extreme_comparable_dispersion' in warnings: confidence-=float(engine_cfg['confidence_penalties']['extreme_dispersion'])
     confidence=max(0,min(1,confidence))
-    prices=price_history_frame(); last_market=None
-    if res.registry_record and not prices.empty:
-        ph=prices[prices['asset_id'].astype(str).eq(res.registry_record['asset_id'])].sort_values('date')
-        if not ph.empty: last_market=pd.to_numeric(ph.iloc[-1].get('market_cap_usd'),errors='coerce')
+    latest_market=factors.rally_data.latest_market_value_usd
+    latest_share=factors.rally_data.latest_share_price_usd
+    latest_q=(factors.rally_data.quarterly_price_history or [])[-1] if factors.rally_data.quarterly_price_history else None
+    if latest_market is None and res.registry_record:
+        prices=price_history_frame()
+        if not prices.empty:
+            ph=prices[prices['asset_id'].astype(str).eq(res.registry_record['asset_id'])].sort_values('date')
+            if not ph.empty: latest_market=pd.to_numeric(ph.iloc[-1].get('market_cap_usd'),errors='coerce')
     init=factors.rally_data.initial_offering_value_usd or (res.registry_record or {}).get('offering_valuation_usd')
-    prem=(float(last_market)/base-1) if base and pd.notna(last_market) else None
+    prem=(base/float(latest_market)-1) if base and latest_market is not None and pd.notna(latest_market) else None
+    issue_prem=(base/float(init)-1) if base and init else None
+    latest_q_change=(base/float(latest_q.market_value_usd)-1) if base and latest_q and latest_q.market_value_usd else None
     summary={'eligible_comparable_count':count,'weighted_comparable_value_usd':wmean,'median_adjusted_comparable_usd':median,'dispersion_pct':dispersion}
     meta={'methodology_version':engine_cfg['methodology_version'],'engine_version':engine_cfg['engine_version'],'category_model_version':cat_cfg['category_model_version'],'run_timestamp':datetime.now(timezone.utc).isoformat(),'input_hashes':{'factors':_hash(d/'factors.json'),'research':_hash(d/'research.json')},'configuration':{'engine':engine_cfg,'category':cat_cfg}}
-    val=Valuation(asset_id=factors.asset_id,valuation_date=valuation_date,valuation_status=status,methodology_version=engine_cfg['methodology_version'],category_model_version=cat_cfg['category_model_version'],results=ValuationResults(conservative_value_usd=cons if official else None,base_value_usd=base if official else None,optimistic_value_usd=opt if official else None,confidence_score=confidence,official_value_available=official),market_comparison={'initial_offering_value_usd':init,'last_observed_market_value_usd':None if pd.isna(last_market) else last_market,'premium_discount_to_base_pct':prem},comparables_used=included,calculation_summary=summary,warnings=sorted(set(warnings)),calculation_trace=[meta]+trace)
+    val=Valuation(asset_id=factors.asset_id,valuation_date=valuation_date,valuation_status=status,methodology_version=engine_cfg['methodology_version'],category_model_version=cat_cfg['category_model_version'],results=ValuationResults(conservative_value_usd=cons if official else None,base_value_usd=base if official else None,optimistic_value_usd=opt if official else None,confidence_score=confidence,official_value_available=official),market_comparison={'initial_offering_value_usd':init,'latest_share_price_usd':latest_share,'last_observed_market_value_usd':None if latest_market is None or pd.isna(latest_market) else latest_market,'fair_value_premium_discount_to_latest_market_value_pct':prem,'fair_value_premium_discount_to_issue_valuation_pct':issue_prem,'change_from_issue_valuation_pct':issue_prem,'change_from_latest_quarterly_observation_pct':latest_q_change,'asset_status':factors.rally_data.asset_status},comparables_used=included,calculation_summary=summary,warnings=sorted(set(warnings)),calculation_trace=[meta]+trace)
     if write: save_json(factors.asset_id,'valuation',val.model_dump(mode='json'),overwrite=True)
     return val
