@@ -58,6 +58,10 @@ with tab_detail:
             cols[2].metric('Optimistic', f"${r.get('optimistic_value_usd'):,.0f}" if r.get('optimistic_value_usd') else 'Unavailable')
             cols[3].metric('Confidence', f"{r.get('confidence_score',0):.0%}")
             st.warning('\n'.join(v.get('warnings',[])) or 'No valuation warnings.')
+            diagnostics=v.get('diagnostic_table') or v.get('comparable_diagnostics') or []
+            if diagnostics:
+                st.markdown('### Comparable eligibility diagnostics')
+                st.dataframe(display_safe_dataframe(diagnostics), use_container_width=True, hide_index=True)
         if files.get('factors'):
             st.markdown('### Observed facts, analyst judgments, and factors'); st.json(files['factors'], expanded=False)
         if files.get('research'):

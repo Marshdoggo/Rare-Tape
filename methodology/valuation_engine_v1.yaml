@@ -4,6 +4,12 @@ provisional: true
 minimum_eligible_comparables: 2
 one_comparable_allows_diagnostic_only: true
 unsupported_currency_policy: exclude_without_price_usd
+supported_currencies:
+  USD: 1.0
+  HKD: 0.128
+  CHF: 1.12
+  GBP: 1.27
+  EUR: 1.09
 unverified_weight_multiplier: 0.65
 max_recency_years: 5
 recency_floor: 0.25
