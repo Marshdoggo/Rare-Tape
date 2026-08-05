@@ -73,6 +73,9 @@ class ComparableSale(FlexibleModel):
     reported_price: float | None = Field(default=None, gt=0)
     buyers_premium_included: bool | None = None
     price_usd: float | None = Field(default=None, gt=0)
+    price_usd_at_sale: float | None = Field(default=None, gt=0)
+    fx_rate_to_usd: float | None = Field(default=None, gt=0)
+    eligible_for_official_valuation: bool | None = None
     specimen_characteristics: dict[str, Any] = Field(default_factory=dict)
     similarity_scores: SimilarityScores = Field(default_factory=SimilarityScores)
     overall_similarity: float | None = Field(default=None, ge=0, le=1)
@@ -87,11 +90,13 @@ class ComparableSale(FlexibleModel):
     def flag_questionable(self):
         today = date.today()
         warnings = list(self.warnings)
+        if self.price_usd is None and self.price_usd_at_sale is not None:
+            self.price_usd = self.price_usd_at_sale
         if self.sale_date and self.sale_date > today: warnings.append('future_sale_date')
         if not self.source_url: warnings.append('missing_source_reference')
         if self.sale_status == 'sold' and self.price_usd is None and self.reported_price is None: warnings.append('sold_without_price')
         if self.sale_status == 'sold' and self.buyers_premium_included is None: warnings.append('premium_treatment_unknown')
-        if self.currency != 'USD' and self.price_usd is None: warnings.append('currency_conversion_unavailable')
+        if self.currency != 'USD' and self.price_usd is None and self.fx_rate_to_usd is None: warnings.append('currency_conversion_unavailable')
         self.warnings = sorted(set(warnings))
         return self
 
@@ -134,6 +139,8 @@ class Valuation(FlexibleModel):
     results: ValuationResults
     market_comparison: dict[str, Any] = Field(default_factory=dict)
     comparables_used: list[dict[str, Any]] = Field(default_factory=list)
+    comparable_diagnostics: list[dict[str, Any]] = Field(default_factory=list)
+    diagnostic_table: list[dict[str, Any]] = Field(default_factory=list)
     calculation_summary: dict[str, Any] = Field(default_factory=dict)
     warnings: list[str] = Field(default_factory=list)
     calculation_trace: list[dict[str, Any]] = Field(default_factory=list)

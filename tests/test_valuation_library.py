@@ -253,3 +253,37 @@ def test_switching_assets_clears_prior_canonical_state_model():
         state['last_intake_selection'] = selected
     assert 'validated_asset_id' not in state
     assert state['last_intake_selection'] == 'SOBLACK'
+
+
+def test_soblack_real_research_shape_uses_handbag_aliases_fx_and_diagnostics():
+    aid='TMP-SOBLACK-REAL-SHAPE'; d=asset_dir(aid)
+    if d.exists(): shutil.rmtree(d)
+    try:
+        f=build_factors('SOBLACK', {'condition': {}, 'missing_fields': ['condition']}).model_dump(mode='json')
+        f['asset_id']=aid; f['rally_symbol']='SOBLACK'
+        r=research(asset_id=aid)
+        r['research_limitations']=['Subject condition is not fully documented.']
+        r['comparable_sales']=[
+            {'comparable_id':'SOBLACK-COMP-001','title':'Heritage 2016 Hermès So Black Birkin completed sale','sale_date':'2016-12-01','venue':'Heritage','sale_status':'sold','currency':'USD','reported_price':106250,'buyers_premium_included':True,'price_usd_at_sale':106250,'model_similarity':0.96,'size_similarity':0.92,'material_similarity':0.90,'hardware_similarity':0.94,'year_similarity':0.72,'accessory_similarity':0.85,'condition_similarity':0.78,'overall_similarity':0.88,'evidence_quality':0.82,'source_url':'https://example.com/heritage-2016','verified':True,'eligible_for_official_valuation':True},
+            {'comparable_id':'SOBLACK-COMP-002','title':'Christie’s 2017 Hermès So Black Birkin completed sale','sale_date':'2017-05-31','venue':'Christies','sale_status':'sold','currency':'USD','reported_price':81250,'buyers_premium_included':True,'price_usd_at_sale':81250,'model_similarity':0.94,'size_similarity':0.90,'material_similarity':0.89,'hardware_similarity':0.91,'year_similarity':0.70,'accessory_similarity':0.82,'condition_similarity':0.76,'overall_similarity':0.84,'evidence_quality':0.76,'source_url':'https://example.com/christies-2017','verified':False,'eligible_for_official_valuation':True},
+            {'comparable_id':'SOBLACK-COMP-003','title':'Christie’s 2022 Hermès So Black Birkin completed sale','sale_date':'2022-11-25','venue':'Christies Hong Kong','sale_status':'sold','currency':'HKD','reported_price':875000,'buyers_premium_included':True,'model_similarity':0.98,'size_similarity':0.94,'material_similarity':0.92,'hardware_similarity':0.96,'year_similarity':0.80,'accessory_similarity':0.86,'condition_similarity':0.80,'overall_similarity':0.90,'evidence_quality':0.84,'source_url':'https://example.com/christies-2022','verified':True,'eligible_for_official_valuation':True},
+        ]
+        save_json(aid,'factors',f); save_json(aid,'research',r)
+        v=run_valuation(aid, write=False)
+        assert v.valuation_status in {'completed_with_limitations','provisional'}
+        assert v.calculation_summary['eligible_comparable_count'] >= 2
+        assert {c['comparable_id'] for c in v.comparables_used} == {'SOBLACK-COMP-001','SOBLACK-COMP-002','SOBLACK-COMP-003'}
+        by_id={d['comparable_id']: d for d in v.comparable_diagnostics}
+        assert by_id['SOBLACK-COMP-001']['final_eligibility'] is True
+        assert by_id['SOBLACK-COMP-002']['verification_treatment'] == pytest.approx(0.65)
+        assert by_id['SOBLACK-COMP-003']['parsed_usd_price'] == pytest.approx(112000)
+        assert by_id['SOBLACK-COMP-003']['fx_conversion_source'] == 'deterministic_engine_fx_table'
+        assert 'provenance_similarity' in by_id['SOBLACK-COMP-001']['parsed_similarity_components']
+        assert by_id['SOBLACK-COMP-001']['exclusion_reasons'] == []
+        assert v.results.conservative_value_usd is not None
+        assert v.results.base_value_usd is not None
+        assert v.results.optimistic_value_usd is not None
+        assert v.results.confidence_score < 0.75
+        assert v.diagnostic_table and v.diagnostic_table[0]['Comparable ID'] == 'SOBLACK-COMP-001'
+    finally:
+        if d.exists(): shutil.rmtree(d)

@@ -6,6 +6,29 @@ similarity_components:
   condition_similarity: 0.25
   provenance_similarity: 0.20
   presentation_similarity: 0.20
+use_supplied_overall_similarity: true
+similarity_aliases:
+  identity_similarity:
+    fields:
+      model_similarity: 0.35
+      size_similarity: 0.15
+      material_similarity: 0.20
+      hardware_similarity: 0.15
+      year_similarity: 0.15
+  condition_similarity:
+    fields:
+      condition_similarity: 1.0
+  provenance_similarity:
+    fields:
+      provenance_similarity: 1.0
+    fallback_fields:
+      accessory_similarity: 1.0
+    fallback_warning: accessory_similarity_used_as_provisional_provenance_proxy
+  presentation_similarity:
+    fields:
+      size_similarity: 0.34
+      accessory_similarity: 0.33
+      condition_similarity: 0.33
 required_factor_fields:
   - identity
   - condition
