@@ -6,7 +6,7 @@ from pydantic import AliasChoices, BaseModel, ConfigDict, Field, HttpUrl, model_
 Category = Literal['fossils','watches','books','handbags','wine and whiskey']
 WorkflowStatus = Literal['intake_missing','factors_ready','research_ready','valuation_ready','report_ready','published','needs_review','stale','valuation_error','error']
 SaleStatus = Literal['sold','unsold','passed','withdrawn','unknown']
-Currency = Literal['USD','EUR','GBP','CHF','HKD']
+Currency = str
 ValuationStatus = Literal['completed','completed_with_limitations','provisional','manual_review_required','insufficient_evidence','valuation_error','error','needs_review']
 
 class FlexibleModel(BaseModel):
@@ -69,11 +69,11 @@ class ComparableSale(FlexibleModel):
     sale_date: date | None = None
     venue: str | None = None
     sale_status: SaleStatus = 'unknown'
-    currency: Currency = 'USD'
-    reported_price: float | None = Field(default=None, gt=0)
+    currency: Currency | None = Field(default=None, validation_alias=AliasChoices('reported_currency', 'currency'))
+    reported_price: float | None = Field(default=None, gt=0, validation_alias=AliasChoices('reported_realized_price', 'reported_price', 'original_reported_price'))
     buyers_premium_included: bool | None = None
-    price_usd: float | None = Field(default=None, gt=0)
-    price_usd_at_sale: float | None = Field(default=None, gt=0)
+    price_usd: float | None = Field(default=None, gt=0, validation_alias=AliasChoices('price_usd',))
+    price_usd_at_sale: float | None = Field(default=None, gt=0, validation_alias=AliasChoices('price_usd_at_sale', 'price_usd'))
     fx_rate_to_usd: float | None = Field(default=None, gt=0)
     eligible_for_official_valuation: bool | None = None
     specimen_characteristics: dict[str, Any] = Field(default_factory=dict)
@@ -90,13 +90,10 @@ class ComparableSale(FlexibleModel):
     def flag_questionable(self):
         today = date.today()
         warnings = list(self.warnings)
-        if self.price_usd is None and self.price_usd_at_sale is not None:
-            self.price_usd = self.price_usd_at_sale
         if self.sale_date and self.sale_date > today: warnings.append('future_sale_date')
         if not self.source_url: warnings.append('missing_source_reference')
         if self.sale_status == 'sold' and self.price_usd is None and self.reported_price is None: warnings.append('sold_without_price')
         if self.sale_status == 'sold' and self.buyers_premium_included is None: warnings.append('premium_treatment_unknown')
-        if self.currency != 'USD' and self.price_usd is None and self.fx_rate_to_usd is None: warnings.append('currency_conversion_unavailable')
         self.warnings = sorted(set(warnings))
         return self
 
