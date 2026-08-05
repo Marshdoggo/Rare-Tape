@@ -44,7 +44,7 @@ with tab_library:
         if cat!='All': f=f[f['category'].eq(cat)]
         if status!='All': f=f[f['status'].eq(status)]
         if report!='All': f=f[f['report_available'].eq(report=='Available')]
-        st.dataframe(display_safe_dataframe(f), use_container_width=True, hide_index=True)
+        st.dataframe(display_safe_dataframe(f), width="stretch", hide_index=True)
 with tab_detail:
     ids=library_assets(); aid=st.selectbox('Select valuation-library asset', ids) if ids else None
     if aid:
@@ -54,19 +54,20 @@ with tab_detail:
         st.markdown('### Saved asset file inventory')
         st.metric('Raw research comparable count', inventory.get('raw_comparable_count', 0))
         st.write(f"Valuation input status: {inventory.get('valuation_freshness')}")
-        st.dataframe(display_safe_dataframe(inventory.get('files', [])), use_container_width=True, hide_index=True)
+        st.dataframe(display_safe_dataframe(inventory.get('files', [])), width="stretch", hide_index=True)
         st.json({'latest_input_hashes': inventory.get('latest_input_hashes'), 'current_input_hashes': inventory.get('current_input_hashes'), 'comparable_ids': inventory.get('comparable_ids')}, expanded=False)
         saved_factors=bool(files.get('factors')); saved_research=bool(files.get('research'))
         rerun_ready=saved_factors and saved_research
         preview={'Saved factors found': 'Yes' if saved_factors else 'No','Saved research found': 'Yes' if saved_research else 'No','Comparable records found': inventory.get('raw_comparable_count', 0),'Current research hash': inventory.get('current_input_hashes',{}).get('research'),'Current methodology version': (files.get('valuation') or {}).get('methodology_version', 'Unavailable'),'Current engine version': (((files.get('valuation') or {}).get('calculation_trace') or [{}])[0].get('engine_version') if files.get('valuation') else 'Unavailable')}
         st.markdown('### Rerun valuation from saved files')
-        st.dataframe(display_safe_dataframe([{'field': k, 'value': v} for k,v in preview.items()]), hide_index=True, use_container_width=True)
+        st.dataframe(display_safe_dataframe([{'field': k, 'value': v} for k,v in preview.items()]), hide_index=True, width="stretch")
+        detail_overwrite=st.checkbox('Overwrite existing valuation.json with timestamped revision backup', key='detail_overwrite')
         if not rerun_ready: st.info('Rerun disabled because saved factors.json and research.json are required.')
         if st.button('Rerun valuation from saved files', disabled=not rerun_ready):
             try:
-                summary, val = rerun_valuation_from_saved_files(aid)
-                st.success('Saved-file valuation rerun completed and valuation.json was revision-backed up before replacement.')
-                st.json({'input_summary': summary, 'valuation': val.model_dump(mode='json', by_alias=True)})
+                summary, val = rerun_valuation_from_saved_files(aid, overwrite=detail_overwrite)
+                st.success('Saved-file valuation rerun completed.' if val is not None else summary.get('message', 'Existing valuation.json was left unchanged.'))
+                st.json({'input_summary': summary, 'valuation': val.model_dump(mode='json', by_alias=True) if val is not None else None})
             except Exception as e:
                 st.error(str(e))
         if files.get('valuation'):
@@ -80,11 +81,11 @@ with tab_detail:
             diagnostics=v.get('diagnostic_table') or v.get('comparable_diagnostics') or []
             if diagnostics:
                 st.markdown('### Comparable eligibility diagnostics')
-                st.dataframe(display_safe_dataframe(diagnostics), use_container_width=True, hide_index=True)
+                st.dataframe(display_safe_dataframe(diagnostics), width="stretch", hide_index=True)
         if files.get('factors'):
             st.markdown('### Observed facts, analyst judgments, and factors'); st.json(files['factors'], expanded=False)
         if files.get('research'):
-            st.markdown('### Research evidence and comparable sales'); st.dataframe(display_safe_dataframe(files['research'].get('comparables', files['research'].get('comparable_sales', []))), use_container_width=True)
+            st.markdown('### Research evidence and comparable sales'); st.dataframe(display_safe_dataframe(files['research'].get('comparables', files['research'].get('comparable_sales', []))), width="stretch")
         if files.get('valuation'):
             st.markdown('### Calculation trace'); st.json(files['valuation'].get('calculation_trace',[]), expanded=False)
         if files.get('report'):
@@ -110,7 +111,7 @@ with tab_intake:
         'Latest share price':ctx.get('latest_share_price_usd'),'Latest market value':ctx.get('latest_market_value_usd'),'Last trade date':ctx.get('last_trade_date'),
         'Number of quarterly observations':len(hist),'First quarterly observation':hist[0] if hist else 'Unavailable','Latest quarterly observation':hist[-1] if hist else 'Unavailable','Asset status':ctx.get('asset_status')
     }
-    st.dataframe(display_safe_dataframe([{'field':k,'value':v} for k,v in panel.items()]), hide_index=True, use_container_width=True)
+    st.dataframe(display_safe_dataframe([{'field':k,'value':v} for k,v in panel.items()]), hide_index=True, width="stretch")
     specs_txt=st.text_area('Paste supplemental asset specifications JSON', height=220, help='Rally Terminal will automatically merge existing financial, identity, and price-history data for the selected asset. Paste only the additional collectible specifications available from Rally Rd.')
     research_txt=st.text_area('Paste research.json', height=220)
     overwrite=st.checkbox('Overwrite existing files with timestamped revision backups')
@@ -119,7 +120,7 @@ with tab_intake:
         targets={k: asset_dir(aid_for_summary)/f'{k}.json' for k in ('factors','research')}
         existing={k: p.exists() for k,p in targets.items()}
         st.info(f"Selected canonical asset: {ctx.get('asset_name') or aid_for_summary} | canonical asset_id: {aid_for_summary} | ticker: {ctx.get('ticker')} | overwrite: {'enabled' if overwrite else 'disabled'} | valuation will run after save.")
-        st.dataframe(display_safe_dataframe([{'file':k,'target_path':str(p),'already_exists':existing[k]} for k,p in targets.items()]), hide_index=True, use_container_width=True)
+        st.dataframe(display_safe_dataframe([{'file':k,'target_path':str(p),'already_exists':existing[k]} for k,p in targets.items()]), hide_index=True, width="stretch")
     if st.button('Validate intake JSON'):
         try:
             raw=json.loads(specs_txt or '{}')
@@ -134,7 +135,7 @@ with tab_intake:
         try:
             raw=json.loads(specs_txt or '{}')
             f=build_factors(selected, raw)
-            steps, val=save_intake_and_run_valuation, asset_file_inventory, rerun_valuation_from_saved_files(f.asset_id, f.model_dump(mode='json'), json.loads(research_txt), overwrite=overwrite)
+            steps, val=save_intake_and_run_valuation(f.asset_id, f.model_dump(mode='json'), json.loads(research_txt), overwrite=overwrite)
             for step in steps:
                 st.success(f"{step['step']}: {step['status']}")
             st.json(val.model_dump(mode='json'))

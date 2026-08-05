@@ -226,7 +226,7 @@ def test_partial_prior_directory_atomic_failure_cleanup_and_recoverable_valuatio
         with pytest.raises(FileExistsError):
             save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=False)
         assert json.loads((d/'factors.json').read_text()) == {'partial': True}
-        def boom(_aid): raise RuntimeError('engine exploded')
+        def boom(_aid, overwrite=False): raise RuntimeError('engine exploded')
         with pytest.raises(RuntimeError):
             save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=True, valuation_runner=boom)
         m=json.loads((d/'manifest.json').read_text())
@@ -365,3 +365,78 @@ def test_raw_comparables_lost_returns_valuation_error(monkeypatch):
         assert 'research_comparables_lost_during_parsing' in v.warnings
     finally:
         if d.exists(): shutil.rmtree(d)
+
+
+def _revision_count(d: Path, stem: str) -> int:
+    rev = d / 'revisions'
+    return len(list(rev.glob(f'{stem}_*.json'))) if rev.exists() else 0
+
+
+def test_rerun_saved_files_overwrite_contract_existing_false_and_true():
+    from alt_asset_explorer.valuation_library.storage import rerun_valuation_from_saved_files
+    aid='rally-soblack'; d=asset_dir(aid); snap=_snapshot_dir(d)
+    try:
+        if d.exists(): shutil.rmtree(d)
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json')
+        save_json(aid,'factors',f)
+        save_json(aid,'research',_soblack_three_research('SOBLACK'))
+        factors_before=(d/'factors.json').read_bytes()
+        research_before=(d/'research.json').read_bytes()
+
+        summary, val = rerun_valuation_from_saved_files(aid, overwrite=False)
+        assert summary['status'] == 'executed'
+        assert val is not None
+        assert (d/'manifest.json').exists()
+        valuation_before=(d/'valuation.json').read_bytes()
+        assert _revision_count(d, 'valuation') == 0
+
+        existing_summary, existing_val = rerun_valuation_from_saved_files(aid, overwrite=False)
+        assert existing_val is None
+        assert existing_summary['status'] == 'existing_file'
+        assert 'enable overwrite' in existing_summary['message']
+        assert (d/'valuation.json').read_bytes() == valuation_before
+        assert _revision_count(d, 'valuation') == 0
+
+        before_backups = _revision_count(d, 'valuation')
+        overwrite_summary, overwrite_val = rerun_valuation_from_saved_files(aid, overwrite=True)
+        assert overwrite_val is not None
+        assert overwrite_summary['status'] == 'executed'
+        assert _revision_count(d, 'valuation') == before_backups + 1
+        assert (d/'factors.json').read_bytes() == factors_before
+        assert (d/'research.json').read_bytes() == research_before
+        manifest=json.loads((d/'manifest.json').read_text())
+        assert manifest['files_present']['valuation'] is True
+        assert manifest['publication_status'] in {'valuation_ready','report_ready'}
+    finally:
+        _restore_dir(d, snap)
+
+
+def test_save_intake_uses_saved_file_rerun_helper_and_overwrite_keyword():
+    aid='rally-soblack'; d=asset_dir(aid); snap=_snapshot_dir(d)
+    calls=[]
+    try:
+        if d.exists(): shutil.rmtree(d)
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json')
+        def fake_runner(asset_id: str, overwrite: bool = False):
+            calls.append({'asset_id': asset_id, 'overwrite': overwrite})
+            class FakeVal:
+                asset_id = aid
+                valuation_status = 'completed'
+                def model_dump(self, **_kwargs): return {'asset_id': self.asset_id, 'valuation_status': self.valuation_status}
+            (asset_dir(asset_id)/'valuation.json').write_text(json.dumps({'asset_id': asset_id, 'valuation_status': 'completed'}))
+            return {'status': 'executed'}, FakeVal()
+        steps, val = save_intake_and_run_valuation(aid, f, _minimal_handbag_research('SOBLACK'), overwrite=True, valuation_runner=fake_runner)
+        assert val is not None
+        assert calls == [{'asset_id': aid, 'overwrite': True}]
+        assert any(s['step'] == 'valuation_engine' and s['status'] == 'executed' for s in steps)
+    finally:
+        _restore_dir(d, snap)
+
+
+def test_valuation_library_ui_calls_helpers_with_overwrite_and_stretch_width():
+    source = Path('app/pages/8_Valuation_Library.py').read_text()
+    assert 'rerun_valuation_from_saved_files(aid, overwrite=detail_overwrite)' in source
+    assert 'save_intake_and_run_valuation(f.asset_id, f.model_dump' in source
+    assert 'overwrite=overwrite)' in source
+    assert 'use_container_width=True' not in source
+    assert 'width="stretch"' in source

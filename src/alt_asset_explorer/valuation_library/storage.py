@@ -140,7 +140,7 @@ def existing_intake_files(asset_id: str, kinds: tuple[str, ...] = ('factors', 'r
     name_by_kind = {**FILENAMES, 'manifest': 'manifest.json'}
     return [d / name_by_kind[k] for k in kinds if (d / name_by_kind[k]).exists()]
 
-def save_intake_and_run_valuation(asset_id: str, factors_data: dict[str, Any], research_data: dict[str, Any], *, overwrite: bool = False, valuation_runner: Callable[[str], Any] | None = None) -> tuple[list[dict[str, str]], Any | None]:
+def save_intake_and_run_valuation(asset_id: str, factors_data: dict[str, Any], research_data: dict[str, Any], *, overwrite: bool = False, valuation_runner: Callable[[str, bool], Any] | None = None) -> tuple[list[dict[str, str]], Any | None]:
     canonical = resolve_canonical_asset_id(asset_id)
     factors_norm = normalize_document_identity('factors', factors_data, canonical)
     research_norm = normalize_document_identity('research', research_data, canonical)
@@ -173,14 +173,11 @@ def save_intake_and_run_valuation(asset_id: str, factors_data: dict[str, Any], r
             steps.append({'step': 'manifest.json', 'status': manifest.publication_status})
         except Exception:
             raise
-    runner = valuation_runner
-    if runner is None:
-        from .engine import run_valuation
-        runner = lambda aid: run_valuation(aid, write=True)
+    runner = valuation_runner or rerun_valuation_from_saved_files
     try:
-        val = runner(canonical)
-        steps.append({'step': 'valuation_engine', 'status': 'executed'})
-        steps.append({'step': 'valuation.json', 'status': 'saved'})
+        summary, val = runner(canonical, overwrite=overwrite)
+        steps.append({'step': 'valuation_engine', 'status': summary.get('status', 'executed')})
+        steps.append({'step': 'valuation.json', 'status': 'saved' if val is not None else summary.get('status', 'skipped')})
         steps.append({'step': 'final_valuation_status', 'status': getattr(val, 'valuation_status', 'completed')})
         regenerate_manifest(canonical)
         return steps, val
@@ -234,7 +231,7 @@ def _is_committed(path: Path) -> bool:
     except Exception:
         return False
 
-def rerun_valuation_from_saved_files(asset_id: str) -> tuple[dict[str, Any], Any]:
+def rerun_valuation_from_saved_files(asset_id: str, overwrite: bool = False) -> tuple[dict[str, Any], Any | None]:
     canonical = resolve_canonical_asset_id(asset_id)
     d=asset_dir(canonical)
     factors_path=d/'factors.json'; research_path=d/'research.json'
@@ -244,8 +241,14 @@ def rerun_valuation_from_saved_files(asset_id: str) -> tuple[dict[str, Any], Any
     research_raw=read_json(research_path)
     research=validate_document('research', research_raw)
     raw_count, ids=_raw_comparable_count(research_raw)
-    summary={'factors_path':str(factors_path),'research_path':str(research_path),'factors_hash':file_sha256(factors_path),'research_hash':file_sha256(research_path),'raw_comparable_count':raw_count,'parsed_comparable_count':len(research.comparables),'comparable_ids':ids}
+    valuation_path=d/'valuation.json'
+    summary={'factors_path':str(factors_path),'research_path':str(research_path),'valuation_path':str(valuation_path),'factors_hash':file_sha256(factors_path),'research_hash':file_sha256(research_path),'raw_comparable_count':raw_count,'parsed_comparable_count':len(research.comparables),'comparable_ids':ids,'overwrite':overwrite}
+    if valuation_path.exists() and not overwrite:
+        manifest = regenerate_manifest(factors.asset_id)
+        summary.update({'status':'existing_file','message':f'{valuation_path} exists; enable overwrite to create a timestamped revision backup before replacing it.','manifest_status':manifest.publication_status})
+        return summary, None
     from .engine import run_valuation
     val=run_valuation(factors.asset_id, write=True)
-    regenerate_manifest(factors.asset_id)
+    manifest = regenerate_manifest(factors.asset_id)
+    summary.update({'status':'executed','manifest_status':manifest.publication_status,'valuation_status':getattr(val, 'valuation_status', None)})
     return summary, val
