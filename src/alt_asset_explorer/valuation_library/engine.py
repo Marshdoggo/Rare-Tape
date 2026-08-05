@@ -69,22 +69,24 @@ def _similarity(comp, cat_cfg: dict[str, Any]) -> tuple[float, dict[str, float |
     return 0.5, components, ['overall_similarity_defaulted']
 
 def _usd_price(comp, engine_cfg: dict[str, Any]) -> tuple[float | None, str | None, float | None, list[str]]:
-    if comp.price_usd is not None:
+    if _as_float(getattr(comp, 'price_usd_at_sale', None)) is not None:
+        return float(comp.price_usd_at_sale), 'research_price_usd', 1.0, []
+    if _as_float(getattr(comp, 'price_usd', None)) is not None:
         return float(comp.price_usd), 'research_price_usd', 1.0, []
-    if getattr(comp, 'price_usd_at_sale', None) is not None:
-        return float(comp.price_usd_at_sale), 'research_price_usd_at_sale', 1.0, []
-    if comp.currency == 'USD' and comp.reported_price is not None:
-        return float(comp.reported_price), 'reported_usd_price', 1.0, []
-    if comp.reported_price is None:
+    reported = _as_float(getattr(comp, 'reported_price', None))
+    currency = getattr(comp, 'currency', None)
+    if reported is None:
         return None, None, None, ['missing_reported_price']
-    if getattr(comp, 'fx_rate_to_usd', None) is not None:
+    if _as_float(getattr(comp, 'fx_rate_to_usd', None)) is not None:
         rate=float(comp.fx_rate_to_usd)
-        return float(comp.reported_price)*rate, 'research_fx_rate_to_usd', rate, []
+        return reported*rate, 'research_supplied_fx_rate', rate, []
+    if currency == 'USD':
+        return reported, 'reported_usd_price', 1.0, []
     table=engine_cfg.get('supported_currencies') or {}
-    if comp.currency in table:
-        rate=float(table[comp.currency])
-        return float(comp.reported_price)*rate, 'deterministic_engine_fx_table', rate, [f'fx_converted_from_{comp.currency.lower()}']
-    return None, None, None, ['unsupported_currency']
+    if currency in table:
+        rate=float(table[currency])
+        return reported*rate, 'configured_fx_rate', rate, [f'fx_converted_from_{str(currency).lower()}']
+    return None, None, None, ['unsupported_currency' if currency else 'missing_currency']
 
 def weighted_quantile(values, weights, q):
     pairs=sorted((float(v),float(w)) for v,w in zip(values,weights) if _finite(v) and _finite(w) and w>=0)
@@ -144,7 +146,7 @@ def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=Tru
         sim, parsed_components, sim_warnings = _similarity(comp, cat_cfg)
         cw.extend(sim_warnings)
         if comp.sale_status!='sold': include=False; rationale.append('not_sold')
-        if price is None: include=False; rationale.append('missing_usd_price')
+        if price is None: include=False; rationale.append('missing_usd_normalized_price')
         if comp.sale_date and comp.sale_date>now: include=False; rationale.append('future_sale_date')
         if sim < cat_cfg['evidence_thresholds']['minimum_overall_similarity']: include=False; rationale.append('low_similarity')
         if comp.evidence_quality is not None and comp.evidence_quality < cat_cfg['evidence_thresholds']['minimum_evidence_quality']: include=False; rationale.append('low_evidence_quality')
@@ -163,7 +165,7 @@ def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=Tru
         raw_weights.append(weight); adjusted.append(adj_price if adj_price is not None else float('nan'))
         rec={'comparable_id':comp.comparable_id,'reported_price_usd':price,'adjusted_price_usd':adj_price,'included':include,'adjustments':adj,'warnings':sorted(set(cw)),'inclusion_rationale':rationale or ['eligible']}
         if include: included.append(rec)
-        diag={**rec,'eligible_before_filtering':eligible_before_filtering,'final_eligibility':include,'exclusion_reasons':rationale,'parsed_sale_status':comp.sale_status,'parsed_usd_price':price,'parsed_overall_similarity':sim,'parsed_similarity_components':parsed_components,'parsed_evidence_quality':eq,'verification_status':'verified' if comp.verified else 'unverified','verification_treatment':verification,'recency_treatment':recency,'currency':comp.currency,'original_reported_price':comp.reported_price,'fx_conversion_source':conversion_source,'fx_rate_to_usd':fx_rate,'raw_weight':weight}
+        diag={**rec,'eligible_before_filtering':eligible_before_filtering,'final_eligibility':include,'exclusion_reasons':rationale,'parsed_sale_status':comp.sale_status,'parsed_usd_price':price,'parsed_overall_similarity':sim,'parsed_similarity_components':parsed_components,'parsed_evidence_quality':eq,'verification_status':'verified' if comp.verified else 'unverified','verification_treatment':verification,'recency_treatment':recency,'currency':comp.currency,'original_currency':comp.currency,'original_reported_price':comp.reported_price,'fx_conversion_source':conversion_source,'fx_rate_to_usd':fx_rate,'configured_fx_version':engine_cfg.get('methodology_version'),'calculated_price_usd':price,'fx_warnings':sorted(set(fx_warnings)),'raw_weight':weight}
         trace.append({**diag,'premium_treatment':comp.buyers_premium_included,'similarity_score':sim,'evidence_quality_score':eq})
     total=sum(raw_weights); norm=[w/total if total>0 else 0 for w in raw_weights]
     inc_i=0; diagnostics=[]

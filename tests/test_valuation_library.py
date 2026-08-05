@@ -277,7 +277,7 @@ def test_soblack_real_research_shape_uses_handbag_aliases_fx_and_diagnostics():
         assert by_id['SOBLACK-COMP-001']['final_eligibility'] is True
         assert by_id['SOBLACK-COMP-002']['verification_treatment'] == pytest.approx(0.65)
         assert by_id['SOBLACK-COMP-003']['parsed_usd_price'] == pytest.approx(112000)
-        assert by_id['SOBLACK-COMP-003']['fx_conversion_source'] == 'deterministic_engine_fx_table'
+        assert by_id['SOBLACK-COMP-003']['fx_conversion_source'] == 'configured_fx_rate'
         assert 'provenance_similarity' in by_id['SOBLACK-COMP-001']['parsed_similarity_components']
         assert by_id['SOBLACK-COMP-001']['exclusion_reasons'] == []
         assert v.results.conservative_value_usd is not None
@@ -323,6 +323,83 @@ def test_canonical_comparables_parse_validate_serialize_save_load_engine():
     finally:
         if d.exists(): shutil.rmtree(d)
 
+
+
+def test_comparable_canonical_fx_ingestion_priority_and_diagnostics():
+    base = {
+        'comparable_id':'FX-COMP', 'title':'FX sale', 'sale_status':'sold',
+        'sale_date':'2022-01-01', 'reported_currency':'HKD',
+        'reported_realized_price':327600, 'overall_similarity':0.9,
+        'evidence_quality':0.9, 'source_url':'https://example.com/fx',
+        'buyers_premium_included':True, 'verified':True,
+    }
+    parsed = Research.model_validate({'asset_id':'SYNTHETIC-ASSET','research_date':'2026-08-05','comparables':[base]}).comparables[0]
+    assert parsed.currency == 'HKD'
+    assert parsed.reported_price == pytest.approx(327600)
+    assert parsed.price_usd_at_sale is None
+
+    def run_with(comp):
+        aid='TMP-FX-PRIORITY'; d=asset_dir(aid)
+        if d.exists(): shutil.rmtree(d)
+        try:
+            f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json'); f['asset_id']=aid; f['rally_symbol']='SOBLACK'
+            r=research(asset_id=aid); r['comparables']=[comp]; r.pop('comparable_sales', None)
+            save_json(aid,'factors',f); save_json(aid,'research',r)
+            return run_valuation(aid, write=False).comparable_diagnostics[0]
+        finally:
+            if d.exists(): shutil.rmtree(d)
+
+    for currency, rate in [('HKD', 0.128), ('CHF', 1.12), ('GBP', 1.27), ('EUR', 1.09)]:
+        diag_cur = run_with({**base, 'reported_currency': currency})
+        assert diag_cur['parsed_usd_price'] == pytest.approx(327600 * rate)
+        assert diag_cur['fx_conversion_source'] == 'configured_fx_rate'
+
+    diag = run_with(base)
+    assert diag['currency'] == 'HKD'
+    assert diag['original_currency'] == 'HKD'
+    assert diag['original_reported_price'] == pytest.approx(327600)
+    assert diag['parsed_usd_price'] == pytest.approx(41932.8)
+    assert diag['fx_rate_to_usd'] == pytest.approx(0.128)
+    assert diag['fx_conversion_source'] == 'configured_fx_rate'
+    assert diag['calculated_price_usd'] == pytest.approx(41932.8)
+    assert diag['configured_fx_version'] == '1.0'
+
+    diag = run_with({**base, 'price_usd_at_sale':43000, 'fx_rate_to_usd':0.13})
+    assert diag['parsed_usd_price'] == pytest.approx(43000)
+    assert diag['fx_conversion_source'] == 'research_price_usd'
+
+    diag = run_with({**base, 'fx_rate_to_usd':0.13})
+    assert diag['parsed_usd_price'] == pytest.approx(42588)
+    assert diag['fx_conversion_source'] == 'research_supplied_fx_rate'
+
+    diag = run_with({**base, 'reported_currency':'JPY'})
+    assert diag['currency'] == 'JPY'
+    assert diag['parsed_usd_price'] is None
+    assert 'missing_usd_normalized_price' in diag['exclusion_reasons']
+    assert 'unsupported_currency' in diag['warnings']
+
+
+def test_soblack_comp_001_canonical_hkd_becomes_eligible_three_comparable_output():
+    aid='TMP-SOBLACK-CANONICAL-HKD'; d=asset_dir(aid)
+    if d.exists(): shutil.rmtree(d)
+    try:
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json'); f['asset_id']=aid; f['rally_symbol']='SOBLACK'
+        r=_soblack_three_research(aid)
+        r['comparables'][0].update({'reported_currency':'HKD','reported_realized_price':327600,'price_usd_at_sale':None})
+        r['comparables'][0].pop('currency', None); r['comparables'][0].pop('reported_price', None)
+        save_json(aid,'factors',f); save_json(aid,'research',r)
+        v=run_valuation(aid, write=False)
+        by_id={d['comparable_id']: d for d in v.comparable_diagnostics}
+        assert by_id['SOBLACK-COMP-001']['original_currency'] == 'HKD'
+        assert by_id['SOBLACK-COMP-001']['parsed_usd_price'] == pytest.approx(41932.8)
+        assert by_id['SOBLACK-COMP-001']['fx_conversion_source'] == 'configured_fx_rate'
+        assert by_id['SOBLACK-COMP-001']['final_eligibility'] is True
+        assert v.calculation_summary['eligible_comparable_count'] == 3
+        assert v.results.conservative_value_usd is not None
+        assert v.results.base_value_usd is not None
+        assert v.results.optimistic_value_usd is not None
+    finally:
+        if d.exists(): shutil.rmtree(d)
 
 def test_saved_files_rerun_from_canonical_directory_only():
     from alt_asset_explorer.valuation_library.storage import rerun_valuation_from_saved_files, asset_file_inventory
