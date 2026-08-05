@@ -71,7 +71,7 @@ def create_revision(path: Path) -> Path:
 def save_json(asset_id: str, kind: str, data: dict[str, Any], *, overwrite: bool=False) -> Path:
     data = normalize_document_identity(kind, data, asset_id)
     obj=validate_document(kind, data)
-    text=json.dumps(obj.model_dump(mode='json'), indent=2, sort_keys=True, default=_json_default)+'\n'
+    text=json.dumps(obj.model_dump(mode='json', by_alias=True), indent=2, sort_keys=True, default=_json_default)+'\n'
     path=asset_dir(asset_id)/FILENAMES[kind]
     out=atomic_write_text(path,text,overwrite=overwrite)
     regenerate_manifest(asset_id)
@@ -121,7 +121,7 @@ def regenerate_manifest(asset_id: str) -> Manifest:
         if files.get('research') and report_date and research_date and report_date < research_date: warnings.append('stale_report_before_latest_research')
     lm={fn:datetime.fromtimestamp((d/fn).stat().st_mtime, timezone.utc).isoformat() for fn in FILENAMES.values() if (d/fn).exists()}
     m=Manifest(asset_id=asset_id,display_name=display,rally_match=rally_match,files_present=files,schema_versions=schema_versions,methodology_version=methodology,research_date=research_date,valuation_date=valuation_date,report_date=report_date,publication_status=workflow_status(files,warnings),validation_status='warning' if warnings else 'valid',missing_required_files=missing,warnings=sorted(set(warnings)),last_modified=lm)
-    atomic_write_text(d/'manifest.json', json.dumps(m.model_dump(mode='json'),indent=2,sort_keys=True)+'\n', overwrite=True)
+    atomic_write_text(d/'manifest.json', json.dumps(m.model_dump(mode='json', by_alias=True),indent=2,sort_keys=True)+'\n', overwrite=True)
     return m
 
 def build_report_package(asset_id: str) -> bytes:
@@ -152,8 +152,8 @@ def save_intake_and_run_valuation(asset_id: str, factors_data: dict[str, Any], r
         raise FileExistsError(f'Existing valuation-library files would be overwritten: {names}. Enable revision-safe overwrite to create timestamped backups before replacing them. No files were written.')
     d = asset_dir(canonical); d.mkdir(parents=True, exist_ok=True); (d/'source_material').mkdir(exist_ok=True)
     staged = {
-        FILENAMES['factors']: json.dumps(factors_obj.model_dump(mode='json'), indent=2, sort_keys=True, default=_json_default)+'\n',
-        FILENAMES['research']: json.dumps(research_obj.model_dump(mode='json'), indent=2, sort_keys=True, default=_json_default)+'\n',
+        FILENAMES['factors']: json.dumps(factors_obj.model_dump(mode='json', by_alias=True), indent=2, sort_keys=True, default=_json_default)+'\n',
+        FILENAMES['research']: json.dumps(research_obj.model_dump(mode='json', by_alias=True), indent=2, sort_keys=True, default=_json_default)+'\n',
     }
     steps: list[dict[str, str]] = []
     with tempfile.TemporaryDirectory(dir=d) as tmpdir:
@@ -186,10 +186,66 @@ def save_intake_and_run_valuation(asset_id: str, factors_data: dict[str, Any], r
         return steps, val
     except Exception as e:
         m = regenerate_manifest(canonical)
-        md = m.model_dump(mode='json')
+        md = m.model_dump(mode='json', by_alias=True)
         md['publication_status'] = 'valuation_error'
         md['validation_status'] = 'error'
         md['warnings'] = sorted(set(list(md.get('warnings') or []) + [f'valuation_error:{e}']))
         atomic_write_text(d/'manifest.json', json.dumps(md, indent=2, sort_keys=True, default=_json_default)+'\n', overwrite=True)
         steps.append({'step': 'valuation_engine', 'status': f'failed: {e}'})
         raise RuntimeError(f'valuation generation failed after saving factors/research: {e}') from e
+
+
+def file_sha256(path: Path) -> str:
+    import hashlib
+    return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else ''
+
+def _raw_comparable_count(data: dict[str, Any]) -> tuple[int, list[str]]:
+    comps = data.get('comparables')
+    if comps is None:
+        comps = data.get('comparable_sales')
+    if not isinstance(comps, list):
+        return 0, []
+    return len(comps), [str(c.get('comparable_id')) for c in comps if isinstance(c, dict) and c.get('comparable_id')]
+
+def asset_file_inventory(asset_id: str) -> dict[str, Any]:
+    d=asset_dir(asset_id)
+    rows=[]
+    hashes={}
+    for kind, fn in FILENAMES.items():
+        p=d/fn
+        present=p.exists()
+        rows.append({'file':fn,'present':present,'path':str(p),'sha256':file_sha256(p) if present and fn.endswith('.json') else '', 'modified_at':datetime.fromtimestamp(p.stat().st_mtime, timezone.utc).isoformat() if present else None, 'repository_committed': _is_committed(p) if present else False, 'runtime_only': (present and not _is_committed(p))})
+        if present and fn.endswith('.json'):
+            hashes[kind]=file_sha256(p)
+    research={}
+    if (d/'research.json').exists():
+        research=read_json(d/'research.json')
+    raw_count, ids=_raw_comparable_count(research)
+    valuation=read_json(d/'valuation.json') if (d/'valuation.json').exists() else {}
+    latest_hashes=((valuation.get('calculation_trace') or [{}])[0].get('input_hashes') or {}) if isinstance(valuation, dict) else {}
+    current = bool(latest_hashes) and latest_hashes.get('factors') == hashes.get('factors') and latest_hashes.get('research') == hashes.get('research')
+    return {'asset_id':asset_id,'directory':str(d),'files':rows,'raw_comparable_count':raw_count,'comparable_ids':ids,'latest_input_hashes':latest_hashes,'current_input_hashes':hashes,'valuation_freshness':'current' if current else ('stale' if valuation else 'missing')}
+
+def _is_committed(path: Path) -> bool:
+    try:
+        import subprocess
+        rel=path.relative_to(PROJECT_ROOT)
+        return subprocess.run(['git','ls-files','--error-unmatch',str(rel)], cwd=PROJECT_ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+    except Exception:
+        return False
+
+def rerun_valuation_from_saved_files(asset_id: str) -> tuple[dict[str, Any], Any]:
+    canonical = resolve_canonical_asset_id(asset_id)
+    d=asset_dir(canonical)
+    factors_path=d/'factors.json'; research_path=d/'research.json'
+    if not factors_path.exists() or not research_path.exists():
+        raise FileNotFoundError('saved factors.json and research.json are required')
+    factors=validate_document('factors', read_json(factors_path))
+    research_raw=read_json(research_path)
+    research=validate_document('research', research_raw)
+    raw_count, ids=_raw_comparable_count(research_raw)
+    summary={'factors_path':str(factors_path),'research_path':str(research_path),'factors_hash':file_sha256(factors_path),'research_hash':file_sha256(research_path),'raw_comparable_count':raw_count,'parsed_comparable_count':len(research.comparables),'comparable_ids':ids}
+    from .engine import run_valuation
+    val=run_valuation(factors.asset_id, write=True)
+    regenerate_manifest(factors.asset_id)
+    return summary, val

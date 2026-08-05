@@ -287,3 +287,81 @@ def test_soblack_real_research_shape_uses_handbag_aliases_fx_and_diagnostics():
         assert v.diagnostic_table and v.diagnostic_table[0]['Comparable ID'] == 'SOBLACK-COMP-001'
     finally:
         if d.exists(): shutil.rmtree(d)
+
+
+def _soblack_three_research(asset_id='rally-soblack'):
+    r=_minimal_handbag_research(asset_id)
+    r.pop('comparable_sales', None)
+    r['comparables']=[
+        {'comparable_id':'SOBLACK-COMP-001','title':'Heritage 2016 Hermès So Black Birkin completed sale','sale_date':'2016-12-01','venue':'Heritage','sale_status':'sold','currency':'USD','reported_price':106250,'buyers_premium_included':True,'price_usd_at_sale':106250,'overall_similarity':0.88,'evidence_quality':0.82,'source_url':'https://example.com/heritage-2016','verified':True,'eligible_for_official_valuation':True},
+        {'comparable_id':'SOBLACK-COMP-002','title':'Christie’s 2017 Hermès So Black Birkin completed sale','sale_date':'2017-05-31','venue':'Christies','sale_status':'sold','currency':'USD','reported_price':81250,'buyers_premium_included':True,'price_usd_at_sale':81250,'overall_similarity':0.84,'evidence_quality':0.76,'source_url':'https://example.com/christies-2017','verified':False,'eligible_for_official_valuation':True},
+        {'comparable_id':'SOBLACK-COMP-003','title':'Christie’s 2022 Hermès So Black Birkin completed sale','sale_date':'2022-11-25','venue':'Christies Hong Kong','sale_status':'sold','currency':'HKD','reported_price':875000,'buyers_premium_included':True,'overall_similarity':0.90,'evidence_quality':0.84,'source_url':'https://example.com/christies-2022','verified':True,'eligible_for_official_valuation':True},
+    ]
+    return r
+
+
+def test_canonical_comparables_parse_validate_serialize_save_load_engine():
+    aid='TMP-CANONICAL-COMPS'; d=asset_dir(aid)
+    if d.exists(): shutil.rmtree(d)
+    try:
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json'); f['asset_id']=aid; f['rally_symbol']='SOBLACK'
+        r=_soblack_three_research(aid); r['unknown_optional_field']={'kept': True}
+        parsed=Research.model_validate(r)
+        assert len(parsed.comparables) == 3
+        assert [c.comparable_id for c in parsed.comparables] == ['SOBLACK-COMP-001','SOBLACK-COMP-002','SOBLACK-COMP-003']
+        dumped=parsed.model_dump(mode='json', by_alias=True)
+        assert 'comparables' in dumped and 'comparable_sales' not in dumped
+        save_json(aid,'factors',f); save_json(aid,'research',r)
+        saved=json.loads((d/'research.json').read_text())
+        assert 'comparables' in saved and len(saved['comparables']) == 3
+        loaded=Research.model_validate(saved)
+        assert [c.comparable_id for c in loaded.comparables] == ['SOBLACK-COMP-001','SOBLACK-COMP-002','SOBLACK-COMP-003']
+        v=run_valuation(aid, write=False)
+        assert v.research_input_summary['raw_comparable_count'] == 3
+        assert v.research_input_summary['parsed_comparable_count'] == 3
+        assert len(v.comparable_diagnostics) == 3
+    finally:
+        if d.exists(): shutil.rmtree(d)
+
+
+def test_saved_files_rerun_from_canonical_directory_only():
+    from alt_asset_explorer.valuation_library.storage import rerun_valuation_from_saved_files, asset_file_inventory
+    aid='rally-soblack'; d=asset_dir(aid); snap=_snapshot_dir(d)
+    upper=asset_dir('SOBLACK'); lower=asset_dir('soblack'); upper_snap=_snapshot_dir(upper); lower_snap=_snapshot_dir(lower)
+    try:
+        for x in (d, upper, lower):
+            if x.exists(): shutil.rmtree(x)
+        upper.mkdir(parents=True); (upper/'research.json').write_text('{"asset_id":"SOBLACK","research_date":"2026-08-05","comparables":[]}\n')
+        lower.mkdir(parents=True); (lower/'research.json').write_text('{"asset_id":"soblack","research_date":"2026-08-05","comparables":[]}\n')
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json')
+        save_json(aid,'factors',f); save_json(aid,'research',_soblack_three_research('SOBLACK'))
+        inv=asset_file_inventory(aid)
+        assert inv['raw_comparable_count'] == 3
+        summary, val=rerun_valuation_from_saved_files(aid)
+        assert summary['raw_comparable_count'] == 3
+        assert val.research_input_summary['research_path'].endswith('data/valuation_library/rally-soblack/research.json')
+        assert len(val.comparable_diagnostics) == 3
+    finally:
+        _restore_dir(d, snap); _restore_dir(upper, upper_snap); _restore_dir(lower, lower_snap)
+
+
+def test_raw_comparables_lost_returns_valuation_error(monkeypatch):
+    import alt_asset_explorer.valuation_library.engine as e
+    aid='TMP-LOST-COMPS'; d=asset_dir(aid)
+    if d.exists(): shutil.rmtree(d)
+    try:
+        f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json'); f['asset_id']=aid; f['rally_symbol']='SOBLACK'
+        save_json(aid,'factors',f); save_json(aid,'research',_soblack_three_research(aid))
+        real=e.Research
+        class DroppingResearch:
+            @classmethod
+            def model_validate(cls, data):
+                obj=real.model_validate(data)
+                obj.comparables=[]
+                return obj
+        monkeypatch.setattr(e, 'Research', DroppingResearch)
+        v=run_valuation(aid, write=False)
+        assert v.valuation_status == 'valuation_error'
+        assert 'research_comparables_lost_during_parsing' in v.warnings
+    finally:
+        if d.exists(): shutil.rmtree(d)
