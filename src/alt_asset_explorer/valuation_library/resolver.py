@@ -53,3 +53,49 @@ def resolve_asset(identifier: str, *, expected_category: str|None=None, aliases:
     if prices.empty or not prices['asset_id'].astype(str).eq(str(row['asset_id'])).any(): warnings.append('missing_historical_price_data')
     status='matched' if not any(w.startswith('category_mismatch') for w in warnings) else 'category_mismatch'
     return AssetResolution(status, str(row['asset_id']), str(row.get('ticker')), str(row.get('name')), cat, row, warnings, [row])
+
+def _clean(value):
+    if pd.isna(value): return None
+    if hasattr(value, 'item'):
+        try: return value.item()
+        except Exception: pass
+    return value
+
+def _num(value):
+    value=_clean(value)
+    return None if value is None else float(value)
+
+def get_asset_financial_context(asset_id: str) -> dict:
+    """Resolve committed Rally identity, offering, share, latest-price, and quarterly context."""
+    res=resolve_asset(asset_id)
+    warnings=list(res.warnings or [])
+    base={'asset_id':asset_id,'ticker':None,'asset_name':None,'category':None,'subcategory':None,'launch_date':None,'initial_offering_value_usd':None,'initial_share_price_usd':None,'shares_outstanding':None,'latest_share_price_usd':None,'latest_market_value_usd':None,'last_trade_date':None,'asset_status':None,'quarterly_price_history':[],'quarterly_price_history_source':None,'source_registry_path':str(PROJECT_ROOT/'data'/'processed'/'canonical_asset_master.csv'),'warnings':warnings,'resolution_status':res.status,'matches':res.matches or []}
+    if res.status in {'unknown','ambiguous'}:
+        return base
+    row=res.registry_record or {}
+    base.update({'asset_id':str(row.get('asset_id')),'ticker':_clean(row.get('ticker')),'asset_name':_clean(row.get('name')),'category':_clean(row.get('category')),'subcategory':_clean(row.get('subcategory')),'launch_date':_clean(row.get('offering_date')),'initial_offering_value_usd':_num(row.get('offering_valuation_usd')),'initial_share_price_usd':_num(row.get('offering_price_usd')),'shares_outstanding':_num(row.get('share_count')),'asset_status':_clean(row.get('trading_state')) or _clean(row.get('status'))})
+    for field, warn in [('initial_offering_value_usd','missing_offering_valuation'),('initial_share_price_usd','missing_initial_share_price'),('shares_outstanding','missing_share_count'),('launch_date','missing_launch_date')]:
+        if base.get(field) is None: warnings.append(warn)
+    prices=price_history_frame()
+    if prices.empty or 'asset_id' not in prices:
+        warnings.append('missing_historical_price_data'); base['warnings']=sorted(set(warnings)); return base
+    ph=prices[prices['asset_id'].astype(str).str.lower().eq(base['asset_id'].lower())].copy()
+    if ph.empty:
+        warnings.append('missing_historical_price_data'); base['warnings']=sorted(set(warnings)); return base
+    ph['date']=pd.to_datetime(ph['date'], errors='coerce')
+    ph=ph.dropna(subset=['date']).sort_values('date')
+    q=ph[ph.get('frequency','').astype(str).str.lower().eq('quarterly')] if 'frequency' in ph else ph
+    if q.empty:
+        warnings.append('missing_quarterly_price_history')
+    else:
+        hist=[]
+        for _,r in q.iterrows():
+            hist.append({'date':r['date'].date().isoformat(),'share_price_usd':_num(r.get('last')),'market_value_usd':_num(r.get('market_cap_usd'))})
+        base['quarterly_price_history']=hist
+        base['quarterly_price_history_source']=str(PROJECT_ROOT/'data'/'processed'/'price_history.csv')
+    latest=q.iloc[-1] if not q.empty else ph.iloc[-1]
+    base['latest_share_price_usd']=_num(latest.get('last'))
+    base['latest_market_value_usd']=_num(latest.get('market_cap_usd'))
+    base['last_trade_date']=latest['date'].date().isoformat()
+    base['warnings']=sorted(set(warnings))
+    return base

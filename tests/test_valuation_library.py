@@ -78,3 +78,73 @@ def test_file_handling_manifest_report_package(tmp_path):
     with pytest.raises(ValueError): ingest_report(aid, '<script>alert(1)</script>', overwrite=True)
     pkg=build_report_package(aid); assert b'report_generation_instructions.md' in pkg
     shutil.rmtree(d)
+
+from alt_asset_explorer.valuation_library.resolver import get_asset_financial_context
+from alt_asset_explorer.valuation_library.assembler import build_factors
+import zipfile, io
+
+def test_financial_context_success_and_quarterly_history():
+    ctx=get_asset_financial_context('00MOUTON')
+    assert ctx['resolution_status']=='matched'
+    assert ctx['ticker']=='00MOUTON'
+    assert ctx['initial_offering_value_usd'] is not None
+    assert ctx['shares_outstanding'] is not None
+    assert ctx['latest_market_value_usd'] is not None
+    assert len(ctx['quarterly_price_history']) >= 1
+
+
+def test_financial_context_missing_quarterly_and_offering(monkeypatch):
+    import alt_asset_explorer.valuation_library.resolver as r
+    base=r.registry_frame().head(1).copy()
+    base.loc[:, 'asset_id']='NOHIST'; base.loc[:, 'ticker']='NOHIST'; base.loc[:, 'offering_valuation_usd']=float('nan')
+    monkeypatch.setattr(r, 'registry_frame', lambda: base)
+    monkeypatch.setattr(r, 'price_history_frame', lambda: r.pd.DataFrame(columns=['asset_id','date','last','market_cap_usd','frequency']))
+    ctx=r.get_asset_financial_context('NOHIST')
+    assert 'missing_historical_price_data' in ctx['warnings']
+    assert 'missing_offering_valuation' in ctx['warnings']
+
+
+def test_build_factors_supplemental_only_full_conflict_and_category_mismatch():
+    f=build_factors('00MOUTON', {'producer':'Chateau Mouton Rothschild','vintage':2000})
+    assert f.rally_data.ticker=='00MOUTON'
+    assert f.category_factors['producer']=='Chateau Mouton Rothschild'
+    assert f.field_provenance['rally_data']=='rally_terminal_existing_data'
+    full={'asset_id':'WRONG','category':'books','rally_data':{'latest_share_price_usd':999},'category_factors':{'producer':'X'}}
+    f2=build_factors('00MOUTON', full)
+    fields={w['field'] for w in f2.merge_warnings}
+    assert {'asset_id','category','latest_share_price_usd'} <= fields
+    assert f2.category=='wine and whiskey'
+
+
+def test_build_factors_unknown_and_ambiguous(monkeypatch):
+    with pytest.raises(ValueError): build_factors('NO_SUCH_ASSET', {})
+    import alt_asset_explorer.valuation_library.assembler as a
+    monkeypatch.setattr(a, 'get_asset_financial_context', lambda asset_id: {'resolution_status':'ambiguous','warnings':['ambiguous_asset_match:x']})
+    with pytest.raises(ValueError): a.build_factors('x', {})
+
+
+def test_optional_condition_absence_completed_with_limitations_and_no_comps_insufficient(tmp_path):
+    aid='TMP-LIMITED'; d=asset_dir(aid)
+    if d.exists(): shutil.rmtree(d)
+    f=build_factors('00MOUTON', {'producer':'X'}).model_dump(mode='json'); f['asset_id']=aid; f['rally_symbol']='00MOUTON'
+    r=research(asset_id=aid)
+    save_json(aid,'factors',f); save_json(aid,'research',r)
+    v=run_valuation(aid, write=False)
+    assert v.valuation_status=='completed_with_limitations'
+    assert v.results.official_value_available is True
+    r['comparable_sales']=[]; save_json(aid,'research',r,overwrite=True)
+    assert run_valuation(aid, write=False).valuation_status=='insufficient_evidence'
+    shutil.rmtree(d)
+
+
+def test_report_package_contains_enriched_factors(tmp_path):
+    aid='TMP-PKG-ENRICHED'; d=asset_dir(aid)
+    if d.exists(): shutil.rmtree(d)
+    f=build_factors('00MOUTON', {'producer':'X'}).model_dump(mode='json'); f['asset_id']=aid; f['rally_symbol']='00MOUTON'
+    save_json(aid,'factors',f); save_json(aid,'research',research(asset_id=aid)); save_json(aid,'valuation',run_valuation(aid, write=False).model_dump(mode='json'))
+    pkg=build_report_package(aid)
+    with zipfile.ZipFile(io.BytesIO(pkg)) as z:
+        fd=json.loads(z.read('factors.json'))
+    assert fd['rally_data']['quarterly_price_history']
+    assert fd['field_provenance']['rally_data']=='rally_terminal_existing_data'
+    shutil.rmtree(d)

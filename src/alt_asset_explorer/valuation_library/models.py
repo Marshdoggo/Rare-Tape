@@ -7,16 +7,35 @@ Category = Literal['fossils','watches','books','handbags','wine and whiskey']
 WorkflowStatus = Literal['intake_missing','factors_ready','research_ready','valuation_ready','report_ready','published','needs_review','stale','error']
 SaleStatus = Literal['sold','unsold','passed','withdrawn','unknown']
 Currency = Literal['USD','EUR','GBP','CHF','HKD']
-ValuationStatus = Literal['completed','insufficient_evidence','error','needs_review']
+ValuationStatus = Literal['completed','completed_with_limitations','provisional','manual_review_required','insufficient_evidence','error','needs_review']
 
 class FlexibleModel(BaseModel):
     model_config = ConfigDict(extra='allow')
 
+class QuarterlyPriceObservation(FlexibleModel):
+    date: date
+    share_price_usd: float | None = Field(default=None, ge=0)
+    market_value_usd: float | None = Field(default=None, ge=0)
+
 class RallyData(FlexibleModel):
+    asset_id: str | None = None
+    ticker: str | None = None
+    asset_name: str | None = None
+    category: str | None = None
+    subcategory: str | None = None
     launch_date: date | None = None
     initial_offering_value_usd: float | None = Field(default=None, ge=0)
     shares_offered: float | None = Field(default=None, ge=0)
+    shares_outstanding: float | None = Field(default=None, ge=0)
     initial_share_price_usd: float | None = Field(default=None, ge=0)
+    latest_share_price_usd: float | None = Field(default=None, ge=0)
+    latest_market_value_usd: float | None = Field(default=None, ge=0)
+    last_trade_date: date | None = None
+    asset_status: str | None = None
+    quarterly_price_history: list[QuarterlyPriceObservation] = Field(default_factory=list)
+    quarterly_price_history_source: str | None = None
+    source_registry_path: str | None = None
+    warnings: list[str] = Field(default_factory=list)
 
 class Factors(FlexibleModel):
     schema_version: str = '1.0'
@@ -29,6 +48,8 @@ class Factors(FlexibleModel):
     identity: dict[str, Any] = Field(default_factory=dict)
     category_factors: dict[str, Any] = Field(default_factory=dict)
     provenance: dict[str, Any] = Field(default_factory=dict)
+    field_provenance: dict[str, Any] = Field(default_factory=dict)
+    merge_warnings: list[dict[str, Any]] = Field(default_factory=list)
     condition: dict[str, Any] = Field(default_factory=dict)
     source_notes: list[str] = Field(default_factory=list)
     missing_fields: list[str] = Field(default_factory=list)
