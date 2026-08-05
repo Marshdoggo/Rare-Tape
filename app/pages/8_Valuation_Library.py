@@ -6,7 +6,7 @@ import streamlit as st
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'src')); sys.path.insert(0,str(ROOT/'app'))
 from app_data import get_canonical_market, render_data_diagnostics
-from alt_asset_explorer.valuation_library.storage import library_assets, load_asset_files, ingest_report, regenerate_manifest, build_report_package, asset_dir, normalize_document_identity, save_intake_and_run_valuation
+from alt_asset_explorer.valuation_library.storage import library_assets, load_asset_files, ingest_report, regenerate_manifest, build_report_package, asset_dir, normalize_document_identity, save_intake_and_run_valuation, asset_file_inventory, rerun_valuation_from_saved_files
 from alt_asset_explorer.valuation_library.models import Research
 from alt_asset_explorer.valuation_library.resolver import get_asset_financial_context
 from alt_asset_explorer.valuation_library.assembler import build_factors
@@ -50,6 +50,25 @@ with tab_detail:
     if aid:
         files=load_asset_files(aid); m=regenerate_manifest(aid)
         st.subheader(m.display_name or aid); st.json(m.model_dump(mode='json'), expanded=False)
+        inventory=asset_file_inventory(aid)
+        st.markdown('### Saved asset file inventory')
+        st.metric('Raw research comparable count', inventory.get('raw_comparable_count', 0))
+        st.write(f"Valuation input status: {inventory.get('valuation_freshness')}")
+        st.dataframe(display_safe_dataframe(inventory.get('files', [])), use_container_width=True, hide_index=True)
+        st.json({'latest_input_hashes': inventory.get('latest_input_hashes'), 'current_input_hashes': inventory.get('current_input_hashes'), 'comparable_ids': inventory.get('comparable_ids')}, expanded=False)
+        saved_factors=bool(files.get('factors')); saved_research=bool(files.get('research'))
+        rerun_ready=saved_factors and saved_research
+        preview={'Saved factors found': 'Yes' if saved_factors else 'No','Saved research found': 'Yes' if saved_research else 'No','Comparable records found': inventory.get('raw_comparable_count', 0),'Current research hash': inventory.get('current_input_hashes',{}).get('research'),'Current methodology version': (files.get('valuation') or {}).get('methodology_version', 'Unavailable'),'Current engine version': (((files.get('valuation') or {}).get('calculation_trace') or [{}])[0].get('engine_version') if files.get('valuation') else 'Unavailable')}
+        st.markdown('### Rerun valuation from saved files')
+        st.dataframe(display_safe_dataframe([{'field': k, 'value': v} for k,v in preview.items()]), hide_index=True, use_container_width=True)
+        if not rerun_ready: st.info('Rerun disabled because saved factors.json and research.json are required.')
+        if st.button('Rerun valuation from saved files', disabled=not rerun_ready):
+            try:
+                summary, val = rerun_valuation_from_saved_files(aid)
+                st.success('Saved-file valuation rerun completed and valuation.json was revision-backed up before replacement.')
+                st.json({'input_summary': summary, 'valuation': val.model_dump(mode='json', by_alias=True)})
+            except Exception as e:
+                st.error(str(e))
         if files.get('valuation'):
             v=files['valuation']; st.markdown('### Generated valuation summary (authoritative structured output)')
             cols=st.columns(4); r=v.get('results',{})
@@ -65,7 +84,7 @@ with tab_detail:
         if files.get('factors'):
             st.markdown('### Observed facts, analyst judgments, and factors'); st.json(files['factors'], expanded=False)
         if files.get('research'):
-            st.markdown('### Research evidence and comparable sales'); st.dataframe(display_safe_dataframe(files['research'].get('comparable_sales',[])), use_container_width=True)
+            st.markdown('### Research evidence and comparable sales'); st.dataframe(display_safe_dataframe(files['research'].get('comparables', files['research'].get('comparable_sales', []))), use_container_width=True)
         if files.get('valuation'):
             st.markdown('### Calculation trace'); st.json(files['valuation'].get('calculation_trace',[]), expanded=False)
         if files.get('report'):
@@ -115,7 +134,7 @@ with tab_intake:
         try:
             raw=json.loads(specs_txt or '{}')
             f=build_factors(selected, raw)
-            steps, val=save_intake_and_run_valuation(f.asset_id, f.model_dump(mode='json'), json.loads(research_txt), overwrite=overwrite)
+            steps, val=save_intake_and_run_valuation, asset_file_inventory, rerun_valuation_from_saved_files(f.asset_id, f.model_dump(mode='json'), json.loads(research_txt), overwrite=overwrite)
             for step in steps:
                 st.success(f"{step['step']}: {step['status']}")
             st.json(val.model_dump(mode='json'))

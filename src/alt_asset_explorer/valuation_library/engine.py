@@ -97,19 +97,47 @@ def weighted_quantile(values, weights, q):
         if acc/total >= q: return v
     return pairs[-1][0]
 
+def _research_summary(path: Path, raw: dict[str, Any], research: Research | None, parsed_error: str | None = None) -> dict[str, Any]:
+    raw_comps = raw.get('comparables')
+    if raw_comps is None:
+        raw_comps = raw.get('comparable_sales')
+    raw_comps = raw_comps if isinstance(raw_comps, list) else []
+    parsed_comps = research.comparables if research is not None else []
+    return {
+        'research_path': str(path),
+        'research_hash': _hash(path),
+        'top_level_keys': sorted(raw.keys()),
+        'raw_comparable_count': len(raw_comps),
+        'parsed_comparable_count': len(parsed_comps),
+        'comparable_ids': [str(c.get('comparable_id')) for c in raw_comps if isinstance(c, dict) and c.get('comparable_id')],
+        'parsed_comparable_ids': [c.comparable_id for c in parsed_comps],
+        **({'parsing_error': parsed_error} if parsed_error else {}),
+    }
+
+def _valuation_error(factors: Factors, valuation_date: date, engine_cfg: dict[str, Any], cat_cfg: dict[str, Any], warnings: list[str], summary: dict[str, Any], d: Path, write: bool) -> Valuation:
+    val=Valuation(asset_id=factors.asset_id,valuation_date=valuation_date,valuation_status='valuation_error',methodology_version=engine_cfg['methodology_version'],category_model_version=cat_cfg['category_model_version'],results=ValuationResults(confidence_score=0,official_value_available=False),research_input_summary=summary,calculation_summary={'eligible_comparable_count':0},warnings=sorted(set(warnings)),calculation_trace=[{'methodology_version':engine_cfg['methodology_version'],'engine_version':engine_cfg['engine_version'],'category_model_version':cat_cfg['category_model_version'],'run_timestamp':datetime.now(timezone.utc).isoformat(),'input_hashes':{'factors':_hash(d/'factors.json'),'research':_hash(d/'research.json')},'research_input_summary':summary}])
+    if write: save_json(factors.asset_id,'valuation',val.model_dump(mode='json', by_alias=True),overwrite=True)
+    return val
+
 def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=True) -> Valuation:
     valuation_date=valuation_date or date.today(); d=asset_dir(asset)
     factors=Factors.model_validate(read_json(d/'factors.json'))
-    research=Research.model_validate(read_json(d/'research.json'))
+    research_path=d/'research.json'
+    raw_research=read_json(research_path)
+    research=Research.model_validate(raw_research)
     if factors.asset_id!=research.asset_id: raise ValueError('factors and research asset_id mismatch')
     engine_cfg=_load_yaml(METHODOLOGY_DIR/'valuation_engine_v1.yaml')
     cat_file = 'wine_whiskey_v1.yaml' if factors.category=='wine and whiskey' else f'{factors.category}_v1.yaml'
     cat_cfg=_load_yaml(METHODOLOGY_DIR/'categories'/cat_file)
     res=resolve_asset(factors.rally_symbol or factors.asset_id, expected_category=factors.category)
     warnings=list(res.warnings or []) + list(cat_cfg.get('category_warnings',[]))
+    research_summary=_research_summary(research_path, raw_research, research)
+    if research_summary['raw_comparable_count'] > 0 and research_summary['parsed_comparable_count'] == 0:
+        warnings.append('research_comparables_lost_during_parsing')
+        return _valuation_error(factors, valuation_date, engine_cfg, cat_cfg, warnings, research_summary, d, write)
     included=[]; trace=[]; raw_weights=[]; adjusted=[]
     now=valuation_date
-    for comp in research.comparable_sales:
+    for comp in research.comparables:
         cw=list(comp.warnings); include=True; rationale=[]
         price, conversion_source, fx_rate, fx_warnings = _usd_price(comp, engine_cfg)
         cw.extend(fx_warnings)
@@ -159,7 +187,7 @@ def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=Tru
     else: base=cons=opt=median=wmean=None
     confidence=float(engine_cfg['confidence_base']) if count else 0.0
     if count==1: confidence-=float(engine_cfg['confidence_penalties']['one_comparable'])
-    if research.comparable_sales and sum(1 for c in research.comparable_sales if not c.verified)/len(research.comparable_sales)>0.5: confidence-=float(engine_cfg['confidence_penalties']['most_unverified'])
+    if research.comparables and sum(1 for c in research.comparables if not c.verified)/len(research.comparables)>0.5: confidence-=float(engine_cfg['confidence_penalties']['most_unverified'])
     if 'condition' in factors.missing_fields or not factors.condition: confidence-=float(engine_cfg['confidence_penalties']['missing_condition'])
     if 'missing_historical_price_data' in warnings: confidence-=float(engine_cfg['confidence_penalties']['missing_history'])
     if 'extreme_comparable_dispersion' in warnings: confidence-=float(engine_cfg['confidence_penalties']['extreme_dispersion'])
@@ -176,9 +204,9 @@ def run_valuation(asset: str, *, valuation_date: date|None=None, write: bool=Tru
     prem=(base/float(latest_market)-1) if base and latest_market is not None and pd.notna(latest_market) else None
     issue_prem=(base/float(init)-1) if base and init else None
     latest_q_change=(base/float(latest_q.market_value_usd)-1) if base and latest_q and latest_q.market_value_usd else None
-    summary={'eligible_comparable_count':count,'weighted_comparable_value_usd':wmean,'median_adjusted_comparable_usd':median,'dispersion_pct':dispersion}
+    summary={'eligible_comparable_count':count,'raw_comparable_count':research_summary['raw_comparable_count'],'parsed_comparable_count':research_summary['parsed_comparable_count'],'weighted_comparable_value_usd':wmean,'median_adjusted_comparable_usd':median,'dispersion_pct':dispersion}
     diagnostic_table=[{'Comparable ID':d['comparable_id'],'Included?':d['final_eligibility'],'USD price':d['parsed_usd_price'],'Overall similarity':d['parsed_overall_similarity'],'Evidence quality':d['parsed_evidence_quality'],'Verification status':d['verification_status'],'Exclusion reasons':', '.join(d['exclusion_reasons']) if d['exclusion_reasons'] else 'eligible','Final weight':d['final_weight']} for d in diagnostics]
-    meta={'methodology_version':engine_cfg['methodology_version'],'engine_version':engine_cfg['engine_version'],'category_model_version':cat_cfg['category_model_version'],'run_timestamp':datetime.now(timezone.utc).isoformat(),'input_hashes':{'factors':_hash(d/'factors.json'),'research':_hash(d/'research.json')},'configuration':{'engine':engine_cfg,'category':cat_cfg}}
-    val=Valuation(asset_id=factors.asset_id,valuation_date=valuation_date,valuation_status=status,methodology_version=engine_cfg['methodology_version'],category_model_version=cat_cfg['category_model_version'],results=ValuationResults(conservative_value_usd=cons if official else None,base_value_usd=base if official else None,optimistic_value_usd=opt if official else None,confidence_score=confidence,official_value_available=official),market_comparison={'initial_offering_value_usd':init,'latest_share_price_usd':latest_share,'last_observed_market_value_usd':None if latest_market is None or pd.isna(latest_market) else latest_market,'fair_value_premium_discount_to_latest_market_value_pct':prem,'fair_value_premium_discount_to_issue_valuation_pct':issue_prem,'change_from_issue_valuation_pct':issue_prem,'change_from_latest_quarterly_observation_pct':latest_q_change,'asset_status':factors.rally_data.asset_status},comparables_used=included,comparable_diagnostics=diagnostics,diagnostic_table=diagnostic_table,calculation_summary=summary,warnings=sorted(set(warnings)),calculation_trace=[meta]+diagnostics)
-    if write: save_json(factors.asset_id,'valuation',val.model_dump(mode='json'),overwrite=True)
+    meta={'methodology_version':engine_cfg['methodology_version'],'engine_version':engine_cfg['engine_version'],'category_model_version':cat_cfg['category_model_version'],'run_timestamp':datetime.now(timezone.utc).isoformat(),'input_hashes':{'factors':_hash(d/'factors.json'),'research':_hash(d/'research.json')},'research_input_summary':research_summary,'configuration':{'engine':engine_cfg,'category':cat_cfg}}
+    val=Valuation(asset_id=factors.asset_id,valuation_date=valuation_date,valuation_status=status,methodology_version=engine_cfg['methodology_version'],category_model_version=cat_cfg['category_model_version'],results=ValuationResults(conservative_value_usd=cons if official else None,base_value_usd=base if official else None,optimistic_value_usd=opt if official else None,confidence_score=confidence,official_value_available=official),market_comparison={'initial_offering_value_usd':init,'latest_share_price_usd':latest_share,'last_observed_market_value_usd':None if latest_market is None or pd.isna(latest_market) else latest_market,'fair_value_premium_discount_to_latest_market_value_pct':prem,'fair_value_premium_discount_to_issue_valuation_pct':issue_prem,'change_from_issue_valuation_pct':issue_prem,'change_from_latest_quarterly_observation_pct':latest_q_change,'asset_status':factors.rally_data.asset_status},comparables_used=included,comparable_diagnostics=diagnostics,diagnostic_table=diagnostic_table,calculation_summary=summary,research_input_summary=research_summary,warnings=sorted(set(warnings)),calculation_trace=[meta]+diagnostics)
+    if write: save_json(factors.asset_id,'valuation',val.model_dump(mode='json', by_alias=True),overwrite=True)
     return val

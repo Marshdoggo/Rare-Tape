@@ -1,13 +1,13 @@
 from __future__ import annotations
 from datetime import date
 from typing import Any, Literal
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
 Category = Literal['fossils','watches','books','handbags','wine and whiskey']
 WorkflowStatus = Literal['intake_missing','factors_ready','research_ready','valuation_ready','report_ready','published','needs_review','stale','valuation_error','error']
 SaleStatus = Literal['sold','unsold','passed','withdrawn','unknown']
 Currency = Literal['USD','EUR','GBP','CHF','HKD']
-ValuationStatus = Literal['completed','completed_with_limitations','provisional','manual_review_required','insufficient_evidence','error','needs_review']
+ValuationStatus = Literal['completed','completed_with_limitations','provisional','manual_review_required','insufficient_evidence','valuation_error','error','needs_review']
 
 class FlexibleModel(BaseModel):
     model_config = ConfigDict(extra='allow')
@@ -104,7 +104,11 @@ class Research(FlexibleModel):
     schema_version: str = '1.0'
     asset_id: str = Field(min_length=1)
     research_date: date
-    comparable_sales: list[ComparableSale] = Field(default_factory=list)
+    comparables: list[ComparableSale] = Field(
+        default_factory=list,
+        validation_alias=AliasChoices('comparables', 'comparable_sales'),
+        serialization_alias='comparables',
+    )
     market_context: dict[str, Any] = Field(default_factory=dict)
     supply_factors: dict[str, Any] = Field(default_factory=dict)
     demand_factors: dict[str, Any] = Field(default_factory=dict)
@@ -117,10 +121,18 @@ class Research(FlexibleModel):
 
     @model_validator(mode='after')
     def duplicates_and_dates(self):
-        ids=[c.comparable_id for c in self.comparable_sales]
+        ids=[c.comparable_id for c in self.comparables]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate comparable_id values are not allowed')
         if self.research_date > date.today(): raise ValueError('research_date cannot be in the future')
         return self
+
+    @property
+    def comparable_sales(self) -> list[ComparableSale]:
+        return self.comparables
+
+    @comparable_sales.setter
+    def comparable_sales(self, value: list[ComparableSale]) -> None:
+        self.comparables = value
 
 class ValuationResults(FlexibleModel):
     conservative_value_usd: float | None = None
@@ -142,6 +154,7 @@ class Valuation(FlexibleModel):
     comparable_diagnostics: list[dict[str, Any]] = Field(default_factory=list)
     diagnostic_table: list[dict[str, Any]] = Field(default_factory=list)
     calculation_summary: dict[str, Any] = Field(default_factory=dict)
+    research_input_summary: dict[str, Any] = Field(default_factory=dict)
     warnings: list[str] = Field(default_factory=list)
     calculation_trace: list[dict[str, Any]] = Field(default_factory=list)
 
