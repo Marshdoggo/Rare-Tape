@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "SOBLACK",
+  "research_status": "preliminary_comparable_research_complete",
+  "comparables": [
+    {
+      "comparable_id": "SOBLACK-COMP-001",
+      "currency": "HKD",
+      "reported_price": 327600,
+      "reported_price_usd": 41932.8,
+      "verification_status": "verified"
+    },
+    {
+      "comparable_id": "SOBLACK-COMP-002",
+      "currency": "USD",
+      "reported_price_usd": 41828,
+      "verification_status": "unverified"
+    },
+    {
+      "comparable_id": "SOBLACK-COMP-003",
+      "currency": "USD",
+      "reported_price_usd": 52500,
+      "verification_status": "verified"
+    }
+  ],
+  "note": "Starter research.json reconstructed from this conversation."
+}

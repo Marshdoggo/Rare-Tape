@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-soblack",
+  "valuation_status": "completed_with_limitations",
+  "results": {
+    "conservative_value_usd": 41932.8,
+    "base_value_usd": 41932.8,
+    "optimistic_value_usd": 52500,
+    "confidence_score": 0.65,
+    "official_value_available": true
+  },
+  "market_comparison": {
+    "initial_offering_value_usd": 56000,
+    "latest_share_price_usd": 35.05,
+    "last_observed_market_value_usd": 35050
+  },
+  "calculation_summary": {
+    "eligible_comparable_count": 3,
+    "weighted_comparable_value_usd": 45470.75588059757,
+    "median_adjusted_comparable_usd": 41932.8
+  }
+}

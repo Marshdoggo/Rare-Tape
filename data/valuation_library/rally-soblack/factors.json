@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "SOBLACK",
+  "rally_symbol": "SOBLACK",
+  "asset_name": "Herm\u00e8s 30cm So Black Birkin",
+  "category": "handbags",
+  "identity": {
+    "manufacturer": "Herm\u00e8s",
+    "model": "So Black Birkin",
+    "designer": "Jean Paul Gaultier",
+    "production_year": 2010,
+    "size_cm": 30,
+    "limited_edition": true
+  },
+  "rally_data": {
+    "initial_offering_market_cap_usd": 56000,
+    "latest_share_price_usd": 35.05,
+    "latest_market_value_usd": 35050
+  },
+  "note": "Starter factors.json reconstructed from this conversation."
+}
