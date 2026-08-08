@@ -1,1225 +1,1213 @@
 {
-    "schema_version":"1.0"
-    "asset_id":"rally-himalaya"
-    "valuation_date":"2026-08-08"
-    "valuation_status":"completed_with_limitations"
-    "methodology_version":"1.0"
-    "category_model_version":"handbags_v1"
-    "results":{
-    "conservative_value_usd":87500
-    "base_value_usd":93750
-    "optimistic_value_usd":97536
-    "confidence_score":0.45
-    "official_value_available":true
+  "asset_id": "rally-himalaya",
+  "calculation_summary": {
+    "dispersion_pct": 0.8075093333333333,
+    "eligible_comparable_count": 6,
+    "median_adjusted_comparable_usd": 93750.0,
+    "parsed_comparable_count": 6,
+    "raw_comparable_count": 6,
+    "weighted_comparable_value_usd": 98117.58131475071
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "handbags_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "handbags",
+          "category_model_version": "handbags_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_aliases": {
+            "condition_similarity": {
+              "fields": {
+                "condition_similarity": 1.0
+              }
+            },
+            "identity_similarity": {
+              "fields": {
+                "hardware_similarity": 0.15,
+                "material_similarity": 0.2,
+                "model_similarity": 0.35,
+                "size_similarity": 0.15,
+                "year_similarity": 0.15
+              }
+            },
+            "presentation_similarity": {
+              "fields": {
+                "accessory_similarity": 0.33,
+                "condition_similarity": 0.33,
+                "size_similarity": 0.34
+              }
+            },
+            "provenance_similarity": {
+              "fallback_fields": {
+                "accessory_similarity": 1.0
+              },
+              "fallback_warning": "accessory_similarity_used_as_provisional_provenance_proxy",
+              "fields": {
+                "provenance_similarity": 1.0
+              }
+            }
+          },
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          },
+          "use_supplied_overall_similarity": true
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "supported_currencies": {
+            "CHF": 1.12,
+            "EUR": 1.09,
+            "GBP": 1.27,
+            "HKD": 0.128,
+            "USD": 1.0
+          },
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "4468934a79292983bcdc57bd78faa427c89c71392979c419c48ea6aaec5cc4ab",
+        "research": "85cb545b8e4280e14421a7f55fc3d8726c92b721195650903fd274c2fdd0744d"
+      },
+      "methodology_version": "1.0",
+      "research_input_summary": {
+        "comparable_ids": [
+          "HIMALAYA-COMP-001",
+          "HIMALAYA-COMP-002",
+          "HIMALAYA-COMP-003",
+          "HIMALAYA-COMP-004",
+          "HIMALAYA-COMP-005",
+          "HIMALAYA-COMP-006"
+        ],
+        "parsed_comparable_count": 6,
+        "parsed_comparable_ids": [
+          "HIMALAYA-COMP-001",
+          "HIMALAYA-COMP-002",
+          "HIMALAYA-COMP-003",
+          "HIMALAYA-COMP-004",
+          "HIMALAYA-COMP-005",
+          "HIMALAYA-COMP-006"
+        ],
+        "raw_comparable_count": 6,
+        "research_hash": "85cb545b8e4280e14421a7f55fc3d8726c92b721195650903fd274c2fdd0744d",
+        "research_path": "/workspace/rally-terminal/data/valuation_library/rally-himalaya/research.json",
+        "top_level_keys": [
+          "asset_id",
+          "comparable_selection_policy",
+          "comparables",
+          "market_context",
+          "market_observations_not_eligible_as_completed_comparables",
+          "methodology_reference",
+          "preliminary_evidence_assessment",
+          "research_date",
+          "research_limitations",
+          "research_status",
+          "schema_version",
+          "sources",
+          "subject_asset_summary",
+          "valuation_adjustment_questions"
+        ]
+      },
+      "run_timestamp": "2026-08-08T03:36:29.678620+00:00"
+    },
+    {
+      "adjusted_price_usd": 160704.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 160704.0,
+      "comparable_id": "HIMALAYA-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.08225313379519378,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 1240000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.7913,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.91,
+        "presentation_similarity": 0.769,
+        "provenance_similarity": 0.75,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 160704.0,
+      "premium_treatment": null,
+      "raw_weight": 0.19584675,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 160704.0,
+      "similarity_score": 0.7913,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 93750.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 93750.0,
+      "comparable_id": "HIMALAYA-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.97,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07220945420969281,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 93750.0,
+      "parsed_evidence_quality": 0.97,
+      "parsed_overall_similarity": 0.709,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.5,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.86,
+        "presentation_similarity": 0.67,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 93750.0,
+      "premium_treatment": null,
+      "raw_weight": 0.1719325,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 93750.0,
+      "similarity_score": 0.709,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 106250.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 106250.0,
+      "comparable_id": "HIMALAYA-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.97,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07542781634372143,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 106250.0,
+      "parsed_evidence_quality": 0.97,
+      "parsed_overall_similarity": 0.7406,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.88,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 106250.0,
+      "premium_treatment": null,
+      "raw_weight": 0.1795955,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 106250.0,
+      "similarity_score": 0.7406,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 85000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 85000.0,
+      "comparable_id": "HIMALAYA-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.16661916650635852,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 85000.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.7406,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.9,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 85000.0,
+      "premium_treatment": null,
+      "raw_weight": 0.3967243646817249,
+      "recency_treatment": 0.5466119096509241,
+      "reported_price_usd": 85000.0,
+      "similarity_score": 0.7406,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 87500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 87500.0,
+      "comparable_id": "HIMALAYA-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.28989037141108803,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 87500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.7406,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.91,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 87500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.6902361585215605,
+      "recency_treatment": 0.941409993155373,
+      "reported_price_usd": 87500.0,
+      "similarity_score": 0.7406,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 97536.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 97536.0,
+      "comparable_id": "HIMALAYA-COMP-006",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.3136000577339454,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 0.128,
+      "fx_warnings": [
+        "fx_converted_from_hkd"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 762000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.7646999999999999,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.9,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 97536.0,
+      "premium_treatment": null,
+      "raw_weight": 0.7466895092402464,
+      "recency_treatment": 0.9863107460643394,
+      "reported_price_usd": 97536.0,
+      "similarity_score": 0.7646999999999999,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
     }
-    "market_comparison":{
-    "initial_offering_value_usd":140000
-    "latest_share_price_usd":46.9
-    "last_observed_market_value_usd":93800
-    "fair_value_premium_discount_to_latest_market_value_pct":-0.0005330490405117683
-    "fair_value_premium_discount_to_issue_valuation_pct":-0.3303571428571429
-    "change_from_issue_valuation_pct":-0.3303571428571429
-    "change_from_latest_quarterly_observation_pct":-0.0005330490405117683
-    "asset_status":"active"
+  ],
+  "category_model_version": "handbags_v1",
+  "comparable_diagnostics": [
+    {
+      "adjusted_price_usd": 160704.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 160704.0,
+      "comparable_id": "HIMALAYA-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.08225313379519378,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 1240000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.7913,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.91,
+        "presentation_similarity": 0.769,
+        "provenance_similarity": 0.75,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 160704.0,
+      "premium_treatment": null,
+      "raw_weight": 0.19584675,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 160704.0,
+      "similarity_score": 0.7913,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 93750.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 93750.0,
+      "comparable_id": "HIMALAYA-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.97,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07220945420969281,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 93750.0,
+      "parsed_evidence_quality": 0.97,
+      "parsed_overall_similarity": 0.709,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.5,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.86,
+        "presentation_similarity": 0.67,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 93750.0,
+      "premium_treatment": null,
+      "raw_weight": 0.1719325,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 93750.0,
+      "similarity_score": 0.709,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 106250.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 106250.0,
+      "comparable_id": "HIMALAYA-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.97,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07542781634372143,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 106250.0,
+      "parsed_evidence_quality": 0.97,
+      "parsed_overall_similarity": 0.7406,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.88,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 106250.0,
+      "premium_treatment": null,
+      "raw_weight": 0.1795955,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 106250.0,
+      "similarity_score": 0.7406,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 85000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 85000.0,
+      "comparable_id": "HIMALAYA-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.16661916650635852,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 85000.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.7406,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.9,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 85000.0,
+      "premium_treatment": null,
+      "raw_weight": 0.3967243646817249,
+      "recency_treatment": 0.5466119096509241,
+      "reported_price_usd": 85000.0,
+      "similarity_score": 0.7406,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 87500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 87500.0,
+      "comparable_id": "HIMALAYA-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.28989037141108803,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 87500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.7406,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.91,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.5,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 87500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.6902361585215605,
+      "recency_treatment": 0.941409993155373,
+      "reported_price_usd": 87500.0,
+      "similarity_score": 0.7406,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 97536.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 97536.0,
+      "comparable_id": "HIMALAYA-COMP-006",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.3136000577339454,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 0.128,
+      "fx_warnings": [
+        "fx_converted_from_hkd"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 762000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.7646999999999999,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.9,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 97536.0,
+      "premium_treatment": null,
+      "raw_weight": 0.7466895092402464,
+      "recency_treatment": 0.9863107460643394,
+      "reported_price_usd": 97536.0,
+      "similarity_score": 0.7646999999999999,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
     }
-    "comparables_used":[
-    0:{
-    "comparable_id":"HIMALAYA-COMP-001"
-    "reported_price_usd":160704
-    "adjusted_price_usd":160704
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
+  ],
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 160704.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "HIMALAYA-COMP-001",
+      "final_weight": 0.08225313379519378,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 160704.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 93750.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "HIMALAYA-COMP-002",
+      "final_weight": 0.07220945420969281,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 93750.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 106250.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "HIMALAYA-COMP-003",
+      "final_weight": 0.07542781634372143,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 106250.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 85000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "HIMALAYA-COMP-004",
+      "final_weight": 0.16661916650635852,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 85000.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 87500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "HIMALAYA-COMP-005",
+      "final_weight": 0.28989037141108803,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 87500.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
+    },
+    {
+      "adjusted_price_usd": 97536.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "HIMALAYA-COMP-006",
+      "final_weight": 0.3136000577339454,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 97536.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "overall_similarity_derived_from_components",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases"
+      ]
     }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
+  ],
+  "diagnostic_table": [
+    {
+      "Comparable ID": "HIMALAYA-COMP-001",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.08225313379519378,
+      "Included?": true,
+      "Overall similarity": 0.7913,
+      "USD price": 160704.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "HIMALAYA-COMP-002",
+      "Evidence quality": 0.97,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.07220945420969281,
+      "Included?": true,
+      "Overall similarity": 0.709,
+      "USD price": 93750.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "HIMALAYA-COMP-003",
+      "Evidence quality": 0.97,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.07542781634372143,
+      "Included?": true,
+      "Overall similarity": 0.7406,
+      "USD price": 106250.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "HIMALAYA-COMP-004",
+      "Evidence quality": 0.98,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.16661916650635852,
+      "Included?": true,
+      "Overall similarity": 0.7406,
+      "USD price": 85000.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "HIMALAYA-COMP-005",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.28989037141108803,
+      "Included?": true,
+      "Overall similarity": 0.7406,
+      "USD price": 87500.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "HIMALAYA-COMP-006",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.3136000577339454,
+      "Included?": true,
+      "Overall similarity": 0.7646999999999999,
+      "USD price": 97536.0,
+      "Verification status": "verified"
+    }
+  ],
+  "market_comparison": {
+    "asset_status": null,
+    "change_from_issue_valuation_pct": -0.3303571428571429,
+    "change_from_latest_quarterly_observation_pct": null,
+    "fair_value_premium_discount_to_issue_valuation_pct": -0.3303571428571429,
+    "fair_value_premium_discount_to_latest_market_value_pct": -0.0005330490405117683,
+    "initial_offering_value_usd": 140000.0,
+    "last_observed_market_value_usd": 93800.0,
+    "latest_share_price_usd": null
+  },
+  "methodology_version": "1.0",
+  "provenance": {
+    "canonical_asset_id": "rally-himalaya",
+    "input_asset_id": "HIMALAYA"
+  },
+  "research_input_summary": {
+    "comparable_ids": [
+      "HIMALAYA-COMP-001",
+      "HIMALAYA-COMP-002",
+      "HIMALAYA-COMP-003",
+      "HIMALAYA-COMP-004",
+      "HIMALAYA-COMP-005",
+      "HIMALAYA-COMP-006"
+    ],
+    "parsed_comparable_count": 6,
+    "parsed_comparable_ids": [
+      "HIMALAYA-COMP-001",
+      "HIMALAYA-COMP-002",
+      "HIMALAYA-COMP-003",
+      "HIMALAYA-COMP-004",
+      "HIMALAYA-COMP-005",
+      "HIMALAYA-COMP-006"
+    ],
+    "raw_comparable_count": 6,
+    "research_hash": "85cb545b8e4280e14421a7f55fc3d8726c92b721195650903fd274c2fdd0744d",
+    "research_path": "/workspace/rally-terminal/data/valuation_library/rally-himalaya/research.json",
+    "top_level_keys": [
+      "asset_id",
+      "comparable_selection_policy",
+      "comparables",
+      "market_context",
+      "market_observations_not_eligible_as_completed_comparables",
+      "methodology_reference",
+      "preliminary_evidence_assessment",
+      "research_date",
+      "research_limitations",
+      "research_status",
+      "schema_version",
+      "sources",
+      "subject_asset_summary",
+      "valuation_adjustment_questions"
     ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "final_weight":0.08225313379519378
-    }
-    1:{
-    "comparable_id":"HIMALAYA-COMP-002"
-    "reported_price_usd":93750
-    "adjusted_price_usd":93750
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "final_weight":0.07220945420969281
-    }
-    2:{
-    "comparable_id":"HIMALAYA-COMP-003"
-    "reported_price_usd":106250
-    "adjusted_price_usd":106250
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "final_weight":0.07542781634372143
-    }
-    3:{
-    "comparable_id":"HIMALAYA-COMP-004"
-    "reported_price_usd":85000
-    "adjusted_price_usd":85000
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "final_weight":0.16661916650635852
-    }
-    4:{
-    "comparable_id":"HIMALAYA-COMP-005"
-    "reported_price_usd":87500
-    "adjusted_price_usd":87500
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "final_weight":0.28989037141108803
-    }
-    5:{
-    "comparable_id":"HIMALAYA-COMP-006"
-    "reported_price_usd":97536
-    "adjusted_price_usd":97536
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"fx_converted_from_hkd"
-    2:"identity_similarity_derived_from_category_aliases"
-    3:"missing_source_reference"
-    4:"overall_similarity_derived_from_components"
-    5:"premium_treatment_unknown"
-    6:"presentation_similarity_derived_from_category_aliases"
-    7:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "final_weight":0.3136000577339454
-    }
-    ]
-    "comparable_diagnostics":[
-    0:{
-    "comparable_id":"HIMALAYA-COMP-001"
-    "reported_price_usd":160704
-    "adjusted_price_usd":160704
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":160704
-    "parsed_overall_similarity":0.7913
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.55
-    "provenance_similarity":0.75
-    "presentation_similarity":0.769
-    "accessory_similarity":0.75
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.91
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.99
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.25
-    "currency":"HKD"
-    "original_currency":"HKD"
-    "original_reported_price":1240000
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":160704
-    "fx_warnings":[]
-    "raw_weight":0.19584675
-    "premium_treatment":NULL
-    "similarity_score":0.7913
-    "evidence_quality_score":0.99
-    "final_weight":0.08225313379519378
-    }
-    1:{
-    "comparable_id":"HIMALAYA-COMP-002"
-    "reported_price_usd":93750
-    "adjusted_price_usd":93750
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":93750
-    "parsed_overall_similarity":0.709
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.5
-    "provenance_similarity":0.5
-    "presentation_similarity":0.67
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.86
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.97
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.25
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":93750
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":93750
-    "fx_warnings":[]
-    "raw_weight":0.1719325
-    "premium_treatment":NULL
-    "similarity_score":0.709
-    "evidence_quality_score":0.97
-    "final_weight":0.07220945420969281
-    }
-    2:{
-    "comparable_id":"HIMALAYA-COMP-003"
-    "reported_price_usd":106250
-    "adjusted_price_usd":106250
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":106250
-    "parsed_overall_similarity":0.7406
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.6
-    "provenance_similarity":0.5
-    "presentation_similarity":0.7030000000000001
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.88
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.97
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.25
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":106250
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":106250
-    "fx_warnings":[]
-    "raw_weight":0.1795955
-    "premium_treatment":NULL
-    "similarity_score":0.7406
-    "evidence_quality_score":0.97
-    "final_weight":0.07542781634372143
-    }
-    3:{
-    "comparable_id":"HIMALAYA-COMP-004"
-    "reported_price_usd":85000
-    "adjusted_price_usd":85000
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":85000
-    "parsed_overall_similarity":0.7406
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.6
-    "provenance_similarity":0.5
-    "presentation_similarity":0.7030000000000001
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.9
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.98
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.5466119096509241
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":85000
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":85000
-    "fx_warnings":[]
-    "raw_weight":0.3967243646817249
-    "premium_treatment":NULL
-    "similarity_score":0.7406
-    "evidence_quality_score":0.98
-    "final_weight":0.16661916650635852
-    }
-    4:{
-    "comparable_id":"HIMALAYA-COMP-005"
-    "reported_price_usd":87500
-    "adjusted_price_usd":87500
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":87500
-    "parsed_overall_similarity":0.7406
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.6
-    "provenance_similarity":0.5
-    "presentation_similarity":0.7030000000000001
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.91
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.99
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.941409993155373
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":87500
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":87500
-    "fx_warnings":[]
-    "raw_weight":0.6902361585215605
-    "premium_treatment":NULL
-    "similarity_score":0.7406
-    "evidence_quality_score":0.99
-    "final_weight":0.28989037141108803
-    }
-    5:{
-    "comparable_id":"HIMALAYA-COMP-006"
-    "reported_price_usd":97536
-    "adjusted_price_usd":97536
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"fx_converted_from_hkd"
-    2:"identity_similarity_derived_from_category_aliases"
-    3:"missing_source_reference"
-    4:"overall_similarity_derived_from_components"
-    5:"premium_treatment_unknown"
-    6:"presentation_similarity_derived_from_category_aliases"
-    7:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":97536
-    "parsed_overall_similarity":0.7646999999999999
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.55
-    "provenance_similarity":0.65
-    "presentation_similarity":0.736
-    "accessory_similarity":0.65
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.9
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.99
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.9863107460643394
-    "currency":"HKD"
-    "original_currency":"HKD"
-    "original_reported_price":762000
-    "fx_conversion_source":"configured_fx_rate"
-    "fx_rate_to_usd":0.128
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":97536
-    "fx_warnings":[
-    0:"fx_converted_from_hkd"
-    ]
-    "raw_weight":0.7466895092402464
-    "premium_treatment":NULL
-    "similarity_score":0.7646999999999999
-    "evidence_quality_score":0.99
-    "final_weight":0.3136000577339454
-    }
-    ]
-    "diagnostic_table":[
-    0:{
-    "Comparable ID":"HIMALAYA-COMP-001"
-    "Included?":true
-    "USD price":160704
-    "Overall similarity":0.7913
-    "Evidence quality":0.99
-    "Verification status":"verified"
-    "Exclusion reasons":"eligible"
-    "Final weight":0.08225313379519378
-    }
-    1:{
-    "Comparable ID":"HIMALAYA-COMP-002"
-    "Included?":true
-    "USD price":93750
-    "Overall similarity":0.709
-    "Evidence quality":0.97
-    "Verification status":"verified"
-    "Exclusion reasons":"eligible"
-    "Final weight":0.07220945420969281
-    }
-    2:{
-    "Comparable ID":"HIMALAYA-COMP-003"
-    "Included?":true
-    "USD price":106250
-    "Overall similarity":0.7406
-    "Evidence quality":0.97
-    "Verification status":"verified"
-    "Exclusion reasons":"eligible"
-    "Final weight":0.07542781634372143
-    }
-    3:{
-    "Comparable ID":"HIMALAYA-COMP-004"
-    "Included?":true
-    "USD price":85000
-    "Overall similarity":0.7406
-    "Evidence quality":0.98
-    "Verification status":"verified"
-    "Exclusion reasons":"eligible"
-    "Final weight":0.16661916650635852
-    }
-    4:{
-    "Comparable ID":"HIMALAYA-COMP-005"
-    "Included?":true
-    "USD price":87500
-    "Overall similarity":0.7406
-    "Evidence quality":0.99
-    "Verification status":"verified"
-    "Exclusion reasons":"eligible"
-    "Final weight":0.28989037141108803
-    }
-    5:{
-    "Comparable ID":"HIMALAYA-COMP-006"
-    "Included?":true
-    "USD price":97536
-    "Overall similarity":0.7646999999999999
-    "Evidence quality":0.99
-    "Verification status":"verified"
-    "Exclusion reasons":"eligible"
-    "Final weight":0.3136000577339454
-    }
-    ]
-    "calculation_summary":{
-    "eligible_comparable_count":6
-    "raw_comparable_count":6
-    "parsed_comparable_count":6
-    "weighted_comparable_value_usd":98117.58131475071
-    "median_adjusted_comparable_usd":93750
-    "dispersion_pct":0.8075093333333333
-    }
-    "research_input_summary":{
-    "research_path":"/mount/src/rally-terminal/data/valuation_library/rally-himalaya/research.json"
-    "research_hash":"fcbe900234df5776586c4407ea362b91ca0fd39563c1278310cb9826df72b77a"
-    "top_level_keys":[
-    0:"analyst_notes"
-    1:"asset_id"
-    2:"comparable_selection_policy"
-    3:"comparables"
-    4:"demand_factors"
-    5:"legal_regulatory_considerations"
-    6:"liquidity_observations"
-    7:"market_context"
-    8:"market_observations_not_eligible_as_completed_comparables"
-    9:"methodology_reference"
-    10:"preliminary_evidence_assessment"
-    11:"provenance"
-    12:"research_date"
-    13:"research_limitations"
-    14:"research_status"
-    15:"schema_version"
-    16:"source_ledger"
-    17:"sources"
-    18:"subject_asset_summary"
-    19:"supply_factors"
-    20:"valuation_adjustment_questions"
-    21:"valuation_assumptions"
-    ]
-    "raw_comparable_count":6
-    "parsed_comparable_count":6
-    "comparable_ids":[
-    0:"HIMALAYA-COMP-001"
-    1:"HIMALAYA-COMP-002"
-    2:"HIMALAYA-COMP-003"
-    3:"HIMALAYA-COMP-004"
-    4:"HIMALAYA-COMP-005"
-    5:"HIMALAYA-COMP-006"
-    ]
-    "parsed_comparable_ids":[
-    0:"HIMALAYA-COMP-001"
-    1:"HIMALAYA-COMP-002"
-    2:"HIMALAYA-COMP-003"
-    3:"HIMALAYA-COMP-004"
-    4:"HIMALAYA-COMP-005"
-    5:"HIMALAYA-COMP-006"
-    ]
-    }
-    "warnings":[
-    0:"Category model is provisional and requires methodological review."
-    1:"extreme_comparable_dispersion"
-    2:"valuation_completed_with_optional_evidence_limitations"
-    ]
-    "calculation_trace":[
-    0:{
-    "methodology_version":"1.0"
-    "engine_version":"1.0"
-    "category_model_version":"handbags_v1"
-    "run_timestamp":"2026-08-08T02:35:05.325256+00:00"
-    "input_hashes":{
-    "factors":"71b825c930c5aa8b68c08e9403549bc0b85765fd50e5149fabf251bcb6aeea8a"
-    "research":"fcbe900234df5776586c4407ea362b91ca0fd39563c1278310cb9826df72b77a"
-    }
-    "research_input_summary":{
-    "research_path":"/mount/src/rally-terminal/data/valuation_library/rally-himalaya/research.json"
-    "research_hash":"fcbe900234df5776586c4407ea362b91ca0fd39563c1278310cb9826df72b77a"
-    "top_level_keys":[
-    0:"analyst_notes"
-    1:"asset_id"
-    2:"comparable_selection_policy"
-    3:"comparables"
-    4:"demand_factors"
-    5:"legal_regulatory_considerations"
-    6:"liquidity_observations"
-    7:"market_context"
-    8:"market_observations_not_eligible_as_completed_comparables"
-    9:"methodology_reference"
-    10:"preliminary_evidence_assessment"
-    11:"provenance"
-    12:"research_date"
-    13:"research_limitations"
-    14:"research_status"
-    15:"schema_version"
-    16:"source_ledger"
-    17:"sources"
-    18:"subject_asset_summary"
-    19:"supply_factors"
-    20:"valuation_adjustment_questions"
-    21:"valuation_assumptions"
-    ]
-    "raw_comparable_count":6
-    "parsed_comparable_count":6
-    "comparable_ids":[
-    0:"HIMALAYA-COMP-001"
-    1:"HIMALAYA-COMP-002"
-    2:"HIMALAYA-COMP-003"
-    3:"HIMALAYA-COMP-004"
-    4:"HIMALAYA-COMP-005"
-    5:"HIMALAYA-COMP-006"
-    ]
-    "parsed_comparable_ids":[
-    0:"HIMALAYA-COMP-001"
-    1:"HIMALAYA-COMP-002"
-    2:"HIMALAYA-COMP-003"
-    3:"HIMALAYA-COMP-004"
-    4:"HIMALAYA-COMP-005"
-    5:"HIMALAYA-COMP-006"
-    ]
-    }
-    "configuration":{
-    "engine":{
-    "methodology_version":"1.0"
-    "engine_version":"1.0"
-    "provisional":true
-    "minimum_eligible_comparables":2
-    "one_comparable_allows_diagnostic_only":true
-    "unsupported_currency_policy":"exclude_without_price_usd"
-    "supported_currencies":{
-    "USD":1
-    "HKD":0.128
-    "CHF":1.12
-    "GBP":1.27
-    "EUR":1.09
-    }
-    "unverified_weight_multiplier":0.65
-    "max_recency_years":5
-    "recency_floor":0.25
-    "confidence_base":0.75
-    "confidence_penalties":{
-    "one_comparable":0.35
-    "most_unverified":0.15
-    "extreme_dispersion":0.2
-    "missing_condition":0.1
-    "missing_history":0.1
-    }
-    "extreme_dispersion_pct":0.75
-    "estimate_quantiles":{
-    "conservative":0.25
-    "base":0.5
-    "optimistic":0.75
-    }
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    }
-    "category":{
-    "category_model_version":"handbags_v1"
-    "category":"handbags"
-    "provisional":true
-    "similarity_components":{
-    "identity_similarity":0.35
-    "condition_similarity":0.25
-    "provenance_similarity":0.2
-    "presentation_similarity":0.2
-    }
-    "use_supplied_overall_similarity":true
-    "similarity_aliases":{
-    "identity_similarity":{
-    "fields":{
-    "model_similarity":0.35
-    "size_similarity":0.15
-    "material_similarity":0.2
-    "hardware_similarity":0.15
-    "year_similarity":0.15
-    }
-    }
-    "condition_similarity":{
-    "fields":{
-    "condition_similarity":1
-    }
-    }
-    "provenance_similarity":{
-    "fields":{
-    "provenance_similarity":1
-    }
-    "fallback_fields":{
-    "accessory_similarity":1
-    }
-    "fallback_warning":"accessory_similarity_used_as_provisional_provenance_proxy"
-    }
-    "presentation_similarity":{
-    "fields":{
-    "size_similarity":0.34
-    "accessory_similarity":0.33
-    "condition_similarity":0.33
-    }
-    }
-    }
-    "required_factor_fields":[
-    0:"identity"
-    1:"condition"
-    ]
-    "evidence_thresholds":{
-    "minimum_overall_similarity":0.35
-    "minimum_evidence_quality":0.3
-    }
-    "adjustment_limits":{
-    "min_multiplier":0.5
-    "max_multiplier":1.5
-    }
-    "confidence_penalties":{
-    "category_specific_uncertainty":0.05
-    }
-    "category_warnings":[
-    0:"Category model is provisional and requires methodological review."
-    ]
-    }
-    }
-    }
-    1:{
-    "comparable_id":"HIMALAYA-COMP-001"
-    "reported_price_usd":160704
-    "adjusted_price_usd":160704
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":160704
-    "parsed_overall_similarity":0.7913
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.55
-    "provenance_similarity":0.75
-    "presentation_similarity":0.769
-    "accessory_similarity":0.75
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.91
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.99
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.25
-    "currency":"HKD"
-    "original_currency":"HKD"
-    "original_reported_price":1240000
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":160704
-    "fx_warnings":[]
-    "raw_weight":0.19584675
-    "premium_treatment":NULL
-    "similarity_score":0.7913
-    "evidence_quality_score":0.99
-    "final_weight":0.08225313379519378
-    }
-    2:{
-    "comparable_id":"HIMALAYA-COMP-002"
-    "reported_price_usd":93750
-    "adjusted_price_usd":93750
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":93750
-    "parsed_overall_similarity":0.709
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.5
-    "provenance_similarity":0.5
-    "presentation_similarity":0.67
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.86
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.97
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.25
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":93750
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":93750
-    "fx_warnings":[]
-    "raw_weight":0.1719325
-    "premium_treatment":NULL
-    "similarity_score":0.709
-    "evidence_quality_score":0.97
-    "final_weight":0.07220945420969281
-    }
-    3:{
-    "comparable_id":"HIMALAYA-COMP-003"
-    "reported_price_usd":106250
-    "adjusted_price_usd":106250
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":106250
-    "parsed_overall_similarity":0.7406
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.6
-    "provenance_similarity":0.5
-    "presentation_similarity":0.7030000000000001
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.88
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.97
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.25
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":106250
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":106250
-    "fx_warnings":[]
-    "raw_weight":0.1795955
-    "premium_treatment":NULL
-    "similarity_score":0.7406
-    "evidence_quality_score":0.97
-    "final_weight":0.07542781634372143
-    }
-    4:{
-    "comparable_id":"HIMALAYA-COMP-004"
-    "reported_price_usd":85000
-    "adjusted_price_usd":85000
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":85000
-    "parsed_overall_similarity":0.7406
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.6
-    "provenance_similarity":0.5
-    "presentation_similarity":0.7030000000000001
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.9
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.98
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.5466119096509241
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":85000
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":85000
-    "fx_warnings":[]
-    "raw_weight":0.3967243646817249
-    "premium_treatment":NULL
-    "similarity_score":0.7406
-    "evidence_quality_score":0.98
-    "final_weight":0.16661916650635852
-    }
-    5:{
-    "comparable_id":"HIMALAYA-COMP-005"
-    "reported_price_usd":87500
-    "adjusted_price_usd":87500
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"identity_similarity_derived_from_category_aliases"
-    2:"missing_source_reference"
-    3:"overall_similarity_derived_from_components"
-    4:"premium_treatment_unknown"
-    5:"presentation_similarity_derived_from_category_aliases"
-    6:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":87500
-    "parsed_overall_similarity":0.7406
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.6
-    "provenance_similarity":0.5
-    "presentation_similarity":0.7030000000000001
-    "accessory_similarity":0.5
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.91
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.99
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.941409993155373
-    "currency":"USD"
-    "original_currency":"USD"
-    "original_reported_price":87500
-    "fx_conversion_source":"research_price_usd"
-    "fx_rate_to_usd":1
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":87500
-    "fx_warnings":[]
-    "raw_weight":0.6902361585215605
-    "premium_treatment":NULL
-    "similarity_score":0.7406
-    "evidence_quality_score":0.99
-    "final_weight":0.28989037141108803
-    }
-    6:{
-    "comparable_id":"HIMALAYA-COMP-006"
-    "reported_price_usd":97536
-    "adjusted_price_usd":97536
-    "included":true
-    "adjustments":{
-    "time_adjustment_pct_per_year":0
-    "market_adjustment_multiplier":1
-    "condition_adjustment_multiplier":1
-    "rarity_adjustment_multiplier":1
-    "provenance_adjustment_multiplier":1
-    "liquidity_adjustment_multiplier":1
-    }
-    "warnings":[
-    0:"accessory_similarity_used_as_provisional_provenance_proxy"
-    1:"fx_converted_from_hkd"
-    2:"identity_similarity_derived_from_category_aliases"
-    3:"missing_source_reference"
-    4:"overall_similarity_derived_from_components"
-    5:"premium_treatment_unknown"
-    6:"presentation_similarity_derived_from_category_aliases"
-    7:"provenance_similarity_derived_from_category_aliases"
-    ]
-    "inclusion_rationale":[
-    0:"eligible"
-    ]
-    "eligible_before_filtering":true
-    "final_eligibility":true
-    "exclusion_reasons":[]
-    "parsed_sale_status":"sold"
-    "parsed_usd_price":97536
-    "parsed_overall_similarity":0.7646999999999999
-    "parsed_similarity_components":{
-    "identity_similarity":1
-    "condition_similarity":0.55
-    "provenance_similarity":0.65
-    "presentation_similarity":0.736
-    "accessory_similarity":0.65
-    "hardware_similarity":1
-    "material_similarity":1
-    "model_similarity":1
-    "overall_similarity":0.9
-    "size_similarity":1
-    "year_similarity":1
-    }
-    "parsed_evidence_quality":0.99
-    "verification_status":"verified"
-    "verification_treatment":1
-    "recency_treatment":0.9863107460643394
-    "currency":"HKD"
-    "original_currency":"HKD"
-    "original_reported_price":762000
-    "fx_conversion_source":"configured_fx_rate"
-    "fx_rate_to_usd":0.128
-    "configured_fx_version":"1.0"
-    "calculated_price_usd":97536
-    "fx_warnings":[
-    0:"fx_converted_from_hkd"
-    ]
-    "raw_weight":0.7466895092402464
-    "premium_treatment":NULL
-    "similarity_score":0.7646999999999999
-    "evidence_quality_score":0.99
-    "final_weight":0.3136000577339454
-    }
-    ]
-    }
+  },
+  "results": {
+    "base_value_usd": 93750.0,
+    "confidence_score": 0.45,
+    "conservative_value_usd": 87500.0,
+    "official_value_available": true,
+    "optimistic_value_usd": 97536.0
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-08",
+  "valuation_status": "completed_with_limitations",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "extreme_comparable_dispersion",
+    "valuation_completed_with_optional_evidence_limitations"
+  ]
+}
