@@ -1,0 +1,393 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "HIMALAYA",
+  "research_date": "2026-08-07",
+  "methodology_reference": {
+    "name": "Rally Terminal Fair Value Methodology",
+    "version": "1.0",
+    "edition": "Founding Edition"
+  },
+  "research_status": "preliminary_comparable_research_complete",
+  "subject_asset_summary": {
+    "manufacturer": "Hermès",
+    "model": "Himalaya Birkin 30",
+    "production_year": 2014,
+    "color": "Matte Blanc / Himalaya",
+    "primary_material": "Niloticus crocodile",
+    "hardware": "Palladium",
+    "dimensions_cm": {
+      "width": 30,
+      "height": 23,
+      "depth": 16
+    },
+    "included_accessories": [
+      "lock",
+      "keys",
+      "clochette",
+      "leather card",
+      "two small dust bags",
+      "one large dust bag",
+      "box",
+      "ribbon"
+    ],
+    "condition": null
+  },
+  "market_context": {
+    "category_summary": "Primary evidence is restricted to 30 cm matte white Himalaya Niloticus crocodile Birkins with palladium hardware, with 2014 examples prioritized.",
+    "primary_value_drivers": [
+      "Exact Himalaya configuration",
+      "Birkin 30 size",
+      "Matte white Niloticus crocodile",
+      "Palladium hardware",
+      "Production year/date stamp",
+      "Exterior/interior condition",
+      "Scale and handle condition",
+      "Hermès spa/service history",
+      "Accessory completeness",
+      "CITES/documentation status"
+    ],
+    "principal_market_risks": [
+      "Condition sensitivity of pale matte exotic leather",
+      "CITES/cross-border restrictions",
+      "Large market-cycle dispersion",
+      "Buyer-premium normalization differences",
+      "Diamond-hardware and other-size Himalayas are not directly comparable"
+    ]
+  },
+  "comparable_selection_policy": {
+    "primary_comparables": "Completed sales of Hermès Birkin 30 Himalaya bags in matte white Niloticus crocodile with palladium hardware, prioritizing 2014 examples.",
+    "excluded_from_primary_set": [
+      "Diamond-hardware Himalaya Birkins",
+      "Birkin 25 and 35",
+      "Kelly Himalaya bags",
+      "Non-Himalaya crocodile Birkins",
+      "Dealer asking prices",
+      "Auction estimates without realized prices"
+    ]
+  },
+  "comparables": [
+    {
+      "comparable_id": "HIMALAYA-COMP-001",
+      "tier": "primary",
+      "title": "Matte White Himalaya Niloticus Crocodile Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2014,
+      "sale_date": "2015-06-01",
+      "auction_house": "Christie's",
+      "lot_number": "3865",
+      "sale_location": "Hong Kong",
+      "sale_status": "sold",
+      "reported_currency": "HKD",
+      "reported_realized_price": 1240000,
+      "price_usd_at_sale": 160704,
+      "fx_conversion_required": false,
+      "characteristics": {
+        "material": "matte white Himalaya Niloticus crocodile",
+        "hardware": "palladium",
+        "size_cm": 30
+      },
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "accessory_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "overall_similarity": 0.91
+      },
+      "evidence_quality": 0.99,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "source_id": "SRC-002"
+    },
+    {
+      "comparable_id": "HIMALAYA-COMP-002",
+      "tier": "primary",
+      "title": "Matte White Himalaya Nilo Crocodile Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2014,
+      "sale_date": "2017-02-03",
+      "auction_house": "Heritage Auctions",
+      "auction_number": "5303",
+      "lot_number": "58057",
+      "sale_location": "United States",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 93750,
+      "price_usd_at_sale": 93750,
+      "fx_conversion_required": false,
+      "characteristics": {
+        "material": "matte white Himalaya Nilo crocodile",
+        "hardware": "palladium",
+        "size_cm": 30,
+        "condition_description": "pristine"
+      },
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.5,
+        "overall_similarity": 0.86
+      },
+      "evidence_quality": 0.97,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "source_id": "SRC-003"
+    },
+    {
+      "comparable_id": "HIMALAYA-COMP-003",
+      "tier": "primary",
+      "title": "Matte White Himalaya Nilo Crocodile Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2014,
+      "sale_date": "2018-09-30",
+      "auction_house": "Heritage Auctions",
+      "auction_number": "5350",
+      "lot_number": "58118",
+      "sale_location": "United States",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 106250,
+      "price_usd_at_sale": 106250,
+      "fx_conversion_required": false,
+      "characteristics": {
+        "material": "matte white Himalaya Nilo crocodile",
+        "hardware": "palladium",
+        "size_cm": 30,
+        "condition_grade": 2
+      },
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "overall_similarity": 0.88
+      },
+      "evidence_quality": 0.97,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "source_id": "SRC-003"
+    },
+    {
+      "comparable_id": "HIMALAYA-COMP-004",
+      "tier": "primary",
+      "title": "Matte White Himalaya Niloticus Crocodile Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2014,
+      "sale_date": "2024-05-02",
+      "auction_house": "Heritage Auctions",
+      "auction_number": "5555",
+      "lot_number": "58058",
+      "sale_location": "United States",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 85000,
+      "price_usd_at_sale": 85000,
+      "fx_conversion_required": false,
+      "characteristics": {
+        "material": "matte white Himalaya Niloticus crocodile",
+        "hardware": "palladium",
+        "size_cm": 30,
+        "condition_grade": 2
+      },
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "overall_similarity": 0.9
+      },
+      "evidence_quality": 0.98,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "source_id": "SRC-003"
+    },
+    {
+      "comparable_id": "HIMALAYA-COMP-005",
+      "tier": "primary",
+      "title": "Matte White Himalaya Niloticus Crocodile Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2014,
+      "sale_date": "2026-04-23",
+      "auction_house": "Heritage Auctions",
+      "auction_number": "5580",
+      "lot_number": "58248",
+      "sale_location": "United States",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 87500,
+      "price_usd_at_sale": 87500,
+      "fx_conversion_required": false,
+      "characteristics": {
+        "material": "matte white Himalaya Niloticus crocodile",
+        "hardware": "palladium",
+        "size_cm": 30,
+        "condition_grade": 2
+      },
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "accessory_similarity": 0.5,
+        "condition_similarity": 0.6,
+        "overall_similarity": 0.91
+      },
+      "evidence_quality": 0.99,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "source_id": "SRC-003"
+    },
+    {
+      "comparable_id": "HIMALAYA-COMP-006",
+      "tier": "primary",
+      "title": "Rare Matte White Himalaya Niloticus Crocodile Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2014,
+      "sale_date": "2026-07-14",
+      "auction_house": "Christie's",
+      "auction_name": "Handbags Online: The Hong Kong Edit",
+      "lot_number": "100",
+      "sale_location": "Hong Kong",
+      "sale_status": "sold",
+      "reported_currency": "HKD",
+      "reported_realized_price": 762000,
+      "price_usd_at_sale": null,
+      "fx_conversion_required": true,
+      "characteristics": {
+        "material": "matte white Himalaya Niloticus crocodile",
+        "hardware": "palladium",
+        "size_cm": 30
+      },
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "overall_similarity": 0.9
+      },
+      "evidence_quality": 0.99,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "source_id": "SRC-004"
+    }
+  ],
+  "market_observations_not_eligible_as_completed_comparables": [
+    {
+      "observation_id": "HIMALAYA-MKT-001",
+      "type": "market_context",
+      "publisher": "Sotheby's",
+      "description": "Sotheby's reported that a similar 2014 date-stamped Birkin 30 Himalaya sold for $210,000 in 2022 and discussed later price declines as secondary-market availability increased.",
+      "eligible_for_official_valuation": false,
+      "reason_excluded": "Useful market-cycle context, but insufficient lot-level detail in the retrieved summary to score consistently.",
+      "source_id": "SRC-006"
+    }
+  ],
+  "valuation_adjustment_questions": {
+    "subject_condition": {
+      "status": "unknown",
+      "valuation_importance": "very_high"
+    },
+    "market_cycle_adjustment": {
+      "status": "required",
+      "valuation_importance": "very_high"
+    },
+    "currency_adjustment": {
+      "status": "partially_required",
+      "valuation_importance": "mechanical_required"
+    },
+    "buyers_premium_normalization": {
+      "status": "required",
+      "valuation_importance": "mechanical_required"
+    },
+    "cites_and_marketability": {
+      "status": "contextual",
+      "valuation_importance": "medium"
+    }
+  },
+  "preliminary_evidence_assessment": {
+    "primary_comparable_count": 6,
+    "evidence_strength": "strong_for_identity_moderate_for_condition_adjusted_value",
+    "confidence_before_condition_input": 0.74,
+    "confidence_score_status": "analyst_preliminary_not_official_engine_output",
+    "official_fair_value_ready": true,
+    "recommended_engine_status": "completed_with_limitations",
+    "reason": "Multiple exact-model transactions exist, including recent 2024 and 2026 sales; missing subject condition and market-cycle normalization should lower confidence rather than block valuation."
+  },
+  "research_limitations": [
+    "This file does not calculate official fair value.",
+    "Subject condition and complete authentication/CITES documentation were not supplied.",
+    "Historical market-cycle adjustments remain a methodological limitation.",
+    "Auction prices should be normalized consistently for buyer-premium treatment."
+  ],
+  "sources": [
+    {
+      "source_id": "SRC-001",
+      "source_type": "auction_history_index",
+      "publisher": "Christie's",
+      "title": "Hermès Himalaya Birkin — auction results and history",
+      "url": "https://www.christies.com/en/artists/hermes/hermes-himalaya-birkin",
+      "accessed_date": "2026-08-07",
+      "evidence_quality": "A"
+    },
+    {
+      "source_id": "SRC-002",
+      "source_type": "auction_results",
+      "publisher": "Christie's",
+      "title": "Results | Handbags & Accessories, 1 June 2015",
+      "url": "https://press.christies.com/results-handbags-accessories-1-june-2015/",
+      "accessed_date": "2026-08-07",
+      "evidence_quality": "A"
+    },
+    {
+      "source_id": "SRC-003",
+      "source_type": "auction_archive",
+      "publisher": "Heritage Auctions",
+      "title": "Hermès luxury accessories archive",
+      "url": "https://jewelry.ha.com/c/search/results.zx?dept=2676&item_type_luxury=1618&mode=archive",
+      "accessed_date": "2026-08-07",
+      "evidence_quality": "A"
+    },
+    {
+      "source_id": "SRC-004",
+      "source_type": "auction_result",
+      "publisher": "Christie's",
+      "title": "Rare Matte White Himalaya Niloticus Crocodile Birkin 30 with Palladium Hardware, Hermès 2014",
+      "url": "https://onlineonly.christies.com/s/handbags-online-hong-kong-edit/rare-matte-white-himalaya-niloticus-crocodile-birkin-30-palladium-100/316479",
+      "accessed_date": "2026-08-07",
+      "evidence_quality": "A"
+    },
+    {
+      "source_id": "SRC-005",
+      "source_type": "auction_lot_record",
+      "publisher": "Christie's",
+      "title": "A Matte White Himalaya Niloticus Crocodile Birkin 30 with Palladium Hardware, Hermès 2014",
+      "url": "https://www.christies.com/en/lot/lot-5897780",
+      "accessed_date": "2026-08-07",
+      "evidence_quality": "A"
+    },
+    {
+      "source_id": "SRC-006",
+      "source_type": "market_commentary",
+      "publisher": "Sotheby's",
+      "title": "The 11 Most Expensive Hermès Bags Sold at Auction in the First Half 2024",
+      "url": "https://www.sothebys.com/en/articles/the-11-most-expensive-hermes-bags-sold-at-auction-in-the-first-half-2024",
+      "accessed_date": "2026-08-07",
+      "evidence_quality": "A"
+    }
+  ]
+}

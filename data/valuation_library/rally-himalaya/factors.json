@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "HIMALAYA",
+  "rally_symbol": "HIMALAYA",
+  "asset_name": "Hermès 30cm Himalaya Birkin",
+  "category": "handbags",
+  "subcategory": "himalaya_birkin",
+  "data_provenance": {
+    "primary_intake_source": "Rally Rd screenshots supplied by user",
+    "intake_date": "2026-08-07",
+    "notes": [
+      "Rally Terminal canonical registry and price-history data should remain authoritative on ingestion.",
+      "Rally labels dimensions as Width 16 cm, Height 23 cm, Length 30 cm; normalized handbag dimensions are stored as width 30 cm, height 23 cm, depth 16 cm."
+    ]
+  },
+  "rally_data": {
+    "initial_offering_price_per_share_usd": 70.0,
+    "initial_offering_market_cap_usd": 140000,
+    "number_of_shares": 2000,
+    "initial_offering_month": "2020-05",
+    "storage_location": "Rally",
+    "latest_share_price_usd": null,
+    "latest_market_value_usd": null,
+    "last_trade_date": null,
+    "canonical_data_precedence": "rally_terminal_repository"
+  },
+  "identity": {
+    "manufacturer": "Hermès",
+    "model": "Birkin",
+    "collection": "Himalaya",
+    "country_of_origin": "France",
+    "production_year": 2014,
+    "size_cm": 30
+  },
+  "handbag_factors": {
+    "style": {
+      "bag_type": "Birkin",
+      "size_designation": "Birkin 30",
+      "color": "Matte Blanc",
+      "color_family": "Himalaya / matte white gradient",
+      "closure": [
+        "flap",
+        "belted_straps",
+        "turn_lock"
+      ]
+    },
+    "materials": {
+      "primary_material": "Niloticus crocodile",
+      "normalized_material": "matte_white_himalaya_niloticus_crocodile",
+      "hardware": "Palladium"
+    },
+    "dimensions_cm": {
+      "width": 30,
+      "height": 23,
+      "depth": 16
+    },
+    "source_dimension_labels_cm": {
+      "width": 16,
+      "height": 23,
+      "length": 30
+    },
+    "accessories": {
+      "lock_included": true,
+      "keys_included": true,
+      "clochette_included": true,
+      "leather_card_included": true,
+      "dust_bags": {
+        "small_count": 2,
+        "large_count": 1
+      },
+      "box_included": true,
+      "ribbon_included": true
+    },
+    "condition": {
+      "reported_grade": null,
+      "detailed_condition_report_available": false,
+      "unknowns": [
+        "exterior_marks",
+        "corner_wear",
+        "handle_wear",
+        "scale_condition",
+        "hardware_scratching",
+        "interior_marks",
+        "structure_and_shape_retention",
+        "hermes_spa_or_service_history"
+      ]
+    },
+    "authentication": {
+      "certificate_available": true,
+      "certificate_source": "Rally Rd C.O.A. button visible in supplied screenshot",
+      "certificate_details_supplied": false,
+      "independently_verified": false
+    }
+  },
+  "missing_fields": [
+    "latest_share_price_usd",
+    "latest_market_value_usd",
+    "last_trade_date",
+    "reported_condition_grade",
+    "detailed_condition_report",
+    "certificate_details",
+    "spa_or_service_history"
+  ],
+  "validation_warnings": [
+    "No detailed subject condition grade was visible in the supplied screenshots.",
+    "Rally dimension labels appear transposed relative to standard handbag convention; both raw and normalized dimensions are preserved.",
+    "Rally Terminal should enrich current financial and quarterly-history fields from its existing repository."
+  ]
+}
