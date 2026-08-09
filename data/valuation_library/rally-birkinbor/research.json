@@ -1,0 +1,474 @@
+{
+    "schema_version": "1.0",
+    "asset_id": "rally-birkinbor",
+    "research_date": "2026-08-09",
+    "methodology_reference": "Rally Terminal valuation methodology v1.0 / handbags_v1",
+    "research_status": "completed_with_limitations",
+    "subject_asset_summary": {
+      "manufacturer": "Hermès",
+      "model": "Birkin 35",
+      "production_year": 2015,
+      "color": "Shiny Bordeaux",
+      "material": "Porosus Crocodile",
+      "hardware": "Gold",
+      "initial_offering_value_usd": 52500,
+      "initial_offering_price_per_share_usd": 26.25,
+      "shares_outstanding": 2000,
+      "initial_offering_date": "2020-02",
+      "note": "Rally identifies the subject as a 2015 Hermès 35cm Bordeaux Crocodile Birkin. Rally lists dimensions as 19 x 27 x 35 cm."
+    },
+    "market_context": {
+      "overview": "The subject belongs to the exotic-skin Birkin 35 market. Exact Bordeaux, shiny Porosus, 35cm examples are comparatively scarce in publicly accessible completed-auction records.",
+      "collector_demand": "Porosus crocodile, shiny finish, Bordeaux coloration and gold hardware create a highly specific collector configuration. Size, color, crocodile species, finish, hardware, condition and accessory completeness are relevant valuation variables.",
+      "regulatory_context": "Porosus crocodile is CITES-regulated. Auction houses warn that export and import restrictions may materially constrain cross-border transfer and therefore liquidity."
+    },
+    "comparable_selection_policy": {
+      "primary_target": "Completed Hermès Birkin 35 auction sales prioritizing shiny Bordeaux Porosus crocodile with gold hardware.",
+      "priority_order": [
+        "Exact Birkin 35 model and size",
+        "Porosus crocodile",
+        "Shiny finish",
+        "Bordeaux or closely related red/burgundy color",
+        "Gold hardware",
+        "Near production year",
+        "Completed sale",
+        "Condition and accessory similarity"
+      ],
+      "exclude_from_official_valuation": [
+        "Dealer asking prices",
+        "Auction estimates without realized prices",
+        "Birkin 25 or Birkin 30 unless used only as market context",
+        "Kelly models",
+        "Non-exotic leather Birkin 35",
+        "Alligator or Niloticus comparables where better Porosus evidence exists"
+      ]
+    },
+    "comparables": [
+      {
+        "comparable_id": "BIRKINBOR-COMP-001",
+        "tier": 1,
+        "title": "Hermès Shiny Bordeaux Porosus Crocodile Birkin 35 with Gold Hardware",
+        "manufacturer": "Hermès",
+        "production_year": 2008,
+        "sale_date": null,
+        "sale_year": 2020,
+        "auction_house": "Christie's",
+        "lot_number": "13",
+        "sale_location": "London",
+        "sale_status": "sold",
+        "reported_currency": "GBP",
+        "reported_realized_price": 27500,
+        "price_usd_at_sale": null,
+        "currency": "GBP",
+        "reported_price": 27500,
+        "price_usd": null,
+        "verified": true,
+        "eligible_for_official_valuation": true,
+        "buyers_premium_included": null,
+        "condition_grade": "Grade 3",
+        "similarity_scores": {
+          "model_similarity": 1.0,
+          "size_similarity": 1.0,
+          "material_similarity": 1.0,
+          "hardware_similarity": 1.0,
+          "year_similarity": 0.65,
+          "condition_similarity": 0.55,
+          "accessory_similarity": 0.85,
+          "overall_similarity": 0.91
+        },
+        "overall_similarity": 0.91,
+        "evidence_quality": 0.99,
+        "source_reference": "CHRISTIES-LONDON-19590-LOT13",
+        "warnings": [
+          "subject_condition_unknown",
+          "fx_conversion_required"
+        ]
+      },
+      {
+        "comparable_id": "BIRKINBOR-COMP-002",
+        "tier": 1,
+        "title": "Hermès Bordeaux Porosus Crocodile Birkin 35",
+        "manufacturer": "Hermès",
+        "production_year": 2006,
+        "sale_date": "2020-11-23",
+        "sale_year": 2020,
+        "auction_house": "Fellows Auctioneers",
+        "lot_number": "136",
+        "sale_location": "United Kingdom",
+        "sale_status": "sold",
+        "reported_currency": "GBP",
+        "reported_realized_price": 16588,
+        "price_usd_at_sale": null,
+        "currency": "GBP",
+        "reported_price": 16588,
+        "price_usd": null,
+        "verified": true,
+        "eligible_for_official_valuation": true,
+        "buyers_premium_included": true,
+        "condition_grade": "Described by auction house as immaculate",
+        "similarity_scores": {
+          "model_similarity": 1.0,
+          "size_similarity": 1.0,
+          "material_similarity": 1.0,
+          "hardware_similarity": 0.65,
+          "year_similarity": 0.55,
+          "condition_similarity": 0.55,
+          "accessory_similarity": 0.55,
+          "overall_similarity": 0.82
+        },
+        "overall_similarity": 0.82,
+        "evidence_quality": 0.94,
+        "source_reference": "FELLOWS-2020-LOT136",
+        "warnings": [
+          "hardware_not_confirmed_in_accessible_source",
+          "subject_condition_unknown",
+          "fx_conversion_required"
+        ]
+      },
+      {
+        "comparable_id": "BIRKINBOR-COMP-003",
+        "tier": 2,
+        "title": "Hermès Shiny Rouge H Porosus Crocodile Birkin 35 with Gold Hardware",
+        "manufacturer": "Hermès",
+        "production_year": 2005,
+        "sale_date": "2018-12-12",
+        "sale_year": 2018,
+        "auction_house": "Christie's",
+        "lot_number": null,
+        "sale_location": "London",
+        "sale_status": "sold",
+        "reported_currency": "GBP",
+        "reported_realized_price": 30000,
+        "price_usd_at_sale": null,
+        "currency": "GBP",
+        "reported_price": 30000,
+        "price_usd": null,
+        "verified": true,
+        "eligible_for_official_valuation": true,
+        "buyers_premium_included": null,
+        "condition_grade": "Grade 2",
+        "similarity_scores": {
+          "model_similarity": 1.0,
+          "size_similarity": 1.0,
+          "material_similarity": 1.0,
+          "hardware_similarity": 1.0,
+          "year_similarity": 0.5,
+          "condition_similarity": 0.55,
+          "accessory_similarity": 0.65,
+          "overall_similarity": 0.82
+        },
+        "overall_similarity": 0.82,
+        "evidence_quality": 0.99,
+        "source_reference": "CHRISTIES-LOT-6177496",
+        "warnings": [
+          "color_is_rouge_h_not_bordeaux",
+          "subject_condition_unknown",
+          "fx_conversion_required"
+        ]
+      },
+      {
+        "comparable_id": "BIRKINBOR-COMP-004",
+        "tier": 2,
+        "title": "Hermès Shiny Rouge H Porosus Crocodile Birkin 35 with Gold Hardware",
+        "manufacturer": "Hermès",
+        "production_year": 2002,
+        "sale_date": null,
+        "sale_year": 2020,
+        "auction_house": "Christie's",
+        "lot_number": "21",
+        "sale_location": "New York",
+        "sale_status": "sold",
+        "reported_currency": "USD",
+        "reported_realized_price": 32500,
+        "price_usd_at_sale": 32500,
+        "currency": "USD",
+        "reported_price": 32500,
+        "price_usd": 32500,
+        "verified": true,
+        "eligible_for_official_valuation": true,
+        "buyers_premium_included": null,
+        "condition_grade": null,
+        "similarity_scores": {
+          "model_similarity": 1.0,
+          "size_similarity": 1.0,
+          "material_similarity": 1.0,
+          "hardware_similarity": 1.0,
+          "year_similarity": 0.45,
+          "condition_similarity": 0.55,
+          "accessory_similarity": 0.65,
+          "overall_similarity": 0.8
+        },
+        "overall_similarity": 0.8,
+        "evidence_quality": 0.98,
+        "source_reference": "CHRISTIES-NY-SUSAN-CASDEN-LOT21",
+        "warnings": [
+          "color_is_rouge_h_not_bordeaux",
+          "subject_condition_unknown"
+        ]
+      },
+      {
+        "comparable_id": "BIRKINBOR-COMP-005",
+        "tier": 2,
+        "title": "Hermès Shiny Miel Porosus Crocodile Birkin 35 with Gold Hardware",
+        "manufacturer": "Hermès",
+        "production_year": 2008,
+        "sale_date": null,
+        "sale_year": 2021,
+        "auction_house": "Christie's",
+        "lot_number": "67",
+        "sale_location": "New York",
+        "sale_status": "sold",
+        "reported_currency": "USD",
+        "reported_realized_price": 35000,
+        "price_usd_at_sale": 35000,
+        "currency": "USD",
+        "reported_price": 35000,
+        "price_usd": 35000,
+        "verified": true,
+        "eligible_for_official_valuation": true,
+        "buyers_premium_included": null,
+        "condition_grade": null,
+        "similarity_scores": {
+          "model_similarity": 1.0,
+          "size_similarity": 1.0,
+          "material_similarity": 1.0,
+          "hardware_similarity": 1.0,
+          "year_similarity": 0.65,
+          "condition_similarity": 0.55,
+          "accessory_similarity": 0.65,
+          "overall_similarity": 0.78
+        },
+        "overall_similarity": 0.78,
+        "evidence_quality": 0.96,
+        "source_reference": "CHRISTIES-LUXURY-REMIX-LOT67",
+        "warnings": [
+          "color_not_comparable_to_bordeaux",
+          "subject_condition_unknown"
+        ]
+      }
+    ],
+    "market_observations_not_eligible_as_completed_comparables": [
+      {
+        "observation_id": "BIRKINBOR-OBS-001",
+        "source": "Christie's",
+        "description": "2014 Shiny Bordeaux Porosus Crocodile Birkin 35 with Gold Hardware",
+        "estimate": null,
+        "reason_excluded": "Excellent identity match but accessible Christie's lot page does not expose a realized price."
+      },
+      {
+        "observation_id": "BIRKINBOR-OBS-002",
+        "source": "Christie's",
+        "description": "2012 Shiny Bordeaux Porosus Crocodile Birkin 35 with Gold Hardware, Grade 2",
+        "estimate": "HKD 140,000-200,000",
+        "reason_excluded": "Estimate visible but no realized price exposed on accessible page."
+      },
+      {
+        "observation_id": "BIRKINBOR-OBS-003",
+        "source": "Sotheby's",
+        "description": "2010 Bordeaux Shiny Porosus Crocodile Birkin 35 with Palladium Hardware",
+        "estimate": "USD 25,000-35,000",
+        "reason_excluded": "2026 auction listing/estimate rather than completed realized-price evidence."
+      }
+    ],
+    "preliminary_evidence_assessment": {
+      "raw_comparable_count": 5,
+      "completed_sale_count": 5,
+      "exact_bordeaux_porosus_birkin35_count": 2,
+      "exact_bordeaux_porosus_birkin35_gold_hardware_count": 1,
+      "evidence_strength": "moderate_to_strong",
+      "pre_condition_confidence": 0.74,
+      "strengths": [
+        "One verified completed sale closely matches model, size, Bordeaux color, shiny Porosus material and gold hardware.",
+        "A second completed Bordeaux Porosus Birkin 35 sale provides additional exact-color evidence.",
+        "Several additional completed Porosus Birkin 35 sales provide broader exotic Birkin price anchors."
+      ],
+      "weaknesses": [
+        "Subject condition is unknown.",
+        "The strongest exact comparable is materially older than the 2015 subject.",
+        "Several comparable sales require FX normalization.",
+        "Buyer-premium treatment is not normalized across every source."
+      ]
+    },
+    "provenance": {
+      "subject": "User-supplied Rally screenshots",
+      "research": "Primary auction-house sources prioritized; Fellows used for one completed Bordeaux Porosus Birkin 35 sale.",
+      "verification_standard": "Realized-price evidence required for official completed-sale comparables."
+    },
+    "sources": [
+      {
+        "source_id": "S1",
+        "publisher": "Christie's",
+        "title": "2008 Shiny Bordeaux Porosus Crocodile Birkin 35 with Gold Hardware",
+        "type": "auction_result"
+      },
+      {
+        "source_id": "S2",
+        "publisher": "Fellows Auctioneers",
+        "title": "2006 Bordeaux Porosus Crocodile Birkin 35, Lot 136",
+        "type": "auction_result"
+      },
+      {
+        "source_id": "S3",
+        "publisher": "Christie's",
+        "title": "2005 Shiny Rouge H Porosus Crocodile Birkin 35 with Gold Hardware",
+        "type": "auction_result"
+      },
+      {
+        "source_id": "S4",
+        "publisher": "Christie's",
+        "title": "Shiny Rouge H Porosus Crocodile Birkin 35 with Gold Hardware, Susan Casden Collection",
+        "type": "auction_result"
+      },
+      {
+        "source_id": "S5",
+        "publisher": "Christie's",
+        "title": "2008 Shiny Miel Porosus Crocodile Birkin 35 with Gold Hardware",
+        "type": "auction_result"
+      },
+      {
+        "source_id": "S6",
+        "publisher": "Christie's",
+        "title": "2014 Shiny Bordeaux Porosus Crocodile Birkin 35 with Gold Hardware",
+        "type": "auction_lot"
+      },
+      {
+        "source_id": "S7",
+        "publisher": "Christie's",
+        "title": "2012 Shiny Bordeaux Porosus Crocodile Birkin 35 with Gold Hardware",
+        "type": "auction_lot"
+      },
+      {
+        "source_id": "S8",
+        "publisher": "Sotheby's",
+        "title": "2010 Bordeaux Shiny Porosus Crocodile Birkin 35",
+        "type": "auction_market_observation"
+      }
+    ],
+    "source_ledger": [
+      {
+        "source_id": "S1",
+        "supports": [
+          "Bordeaux Porosus Birkin 35 identity",
+          "gold hardware",
+          "GBP 27,500 realized price",
+          "Grade 3",
+          "CITES status"
+        ]
+      },
+      {
+        "source_id": "S2",
+        "supports": [
+          "2006 Bordeaux Porosus Birkin 35",
+          "GBP 16,588 realized price including fees"
+        ]
+      },
+      {
+        "source_id": "S3",
+        "supports": [
+          "Rouge H Porosus Birkin 35",
+          "gold hardware",
+          "GBP 30,000 realized price",
+          "Grade 2"
+        ]
+      },
+      {
+        "source_id": "S4",
+        "supports": [
+          "Rouge H Porosus Birkin 35",
+          "gold hardware",
+          "USD 32,500 realized price"
+        ]
+      },
+      {
+        "source_id": "S5",
+        "supports": [
+          "Miel Porosus Birkin 35",
+          "gold hardware",
+          "USD 35,000 realized price"
+        ]
+      },
+      {
+        "source_id": "S6",
+        "supports": [
+          "2014 Bordeaux Porosus Birkin 35 exact-family identity"
+        ]
+      },
+      {
+        "source_id": "S7",
+        "supports": [
+          "2012 Bordeaux Porosus Birkin 35 exact-family identity",
+          "Grade 2",
+          "HKD 140,000-200,000 estimate"
+        ]
+      },
+      {
+        "source_id": "S8",
+        "supports": [
+          "2026 market evidence for Bordeaux shiny Porosus Birkin 35",
+          "USD 25,000-35,000 estimate"
+        ]
+      }
+    ],
+    "demand_factors": {
+      "observations": [
+        "Porosus crocodile is a premium exotic Hermès material.",
+        "Bordeaux is a distinctive deep-red Hermès color.",
+        "Shiny finish materially differentiates the subject from matte crocodile examples.",
+        "Gold hardware is an exact-match factor for the subject.",
+        "Birkin 35 has renewed market relevance but size preference can vary over time."
+      ]
+    },
+    "liquidity_observations": {
+      "observations": [
+        "Exact Bordeaux Porosus Birkin 35 completed sales are relatively sparse.",
+        "CITES restrictions can constrain cross-border buyer pools and shipment.",
+        "Fractional Rally liquidity may differ substantially from whole-bag auction liquidity."
+      ]
+    },
+    "legal_regulatory_considerations": [
+      "Crocodylus porosus is CITES-regulated.",
+      "Cross-border shipment may require permits or may be prohibited depending on jurisdiction and documentation.",
+      "Regulatory restrictions can affect liquidity and realizable value."
+    ],
+    "supply_factors": {
+      "observations": [
+        "Exact 35cm + Bordeaux + shiny Porosus + gold-hardware configurations are uncommon in accessible auction records.",
+        "Production year and condition further reduce truly comparable supply.",
+        "Exotic Hermès bags have materially smaller comparable sets than standard leather Birkins."
+      ]
+    },
+    "valuation_adjustment_questions": [
+      "What is the subject's current condition grade?",
+      "Are there scratches, glazing wear, scale lifting or loss of shine?",
+      "What is the condition of the gold hardware?",
+      "Are lock, keys, clochette, exotic leather card, dust bags, box and ribbon still present?",
+      "Does Rally retain relevant CITES documentation?",
+      "Should historical GBP transactions use sale-date FX rather than the engine's configured static GBP rate?",
+      "Should sale_year be incorporated into recency weighting when an exact sale_date is unavailable?"
+    ],
+    "valuation_assumptions": {
+      "assumptions": [
+        "Subject is the authentic 2015 Hermès Birkin 35 represented by Rally.",
+        "Subject material is shiny Porosus crocodile.",
+        "Subject color is Bordeaux.",
+        "Subject hardware is gold.",
+        "Listed Rally accessories are assumed present unless later evidence shows otherwise.",
+        "No condition premium or discount is assigned without a current condition report.",
+        "Auction estimates and dealer asking prices are excluded from official completed-sale comparables."
+      ]
+    },
+    "research_limitations": [
+      "No current subject condition report.",
+      "Current Rally share price and market value were not supplied.",
+      "Some auction records expose only sale year rather than an exact sale date.",
+      "Historical FX conversion is delegated to the valuation engine where USD-at-sale values are unavailable.",
+      "Buyer-premium treatment is not fully normalized across all comparables.",
+      "Several close Bordeaux auction lots expose estimates but not realized prices."
+    ],
+    "analyst_notes": [
+      "The 2008 Christie's Bordeaux Porosus Birkin 35 with gold hardware is the strongest completed identity match located.",
+      "The Fellows 2006 Bordeaux Porosus Birkin 35 provides a second exact-color/material/size anchor but with less complete configuration data.",
+      "Rouge H and Miel Porosus Birkin 35 transactions are included as secondary market anchors rather than exact-color comparables.",
+      "Final comparable weights should be determined by the valuation engine."
+    ]
+  }

@@ -1,0 +1,70 @@
+{
+    "schema_version": "1.0",
+    "asset_id": "rally-birkinbor",
+    "rally_symbol": "BIRKINBOR",
+    "asset_name": "Hermès 35cm Bordeaux Crocodile Birkin",
+    "category": "handbags",
+    "identity": {
+      "manufacturer": "Hermès",
+      "model": "Birkin",
+      "model_variant": "Birkin 35",
+      "production_year": 2015,
+      "color": "Shiny Bordeaux",
+      "primary_material": "Porosus Crocodile",
+      "material_finish": "Shiny",
+      "hardware": "Gold",
+      "country_of_origin": "France",
+      "dimensions_cm": {
+        "width": 19,
+        "height": 27,
+        "length": 35
+      }
+    },
+    "condition": {
+      "reported_grade": null,
+      "condition_source": null,
+      "detailed_condition_report_available": false,
+      "known_issues": [],
+      "unknowns": [
+        "exterior_scratching",
+        "corner_wear",
+        "handle_wear",
+        "hardware_wear",
+        "crocodile_scale_condition",
+        "glazing_condition",
+        "interior_marks",
+        "structure_and_shape_retention"
+      ]
+    },
+    "accessories": {
+      "lock": true,
+      "keys": true,
+      "clochette": true,
+      "leather_card": true,
+      "dust_bags": "Two small, one large",
+      "box": true,
+      "ribbon": true
+    },
+    "rally_data": {
+      "initial_offering_price_per_share_usd": 26.25,
+      "initial_offering_value_usd": 52500,
+      "shares_outstanding": 2000,
+      "initial_offering_date": "2020-02-01",
+      "storage_location": "Rally",
+      "latest_share_price_usd": null,
+      "latest_market_value_usd": null,
+      "asset_status": null,
+      "quarterly_price_history": []
+    },
+    "missing_fields": [
+      "condition",
+      "latest_share_price_usd",
+      "latest_market_value_usd"
+    ],
+    "source_notes": [
+      "Subject identity, specifications, accessories and initial offering information derived from user-supplied Rally screenshots.",
+      "Rally lists dimensions as 19 x 27 x 35 cm.",
+      "Auction houses commonly describe Birkin 35 dimensions around 35 x 25-27 x 18 cm.",
+      "Current condition is not established by the supplied screenshots."
+    ]
+  }

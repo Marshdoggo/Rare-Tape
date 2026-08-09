@@ -1,0 +1,1095 @@
+{
+  "asset_id": "rally-birkinbor",
+  "calculation_summary": {
+    "dispersion_pct": 0.48770909090909087,
+    "eligible_comparable_count": 5,
+    "median_adjusted_comparable_usd": 34925.0,
+    "parsed_comparable_count": 5,
+    "raw_comparable_count": 5,
+    "weighted_comparable_value_usd": 33556.785887924794
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "handbags_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "handbags",
+          "category_model_version": "handbags_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_aliases": {
+            "condition_similarity": {
+              "fields": {
+                "condition_similarity": 1.0
+              }
+            },
+            "identity_similarity": {
+              "fields": {
+                "hardware_similarity": 0.15,
+                "material_similarity": 0.2,
+                "model_similarity": 0.35,
+                "size_similarity": 0.15,
+                "year_similarity": 0.15
+              }
+            },
+            "presentation_similarity": {
+              "fields": {
+                "accessory_similarity": 0.33,
+                "condition_similarity": 0.33,
+                "size_similarity": 0.34
+              }
+            },
+            "provenance_similarity": {
+              "fallback_fields": {
+                "accessory_similarity": 1.0
+              },
+              "fallback_warning": "accessory_similarity_used_as_provisional_provenance_proxy",
+              "fields": {
+                "provenance_similarity": 1.0
+              }
+            }
+          },
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          },
+          "use_supplied_overall_similarity": true
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "supported_currencies": {
+            "CHF": 1.12,
+            "EUR": 1.09,
+            "GBP": 1.27,
+            "HKD": 0.128,
+            "USD": 1.0
+          },
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "b749cd8671468c80ce3baa89589c869fb9c30843e92cf92f25d02106143b0d13",
+        "research": "f98f7aa33daafda461d2a278b1f8751fcf1280f1a694830831b616601d4f39db"
+      },
+      "methodology_version": "1.0",
+      "research_input_summary": {
+        "comparable_ids": [
+          "BIRKINBOR-COMP-001",
+          "BIRKINBOR-COMP-002",
+          "BIRKINBOR-COMP-003",
+          "BIRKINBOR-COMP-004",
+          "BIRKINBOR-COMP-005"
+        ],
+        "parsed_comparable_count": 5,
+        "parsed_comparable_ids": [
+          "BIRKINBOR-COMP-001",
+          "BIRKINBOR-COMP-002",
+          "BIRKINBOR-COMP-003",
+          "BIRKINBOR-COMP-004",
+          "BIRKINBOR-COMP-005"
+        ],
+        "raw_comparable_count": 5,
+        "research_hash": "f98f7aa33daafda461d2a278b1f8751fcf1280f1a694830831b616601d4f39db",
+        "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-birkinbor/research.json",
+        "top_level_keys": [
+          "analyst_notes",
+          "asset_id",
+          "comparable_selection_policy",
+          "comparables",
+          "demand_factors",
+          "legal_regulatory_considerations",
+          "liquidity_observations",
+          "market_context",
+          "market_observations_not_eligible_as_completed_comparables",
+          "methodology_reference",
+          "preliminary_evidence_assessment",
+          "provenance",
+          "research_date",
+          "research_limitations",
+          "research_status",
+          "schema_version",
+          "source_ledger",
+          "sources",
+          "subject_asset_summary",
+          "supply_factors",
+          "valuation_adjustment_questions",
+          "valuation_assumptions"
+        ]
+      },
+      "run_timestamp": "2026-08-09T22:06:56.265784+00:00"
+    },
+    {
+      "adjusted_price_usd": 34925.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 34925.0,
+      "comparable_id": "BIRKINBOR-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.3184123561948858,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 27500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.91,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.85,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9475,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.91,
+        "presentation_similarity": 0.802,
+        "provenance_similarity": 0.85,
+        "size_similarity": 1.0,
+        "year_similarity": 0.65
+      },
+      "parsed_usd_price": 34925.0,
+      "premium_treatment": null,
+      "raw_weight": 0.9009,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 34925.0,
+      "similarity_score": 0.91,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 21066.760000000002,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 21066.760000000002,
+      "comparable_id": "BIRKINBOR-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.94,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.06810751586053333,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 16588.0,
+      "parsed_evidence_quality": 0.94,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 0.65,
+        "identity_similarity": 0.88,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.55,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 21066.760000000002,
+      "premium_treatment": true,
+      "raw_weight": 0.19269999999999998,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 21066.760000000002,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "hardware_not_confirmed_in_accessible_source",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 38100.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 38100.0,
+      "comparable_id": "BIRKINBOR-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07173025606588086,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 30000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9249999999999999,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.5
+      },
+      "parsed_usd_price": 38100.0,
+      "premium_treatment": null,
+      "raw_weight": 0.20295,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 38100.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_is_rouge_h_not_bordeaux",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 32500.0,
+      "comparable_id": "BIRKINBOR-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.27709544595048335,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 32500.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.8,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9175,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.8,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.45
+      },
+      "parsed_usd_price": 32500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.784,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 32500.0,
+      "similarity_score": 0.8,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_is_rouge_h_not_bordeaux",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 35000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 35000.0,
+      "comparable_id": "BIRKINBOR-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.96,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.26465442592821675,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 35000.0,
+      "parsed_evidence_quality": 0.96,
+      "parsed_overall_similarity": 0.78,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9475,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.78,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.65
+      },
+      "parsed_usd_price": 35000.0,
+      "premium_treatment": null,
+      "raw_weight": 0.7488,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 35000.0,
+      "similarity_score": 0.78,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_comparable_to_bordeaux",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "category_model_version": "handbags_v1",
+  "comparable_diagnostics": [
+    {
+      "adjusted_price_usd": 34925.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 34925.0,
+      "comparable_id": "BIRKINBOR-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.3184123561948858,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 27500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.91,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.85,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9475,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.91,
+        "presentation_similarity": 0.802,
+        "provenance_similarity": 0.85,
+        "size_similarity": 1.0,
+        "year_similarity": 0.65
+      },
+      "parsed_usd_price": 34925.0,
+      "premium_treatment": null,
+      "raw_weight": 0.9009,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 34925.0,
+      "similarity_score": 0.91,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 21066.760000000002,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 21066.760000000002,
+      "comparable_id": "BIRKINBOR-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.94,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.06810751586053333,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 16588.0,
+      "parsed_evidence_quality": 0.94,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 0.65,
+        "identity_similarity": 0.88,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.55,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 21066.760000000002,
+      "premium_treatment": true,
+      "raw_weight": 0.19269999999999998,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 21066.760000000002,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "hardware_not_confirmed_in_accessible_source",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 38100.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 38100.0,
+      "comparable_id": "BIRKINBOR-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07173025606588086,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 30000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9249999999999999,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.5
+      },
+      "parsed_usd_price": 38100.0,
+      "premium_treatment": null,
+      "raw_weight": 0.20295,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 38100.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_is_rouge_h_not_bordeaux",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 32500.0,
+      "comparable_id": "BIRKINBOR-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.27709544595048335,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 32500.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.8,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9175,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.8,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.45
+      },
+      "parsed_usd_price": 32500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.784,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 32500.0,
+      "similarity_score": 0.8,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_is_rouge_h_not_bordeaux",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 35000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 35000.0,
+      "comparable_id": "BIRKINBOR-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.96,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.26465442592821675,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 35000.0,
+      "parsed_evidence_quality": 0.96,
+      "parsed_overall_similarity": 0.78,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9475,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.78,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.65
+      },
+      "parsed_usd_price": 35000.0,
+      "premium_treatment": null,
+      "raw_weight": 0.7488,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 35000.0,
+      "similarity_score": 0.78,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_comparable_to_bordeaux",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 34925.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINBOR-COMP-001",
+      "final_weight": 0.3184123561948858,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 34925.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 21066.760000000002,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINBOR-COMP-002",
+      "final_weight": 0.06810751586053333,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 21066.760000000002,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "hardware_not_confirmed_in_accessible_source",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 38100.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINBOR-COMP-003",
+      "final_weight": 0.07173025606588086,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 38100.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_is_rouge_h_not_bordeaux",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINBOR-COMP-004",
+      "final_weight": 0.27709544595048335,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 32500.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_is_rouge_h_not_bordeaux",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 35000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINBOR-COMP-005",
+      "final_weight": 0.26465442592821675,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 35000.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_comparable_to_bordeaux",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "diagnostic_table": [
+    {
+      "Comparable ID": "BIRKINBOR-COMP-001",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.3184123561948858,
+      "Included?": true,
+      "Overall similarity": 0.91,
+      "USD price": 34925.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINBOR-COMP-002",
+      "Evidence quality": 0.94,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.06810751586053333,
+      "Included?": true,
+      "Overall similarity": 0.82,
+      "USD price": 21066.760000000002,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINBOR-COMP-003",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.07173025606588086,
+      "Included?": true,
+      "Overall similarity": 0.82,
+      "USD price": 38100.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINBOR-COMP-004",
+      "Evidence quality": 0.98,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.27709544595048335,
+      "Included?": true,
+      "Overall similarity": 0.8,
+      "USD price": 32500.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINBOR-COMP-005",
+      "Evidence quality": 0.96,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.26465442592821675,
+      "Included?": true,
+      "Overall similarity": 0.78,
+      "USD price": 35000.0,
+      "Verification status": "verified"
+    }
+  ],
+  "market_comparison": {
+    "asset_status": null,
+    "change_from_issue_valuation_pct": -0.3347619047619048,
+    "change_from_latest_quarterly_observation_pct": null,
+    "fair_value_premium_discount_to_issue_valuation_pct": -0.3347619047619048,
+    "fair_value_premium_discount_to_latest_market_value_pct": 0.02720588235294108,
+    "initial_offering_value_usd": 52500.0,
+    "last_observed_market_value_usd": 34000.0,
+    "latest_share_price_usd": null
+  },
+  "methodology_version": "1.0",
+  "provenance": {
+    "canonical_asset_id": "rally-birkinbor",
+    "input_asset_id": "rally-birkinbor"
+  },
+  "research_input_summary": {
+    "comparable_ids": [
+      "BIRKINBOR-COMP-001",
+      "BIRKINBOR-COMP-002",
+      "BIRKINBOR-COMP-003",
+      "BIRKINBOR-COMP-004",
+      "BIRKINBOR-COMP-005"
+    ],
+    "parsed_comparable_count": 5,
+    "parsed_comparable_ids": [
+      "BIRKINBOR-COMP-001",
+      "BIRKINBOR-COMP-002",
+      "BIRKINBOR-COMP-003",
+      "BIRKINBOR-COMP-004",
+      "BIRKINBOR-COMP-005"
+    ],
+    "raw_comparable_count": 5,
+    "research_hash": "f98f7aa33daafda461d2a278b1f8751fcf1280f1a694830831b616601d4f39db",
+    "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-birkinbor/research.json",
+    "top_level_keys": [
+      "analyst_notes",
+      "asset_id",
+      "comparable_selection_policy",
+      "comparables",
+      "demand_factors",
+      "legal_regulatory_considerations",
+      "liquidity_observations",
+      "market_context",
+      "market_observations_not_eligible_as_completed_comparables",
+      "methodology_reference",
+      "preliminary_evidence_assessment",
+      "provenance",
+      "research_date",
+      "research_limitations",
+      "research_status",
+      "schema_version",
+      "source_ledger",
+      "sources",
+      "subject_asset_summary",
+      "supply_factors",
+      "valuation_adjustment_questions",
+      "valuation_assumptions"
+    ]
+  },
+  "results": {
+    "base_value_usd": 34925.0,
+    "confidence_score": 0.65,
+    "conservative_value_usd": 32500.0,
+    "official_value_available": true,
+    "optimistic_value_usd": 35000.0
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-09",
+  "valuation_status": "completed_with_limitations",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "valuation_completed_with_optional_evidence_limitations"
+  ]
+}
