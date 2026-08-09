@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-birkintan",
+  "rally_symbol": "BIRKINTAN",
+  "asset_name": "Hermès 30cm Tangerine Ostrich Birkin",
+  "category": "handbags",
+  "identity": {
+    "manufacturer": "Hermès",
+    "model": "Birkin",
+    "model_variant": "Birkin 30",
+    "production_year": 2015,
+    "color": "Tangerine",
+    "primary_material": "Ostrich",
+    "hardware": "Palladium",
+    "country_of_origin": "France",
+    "dimensions_cm": {
+      "width": 15,
+      "height": 22,
+      "length": 30
+    }
+  },
+  "condition": {
+    "status": "unknown",
+    "notes": "No current condition grade or detailed condition report was visible in the supplied Rally screenshots."
+  },
+  "accessories": {
+    "lock": true,
+    "keys": true,
+    "clochette": true,
+    "dust_bag": true,
+    "rain_protector": true,
+    "box": true,
+    "ribbon": true
+  },
+  "rally_data": {
+    "initial_offering_price_per_share_usd": 28.0,
+    "initial_offering_value_usd": 28000,
+    "shares_outstanding": 1000,
+    "initial_offering_date": "2020-06-01",
+    "storage_location": "Rally",
+    "latest_share_price_usd": null,
+    "latest_market_value_usd": null,
+    "asset_status": null,
+    "quarterly_price_history": []
+  },
+  "missing_fields": [
+    "condition_grade",
+    "latest_share_price_usd",
+    "latest_market_value_usd"
+  ],
+  "source_notes": [
+    "Subject identity, specifications, accessories and initial offering information derived from user-supplied Rally screenshots.",
+    "Rally lists dimensions as 15 x 22 x 30 cm.",
+    "Primary auction-house examples commonly describe Birkin 30 dimensions as approximately 30 x 22 x 15 cm.",
+    "Current subject condition is not established by the supplied screenshots."
+  ]
+}

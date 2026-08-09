@@ -1,0 +1,532 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-birkintan",
+  "research_date": "2026-08-09",
+  "methodology_reference": "Rally Terminal valuation methodology v1.0 / handbags_v1",
+  "research_status": "completed_with_limitations",
+  "subject_asset_summary": {
+    "manufacturer": "Hermès",
+    "model": "Birkin 30",
+    "production_year": 2015,
+    "color": "Tangerine",
+    "material": "Ostrich",
+    "hardware": "Palladium",
+    "initial_offering_value_usd": 28000,
+    "initial_offering_price_per_share_usd": 28.0,
+    "shares_outstanding": 1000,
+    "initial_offering_date": "2020-06",
+    "note": "Rally identifies the subject as a 2015 Hermès 30cm Tangerine Ostrich Birkin with palladium hardware."
+  },
+  "market_context": {
+    "overview": "The subject sits within the Hermès Birkin 30 ostrich market. Exact Tangerine ostrich Birkin 30 examples are visible in primary auction-house records, but publicly accessible realized-price evidence for exact Tangerine examples is limited.",
+    "collector_demand": "Color, ostrich skin, 30cm size, palladium hardware, condition, year, and accessory completeness are material valuation variables. Exact Tangerine examples appear scarcer than broader ostrich Birkin 30 comparables.",
+    "regulatory_context": "Primary auction listings identify South African Struthio camelus examples as Non-CITES, but jurisdiction-specific wildlife and shipping rules should still be checked for any transaction."
+  },
+  "comparable_selection_policy": {
+    "primary_target": "Completed Hermès Ostrich Birkin 30 auction sales, prioritizing palladium hardware, near production year, strong condition evidence, and colors reasonably comparable to Tangerine.",
+    "priority_order": [
+      "Exact Birkin 30 model and size",
+      "Ostrich material",
+      "Palladium hardware",
+      "Tangerine or nearby high-saturation color family",
+      "Near production year",
+      "Completed sale",
+      "Condition and accessory similarity"
+    ],
+    "exclude_from_official_valuation": [
+      "Dealer asking prices",
+      "Auction estimates without realized prices",
+      "Birkin 25 or Birkin 35",
+      "Kelly models",
+      "Non-ostrich materials",
+      "Mixed-material Touch models"
+    ]
+  },
+  "comparables": [
+    {
+      "comparable_id": "BIRKINTAN-COMP-001",
+      "tier": 1,
+      "title": "Hermès Rose Tyrien Ostrich Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2020,
+      "sale_date": "2021-12-09",
+      "auction_house": "Christie's",
+      "lot_number": "7",
+      "sale_location": "New York",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 30000,
+      "price_usd_at_sale": 30000,
+      "currency": "USD",
+      "reported_price": 30000,
+      "price_usd": 30000,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 1; as new; no signs of wear; plastic on most hardware",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.9,
+        "overall_similarity": 0.86
+      },
+      "overall_similarity": 0.86,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-139241-LOT7",
+      "warnings": [
+        "color_not_tangerine",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "comparable_id": "BIRKINTAN-COMP-002",
+      "tier": 1,
+      "title": "Hermès Gris Tourterelle Ostrich Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2007,
+      "sale_date": "2022-06-23",
+      "auction_house": "Christie's",
+      "lot_number": "182",
+      "sale_location": "Milan",
+      "sale_status": "sold",
+      "reported_currency": "EUR",
+      "reported_realized_price": 32760,
+      "price_usd_at_sale": null,
+      "currency": "EUR",
+      "reported_price": 32760,
+      "price_usd": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 1",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.95,
+        "overall_similarity": 0.79
+      },
+      "overall_similarity": 0.79,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-155284-LOT182",
+      "warnings": [
+        "color_not_tangerine",
+        "subject_condition_unknown",
+        "fx_conversion_required"
+      ]
+    },
+    {
+      "comparable_id": "BIRKINTAN-COMP-003",
+      "tier": 1,
+      "title": "Hermès Violet Ostrich Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2007,
+      "sale_date": "2022-06-23",
+      "auction_house": "Christie's",
+      "lot_number": "20",
+      "sale_location": "Milan",
+      "sale_status": "sold",
+      "reported_currency": "EUR",
+      "reported_realized_price": 20160,
+      "price_usd_at_sale": null,
+      "currency": "EUR",
+      "reported_price": 20160,
+      "price_usd": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 2",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.95,
+        "overall_similarity": 0.78
+      },
+      "overall_similarity": 0.78,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-155147-LOT20",
+      "warnings": [
+        "color_not_tangerine",
+        "subject_condition_unknown",
+        "fx_conversion_required"
+      ]
+    },
+    {
+      "comparable_id": "BIRKINTAN-COMP-004",
+      "tier": 1,
+      "title": "Hermès Black Ostrich Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2020,
+      "sale_date": "2022-06-09",
+      "auction_house": "Christie's",
+      "lot_number": "53",
+      "sale_location": "New York",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 37800,
+      "price_usd_at_sale": 37800,
+      "currency": "USD",
+      "reported_price": 37800,
+      "price_usd": 37800,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 1; as new; plastic on all hardware except spindle",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.75,
+        "overall_similarity": 0.82
+      },
+      "overall_similarity": 0.82,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-153470-LOT53",
+      "warnings": [
+        "color_not_tangerine",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "comparable_id": "BIRKINTAN-COMP-005",
+      "tier": 2,
+      "title": "Hermès Parchemin Ostrich Birkin 30 with Gold Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2016,
+      "sale_date": "2021-06-09",
+      "auction_house": "Christie's",
+      "lot_number": "72",
+      "sale_location": "New York",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 32500,
+      "price_usd_at_sale": 32500,
+      "currency": "USD",
+      "reported_price": 32500,
+      "price_usd": 32500,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 1; as new; no signs of wear; plastic on hardware",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 0.65,
+        "year_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.95,
+        "overall_similarity": 0.82
+      },
+      "overall_similarity": 0.82,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-120766-LOT72",
+      "warnings": [
+        "hardware_is_gold_not_palladium",
+        "color_not_tangerine",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "comparable_id": "BIRKINTAN-COMP-006",
+      "tier": 2,
+      "title": "Hermès Violine Ostrich Birkin 30 with Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2010,
+      "sale_date": "2025-12-11",
+      "auction_house": "Christie's",
+      "lot_number": "121",
+      "sale_location": "New York",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 13970,
+      "price_usd_at_sale": 13970,
+      "currency": "USD",
+      "reported_price": 13970,
+      "price_usd": 13970,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 3; visible wear and hardware scratches",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.7,
+        "condition_similarity": 0.45,
+        "accessory_similarity": 0.65,
+        "overall_similarity": 0.76
+      },
+      "overall_similarity": 0.76,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-284150-LOT121",
+      "warnings": [
+        "color_not_tangerine",
+        "condition_materially_worn",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "market_observations_not_eligible_as_completed_comparables": [
+    {
+      "observation_id": "BIRKINTAN-OBS-001",
+      "source": "Christie's",
+      "description": "2017 Tangerine Ostrich Birkin 30 with Palladium Hardware, Grade 1",
+      "estimate": "EUR 12,000-15,000",
+      "reason_excluded": "Exact-color/configuration identity match, but the accessible lot page does not expose a realized price."
+    },
+    {
+      "observation_id": "BIRKINTAN-OBS-002",
+      "source": "Sotheby's",
+      "description": "2016 Tangerine Ostrich Birkin 30 with Palladium Hardware",
+      "estimate": "USD 32,000 asking price",
+      "reason_excluded": "Immediate-sale asking price rather than completed auction evidence."
+    },
+    {
+      "observation_id": "BIRKINTAN-OBS-003",
+      "source": "Sotheby's",
+      "description": "2005 Fuchsia, Tangerine and Saffron custom Ostrich Birkin 30 with Palladium Hardware",
+      "estimate": "HKD 60,000-100,000",
+      "reason_excluded": "Custom multicolor example and accessible result is hidden."
+    }
+  ],
+  "preliminary_evidence_assessment": {
+    "raw_comparable_count": 6,
+    "completed_sale_count": 6,
+    "exact_tangerine_completed_sale_count": 0,
+    "exact_tangerine_identity_observations": 2,
+    "evidence_strength": "moderate",
+    "pre_condition_confidence": 0.68,
+    "strengths": [
+      "Multiple verified completed Ostrich Birkin 30 sales.",
+      "Several comparables match palladium hardware and exact size.",
+      "A 2016 Ostrich Birkin 30 sale provides a near-year anchor.",
+      "Primary-source exact Tangerine identity examples confirm configuration plausibility."
+    ],
+    "weaknesses": [
+      "No accessible realized-price evidence for an exact Tangerine completed sale.",
+      "Subject condition is unknown.",
+      "Color dispersion across completed comparables is material.",
+      "Two comparable sales require EUR-to-USD normalization.",
+      "One recent comparable is Grade 3 and materially worn."
+    ]
+  },
+  "provenance": {
+    "subject": "User-supplied Rally screenshots",
+    "research": "Primary Christie's and Sotheby's sources prioritized.",
+    "verification_standard": "Realized-price evidence required for official completed-sale comparables."
+  },
+  "sources": [
+    {
+      "source_id": "S1",
+      "publisher": "Christie's",
+      "title": "2020 Rose Tyrien Ostrich Birkin 30 with Palladium Hardware",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S2",
+      "publisher": "Christie's",
+      "title": "2007 Gris Tourterelle Ostrich Birkin 30 with Palladium Hardware",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S3",
+      "publisher": "Christie's",
+      "title": "2007 Violet Ostrich Birkin 30 with Palladium Hardware",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S4",
+      "publisher": "Christie's",
+      "title": "2020 Black Ostrich Birkin 30 with Palladium Hardware",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S5",
+      "publisher": "Christie's",
+      "title": "2016 Parchemin Ostrich Birkin 30 with Gold Hardware",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S6",
+      "publisher": "Christie's",
+      "title": "2010 Violine Ostrich Birkin 30 with Palladium Hardware",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S7",
+      "publisher": "Christie's",
+      "title": "2017 Tangerine Ostrich Birkin 30 with Palladium Hardware",
+      "type": "auction_lot"
+    },
+    {
+      "source_id": "S8",
+      "publisher": "Sotheby's",
+      "title": "2016 Tangerine Ostrich Birkin 30 with Palladium Hardware",
+      "type": "immediate_sale"
+    },
+    {
+      "source_id": "S9",
+      "publisher": "Sotheby's",
+      "title": "2005 Fuchsia, Tangerine and Saffron Ostrich Custom Birkin 30",
+      "type": "auction_lot"
+    }
+  ],
+  "source_ledger": [
+    {
+      "source_id": "S1",
+      "supports": [
+        "USD 30,000 realized price",
+        "30cm ostrich identity",
+        "palladium hardware",
+        "Grade 1",
+        "2020 production year"
+      ]
+    },
+    {
+      "source_id": "S2",
+      "supports": [
+        "EUR 32,760 realized price",
+        "30cm ostrich identity",
+        "palladium hardware",
+        "Grade 1"
+      ]
+    },
+    {
+      "source_id": "S3",
+      "supports": [
+        "EUR 20,160 realized price",
+        "30cm ostrich identity",
+        "palladium hardware",
+        "Grade 2"
+      ]
+    },
+    {
+      "source_id": "S4",
+      "supports": [
+        "USD 37,800 realized price",
+        "30cm ostrich identity",
+        "palladium hardware",
+        "Grade 1"
+      ]
+    },
+    {
+      "source_id": "S5",
+      "supports": [
+        "USD 32,500 realized price",
+        "2016 near-year anchor",
+        "30cm ostrich identity",
+        "Grade 1"
+      ]
+    },
+    {
+      "source_id": "S6",
+      "supports": [
+        "USD 13,970 realized price",
+        "30cm ostrich identity",
+        "palladium hardware",
+        "Grade 3"
+      ]
+    },
+    {
+      "source_id": "S7",
+      "supports": [
+        "Exact Tangerine identity",
+        "2017 production year",
+        "palladium hardware",
+        "Grade 1",
+        "EUR 12,000-15,000 estimate"
+      ]
+    },
+    {
+      "source_id": "S8",
+      "supports": [
+        "Exact Tangerine identity",
+        "2016 production year",
+        "palladium hardware",
+        "USD 32,000 asking price"
+      ]
+    },
+    {
+      "source_id": "S9",
+      "supports": [
+        "Tangerine ostrich color-family evidence",
+        "palladium hardware",
+        "custom multicolor configuration"
+      ]
+    }
+  ],
+  "demand_factors": {
+    "summary": "Tangerine is a distinctive Hermès color and ostrich is a specialized exotic material. Exact Tangerine Birkin 30 supply appears limited in accessible auction records.",
+    "factors": [
+      "Exact Tangerine color can support collector specificity.",
+      "30cm size is broadly collectible.",
+      "Ostrich surface condition and discoloration are important.",
+      "Palladium hardware is an exact-match subject attribute."
+    ]
+  },
+  "liquidity_observations": {
+    "summary": "Whole-bag auction liquidity is episodic and exact Tangerine completed sales are sparse.",
+    "observations": [
+      "Comparable evidence must broaden to other Ostrich Birkin 30 colors.",
+      "Fractional Rally liquidity can differ materially from whole-asset auction liquidity.",
+      "Condition dispersion can create substantial price variation."
+    ]
+  },
+  "legal_regulatory_considerations": [
+    "Primary Christie's listings describe South African Struthio camelus examples as Non-CITES.",
+    "Shipping and wildlife-product rules can still vary by jurisdiction and should be checked for cross-border transfers."
+  ],
+  "supply_factors": {
+    "summary": "Exact Tangerine Ostrich Birkin 30 examples appear uncommon relative to the broader ostrich Birkin market.",
+    "factors": [
+      "Exact color + material + 30cm + palladium configuration materially narrows supply.",
+      "Production year and condition further constrain truly comparable inventory."
+    ]
+  },
+  "valuation_adjustment_questions": [
+    "What is the subject's current condition grade?",
+    "Is there discoloration, spotting, wear, or handle darkening to the ostrich?",
+    "What is the condition of the palladium hardware?",
+    "Are all listed accessories still present?",
+    "Should exact Tangerine asking/estimate observations influence narrative context but remain excluded from official valuation?",
+    "Should historical EUR sales use dated FX rather than the engine's configured static EUR rate?"
+  ],
+  "valuation_assumptions": {
+    "summary": "The valuation assumes the Rally asset is the authentic 2015 Tangerine Ostrich Birkin 30 shown in the supplied screenshots.",
+    "assumptions": [
+      "Subject hardware is palladium.",
+      "Listed accessories are assumed present unless later evidence shows otherwise.",
+      "No condition premium or discount is assigned without a current condition report.",
+      "Dealer asking prices and auction estimates without realized prices are excluded from official completed-sale comparables."
+    ]
+  },
+  "research_limitations": [
+    "No current subject condition report.",
+    "Current Rally share price and market value were not supplied in the screenshots.",
+    "No exact Tangerine completed-sale realized price was accessible in the primary sources reviewed.",
+    "Historical EUR conversion is delegated to the valuation engine where USD-at-sale values are unavailable.",
+    "Buyer-premium treatment is not fully normalized across all comparables."
+  ],
+  "analyst_notes": [
+    "The 2017 Christie's Tangerine Ostrich Birkin 30 is the strongest exact identity observation located, but no realized result is exposed.",
+    "The 2016 Sotheby's Tangerine Ostrich Birkin 30 confirms a near-year exact configuration at a USD 32,000 asking price, but it is not eligible as a completed-sale comparable.",
+    "The official comparable set therefore broadens to other Ostrich Birkin 30 colors while preserving exact size/material and often exact hardware.",
+    "Final comparable weights should be determined by the valuation engine."
+  ]
+}

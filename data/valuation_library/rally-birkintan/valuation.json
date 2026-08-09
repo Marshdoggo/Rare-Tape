@@ -1,0 +1,1266 @@
+{
+  "asset_id": "rally-birkintan",
+  "calculation_summary": {
+    "dispersion_pct": 1.0844437163244502,
+    "eligible_comparable_count": 6,
+    "median_adjusted_comparable_usd": 21974.4,
+    "parsed_comparable_count": 6,
+    "raw_comparable_count": 6,
+    "weighted_comparable_value_usd": 24692.85142157432
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "handbags_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "handbags",
+          "category_model_version": "handbags_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_aliases": {
+            "condition_similarity": {
+              "fields": {
+                "condition_similarity": 1.0
+              }
+            },
+            "identity_similarity": {
+              "fields": {
+                "hardware_similarity": 0.15,
+                "material_similarity": 0.2,
+                "model_similarity": 0.35,
+                "size_similarity": 0.15,
+                "year_similarity": 0.15
+              }
+            },
+            "presentation_similarity": {
+              "fields": {
+                "accessory_similarity": 0.33,
+                "condition_similarity": 0.33,
+                "size_similarity": 0.34
+              }
+            },
+            "provenance_similarity": {
+              "fallback_fields": {
+                "accessory_similarity": 1.0
+              },
+              "fallback_warning": "accessory_similarity_used_as_provisional_provenance_proxy",
+              "fields": {
+                "provenance_similarity": 1.0
+              }
+            }
+          },
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          },
+          "use_supplied_overall_similarity": true
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "supported_currencies": {
+            "CHF": 1.12,
+            "EUR": 1.09,
+            "GBP": 1.27,
+            "HKD": 0.128,
+            "USD": 1.0
+          },
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "6b186da32a8f4d2583dafb51edd541d25da268725f16fb46b31f8490c07ac578",
+        "research": "2600d2f2e50fd9d23d8909dc3a7acdc5d51a94c954a5eda9d53f071ccd4f2170"
+      },
+      "methodology_version": "1.0",
+      "research_input_summary": {
+        "comparable_ids": [
+          "BIRKINTAN-COMP-001",
+          "BIRKINTAN-COMP-002",
+          "BIRKINTAN-COMP-003",
+          "BIRKINTAN-COMP-004",
+          "BIRKINTAN-COMP-005",
+          "BIRKINTAN-COMP-006"
+        ],
+        "parsed_comparable_count": 6,
+        "parsed_comparable_ids": [
+          "BIRKINTAN-COMP-001",
+          "BIRKINTAN-COMP-002",
+          "BIRKINTAN-COMP-003",
+          "BIRKINTAN-COMP-004",
+          "BIRKINTAN-COMP-005",
+          "BIRKINTAN-COMP-006"
+        ],
+        "raw_comparable_count": 6,
+        "research_hash": "2600d2f2e50fd9d23d8909dc3a7acdc5d51a94c954a5eda9d53f071ccd4f2170",
+        "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-birkintan/research.json",
+        "top_level_keys": [
+          "analyst_notes",
+          "asset_id",
+          "comparable_selection_policy",
+          "comparables",
+          "demand_factors",
+          "legal_regulatory_considerations",
+          "liquidity_observations",
+          "market_context",
+          "market_observations_not_eligible_as_completed_comparables",
+          "methodology_reference",
+          "preliminary_evidence_assessment",
+          "provenance",
+          "research_date",
+          "research_limitations",
+          "research_status",
+          "schema_version",
+          "source_ledger",
+          "sources",
+          "subject_asset_summary",
+          "supply_factors",
+          "valuation_adjustment_questions",
+          "valuation_assumptions"
+        ]
+      },
+      "run_timestamp": "2026-08-09T22:29:34.213143+00:00"
+    },
+    {
+      "adjusted_price_usd": 30000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 30000.0,
+      "comparable_id": "BIRKINTAN-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.1281893013771836,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 30000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.86,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.9,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9624999999999999,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.86,
+        "presentation_similarity": 0.8185,
+        "provenance_similarity": 0.9,
+        "size_similarity": 1.0,
+        "year_similarity": 0.75
+      },
+      "parsed_usd_price": 30000.0,
+      "premium_treatment": null,
+      "raw_weight": 0.21284999999999998,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 30000.0,
+      "similarity_score": 0.86,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 35708.4,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 35708.4,
+      "comparable_id": "BIRKINTAN-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "EUR",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.11775528847438958,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.09,
+      "fx_warnings": [
+        "fx_converted_from_eur"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "EUR",
+      "original_reported_price": 32760.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.79,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.79,
+        "presentation_similarity": 0.835,
+        "provenance_similarity": 0.95,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 35708.4,
+      "premium_treatment": null,
+      "raw_weight": 0.195525,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 35708.4,
+      "similarity_score": 0.79,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 21974.4,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 21974.4,
+      "comparable_id": "BIRKINTAN-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "EUR",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.11626471520256187,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.09,
+      "fx_warnings": [
+        "fx_converted_from_eur"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "EUR",
+      "original_reported_price": 20160.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.78,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.78,
+        "presentation_similarity": 0.835,
+        "provenance_similarity": 0.95,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 21974.4,
+      "premium_treatment": null,
+      "raw_weight": 0.19305,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 21974.4,
+      "similarity_score": 0.78,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 37800.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 37800.0,
+      "comparable_id": "BIRKINTAN-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.12222700828987274,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 37800.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9624999999999999,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.769,
+        "provenance_similarity": 0.75,
+        "size_similarity": 1.0,
+        "year_similarity": 0.75
+      },
+      "parsed_usd_price": 37800.0,
+      "premium_treatment": null,
+      "raw_weight": 0.20295,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 37800.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 32500.0,
+      "comparable_id": "BIRKINTAN-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.12222700828987274,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 32500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 0.65,
+        "identity_similarity": 0.94,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.835,
+        "provenance_similarity": 0.95,
+        "size_similarity": 1.0,
+        "year_similarity": 0.95
+      },
+      "parsed_usd_price": 32500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.20295,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 32500.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "hardware_is_gold_not_palladium",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 13970.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 13970.0,
+      "comparable_id": "BIRKINTAN-COMP-006",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.39333667836611946,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 13970.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.76,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.45,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.955,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.76,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.7
+      },
+      "parsed_usd_price": 13970.0,
+      "premium_treatment": null,
+      "raw_weight": 0.653109979466119,
+      "recency_treatment": 0.8680355920602327,
+      "reported_price_usd": 13970.0,
+      "similarity_score": 0.76,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "condition_materially_worn",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "category_model_version": "handbags_v1",
+  "comparable_diagnostics": [
+    {
+      "adjusted_price_usd": 30000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 30000.0,
+      "comparable_id": "BIRKINTAN-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.1281893013771836,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 30000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.86,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.9,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9624999999999999,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.86,
+        "presentation_similarity": 0.8185,
+        "provenance_similarity": 0.9,
+        "size_similarity": 1.0,
+        "year_similarity": 0.75
+      },
+      "parsed_usd_price": 30000.0,
+      "premium_treatment": null,
+      "raw_weight": 0.21284999999999998,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 30000.0,
+      "similarity_score": 0.86,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 35708.4,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 35708.4,
+      "comparable_id": "BIRKINTAN-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "EUR",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.11775528847438958,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.09,
+      "fx_warnings": [
+        "fx_converted_from_eur"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "EUR",
+      "original_reported_price": 32760.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.79,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.79,
+        "presentation_similarity": 0.835,
+        "provenance_similarity": 0.95,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 35708.4,
+      "premium_treatment": null,
+      "raw_weight": 0.195525,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 35708.4,
+      "similarity_score": 0.79,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 21974.4,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 21974.4,
+      "comparable_id": "BIRKINTAN-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "EUR",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.11626471520256187,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.09,
+      "fx_warnings": [
+        "fx_converted_from_eur"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "EUR",
+      "original_reported_price": 20160.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.78,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.78,
+        "presentation_similarity": 0.835,
+        "provenance_similarity": 0.95,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 21974.4,
+      "premium_treatment": null,
+      "raw_weight": 0.19305,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 21974.4,
+      "similarity_score": 0.78,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 37800.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 37800.0,
+      "comparable_id": "BIRKINTAN-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.12222700828987274,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 37800.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.75,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9624999999999999,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.769,
+        "provenance_similarity": 0.75,
+        "size_similarity": 1.0,
+        "year_similarity": 0.75
+      },
+      "parsed_usd_price": 37800.0,
+      "premium_treatment": null,
+      "raw_weight": 0.20295,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 37800.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 32500.0,
+      "comparable_id": "BIRKINTAN-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.12222700828987274,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 32500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.95,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 0.65,
+        "identity_similarity": 0.94,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.835,
+        "provenance_similarity": 0.95,
+        "size_similarity": 1.0,
+        "year_similarity": 0.95
+      },
+      "parsed_usd_price": 32500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.20295,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 32500.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "hardware_is_gold_not_palladium",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 13970.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 13970.0,
+      "comparable_id": "BIRKINTAN-COMP-006",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.39333667836611946,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 13970.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.76,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.45,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.955,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.76,
+        "presentation_similarity": 0.7030000000000001,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.7
+      },
+      "parsed_usd_price": 13970.0,
+      "premium_treatment": null,
+      "raw_weight": 0.653109979466119,
+      "recency_treatment": 0.8680355920602327,
+      "reported_price_usd": 13970.0,
+      "similarity_score": 0.76,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "condition_materially_worn",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 30000.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINTAN-COMP-001",
+      "final_weight": 0.1281893013771836,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 30000.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 35708.4,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINTAN-COMP-002",
+      "final_weight": 0.11775528847438958,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 35708.4,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 21974.4,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINTAN-COMP-003",
+      "final_weight": 0.11626471520256187,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 21974.4,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 37800.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINTAN-COMP-004",
+      "final_weight": 0.12222700828987274,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 37800.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINTAN-COMP-005",
+      "final_weight": 0.12222700828987274,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 32500.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "hardware_is_gold_not_palladium",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 13970.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "BIRKINTAN-COMP-006",
+      "final_weight": 0.39333667836611946,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 13970.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "color_not_tangerine",
+        "condition_materially_worn",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "diagnostic_table": [
+    {
+      "Comparable ID": "BIRKINTAN-COMP-001",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.1281893013771836,
+      "Included?": true,
+      "Overall similarity": 0.86,
+      "USD price": 30000.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINTAN-COMP-002",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.11775528847438958,
+      "Included?": true,
+      "Overall similarity": 0.79,
+      "USD price": 35708.4,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINTAN-COMP-003",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.11626471520256187,
+      "Included?": true,
+      "Overall similarity": 0.78,
+      "USD price": 21974.4,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINTAN-COMP-004",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.12222700828987274,
+      "Included?": true,
+      "Overall similarity": 0.82,
+      "USD price": 37800.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINTAN-COMP-005",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.12222700828987274,
+      "Included?": true,
+      "Overall similarity": 0.82,
+      "USD price": 32500.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "BIRKINTAN-COMP-006",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.39333667836611946,
+      "Included?": true,
+      "Overall similarity": 0.76,
+      "USD price": 13970.0,
+      "Verification status": "verified"
+    }
+  ],
+  "market_comparison": {
+    "asset_status": null,
+    "change_from_issue_valuation_pct": -0.21519999999999995,
+    "change_from_latest_quarterly_observation_pct": null,
+    "fair_value_premium_discount_to_issue_valuation_pct": -0.21519999999999995,
+    "fair_value_premium_discount_to_latest_market_value_pct": -0.1416249999999999,
+    "initial_offering_value_usd": 28000.0,
+    "last_observed_market_value_usd": 25600.0,
+    "latest_share_price_usd": null
+  },
+  "methodology_version": "1.0",
+  "provenance": {
+    "canonical_asset_id": "rally-birkintan",
+    "input_asset_id": "rally-birkintan"
+  },
+  "research_input_summary": {
+    "comparable_ids": [
+      "BIRKINTAN-COMP-001",
+      "BIRKINTAN-COMP-002",
+      "BIRKINTAN-COMP-003",
+      "BIRKINTAN-COMP-004",
+      "BIRKINTAN-COMP-005",
+      "BIRKINTAN-COMP-006"
+    ],
+    "parsed_comparable_count": 6,
+    "parsed_comparable_ids": [
+      "BIRKINTAN-COMP-001",
+      "BIRKINTAN-COMP-002",
+      "BIRKINTAN-COMP-003",
+      "BIRKINTAN-COMP-004",
+      "BIRKINTAN-COMP-005",
+      "BIRKINTAN-COMP-006"
+    ],
+    "raw_comparable_count": 6,
+    "research_hash": "2600d2f2e50fd9d23d8909dc3a7acdc5d51a94c954a5eda9d53f071ccd4f2170",
+    "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-birkintan/research.json",
+    "top_level_keys": [
+      "analyst_notes",
+      "asset_id",
+      "comparable_selection_policy",
+      "comparables",
+      "demand_factors",
+      "legal_regulatory_considerations",
+      "liquidity_observations",
+      "market_context",
+      "market_observations_not_eligible_as_completed_comparables",
+      "methodology_reference",
+      "preliminary_evidence_assessment",
+      "provenance",
+      "research_date",
+      "research_limitations",
+      "research_status",
+      "schema_version",
+      "source_ledger",
+      "sources",
+      "subject_asset_summary",
+      "supply_factors",
+      "valuation_adjustment_questions",
+      "valuation_assumptions"
+    ]
+  },
+  "results": {
+    "base_value_usd": 21974.4,
+    "confidence_score": 0.55,
+    "conservative_value_usd": 13970.0,
+    "official_value_available": true,
+    "optimistic_value_usd": 32500.0
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-09",
+  "valuation_status": "completed_with_limitations",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "extreme_comparable_dispersion",
+    "valuation_completed_with_optional_evidence_limitations"
+  ]
+}
