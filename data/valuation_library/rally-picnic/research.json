@@ -1,0 +1,450 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-picnic",
+  "research_date": "2026-08-08",
+  "methodology_reference": "Rally Terminal valuation methodology v1.0 / handbags_v1",
+  "research_status": "completed_with_limitations",
+  "subject_asset_summary": {
+    "manufacturer": "Hermès",
+    "model": "Picnic Kelly 35",
+    "production_year": 2018,
+    "materials": [
+      "Osier wicker",
+      "Barénia leather"
+    ],
+    "hardware": "Palladium",
+    "color": "Beige / Naturel",
+    "initial_offering_value_usd": 54000,
+    "note": "Rally displays dimensions 18 x 28 x 35 cm; auction houses commonly orient the 35cm model around 35 x 25 x 13 cm."
+  },
+  "market_context": {
+    "overview": "The Kelly Picnic 35 debuted in 2011 and combines Hermès leatherwork with Osier wicker. Sotheby's says typical Kelly Picnic 35 auction prices are about USD 26,000-40,000 and that the Mini Picnic generally commands stronger prices.",
+    "collector_demand": "Limited production, specialized mixed-material construction and Kelly identity support collector demand."
+  },
+  "comparable_selection_policy": {
+    "primary_target": "Completed Hermès Picnic Kelly 35 auction sales, prioritizing Barénia + Osier + palladium hardware.",
+    "priority_order": [
+      "Exact model/35cm size",
+      "Barénia + Osier",
+      "Palladium hardware",
+      "Near production year",
+      "Completed sale",
+      "Condition/accessories"
+    ],
+    "exclude_from_official_valuation": [
+      "Dealer asking prices",
+      "Estimates without realized prices",
+      "Mini Kelly Picnic 20",
+      "Birkin Picnic",
+      "Other wicker Hermès models"
+    ]
+  },
+  "comparables": [
+    {
+      "comparable_id": "PICNIC-COMP-001",
+      "tier": 1,
+      "title": "Hermès Picnic Kelly 35, Barénia/Osier, Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2018,
+      "sale_date": null,
+      "auction_house": "Christie's",
+      "lot_number": "42",
+      "sale_location": "London",
+      "sale_status": "sold",
+      "reported_currency": "GBP",
+      "reported_realized_price": 35000,
+      "price_usd_at_sale": null,
+      "currency": "GBP",
+      "reported_price": 35000,
+      "price_usd": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "As new; no sign of wear; plastic to hardware",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 1.0,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.65,
+        "overall_similarity": 0.93
+      },
+      "overall_similarity": 0.93,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-LONDON-19590-LOT42",
+      "warnings": [
+        "subject_condition_unknown",
+        "fx_conversion_required"
+      ],
+      "sale_year": 2020,
+      "sale_date_precision": "year"
+    },
+    {
+      "comparable_id": "PICNIC-COMP-002",
+      "tier": 1,
+      "title": "Hermès Picnic Kelly 35, Barénia/Osier, Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2020,
+      "sale_date": null,
+      "auction_house": "Christie's",
+      "lot_number": "70",
+      "sale_location": "Hong Kong",
+      "sale_status": "sold",
+      "reported_currency": "HKD",
+      "reported_realized_price": 176400,
+      "price_usd_at_sale": null,
+      "currency": "HKD",
+      "reported_price": 176400,
+      "price_usd": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": null,
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.85,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.65,
+        "overall_similarity": 0.89
+      },
+      "overall_similarity": 0.89,
+      "evidence_quality": 0.98,
+      "source_reference": "CHRISTIES-HK-LOT70",
+      "warnings": [
+        "subject_condition_unknown",
+        "fx_conversion_required"
+      ],
+      "sale_year": 2024,
+      "sale_date_precision": "year"
+    },
+    {
+      "comparable_id": "PICNIC-COMP-003",
+      "tier": 1,
+      "title": "Hermès Picnic Kelly 35, Barénia/Osier, Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2011,
+      "sale_date": "2025-06-17",
+      "auction_house": "Christie's",
+      "lot_number": "234",
+      "sale_location": "New York",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 32760,
+      "price_usd_at_sale": 32760,
+      "currency": "USD",
+      "reported_price": 32760,
+      "price_usd": 32760,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 2",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.65,
+        "overall_similarity": 0.84
+      },
+      "overall_similarity": 0.84,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-NY-23733-LOT234",
+      "warnings": [
+        "subject_condition_unknown"
+      ],
+      "sale_date_precision": "day"
+    },
+    {
+      "comparable_id": "PICNIC-COMP-004",
+      "tier": 1,
+      "title": "Hermès Picnic Kelly 35, Barénia/Osier, Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": 2011,
+      "sale_date": "2021-11-26",
+      "auction_house": "Christie's",
+      "lot_number": null,
+      "sale_location": "Hong Kong",
+      "sale_status": "sold",
+      "reported_currency": "HKD",
+      "reported_realized_price": 212500,
+      "price_usd_at_sale": null,
+      "currency": "HKD",
+      "reported_price": 212500,
+      "price_usd": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Grade 1.5",
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 1.0,
+        "hardware_similarity": 1.0,
+        "year_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.65,
+        "overall_similarity": 0.84
+      },
+      "overall_similarity": 0.84,
+      "evidence_quality": 0.99,
+      "source_reference": "CHRISTIES-HK-2021-11-26",
+      "warnings": [
+        "subject_condition_unknown",
+        "fx_conversion_required"
+      ],
+      "sale_date_precision": "day"
+    },
+    {
+      "comparable_id": "PICNIC-COMP-005",
+      "tier": 2,
+      "title": "Hermès Picnic Kelly 35, Barénia/Osier, Palladium Hardware",
+      "manufacturer": "Hermès",
+      "production_year": null,
+      "sale_date": "2021-06-09",
+      "auction_house": "Christie's",
+      "lot_number": null,
+      "sale_location": "New York",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 56250,
+      "price_usd_at_sale": 56250,
+      "currency": "USD",
+      "reported_price": 56250,
+      "price_usd": 56250,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": null,
+      "similarity_scores": {
+        "model_similarity": 1.0,
+        "size_similarity": 1.0,
+        "material_similarity": 0.75,
+        "hardware_similarity": 0.75,
+        "year_similarity": 0.55,
+        "condition_similarity": 0.55,
+        "accessory_similarity": 0.65,
+        "overall_similarity": 0.72
+      },
+      "overall_similarity": 0.72,
+      "evidence_quality": 0.9,
+      "source_reference": "CHRISTIES-NY-2021-PRESS-RESULT",
+      "warnings": [
+        "subject_condition_unknown"
+      ],
+      "sale_date_precision": "day"
+    }
+  ],
+  "market_observations_not_eligible_as_completed_comparables": [
+    {
+      "observation_id": "PICNIC-OBS-001",
+      "source": "Sotheby's",
+      "description": "2018 Barénia/Osier Picnic Kelly 35",
+      "estimate": "USD 34,000-40,000",
+      "reason_excluded": "Accessible lot page does not expose realized result."
+    },
+    {
+      "observation_id": "PICNIC-OBS-002",
+      "source": "Christie's",
+      "description": "2018 Naturel Barénia/Osier Picnic Kelly 35, Grade 1",
+      "estimate": "USD 26,000-30,000",
+      "reason_excluded": "Estimate only on accessible page."
+    },
+    {
+      "observation_id": "PICNIC-OBS-003",
+      "source": "Sotheby's",
+      "description": "Kelly Picnic 35 market range",
+      "estimate": "Typical auction prices USD 26,000-40,000",
+      "reason_excluded": "Market context, not individual completed sale."
+    }
+  ],
+  "preliminary_evidence_assessment": {
+    "raw_comparable_count": 5,
+    "completed_sale_count": 5,
+    "exact_or_near_configuration_count": 4,
+    "evidence_strength": "moderate_to_strong",
+    "pre_condition_confidence": 0.72,
+    "strengths": [
+      "Multiple completed Picnic Kelly 35 sales from Christie's.",
+      "Several Barénia + Osier + palladium matches.",
+      "A 2025 USD sale provides recent evidence."
+    ],
+    "weaknesses": [
+      "Subject condition unknown.",
+      "Some sales require FX conversion.",
+      "2021 USD 56,250 result lacks full accessible configuration detail."
+    ]
+  },
+  "provenance": {
+    "subject": "User-supplied Rally screenshots",
+    "research": "Primary auction-house sources prioritized.",
+    "verification_standard": "Official realized-price evidence required for completed-sale comparables."
+  },
+  "sources": [
+    {
+      "source_id": "S1",
+      "publisher": "Sotheby's",
+      "title": "Pick Your Hermès Picnic Bag",
+      "type": "market_guide"
+    },
+    {
+      "source_id": "S2",
+      "publisher": "Sotheby's",
+      "title": "2018 Wicker and Barenia Picnic Kelly 35",
+      "type": "auction_lot"
+    },
+    {
+      "source_id": "S3",
+      "publisher": "Christie's",
+      "title": "2018 Naturel Barénia & Osier Picnic Kelly 35",
+      "type": "auction_lot"
+    },
+    {
+      "source_id": "S4",
+      "publisher": "Christie's",
+      "title": "London Edition Lot 42",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S5",
+      "publisher": "Christie's",
+      "title": "2025 Fauve Barénia & Osier Picnic Kelly 35 Lot 234",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S6",
+      "publisher": "Christie's",
+      "title": "2021 Hong Kong Naturel Barénia & Osier Picnic Kelly 35",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S7",
+      "publisher": "Christie's",
+      "title": "Hong Kong Lot 70, 2020 Naturel Barénia Picnic Kelly 35",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S8",
+      "publisher": "Christie's",
+      "title": "New York Handbags results, June 2021",
+      "type": "auction_results_press_release"
+    }
+  ],
+  "source_ledger": [
+    {
+      "source_id": "S1",
+      "supports": [
+        "model history",
+        "typical auction range",
+        "35-vs-Mini demand context"
+      ]
+    },
+    {
+      "source_id": "S2",
+      "supports": [
+        "2018 identity",
+        "materials",
+        "hardware",
+        "dimensions"
+      ]
+    },
+    {
+      "source_id": "S3",
+      "supports": [
+        "2018 exact configuration",
+        "Grade 1",
+        "estimate"
+      ]
+    },
+    {
+      "source_id": "S4",
+      "supports": [
+        "2018 exact-configuration sale GBP 35,000"
+      ]
+    },
+    {
+      "source_id": "S5",
+      "supports": [
+        "2011 sale USD 32,760 on 2025-06-17",
+        "Grade 2"
+      ]
+    },
+    {
+      "source_id": "S6",
+      "supports": [
+        "2011 sale HKD 212,500 on 2021-11-26",
+        "Grade 1.5"
+      ]
+    },
+    {
+      "source_id": "S7",
+      "supports": [
+        "2020 sale HKD 176,400"
+      ]
+    },
+    {
+      "source_id": "S8",
+      "supports": [
+        "2021 Picnic Kelly 35 sale USD 56,250"
+      ]
+    }
+  ],
+  "demand_factors": {
+    "observations": [
+      "Limited-edition Kelly variant.",
+      "Specialized wicker/leather craftsmanship.",
+      "Mini Picnic generally stronger than 35cm.",
+      "Barénia patina makes condition important."
+    ]
+  },
+  "liquidity_observations": {
+    "observations": [
+      "Whole-bag auction liquidity is episodic.",
+      "Fractional Rally liquidity can differ materially from whole-asset auctions."
+    ]
+  },
+  "legal_regulatory_considerations": [
+    "No exotic-skin regulatory issue apparent from Barénia leather and Osier wicker.",
+    "Cross-border taxes, premiums and costs affect realized economics."
+  ],
+  "supply_factors": {
+    "observations": [
+      "Limited-production specialty model.",
+      "35cm Picnic debuted in 2011; later reissues exist.",
+      "Exact year/material/hardware/condition constrain comparable supply."
+    ]
+  },
+  "valuation_adjustment_questions": [
+    "Current Barénia patina/scratches?",
+    "Wicker breaks, discoloration or deformation?",
+    "Hardware wear?",
+    "All accessories present?",
+    "Use dated FX for GBP/HKD?",
+    "Down-weight 2021 peak as cycle outlier?"
+  ],
+  "valuation_assumptions": {
+    "observations": [
+      "Subject is the authentic 2018 Picnic Kelly 35 shown by Rally.",
+      "Listed accessories assumed present.",
+      "No subject condition premium assigned.",
+      "Estimates without realized prices excluded."
+    ]
+  },
+  "research_limitations": [
+    "No current subject condition report.",
+    "Current Rally share price/market value not visible in supplied screenshots; leave for repository enrichment.",
+    "Historical FX delegated to engine where USD-at-sale unavailable.",
+    "Buyer-premium treatment not fully normalized."
+  ],
+  "analyst_notes": [
+    "2018 Christie's London GBP 35,000 result is strongest identity match located.",
+    "2025 USD 32,760 sale is strongest recent USD exact-family anchor.",
+    "Engine should determine final weights."
+  ]
+}

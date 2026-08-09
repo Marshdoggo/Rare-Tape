@@ -1,0 +1,1087 @@
+{
+  "asset_id": "rally-picnic",
+  "calculation_summary": {
+    "dispersion_pct": 1.0278021978021978,
+    "eligible_comparable_count": 5,
+    "median_adjusted_comparable_usd": 32760.0,
+    "parsed_comparable_count": 5,
+    "raw_comparable_count": 5,
+    "weighted_comparable_value_usd": 34376.23132380955
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "handbags_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "handbags",
+          "category_model_version": "handbags_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_aliases": {
+            "condition_similarity": {
+              "fields": {
+                "condition_similarity": 1.0
+              }
+            },
+            "identity_similarity": {
+              "fields": {
+                "hardware_similarity": 0.15,
+                "material_similarity": 0.2,
+                "model_similarity": 0.35,
+                "size_similarity": 0.15,
+                "year_similarity": 0.15
+              }
+            },
+            "presentation_similarity": {
+              "fields": {
+                "accessory_similarity": 0.33,
+                "condition_similarity": 0.33,
+                "size_similarity": 0.34
+              }
+            },
+            "provenance_similarity": {
+              "fallback_fields": {
+                "accessory_similarity": 1.0
+              },
+              "fallback_warning": "accessory_similarity_used_as_provisional_provenance_proxy",
+              "fields": {
+                "provenance_similarity": 1.0
+              }
+            }
+          },
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          },
+          "use_supplied_overall_similarity": true
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "supported_currencies": {
+            "CHF": 1.12,
+            "EUR": 1.09,
+            "GBP": 1.27,
+            "HKD": 0.128,
+            "USD": 1.0
+          },
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "849e9632ceb544a8393e9ee817977c246747fb71e837dc7a7ccfbfe791a56530",
+        "research": "9e147340db587c29a0d2b6f10663f88d147a31e8db1713a914f76d426698fc4b"
+      },
+      "methodology_version": "1.0",
+      "research_input_summary": {
+        "comparable_ids": [
+          "PICNIC-COMP-001",
+          "PICNIC-COMP-002",
+          "PICNIC-COMP-003",
+          "PICNIC-COMP-004",
+          "PICNIC-COMP-005"
+        ],
+        "parsed_comparable_count": 5,
+        "parsed_comparable_ids": [
+          "PICNIC-COMP-001",
+          "PICNIC-COMP-002",
+          "PICNIC-COMP-003",
+          "PICNIC-COMP-004",
+          "PICNIC-COMP-005"
+        ],
+        "raw_comparable_count": 5,
+        "research_hash": "9e147340db587c29a0d2b6f10663f88d147a31e8db1713a914f76d426698fc4b",
+        "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-picnic/research.json",
+        "top_level_keys": [
+          "analyst_notes",
+          "asset_id",
+          "comparable_selection_policy",
+          "comparables",
+          "demand_factors",
+          "legal_regulatory_considerations",
+          "liquidity_observations",
+          "market_context",
+          "market_observations_not_eligible_as_completed_comparables",
+          "methodology_reference",
+          "preliminary_evidence_assessment",
+          "provenance",
+          "research_date",
+          "research_limitations",
+          "research_status",
+          "schema_version",
+          "source_ledger",
+          "sources",
+          "subject_asset_summary",
+          "supply_factors",
+          "valuation_adjustment_questions",
+          "valuation_assumptions"
+        ]
+      },
+      "run_timestamp": "2026-08-09T01:22:01.096603+00:00"
+    },
+    {
+      "adjusted_price_usd": 44450.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 44450.0,
+      "comparable_id": "PICNIC-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.32829203960102826,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 35000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.93,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.93,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 44450.0,
+      "premium_treatment": null,
+      "raw_weight": 0.9207000000000001,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 44450.0,
+      "similarity_score": 0.93,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 22579.2,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 22579.2,
+      "comparable_id": "PICNIC-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.31099849781689676,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 0.128,
+      "fx_warnings": [
+        "fx_converted_from_hkd"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 176400.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.89,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9775,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.89,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.85
+      },
+      "parsed_usd_price": 22579.2,
+      "premium_treatment": null,
+      "raw_weight": 0.8722,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 22579.2,
+      "similarity_score": 0.89,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32760.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 32760.0,
+      "comparable_id": "PICNIC-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.2288150067892866,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 32760.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 32760.0,
+      "premium_treatment": null,
+      "raw_weight": 0.6417151540041068,
+      "recency_treatment": 0.7716632443531828,
+      "reported_price_usd": 32760.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 27200.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 27200.0,
+      "comparable_id": "PICNIC-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07413046055507089,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 0.128,
+      "fx_warnings": [
+        "fx_converted_from_hkd"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 212500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 27200.0,
+      "premium_treatment": null,
+      "raw_weight": 0.2079,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 27200.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 56250.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 56250.0,
+      "comparable_id": "PICNIC-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.9,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.05776399523771758,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 56250.0,
+      "parsed_evidence_quality": 0.9,
+      "parsed_overall_similarity": 0.72,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 0.75,
+        "identity_similarity": 0.845,
+        "material_similarity": 0.75,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.72,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 56250.0,
+      "premium_treatment": null,
+      "raw_weight": 0.162,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 56250.0,
+      "similarity_score": 0.72,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "category_model_version": "handbags_v1",
+  "comparable_diagnostics": [
+    {
+      "adjusted_price_usd": 44450.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 44450.0,
+      "comparable_id": "PICNIC-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.32829203960102826,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 35000.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.93,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 1.0,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.93,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 1.0
+      },
+      "parsed_usd_price": 44450.0,
+      "premium_treatment": null,
+      "raw_weight": 0.9207000000000001,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 44450.0,
+      "similarity_score": 0.93,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 22579.2,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 22579.2,
+      "comparable_id": "PICNIC-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.31099849781689676,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 0.128,
+      "fx_warnings": [
+        "fx_converted_from_hkd"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 176400.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.89,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9775,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.89,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.85
+      },
+      "parsed_usd_price": 22579.2,
+      "premium_treatment": null,
+      "raw_weight": 0.8722,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 22579.2,
+      "similarity_score": 0.89,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32760.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 32760.0,
+      "comparable_id": "PICNIC-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.2288150067892866,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 32760.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 32760.0,
+      "premium_treatment": null,
+      "raw_weight": 0.6417151540041068,
+      "recency_treatment": 0.7716632443531828,
+      "reported_price_usd": 32760.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 27200.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 27200.0,
+      "comparable_id": "PICNIC-COMP-004",
+      "configured_fx_version": "1.0",
+      "currency": "HKD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.07413046055507089,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 0.128,
+      "fx_warnings": [
+        "fx_converted_from_hkd"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "HKD",
+      "original_reported_price": 212500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 1.0,
+        "identity_similarity": 0.9325,
+        "material_similarity": 1.0,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 27200.0,
+      "premium_treatment": null,
+      "raw_weight": 0.2079,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 27200.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 56250.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 56250.0,
+      "comparable_id": "PICNIC-COMP-005",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.9,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.05776399523771758,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 56250.0,
+      "parsed_evidence_quality": 0.9,
+      "parsed_overall_similarity": 0.72,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "accessory_similarity": 0.65,
+        "condition_similarity": 0.55,
+        "hardware_similarity": 0.75,
+        "identity_similarity": 0.845,
+        "material_similarity": 0.75,
+        "model_similarity": 1.0,
+        "overall_similarity": 0.72,
+        "presentation_similarity": 0.736,
+        "provenance_similarity": 0.65,
+        "size_similarity": 1.0,
+        "year_similarity": 0.55
+      },
+      "parsed_usd_price": 56250.0,
+      "premium_treatment": null,
+      "raw_weight": 0.162,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 56250.0,
+      "similarity_score": 0.72,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 44450.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "PICNIC-COMP-001",
+      "final_weight": 0.32829203960102826,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 44450.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 22579.2,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "PICNIC-COMP-002",
+      "final_weight": 0.31099849781689676,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 22579.2,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 32760.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "PICNIC-COMP-003",
+      "final_weight": 0.2288150067892866,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 32760.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 27200.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "PICNIC-COMP-004",
+      "final_weight": 0.07413046055507089,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 27200.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "fx_conversion_required",
+        "fx_converted_from_hkd",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 56250.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "PICNIC-COMP-005",
+      "final_weight": 0.05776399523771758,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 56250.0,
+      "warnings": [
+        "accessory_similarity_used_as_provisional_provenance_proxy",
+        "identity_similarity_derived_from_category_aliases",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "presentation_similarity_derived_from_category_aliases",
+        "provenance_similarity_derived_from_category_aliases",
+        "subject_condition_unknown"
+      ]
+    }
+  ],
+  "diagnostic_table": [
+    {
+      "Comparable ID": "PICNIC-COMP-001",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.32829203960102826,
+      "Included?": true,
+      "Overall similarity": 0.93,
+      "USD price": 44450.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "PICNIC-COMP-002",
+      "Evidence quality": 0.98,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.31099849781689676,
+      "Included?": true,
+      "Overall similarity": 0.89,
+      "USD price": 22579.2,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "PICNIC-COMP-003",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.2288150067892866,
+      "Included?": true,
+      "Overall similarity": 0.84,
+      "USD price": 32760.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "PICNIC-COMP-004",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.07413046055507089,
+      "Included?": true,
+      "Overall similarity": 0.84,
+      "USD price": 27200.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "PICNIC-COMP-005",
+      "Evidence quality": 0.9,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.05776399523771758,
+      "Included?": true,
+      "Overall similarity": 0.72,
+      "USD price": 56250.0,
+      "Verification status": "verified"
+    }
+  ],
+  "market_comparison": {
+    "asset_status": null,
+    "change_from_issue_valuation_pct": -0.3933333333333333,
+    "change_from_latest_quarterly_observation_pct": null,
+    "fair_value_premium_discount_to_issue_valuation_pct": -0.3933333333333333,
+    "fair_value_premium_discount_to_latest_market_value_pct": 0.2315789473684211,
+    "initial_offering_value_usd": 54000.0,
+    "last_observed_market_value_usd": 26600.0,
+    "latest_share_price_usd": null
+  },
+  "methodology_version": "1.0",
+  "provenance": {
+    "canonical_asset_id": "rally-picnic",
+    "input_asset_id": "rally-picnic"
+  },
+  "research_input_summary": {
+    "comparable_ids": [
+      "PICNIC-COMP-001",
+      "PICNIC-COMP-002",
+      "PICNIC-COMP-003",
+      "PICNIC-COMP-004",
+      "PICNIC-COMP-005"
+    ],
+    "parsed_comparable_count": 5,
+    "parsed_comparable_ids": [
+      "PICNIC-COMP-001",
+      "PICNIC-COMP-002",
+      "PICNIC-COMP-003",
+      "PICNIC-COMP-004",
+      "PICNIC-COMP-005"
+    ],
+    "raw_comparable_count": 5,
+    "research_hash": "9e147340db587c29a0d2b6f10663f88d147a31e8db1713a914f76d426698fc4b",
+    "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-picnic/research.json",
+    "top_level_keys": [
+      "analyst_notes",
+      "asset_id",
+      "comparable_selection_policy",
+      "comparables",
+      "demand_factors",
+      "legal_regulatory_considerations",
+      "liquidity_observations",
+      "market_context",
+      "market_observations_not_eligible_as_completed_comparables",
+      "methodology_reference",
+      "preliminary_evidence_assessment",
+      "provenance",
+      "research_date",
+      "research_limitations",
+      "research_status",
+      "schema_version",
+      "source_ledger",
+      "sources",
+      "subject_asset_summary",
+      "supply_factors",
+      "valuation_adjustment_questions",
+      "valuation_assumptions"
+    ]
+  },
+  "results": {
+    "base_value_usd": 32760.0,
+    "confidence_score": 0.45,
+    "conservative_value_usd": 22579.2,
+    "official_value_available": true,
+    "optimistic_value_usd": 44450.0
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-08",
+  "valuation_status": "completed_with_limitations",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "extreme_comparable_dispersion",
+    "valuation_completed_with_optional_evidence_limitations"
+  ]
+}

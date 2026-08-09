@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-picnic",
+  "rally_symbol": "PICNIC",
+  "asset_name": "Hermès 35cm Picnic Kelly",
+  "category": "handbags",
+  "subcategory": "Hermès Kelly",
+  "data_provenance": {
+    "rally_asset_specifications": "User-supplied Rally screenshots, 2026-08-08",
+    "canonical_data_precedence": "rally_terminal_repository"
+  },
+  "rally_data": {
+    "initial_offering_price_per_share_usd": 27.0,
+    "initial_offering_value_usd": 54000,
+    "shares_outstanding": 2000,
+    "initial_offering_month": "2020-12",
+    "initial_offering_date": null,
+    "storage_location": "Rally",
+    "latest_share_price_usd": null,
+    "latest_market_value_usd": null,
+    "last_observed_trade_date": null,
+    "quarterly_price_history": [],
+    "asset_status": null,
+    "canonical_data_precedence": "rally_terminal_repository"
+  },
+  "identity": {
+    "manufacturer": "Hermès",
+    "model": "Picnic Kelly",
+    "size_cm": 35,
+    "production_year": 2018,
+    "country_of_origin": "France",
+    "limited_edition": true
+  },
+  "handbag_factors": {
+    "color": "Beige / Naturel",
+    "primary_material": "Osier wicker",
+    "secondary_material": "Barénia leather",
+    "hardware": "Palladium",
+    "width_cm": 18,
+    "height_cm": 28,
+    "length_cm": 35,
+    "closure": "Flap, two belted straps, turn lock",
+    "included_accessories": {
+      "lock": true,
+      "keys": true,
+      "clochette": true,
+      "clochette_dustbag": true,
+      "box_and_ribbon": true
+    },
+    "condition": {
+      "overall_grade": null,
+      "description": null,
+      "inspection_status": "not_supplied"
+    },
+    "provenance": {
+      "ownership_history": null,
+      "certificate_of_authenticity": "Rally interface shows a C.O.A. tab; certificate contents not supplied.",
+      "original_packaging": "Box and ribbon listed as included by Rally."
+    }
+  }
+}
