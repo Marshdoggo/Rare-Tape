@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from alt_asset_explorer.asset_registry import (
     active_registry,
@@ -20,6 +21,11 @@ OFFERS = {
     "94DV1": ("2026-06-29", 30.00, 31.50, 63_000, 0.05),
     "99SS1": ("2026-06-23", 165.00, 165.50, 165_500, 0.00303030303030305),
     "91MV1": ("2026-06-29", 18.00, 20.00, 40_000, 1 / 9),
+}
+HANDBAG_OFFERS = {
+    "BIRKINBOR": ("2026-06-26", 17.00, 24.50, 49_000, 24.50 / 17.00 - 1),
+    "HIMALAYA": ("2026-06-26", 46.90, 60.00, 120_000, 60.00 / 46.90 - 1),
+    "PICNIC": ("2026-06-29", 13.30, 15.50, 31_000, 15.50 / 13.30 - 1),
 }
 
 
@@ -61,6 +67,57 @@ def test_offer_metadata_does_not_change_or_extend_canonical_history():
         assert not history["event_type"].isin(["pending_buyout", "buyout_offer"]).any()
     assert observations.loc[observations["asset_id"].eq("rally-63cc1")].sort_values("observed_at").iloc[-1]["price_per_share"] == 69
     assert not observations.loc[observations["asset_id"].eq("rally-94fs1"), "price_per_share"].eq(87).any()
+
+
+def test_three_handbags_are_halted_pending_buyouts_with_derived_offer_economics():
+    registry, observations = _data()
+    offers = pending_buyouts(registry).set_index("ticker")
+    for ticker, (date, reference, offer, total, premium) in HANDBAG_OFFERS.items():
+        row = offers.loc[ticker]
+        assert row["category"] == "handbags"
+        assert row["shares_outstanding"] == 2_000
+        assert row["trading_state"] == "halted"
+        assert row["lifecycle_event_type"] == "buyout_offer"
+        assert row["lifecycle_event_status"] == "pending"
+        assert row["buyout_offer_total_value"] == total
+        assert row["buyout_offer_price_per_share"] == total / row["shares_outstanding"] == offer
+        assert row["buyout_reference_price"] == reference
+        assert row["buyout_reference_price_date"] == date
+        assert row["buyout_premium_pct"] == pytest.approx(premium)
+        assert pd.isna(row["exit_date"])
+        assert pd.isna(row["exit_price_per_share"])
+        history = observations[observations["asset_id"].eq(row["asset_id"])].sort_values("observed_at")
+        assert history.iloc[-1]["observed_at"] == f"{date}T00:00:00Z"
+        assert history.iloc[-1]["price_per_share"] == reference
+        assert not history["event_type"].isin(["pending_buyout", "buyout_offer"]).any()
+
+
+def test_handbag_pending_offers_preserve_history_and_do_not_create_realized_exits():
+    registry, observations = _data()
+    target_ids = set(registry.loc[registry["ticker"].isin(HANDBAG_OFFERS), "asset_id"])
+    exits = pd.read_csv(ROOT / "data/processed/rally_exits.csv")
+
+    assert len(observations) == 2933
+    assert target_ids.isdisjoint(set(exits["asset_id"]))
+    assert target_ids.isdisjoint(set(active_registry(registry)["asset_id"]))
+    assert target_ids.issubset(set(historical_registry(registry)["asset_id"]))
+
+
+def test_lifecycle_counts_reconcile_after_handbag_offer_update():
+    registry, _ = _data()
+    assert registry["status"].value_counts().to_dict() == {
+        "trading": 120,
+        "exited": 26,
+        "buyout_pending": 10,
+        "exit_pending": 1,
+    }
+    handbags = registry[registry["category"].eq("handbags")]
+    assert handbags["status"].value_counts().to_dict() == {
+        "exited": 3,
+        "buyout_pending": 3,
+        "trading": 2,
+    }
+    assert handbags["ticker"].is_unique
 
 
 def test_active_and_historical_filters_keep_pending_history_but_not_tradability():
