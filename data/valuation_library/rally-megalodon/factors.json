@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-megalodon",
+  "rally_symbol": "MEGALODON",
+  "asset_name": "Megalodon Jaw — 184 Fossil Teeth in Resin Reconstruction",
+  "category": "fossils",
+  "identity": {
+    "memorabilia_type": "Megalodon Jaw",
+    "order": "Lamniformes",
+    "family": "Otodontidae",
+    "genus": "Otodus",
+    "species": "megalodon",
+    "legacy_taxonomy": [
+      "Carcharocles megalodon",
+      "Carcharodon megalodon"
+    ],
+    "excavation_site": "Morgan River, Georgia",
+    "presentation": "Mounted in resin jaw reconstruction",
+    "dimensions": {
+      "height_ft": 8.0,
+      "width_ft": 9.5
+    },
+    "number_of_teeth": 184,
+    "large_tooth_note": "Offering materials state that four teeth measure 6.25 inches each.",
+    "construction_note": "Offering materials state that teeth were collected over years from multiple source organisms and arranged to represent a life-like megalodon dentition."
+  },
+  "condition": {
+    "summary": "Full set of fossilized teeth; offering materials describe wear consistent with age and professional preparation.",
+    "originality_caveat": "The jaw itself is a modern resin reconstruction; the collectible fossil content is the mounted tooth set.",
+    "restoration_extent": null,
+    "individual_tooth_condition_distribution": null
+  },
+  "rally_data": {
+    "initial_offering_price_per_share_usd": null,
+    "initial_offering_value_usd": 600000,
+    "shares_outstanding": null,
+    "initial_offering_date": "2021-10-01",
+    "storage_location": "Rally",
+    "latest_share_price_usd": null,
+    "latest_market_value_usd": null,
+    "asset_status": null,
+    "quarterly_price_history": []
+  },
+  "missing_fields": [
+    "initial_offering_price_per_share_usd",
+    "shares_outstanding",
+    "latest_share_price_usd",
+    "latest_market_value_usd",
+    "restoration_extent",
+    "individual_tooth_condition_distribution"
+  ],
+  "source_notes": [
+    "Subject specifications and offering information are derived from user-supplied Rally screenshots and offering-document screenshots.",
+    "Rally displays the subject as an 8 x 9.5 foot reconstructed jaw containing 184 fossil megalodon teeth.",
+    "The offering document uses the legacy genus Carcharocles in places; this file normalizes the taxon to Otodus megalodon while preserving legacy names.",
+    "The offering document states that the teeth were selected from multiple source organisms and mounted in a resin reconstruction.",
+    "The offering document states that the preparator had been featured on National Geographic Channel's Predators."
+  ]
+}

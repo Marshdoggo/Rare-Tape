@@ -1,0 +1,495 @@
+{
+  "asset_id": "rally-megalodon",
+  "calculation_summary": {
+    "dispersion_pct": 0.192,
+    "eligible_comparable_count": 2,
+    "median_adjusted_comparable_usd": 62500.0,
+    "parsed_comparable_count": 2,
+    "raw_comparable_count": 2,
+    "weighted_comparable_value_usd": 68247.36842105263
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "fossils_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "fossils",
+          "category_model_version": "fossils_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          }
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "supported_currencies": {
+            "CHF": 1.12,
+            "EUR": 1.09,
+            "GBP": 1.27,
+            "HKD": 0.128,
+            "USD": 1.0
+          },
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "88032b4696b61046b976e59f868ff58e55828e8c7bc09775e22e0d4fbebe7211",
+        "research": "bd8362fe6e0ed089682c9c5340d9b2922ead23df40213060e57d360fc869feca"
+      },
+      "methodology_version": "1.0",
+      "research_input_summary": {
+        "comparable_ids": [
+          "MEGALODON-COMP-001",
+          "MEGALODON-COMP-002"
+        ],
+        "parsed_comparable_count": 2,
+        "parsed_comparable_ids": [
+          "MEGALODON-COMP-001",
+          "MEGALODON-COMP-002"
+        ],
+        "raw_comparable_count": 2,
+        "research_hash": "bd8362fe6e0ed089682c9c5340d9b2922ead23df40213060e57d360fc869feca",
+        "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-megalodon/research.json",
+        "top_level_keys": [
+          "analyst_notes",
+          "asset_id",
+          "comparable_selection_policy",
+          "comparables",
+          "demand_factors",
+          "legal_regulatory_considerations",
+          "liquidity_observations",
+          "market_context",
+          "market_observations_not_eligible_as_completed_comparables",
+          "methodology_reference",
+          "preliminary_evidence_assessment",
+          "provenance",
+          "research_date",
+          "research_limitations",
+          "research_status",
+          "schema_version",
+          "source_ledger",
+          "sources",
+          "subject_asset_summary",
+          "supply_factors",
+          "valuation_adjustment_questions",
+          "valuation_assumptions"
+        ]
+      },
+      "run_timestamp": "2026-08-10T21:46:14.939277+00:00"
+    },
+    {
+      "adjusted_price_usd": 62500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 62500.0,
+      "comparable_id": "MEGALODON-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.5210526315789473,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 62500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.98,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.78,
+        "provenance_similarity": 0.7
+      },
+      "parsed_usd_price": 62500.0,
+      "premium_treatment": true,
+      "raw_weight": 0.2079,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 62500.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "missing_source_reference",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 74500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 74500.0,
+      "comparable_id": "MEGALODON-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.91,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.47894736842105257,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 74500.0,
+      "parsed_evidence_quality": 0.91,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.98,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.78,
+        "provenance_similarity": 0.7
+      },
+      "parsed_usd_price": 74500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.1911,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 74500.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "buyer_premium_treatment_unknown",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "secondary_source_confirms_realized_price",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    }
+  ],
+  "category_model_version": "fossils_v1",
+  "comparable_diagnostics": [
+    {
+      "adjusted_price_usd": 62500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 62500.0,
+      "comparable_id": "MEGALODON-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.99,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.5210526315789473,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 62500.0,
+      "parsed_evidence_quality": 0.99,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.98,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.78,
+        "provenance_similarity": 0.7
+      },
+      "parsed_usd_price": 62500.0,
+      "premium_treatment": true,
+      "raw_weight": 0.2079,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 62500.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "missing_source_reference",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 74500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 74500.0,
+      "comparable_id": "MEGALODON-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.91,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.47894736842105257,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 74500.0,
+      "parsed_evidence_quality": 0.91,
+      "parsed_overall_similarity": 0.84,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.98,
+        "overall_similarity": 0.84,
+        "presentation_similarity": 0.78,
+        "provenance_similarity": 0.7
+      },
+      "parsed_usd_price": 74500.0,
+      "premium_treatment": null,
+      "raw_weight": 0.1911,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 74500.0,
+      "similarity_score": 0.84,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "buyer_premium_treatment_unknown",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "secondary_source_confirms_realized_price",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    }
+  ],
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 62500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "MEGALODON-COMP-001",
+      "final_weight": 0.5210526315789473,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 62500.0,
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "missing_source_reference",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 74500.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "MEGALODON-COMP-002",
+      "final_weight": 0.47894736842105257,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 74500.0,
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "buyer_premium_treatment_unknown",
+        "missing_source_reference",
+        "premium_treatment_unknown",
+        "secondary_source_confirms_realized_price",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    }
+  ],
+  "diagnostic_table": [
+    {
+      "Comparable ID": "MEGALODON-COMP-001",
+      "Evidence quality": 0.99,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.5210526315789473,
+      "Included?": true,
+      "Overall similarity": 0.84,
+      "USD price": 62500.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "MEGALODON-COMP-002",
+      "Evidence quality": 0.91,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.47894736842105257,
+      "Included?": true,
+      "Overall similarity": 0.84,
+      "USD price": 74500.0,
+      "Verification status": "verified"
+    }
+  ],
+  "market_comparison": {
+    "asset_status": null,
+    "change_from_issue_valuation_pct": -0.8958333333333334,
+    "change_from_latest_quarterly_observation_pct": null,
+    "fair_value_premium_discount_to_issue_valuation_pct": -0.8958333333333334,
+    "fair_value_premium_discount_to_latest_market_value_pct": -0.6498599439775911,
+    "initial_offering_value_usd": 600000.0,
+    "last_observed_market_value_usd": 178500.0,
+    "latest_share_price_usd": null
+  },
+  "methodology_version": "1.0",
+  "provenance": {
+    "canonical_asset_id": "rally-megalodon",
+    "input_asset_id": "rally-megalodon"
+  },
+  "research_input_summary": {
+    "comparable_ids": [
+      "MEGALODON-COMP-001",
+      "MEGALODON-COMP-002"
+    ],
+    "parsed_comparable_count": 2,
+    "parsed_comparable_ids": [
+      "MEGALODON-COMP-001",
+      "MEGALODON-COMP-002"
+    ],
+    "raw_comparable_count": 2,
+    "research_hash": "bd8362fe6e0ed089682c9c5340d9b2922ead23df40213060e57d360fc869feca",
+    "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-megalodon/research.json",
+    "top_level_keys": [
+      "analyst_notes",
+      "asset_id",
+      "comparable_selection_policy",
+      "comparables",
+      "demand_factors",
+      "legal_regulatory_considerations",
+      "liquidity_observations",
+      "market_context",
+      "market_observations_not_eligible_as_completed_comparables",
+      "methodology_reference",
+      "preliminary_evidence_assessment",
+      "provenance",
+      "research_date",
+      "research_limitations",
+      "research_status",
+      "schema_version",
+      "source_ledger",
+      "sources",
+      "subject_asset_summary",
+      "supply_factors",
+      "valuation_adjustment_questions",
+      "valuation_assumptions"
+    ]
+  },
+  "results": {
+    "base_value_usd": 62500.0,
+    "confidence_score": 0.75,
+    "conservative_value_usd": 62500.0,
+    "official_value_available": true,
+    "optimistic_value_usd": 74500.0
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-10",
+  "valuation_status": "completed_with_limitations",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "valuation_completed_with_optional_evidence_limitations"
+  ]
+}

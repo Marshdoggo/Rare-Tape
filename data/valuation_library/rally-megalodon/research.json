@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-megalodon",
+  "research_date": "2026-08-10",
+  "methodology_reference": "Rally Terminal valuation methodology v1.0 / fossils_v1",
+  "research_status": "completed_with_limitations",
+  "subject_asset_summary": {
+    "asset": "Megalodon jaw reconstruction containing 184 authentic fossil teeth",
+    "taxon": "Otodus megalodon",
+    "legacy_taxonomy": "Carcharocles/Carcharodon megalodon",
+    "excavation_site": "Morgan River, Georgia",
+    "dimensions": "8 ft x 9.5 ft",
+    "number_of_teeth": 184,
+    "initial_offering_value_usd": 600000,
+    "initial_offering_date": "2021-10",
+    "key_valuation_issue": "The value is driven by the aggregate quality, size, originality, provenance and arrangement of 184 fossil teeth rather than by a fossilized biological jaw."
+  },
+  "market_context": {
+    "overview": "Reconstructed megalodon jaws with authentic fossil teeth are thinly traded. Public auction evidence is sparse and heterogeneous.",
+    "collector_demand": "Large reconstructed jaws function as trophy natural-history displays. Exceptional large teeth can individually command high prices, but complete reconstructions are not mechanically equal to the sum of retail tooth prices.",
+    "taxonomy_note": "Modern auction houses commonly use Otodus megalodon, while older catalogues often use Carcharocles or Carcharodon megalodon."
+  },
+  "comparable_selection_policy": {
+    "primary_target": "Completed auction sales of reconstructed megalodon jaws containing authentic fossil teeth.",
+    "priority_order": [
+      "Reconstructed megalodon jaw rather than individual tooth",
+      "High authentic fossil-tooth count",
+      "Comparable display scale",
+      "Large premium teeth represented in dentition",
+      "Documented provenance/preparator",
+      "Completed realized auction price",
+      "Condition and restoration transparency"
+    ],
+    "exclude_from_official_valuation": [
+      "Dealer asking prices",
+      "Auction estimates without realized prices",
+      "Individual megalodon teeth",
+      "Pure replicas/casts without authentic fossil teeth",
+      "Other shark species"
+    ]
+  },
+  "comparables": [
+    {
+      "comparable_id": "MEGALODON-COMP-001",
+      "tier": 1,
+      "title": "Large Mega-Shark Jaw with Fossil Teeth",
+      "manufacturer": null,
+      "sale_date": "2012-05-20",
+      "auction_house": "Heritage Auctions",
+      "lot_number": "49302",
+      "sale_location": "United States",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 62500,
+      "price_usd_at_sale": 62500,
+      "currency": "USD",
+      "reported_price": 62500,
+      "price_usd": 62500,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": true,
+      "condition_grade": null,
+      "similarity_scores": {
+        "identity_similarity": 0.98,
+        "condition_similarity": 0.55,
+        "provenance_similarity": 0.7,
+        "presentation_similarity": 0.78,
+        "overall_similarity": 0.84
+      },
+      "overall_similarity": 0.84,
+      "evidence_quality": 0.99,
+      "source_reference": "HERITAGE-6068-49302",
+      "warnings": [
+        "138_teeth_vs_subject_184",
+        "subject_larger_tooth_count",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "comparable_id": "MEGALODON-COMP-002",
+      "tier": 1,
+      "title": "Gigantic Megalodon Teeth in Jaw Reconstruction",
+      "manufacturer": null,
+      "sale_date": "2013-05-22",
+      "auction_house": "Bonhams",
+      "lot_number": null,
+      "sale_location": "Los Angeles",
+      "sale_status": "sold",
+      "reported_currency": "USD",
+      "reported_realized_price": 74500,
+      "price_usd_at_sale": 74500,
+      "currency": "USD",
+      "reported_price": 74500,
+      "price_usd": 74500,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": null,
+      "similarity_scores": {
+        "identity_similarity": 0.98,
+        "condition_similarity": 0.55,
+        "provenance_similarity": 0.7,
+        "presentation_similarity": 0.78,
+        "overall_similarity": 0.84
+      },
+      "overall_similarity": 0.84,
+      "evidence_quality": 0.91,
+      "source_reference": "BONHAMS-NATURAL-HISTORY-2013-05-22",
+      "warnings": [
+        "secondary_source_confirms_realized_price",
+        "138_teeth_vs_subject_184",
+        "subject_larger_tooth_count",
+        "buyer_premium_treatment_unknown",
+        "subject_restoration_extent_unknown"
+      ]
+    }
+  ],
+  "market_observations_not_eligible_as_completed_comparables": [
+    {
+      "observation_id": "MEGALODON-OBS-001",
+      "source": "Bonhams, reported by secondary market references",
+      "description": "Reconstructed jaw, 138 teeth, approximately 54 x 52 inches",
+      "realized_price": "USD 8,750",
+      "sale_year": 2016,
+      "reason_excluded": "Exact primary auction page/date not recovered; use as sensitivity context rather than official engine comparable."
+    },
+    {
+      "observation_id": "MEGALODON-OBS-002",
+      "source": "Sotheby's",
+      "description": "Single well-preserved Otodus megalodon tooth, North Carolina",
+      "realized_price": "USD 24,320",
+      "sale_date": "2026-07-14",
+      "reason_excluded": "Single tooth is not directly comparable to a 184-tooth reconstructed jaw."
+    },
+    {
+      "observation_id": "MEGALODON-OBS-003",
+      "source": "Heritage Auctions",
+      "description": "Single Otodus megalodon tooth, Morgan River, South Carolina",
+      "realized_price": "USD 8,437.50",
+      "sale_date": "2025-08-29",
+      "reason_excluded": "Single tooth; useful only as evidence that exceptional individual teeth can have material standalone value."
+    },
+    {
+      "observation_id": "MEGALODON-OBS-004",
+      "source": "KALIFANO",
+      "description": "138-tooth reconstructed megalodon jaw, approximately 80 x 64 x 32 inches",
+      "asking_price": "approximately USD 150,000 to 224,000 depending captured storefront/version",
+      "reason_excluded": "Dealer asking price, not a completed realized transaction."
+    }
+  ],
+  "preliminary_evidence_assessment": {
+    "raw_comparable_count": 2,
+    "completed_sale_count": 2,
+    "jaw_reconstruction_count": 2,
+    "evidence_strength": "moderate",
+    "pre_condition_confidence": 0.58,
+    "strengths": [
+      "Two completed reconstructed-jaw auction sales were located.",
+      "Both involve large sets of authentic fossil megalodon teeth.",
+      "The subject has a materially larger tooth count than the 138-tooth comparables."
+    ],
+    "weaknesses": [
+      "Closest completed jaw sales are old.",
+      "Public reconstructed-jaw transactions are extremely sparse.",
+      "Subject-wide tooth quality distribution is not documented.",
+      "The USD 600,000 Rally offering value is far above the located completed-jaw auction sales."
+    ]
+  },
+  "provenance": {
+    "subject": "User-supplied Rally screenshots and offering-document screenshots.",
+    "research": "Primary auction-house results prioritized; secondary sources used only where necessary.",
+    "verification_standard": "Only completed jaw-reconstruction sales with a recoverable realized price were admitted as official comparables."
+  },
+  "sources": [
+    {
+      "source_id": "S1",
+      "publisher": "Heritage Auctions",
+      "title": "Large Mega-Shark Jaw with Fossil Teeth, Lot 49302",
+      "type": "auction_result",
+      "url": "https://fineart.ha.com/itm/fossils/fish/large-mega-shark-jaw-with-fossil-teeth/a/6068-49302.s"
+    },
+    {
+      "source_id": "S2",
+      "publisher": "Alain.R.Truong / Bonhams report",
+      "title": "Bonhams Natural History Auction, May 22 2013",
+      "type": "secondary_auction_result_report",
+      "url": "https://www.alaintruong.com/archives/2013/05/26/27243856.html"
+    },
+    {
+      "source_id": "S3",
+      "publisher": "Sotheby's",
+      "title": "Megalodon Shark Tooth — Natural History including Gus Rex",
+      "type": "auction_result",
+      "url": "https://www.sothebys.com/en/buy/auction/2026/natural-history/megalodon-shark-tooth-3"
+    },
+    {
+      "source_id": "S4",
+      "publisher": "Heritage Auctions",
+      "title": "Megalodon archive results",
+      "type": "auction_results_archive",
+      "url": "https://fineart.ha.com/c/search/results.zx?archive_state=5327&dept=1544&mode=archive&sb=1&si=2&sold_status=1526&term=megalodon"
+    }
+  ],
+  "source_ledger": [
+    {
+      "source_id": "S1",
+      "supports": [
+        "2012 reconstructed 138-tooth jaw sale",
+        "USD 62,500 realized price"
+      ]
+    },
+    {
+      "source_id": "S2",
+      "supports": [
+        "2013 Bonhams reconstructed jaw sale",
+        "USD 74,500 realized price",
+        "May 22 2013 sale date"
+      ]
+    },
+    {
+      "source_id": "S3",
+      "supports": [
+        "2026 single-tooth market evidence",
+        "USD 24,320 realized price"
+      ]
+    },
+    {
+      "source_id": "S4",
+      "supports": [
+        "2025 Morgan River single-tooth market evidence",
+        "USD 8,437.50 realized price"
+      ]
+    }
+  ],
+  "demand_factors": {
+    "summary": "Demand is driven by trophy-display scale, authenticity and quality of constituent teeth, unusually large teeth, aesthetics, provenance and preparator reputation.",
+    "factors": [
+      "184 authentic fossil teeth create substantial aggregate display value.",
+      "Four 6.25-inch teeth, if verified and high quality, may be major premium drivers.",
+      "Large full-jaw reconstructions are much scarcer than individual teeth."
+    ]
+  },
+  "supply_factors": {
+    "summary": "Individual teeth are available, but museum-scale reconstructions built from many high-quality authentic teeth are far less common.",
+    "factors": [
+      "Jaw cartilage does not normally fossilize; these assets are reconstructions around authentic teeth.",
+      "Matching many teeth by position, size and aesthetic quality requires significant collecting and preparation effort.",
+      "Public completed-sale evidence for large reconstructions is sparse."
+    ]
+  },
+  "liquidity_observations": {
+    "summary": "Whole-jaw liquidity is episodic and materially thinner than individual-tooth liquidity.",
+    "observations": [
+      "Auction outcomes can vary widely because specimen quality and reconstruction scale differ dramatically.",
+      "Fractional Rally pricing may diverge from whole-object auction clearing prices."
+    ]
+  },
+  "legal_regulatory_considerations": [
+    "Verify lawful excavation/export provenance for each component where applicable.",
+    "Fossil ownership and export rules depend on source jurisdiction and land status.",
+    "The supplied materials identify Morgan River, Georgia, but do not provide chain-of-custody documentation for every tooth."
+  ],
+  "valuation_adjustment_questions": [
+    "What percentage of the 184 teeth are fully natural versus repaired/restored?",
+    "What are the dimensions and condition grades of the largest 20 teeth?",
+    "Can the four stated 6.25-inch teeth be individually documented and authenticated?",
+    "Is there a named preparator with documentary provenance?",
+    "What was Rally's independent appraisal basis for the USD 600,000 initial offering value?",
+    "Should a bespoke tooth-by-tooth sum-of-parts model supplement the jaw-sale comparable method?"
+  ],
+  "valuation_assumptions": {
+    "summary": "The engine should value the subject as a reconstructed trophy display containing authentic fossil teeth, not as a fossilized anatomical jaw.",
+    "assumptions": [
+      "The subject contains 184 authentic fossil megalodon teeth as represented by Rally.",
+      "The resin jaw reconstruction itself has substantially less intrinsic value than the fossil teeth and their assembled presentation.",
+      "No premium is assigned for preparator reputation unless independently documented.",
+      "Dealer asking prices and single-tooth results are excluded from official jaw-comparable valuation.",
+      "No explicit adjustment is applied for the subject's larger 184-tooth count because fossils_v1 currently uses neutral adjustment multipliers."
+    ]
+  },
+  "research_limitations": [
+    "Only two strong completed reconstructed-jaw auction comparables were located.",
+    "The closest jaw comps are from 2012 and 2013.",
+    "Subject tooth-by-tooth condition, restoration, locality and size distribution are unknown.",
+    "The engine's current fossils_v1 model does not explicitly monetize tooth count, maximum tooth size or sum-of-parts value.",
+    "Current Rally market value/share price were not supplied in the screenshots."
+  ],
+  "analyst_notes": [
+    "This is a materially different valuation problem from the Mosasaur skeleton: the subject is a constructed aggregate of many individually collectible fossil teeth.",
+    "The strongest direct market anchors found are reconstructed jaw sales at USD 62,500 and USD 74,500.",
+    "The USD 600,000 Rally initial valuation sits far above those direct realized comps; validating that level would likely require unusually valuable constituent teeth, exceptional provenance, or a tooth-by-tooth appraisal.",
+    "A future fossils methodology upgrade should add a sum-of-parts pathway for composite fossil displays such as reconstructed shark jaws."
+  ]
+}
