@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-mosasaur",
+  "rally_symbol": "MOSASAUR",
+  "asset_name": "Halisaurus arambourgi Mosasaur Skeleton",
+  "category": "fossils",
+  "identity": {
+    "memorabilia_type": "Mosasaur Skeleton",
+    "order": "Squamata",
+    "suborder": "Scleroglossa",
+    "family": "Mosasauridae",
+    "genus": "Halisaurus",
+    "species": "arambourgi",
+    "geologic_age": "Late Cretaceous / Maastrichtian",
+    "origin": "Oulad Abdoun Phosphate Basin, Morocco",
+    "length_inches": 120,
+    "length_cm": 304.8,
+    "presentation": "Mounted on custom steel framework in a life-like swimming pose",
+    "completeness_description": "Rally describes the specimen as one of the most complete skeletons of its kind, with a virtually complete skull."
+  },
+  "condition": {
+    "summary": "Well preserved",
+    "notable_defects": "Signs of wear consistent with age and professional preparation",
+    "restoration_extent": null,
+    "original_bone_percentage": null,
+    "composite_or_reconstructed_elements": null
+  },
+  "rally_data": {
+    "initial_offering_price_per_share_usd": 5.0,
+    "initial_offering_value_usd": 30000,
+    "shares_outstanding": 6000,
+    "initial_offering_date": "2021-02-01",
+    "storage_location": "Rally",
+    "latest_share_price_usd": null,
+    "latest_market_value_usd": null,
+    "asset_status": "closed",
+    "quarterly_price_history": []
+  },
+  "missing_fields": [
+    "restoration_extent",
+    "original_bone_percentage",
+    "composite_or_reconstructed_elements",
+    "latest_share_price_usd",
+    "latest_market_value_usd"
+  ],
+  "source_notes": [
+    "Subject taxonomy, condition, presentation and 120-inch length are from Rally materials supplied by the user.",
+    "Rally/SEC offering records identify #MOSASAUR at $5 per share, 6,000 shares, for a $30,000 initial valuation.",
+    "Fossil skeleton valuation is highly sensitive to completeness, original-bone percentage, restoration/composite content, provenance, preparation quality and legality of export."
+  ]
+}

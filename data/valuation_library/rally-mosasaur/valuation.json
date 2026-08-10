@@ -1,0 +1,654 @@
+{
+  "asset_id": "rally-mosasaur",
+  "calculation_summary": {
+    "dispersion_pct": 7.305532388101194,
+    "eligible_comparable_count": 3,
+    "median_adjusted_comparable_usd": 3597.0000000000005,
+    "parsed_comparable_count": 3,
+    "raw_comparable_count": 3,
+    "weighted_comparable_value_usd": 11737.62431018936
+  },
+  "calculation_trace": [
+    {
+      "category_model_version": "fossils_v1",
+      "configuration": {
+        "category": {
+          "adjustment_limits": {
+            "max_multiplier": 1.5,
+            "min_multiplier": 0.5
+          },
+          "category": "fossils",
+          "category_model_version": "fossils_v1",
+          "category_warnings": [
+            "Category model is provisional and requires methodological review."
+          ],
+          "confidence_penalties": {
+            "category_specific_uncertainty": 0.05
+          },
+          "evidence_thresholds": {
+            "minimum_evidence_quality": 0.3,
+            "minimum_overall_similarity": 0.35
+          },
+          "provisional": true,
+          "required_factor_fields": [
+            "identity",
+            "condition"
+          ],
+          "similarity_components": {
+            "condition_similarity": 0.25,
+            "identity_similarity": 0.35,
+            "presentation_similarity": 0.2,
+            "provenance_similarity": 0.2
+          }
+        },
+        "engine": {
+          "adjustments": {
+            "condition_adjustment_multiplier": 1.0,
+            "liquidity_adjustment_multiplier": 1.0,
+            "market_adjustment_multiplier": 1.0,
+            "provenance_adjustment_multiplier": 1.0,
+            "rarity_adjustment_multiplier": 1.0,
+            "time_adjustment_pct_per_year": 0.0
+          },
+          "confidence_base": 0.75,
+          "confidence_penalties": {
+            "extreme_dispersion": 0.2,
+            "missing_condition": 0.1,
+            "missing_history": 0.1,
+            "most_unverified": 0.15,
+            "one_comparable": 0.35
+          },
+          "engine_version": "1.0",
+          "estimate_quantiles": {
+            "base": 0.5,
+            "conservative": 0.25,
+            "optimistic": 0.75
+          },
+          "extreme_dispersion_pct": 0.75,
+          "max_recency_years": 5,
+          "methodology_version": "1.0",
+          "minimum_eligible_comparables": 2,
+          "one_comparable_allows_diagnostic_only": true,
+          "provisional": true,
+          "recency_floor": 0.25,
+          "supported_currencies": {
+            "CHF": 1.12,
+            "EUR": 1.09,
+            "GBP": 1.27,
+            "HKD": 0.128,
+            "USD": 1.0
+          },
+          "unsupported_currency_policy": "exclude_without_price_usd",
+          "unverified_weight_multiplier": 0.65
+        }
+      },
+      "engine_version": "1.0",
+      "input_hashes": {
+        "factors": "3f80d9df3bf0e87b81570f9f39bec558db0aabb885fbe4ccd7ad6997ba90b60b",
+        "research": "9cef577b69ec08307381ef82c12b2130dfa8f7fadec20f6b9ec6cec1d3db598e"
+      },
+      "methodology_version": "1.0",
+      "research_input_summary": {
+        "comparable_ids": [
+          "MOSASAUR-COMP-001",
+          "MOSASAUR-COMP-002",
+          "MOSASAUR-COMP-003"
+        ],
+        "parsed_comparable_count": 3,
+        "parsed_comparable_ids": [
+          "MOSASAUR-COMP-001",
+          "MOSASAUR-COMP-002",
+          "MOSASAUR-COMP-003"
+        ],
+        "raw_comparable_count": 3,
+        "research_hash": "9cef577b69ec08307381ef82c12b2130dfa8f7fadec20f6b9ec6cec1d3db598e",
+        "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-mosasaur/research.json",
+        "top_level_keys": [
+          "analyst_notes",
+          "asset_id",
+          "comparable_selection_policy",
+          "comparables",
+          "demand_factors",
+          "legal_regulatory_considerations",
+          "liquidity_observations",
+          "market_context",
+          "market_observations_not_eligible_as_completed_comparables",
+          "methodology_reference",
+          "preliminary_evidence_assessment",
+          "provenance",
+          "research_date",
+          "research_limitations",
+          "research_status",
+          "schema_version",
+          "source_ledger",
+          "sources",
+          "subject_asset_summary",
+          "supply_factors",
+          "valuation_adjustment_questions",
+          "valuation_assumptions"
+        ]
+      },
+      "run_timestamp": "2026-08-10T20:42:53.838080+00:00"
+    },
+    {
+      "adjusted_price_usd": 29875.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 29875.0,
+      "comparable_id": "MOSASAUR-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.97,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.2390742410580102,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 29875.0,
+      "parsed_evidence_quality": 0.97,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.92,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.75,
+        "provenance_similarity": 0.65
+      },
+      "parsed_usd_price": 29875.0,
+      "premium_treatment": true,
+      "raw_weight": 0.19884999999999997,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 29875.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "missing_source_reference",
+        "original_bone_percentage_unknown",
+        "size_not_visible_in_accessible_result",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 11290.3,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 11290.3,
+      "comparable_id": "MOSASAUR-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.2415389239555155,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 8890.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.98,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.7,
+        "provenance_similarity": 0.6
+      },
+      "parsed_usd_price": 11290.3,
+      "premium_treatment": true,
+      "raw_weight": 0.2009,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 11290.3,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "missing_source_reference",
+        "original_bone_percentage_unknown",
+        "size_not_visible_in_accessible_result",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 3597.0000000000005,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 3597.0000000000005,
+      "comparable_id": "MOSASAUR-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "EUR",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.9,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.5193868349864743,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.09,
+      "fx_warnings": [
+        "fx_converted_from_eur"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "EUR",
+      "original_reported_price": 3300.0,
+      "parsed_evidence_quality": 0.9,
+      "parsed_overall_similarity": 0.48,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.35,
+        "identity_similarity": 0.75,
+        "overall_similarity": 0.48,
+        "presentation_similarity": 0.45,
+        "provenance_similarity": 0.45
+      },
+      "parsed_usd_price": 3597.0000000000005,
+      "premium_treatment": null,
+      "raw_weight": 0.432,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 3597.0000000000005,
+      "similarity_score": 0.48,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "missing_source_reference",
+        "much_smaller_than_subject",
+        "not_species_specific_in_accessible_listing",
+        "premium_treatment_unknown",
+        "reconstructed_specimen"
+      ]
+    }
+  ],
+  "category_model_version": "fossils_v1",
+  "comparable_diagnostics": [
+    {
+      "adjusted_price_usd": 29875.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 29875.0,
+      "comparable_id": "MOSASAUR-COMP-001",
+      "configured_fx_version": "1.0",
+      "currency": "USD",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.97,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.2390742410580102,
+      "fx_conversion_source": "research_price_usd",
+      "fx_rate_to_usd": 1.0,
+      "fx_warnings": [],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "USD",
+      "original_reported_price": 29875.0,
+      "parsed_evidence_quality": 0.97,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.92,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.75,
+        "provenance_similarity": 0.65
+      },
+      "parsed_usd_price": 29875.0,
+      "premium_treatment": true,
+      "raw_weight": 0.19884999999999997,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 29875.0,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "missing_source_reference",
+        "original_bone_percentage_unknown",
+        "size_not_visible_in_accessible_result",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 11290.3,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 11290.3,
+      "comparable_id": "MOSASAUR-COMP-002",
+      "configured_fx_version": "1.0",
+      "currency": "GBP",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.98,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.2415389239555155,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.27,
+      "fx_warnings": [
+        "fx_converted_from_gbp"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "GBP",
+      "original_reported_price": 8890.0,
+      "parsed_evidence_quality": 0.98,
+      "parsed_overall_similarity": 0.82,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.55,
+        "identity_similarity": 0.98,
+        "overall_similarity": 0.82,
+        "presentation_similarity": 0.7,
+        "provenance_similarity": 0.6
+      },
+      "parsed_usd_price": 11290.3,
+      "premium_treatment": true,
+      "raw_weight": 0.2009,
+      "recency_treatment": 0.25,
+      "reported_price_usd": 11290.3,
+      "similarity_score": 0.82,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "missing_source_reference",
+        "original_bone_percentage_unknown",
+        "size_not_visible_in_accessible_result",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 3597.0000000000005,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "calculated_price_usd": 3597.0000000000005,
+      "comparable_id": "MOSASAUR-COMP-003",
+      "configured_fx_version": "1.0",
+      "currency": "EUR",
+      "eligible_before_filtering": true,
+      "evidence_quality_score": 0.9,
+      "exclusion_reasons": [],
+      "final_eligibility": true,
+      "final_weight": 0.5193868349864743,
+      "fx_conversion_source": "configured_fx_rate",
+      "fx_rate_to_usd": 1.09,
+      "fx_warnings": [
+        "fx_converted_from_eur"
+      ],
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "original_currency": "EUR",
+      "original_reported_price": 3300.0,
+      "parsed_evidence_quality": 0.9,
+      "parsed_overall_similarity": 0.48,
+      "parsed_sale_status": "sold",
+      "parsed_similarity_components": {
+        "condition_similarity": 0.35,
+        "identity_similarity": 0.75,
+        "overall_similarity": 0.48,
+        "presentation_similarity": 0.45,
+        "provenance_similarity": 0.45
+      },
+      "parsed_usd_price": 3597.0000000000005,
+      "premium_treatment": null,
+      "raw_weight": 0.432,
+      "recency_treatment": 1.0,
+      "reported_price_usd": 3597.0000000000005,
+      "similarity_score": 0.48,
+      "verification_status": "verified",
+      "verification_treatment": 1.0,
+      "warnings": [
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "missing_source_reference",
+        "much_smaller_than_subject",
+        "not_species_specific_in_accessible_listing",
+        "premium_treatment_unknown",
+        "reconstructed_specimen"
+      ]
+    }
+  ],
+  "comparables_used": [
+    {
+      "adjusted_price_usd": 29875.0,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "MOSASAUR-COMP-001",
+      "final_weight": 0.2390742410580102,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 29875.0,
+      "warnings": [
+        "missing_source_reference",
+        "original_bone_percentage_unknown",
+        "size_not_visible_in_accessible_result",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 11290.3,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "MOSASAUR-COMP-002",
+      "final_weight": 0.2415389239555155,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 11290.3,
+      "warnings": [
+        "fx_conversion_required",
+        "fx_converted_from_gbp",
+        "missing_source_reference",
+        "original_bone_percentage_unknown",
+        "size_not_visible_in_accessible_result",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "adjusted_price_usd": 3597.0000000000005,
+      "adjustments": {
+        "condition_adjustment_multiplier": 1.0,
+        "liquidity_adjustment_multiplier": 1.0,
+        "market_adjustment_multiplier": 1.0,
+        "provenance_adjustment_multiplier": 1.0,
+        "rarity_adjustment_multiplier": 1.0,
+        "time_adjustment_pct_per_year": 0.0
+      },
+      "comparable_id": "MOSASAUR-COMP-003",
+      "final_weight": 0.5193868349864743,
+      "included": true,
+      "inclusion_rationale": [
+        "eligible"
+      ],
+      "reported_price_usd": 3597.0000000000005,
+      "warnings": [
+        "fx_conversion_required",
+        "fx_converted_from_eur",
+        "missing_source_reference",
+        "much_smaller_than_subject",
+        "not_species_specific_in_accessible_listing",
+        "premium_treatment_unknown",
+        "reconstructed_specimen"
+      ]
+    }
+  ],
+  "diagnostic_table": [
+    {
+      "Comparable ID": "MOSASAUR-COMP-001",
+      "Evidence quality": 0.97,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.2390742410580102,
+      "Included?": true,
+      "Overall similarity": 0.82,
+      "USD price": 29875.0,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "MOSASAUR-COMP-002",
+      "Evidence quality": 0.98,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.2415389239555155,
+      "Included?": true,
+      "Overall similarity": 0.82,
+      "USD price": 11290.3,
+      "Verification status": "verified"
+    },
+    {
+      "Comparable ID": "MOSASAUR-COMP-003",
+      "Evidence quality": 0.9,
+      "Exclusion reasons": "eligible",
+      "Final weight": 0.5193868349864743,
+      "Included?": true,
+      "Overall similarity": 0.48,
+      "USD price": 3597.0000000000005,
+      "Verification status": "verified"
+    }
+  ],
+  "market_comparison": {
+    "asset_status": "closed",
+    "change_from_issue_valuation_pct": -0.8801,
+    "change_from_latest_quarterly_observation_pct": null,
+    "fair_value_premium_discount_to_issue_valuation_pct": -0.8801,
+    "fair_value_premium_discount_to_latest_market_value_pct": -0.8948245614035087,
+    "initial_offering_value_usd": 30000.0,
+    "last_observed_market_value_usd": 34200.0,
+    "latest_share_price_usd": null
+  },
+  "methodology_version": "1.0",
+  "provenance": {
+    "canonical_asset_id": "rally-mosasaur",
+    "input_asset_id": "rally-mosasaur"
+  },
+  "research_input_summary": {
+    "comparable_ids": [
+      "MOSASAUR-COMP-001",
+      "MOSASAUR-COMP-002",
+      "MOSASAUR-COMP-003"
+    ],
+    "parsed_comparable_count": 3,
+    "parsed_comparable_ids": [
+      "MOSASAUR-COMP-001",
+      "MOSASAUR-COMP-002",
+      "MOSASAUR-COMP-003"
+    ],
+    "raw_comparable_count": 3,
+    "research_hash": "9cef577b69ec08307381ef82c12b2130dfa8f7fadec20f6b9ec6cec1d3db598e",
+    "research_path": "/Users/marshallwhiteley/Desktop/Coding Projects/Rally_Terminal/data/valuation_library/rally-mosasaur/research.json",
+    "top_level_keys": [
+      "analyst_notes",
+      "asset_id",
+      "comparable_selection_policy",
+      "comparables",
+      "demand_factors",
+      "legal_regulatory_considerations",
+      "liquidity_observations",
+      "market_context",
+      "market_observations_not_eligible_as_completed_comparables",
+      "methodology_reference",
+      "preliminary_evidence_assessment",
+      "provenance",
+      "research_date",
+      "research_limitations",
+      "research_status",
+      "schema_version",
+      "source_ledger",
+      "sources",
+      "subject_asset_summary",
+      "supply_factors",
+      "valuation_adjustment_questions",
+      "valuation_assumptions"
+    ]
+  },
+  "results": {
+    "base_value_usd": 3597.0000000000005,
+    "confidence_score": 0.55,
+    "conservative_value_usd": 3597.0000000000005,
+    "official_value_available": true,
+    "optimistic_value_usd": 11290.3
+  },
+  "schema_version": "1.0",
+  "valuation_date": "2026-08-10",
+  "valuation_status": "completed_with_limitations",
+  "warnings": [
+    "Category model is provisional and requires methodological review.",
+    "extreme_comparable_dispersion",
+    "valuation_completed_with_optional_evidence_limitations"
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "rally-mosasaur",
+  "research_date": "2026-08-10",
+  "methodology_reference": "Rally Terminal valuation methodology v1.0 / fossils_v1",
+  "research_status": "completed_with_limitations",
+  "subject_asset_summary": {
+    "taxon": "Halisaurus arambourgi",
+    "family": "Mosasauridae",
+    "origin": "Morocco",
+    "geologic_age": "Late Cretaceous / Maastrichtian",
+    "length_inches": 120,
+    "condition": "Well preserved",
+    "presentation": "Mounted on custom steel framework in a life-like swimming pose",
+    "initial_offering_value_usd": 30000
+  },
+  "market_context": {
+    "overview": "Commercial mosasaur pricing is highly heterogeneous. Small jaws and skulls trade far below substantially complete mounted skeletons; whole-skeleton value depends heavily on taxon, completeness, originality, restoration, provenance and display quality.",
+    "key_value_drivers": [
+      "Taxonomic specificity",
+      "Overall skeletal completeness",
+      "Original bone percentage",
+      "Skull completeness",
+      "Articulation and preparation quality",
+      "Length and display presence",
+      "Provenance and legality of export",
+      "Condition and restoration"
+    ]
+  },
+  "comparable_selection_policy": {
+    "primary_target": "Completed sales of Halisaurus or Halisaurus arambourgi skeletons, prioritizing mounted or substantially complete specimens.",
+    "priority_order": [
+      "Same genus/species",
+      "Skeleton rather than isolated skull/jaw",
+      "Near-complete or complete specimen",
+      "Comparable size",
+      "Mounted presentation",
+      "Documented realized sale price",
+      "Documented provenance/restoration"
+    ],
+    "exclude_from_official_valuation": [
+      "Unsold dealer asks",
+      "Auction estimates without realized prices",
+      "Isolated teeth or small jaw fragments",
+      "Large dinosaur skeletons of unrelated taxa",
+      "Specimens with unclear legality or provenance"
+    ]
+  },
+  "comparables": [
+    {
+      "comparable_id": "MOSASAUR-COMP-001",
+      "tier": 1,
+      "title": "Halisaurus Mosasaur Skeleton",
+      "sale_date": "2006-06-04",
+      "auction_house": "Bonhams",
+      "sale_location": "Los Angeles",
+      "sale_status": "sold",
+      "currency": "USD",
+      "reported_price": 29875,
+      "price_usd": 29875,
+      "price_usd_at_sale": 29875,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": true,
+      "condition_grade": null,
+      "similarity_scores": {
+        "identity_similarity": 0.92,
+        "condition_similarity": 0.55,
+        "provenance_similarity": 0.65,
+        "presentation_similarity": 0.75,
+        "overall_similarity": 0.82
+      },
+      "overall_similarity": 0.82,
+      "evidence_quality": 0.97,
+      "source_reference": "BONHAMS-NATURAL-HISTORY-2006-HALISAURUS",
+      "warnings": [
+        "size_not_visible_in_accessible_result",
+        "original_bone_percentage_unknown",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "comparable_id": "MOSASAUR-COMP-002",
+      "tier": 1,
+      "title": "Large Fossil Halisaurus arambourgi Mosasaur Skeleton",
+      "sale_date": "2021-05-27",
+      "auction_house": "Timeline Auctions",
+      "sale_location": "United Kingdom",
+      "sale_status": "sold",
+      "currency": "GBP",
+      "reported_price": 8890,
+      "price_usd": null,
+      "price_usd_at_sale": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": true,
+      "condition_grade": null,
+      "similarity_scores": {
+        "identity_similarity": 0.98,
+        "condition_similarity": 0.55,
+        "provenance_similarity": 0.6,
+        "presentation_similarity": 0.7,
+        "overall_similarity": 0.82
+      },
+      "overall_similarity": 0.82,
+      "evidence_quality": 0.98,
+      "source_reference": "TIMELINE-AUCTIONS-LOT-0482",
+      "warnings": [
+        "fx_conversion_required",
+        "size_not_visible_in_accessible_result",
+        "original_bone_percentage_unknown",
+        "subject_restoration_extent_unknown"
+      ]
+    },
+    {
+      "comparable_id": "MOSASAUR-COMP-003",
+      "tier": 3,
+      "title": "Reconstructed Halisaurus Skeleton, 80 cm",
+      "sale_date": null,
+      "sale_year": 2025,
+      "auction_house": "Catawiki",
+      "sale_location": "Online",
+      "sale_status": "sold",
+      "currency": "EUR",
+      "reported_price": 3300,
+      "price_usd": null,
+      "price_usd_at_sale": null,
+      "verified": true,
+      "eligible_for_official_valuation": true,
+      "buyers_premium_included": null,
+      "condition_grade": "Reconstructed skeleton",
+      "similarity_scores": {
+        "identity_similarity": 0.75,
+        "condition_similarity": 0.35,
+        "provenance_similarity": 0.45,
+        "presentation_similarity": 0.45,
+        "overall_similarity": 0.48
+      },
+      "overall_similarity": 0.48,
+      "evidence_quality": 0.9,
+      "source_reference": "CATAWIKI-98787384",
+      "warnings": [
+        "much_smaller_than_subject",
+        "reconstructed_specimen",
+        "fx_conversion_required",
+        "not_species_specific_in_accessible_listing"
+      ]
+    }
+  ],
+  "market_observations_not_eligible_as_completed_comparables": [
+    {
+      "observation_id": "MOSASAUR-OBS-001",
+      "source": "Christie's",
+      "description": "Halisaurus arambourgi skeleton from Khouribga phosphate deposits, Morocco, 8 ft (2.4 m) long",
+      "estimate": null,
+      "reason_excluded": "Exact-family auction lot located, but accessible page does not expose realized price."
+    },
+    {
+      "observation_id": "MOSASAUR-OBS-002",
+      "source": "Fossilien Company",
+      "description": "Nearly complete Halisaurus skeleton, approximately 250 cm long",
+      "estimate": "EUR 25,000 dealer price",
+      "reason_excluded": "Dealer listing rather than verified auction realization; page is marked sold out."
+    },
+    {
+      "observation_id": "MOSASAUR-OBS-003",
+      "source": "Heritage Auctions",
+      "description": "Halisaurus arambourgi skull from Morocco, 16.5 inches long",
+      "estimate": "USD 5,377.50 realized in 2009",
+      "reason_excluded": "Isolated skull rather than skeleton; retained only as lower-level market context."
+    }
+  ],
+  "preliminary_evidence_assessment": {
+    "raw_comparable_count": 3,
+    "completed_sale_count": 3,
+    "same_genus_or_species_skeleton_count": 2,
+    "evidence_strength": "moderate",
+    "pre_condition_confidence": 0.58,
+    "strengths": [
+      "Two verified completed sales involve Halisaurus skeletons.",
+      "One completed sale is explicitly Halisaurus arambourgi.",
+      "An exact-species Christie's skeleton lot and a current nearly complete dealer example provide additional market context."
+    ],
+    "weaknesses": [
+      "Public realized-price data for complete mosasaur skeletons is sparse.",
+      "Comparable listings often omit original-bone percentage and restoration/composite content.",
+      "The subject's exact restoration extent and original-bone percentage are unknown.",
+      "One official comparable is much smaller and reconstructed, so it should receive low weight."
+    ]
+  },
+  "provenance": {
+    "subject": "User-supplied Rally screenshots and Rally/SEC offering materials.",
+    "research": "Primary auction-house results prioritized; secondary marketplace data used cautiously for context.",
+    "verification_standard": "Completed-sale comparables require a visible realized sale price."
+  },
+  "sources": [
+    {
+      "source_id": "S1",
+      "publisher": "Bonhams",
+      "title": "Natural History, 4 June 2006 — Halisaurus Mosasaur Skeleton",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S2",
+      "publisher": "Timeline Auctions",
+      "title": "Large Fossil Halisaurus arambourgi Mosasaur Skeleton, Lot 0482",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S3",
+      "publisher": "Christie's",
+      "title": "A Mosasaur Skeleton, Morocco — Halisaurus arambourgi",
+      "type": "auction_lot"
+    },
+    {
+      "source_id": "S4",
+      "publisher": "Fossilien Company",
+      "title": "Halisaurus skeleton",
+      "type": "dealer_listing"
+    },
+    {
+      "source_id": "S5",
+      "publisher": "Catawiki",
+      "title": "Reconstructed skeleton — Halisaurus — 80 cm",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S6",
+      "publisher": "Heritage Auctions",
+      "title": "Mosasaur Skull — Halisaurus arambourgi",
+      "type": "auction_result"
+    },
+    {
+      "source_id": "S7",
+      "publisher": "SEC / RSE Collection",
+      "title": "Series #MOSASAUR offering records",
+      "type": "offering_record"
+    }
+  ],
+  "source_ledger": [
+    {
+      "source_id": "S1",
+      "supports": [
+        "Halisaurus skeleton realized price USD 29,875 including premium"
+      ]
+    },
+    {
+      "source_id": "S2",
+      "supports": [
+        "Halisaurus arambourgi skeleton realized price GBP 8,890 including premium"
+      ]
+    },
+    {
+      "source_id": "S3",
+      "supports": [
+        "Exact-species skeleton market evidence",
+        "2.4 m length",
+        "Moroccan Khouribga provenance"
+      ]
+    },
+    {
+      "source_id": "S4",
+      "supports": [
+        "Nearly complete Halisaurus skeleton dealer price EUR 25,000",
+        "Approximately 250 cm length"
+      ]
+    },
+    {
+      "source_id": "S5",
+      "supports": [
+        "Reconstructed 80 cm Halisaurus skeleton sold for EUR 3,300"
+      ]
+    },
+    {
+      "source_id": "S6",
+      "supports": [
+        "Halisaurus arambourgi skull sold for USD 5,377.50 in 2009"
+      ]
+    },
+    {
+      "source_id": "S7",
+      "supports": [
+        "Rally initial offering at USD 5 per share",
+        "6,000 shares",
+        "USD 30,000 initial valuation"
+      ]
+    }
+  ],
+  "demand_factors": {
+    "summary": "Large mounted marine-reptile skeletons have strong display appeal.",
+    "factors": [
+      "Species-level identification and skull completeness can materially improve collector interest.",
+      "Near-complete skeletons are much scarcer than isolated mosasaur teeth, jaws and skulls."
+    ]
+  },
+  "liquidity_observations": {
+    "summary": "Whole-skeleton fossil liquidity is episodic and auction-driven.",
+    "observations": [
+      "The buyer pool is materially smaller than for mass-market collectibles.",
+      "Shipping, installation and provenance checks can affect transaction friction."
+    ]
+  },
+  "legal_regulatory_considerations": [
+    "Fossil legality depends on country of origin, excavation rights, export documentation and import rules.",
+    "Moroccan fossil material is widely traded, but provenance and lawful export documentation should be verified for high-value specimens.",
+    "Scientific significance and private ownership can create reputational considerations even when a transaction is legal."
+  ],
+  "supply_factors": {
+    "summary": "Complete or near-complete Halisaurus skeletons are scarce relative to isolated teeth and skull material.",
+    "factors": [
+      "Commercially assembled mosasaur skeletons vary dramatically in authenticity and restoration.",
+      "Original-bone percentage and composite construction are critical determinants of supply quality."
+    ]
+  },
+  "valuation_adjustment_questions": [
+    "What percentage of the Rally skeleton is original fossil bone?",
+    "How much restoration or composite reconstruction is present?",
+    "Is the skull original to the same individual skeleton?",
+    "What documentation supports the specimen's Moroccan provenance and export history?",
+    "Is the 120-inch mounted length anatomical or display-expanded?",
+    "Should reconstructed commercial skeletons be excluded entirely from official valuation?"
+  ],
+  "valuation_assumptions": {
+    "summary": "The valuation assumes the subject is the authentic Halisaurus arambourgi skeleton described in Rally materials.",
+    "assumptions": [
+      "The subject is approximately 120 inches long and mounted on a custom steel frame.",
+      "The subject is well preserved but shows normal preparation-related wear.",
+      "No premium is assigned for scientific importance without museum-grade provenance documentation.",
+      "No assumption is made about original-bone percentage beyond Rally's completeness description."
+    ]
+  },
+  "research_limitations": [
+    "Sparse transparent realized-price data for complete Halisaurus skeletons.",
+    "No current subject condition inspection.",
+    "No quantified original-bone or restoration percentage for the subject.",
+    "Several exact-family market examples disclose estimates or asks but not realized prices.",
+    "Static configured FX rates may differ from sale-date exchange rates."
+  ],
+  "analyst_notes": [
+    "Bonhams' USD 29,875 Halisaurus skeleton sale is the cleanest historical whole-skeleton USD anchor located.",
+    "Timeline Auctions' GBP 8,890 Halisaurus arambourgi skeleton is the strongest taxonomic match with a visible realized price.",
+    "Christie's exact-species 2.4 m skeleton is highly relevant but cannot enter the official comparable set without a visible realized price.",
+    "The fossil category may expose weaknesses in the current generic similarity model because restoration, original-bone percentage and provenance probably deserve more explicit weight."
+  ]
+}
