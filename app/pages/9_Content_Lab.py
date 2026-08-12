@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import pandas as pd
 import plotly.express as px
@@ -51,3 +52,40 @@ with right:
     st.markdown("#### Follow-up research"); st.write(packet.get("unsupported_questions",[]))
     st.markdown("#### Suggested charts"); st.write(packet.get("suggested_visuals",[]))
 with st.expander("Evidence packet (JSON)"): st.json(packet)
+
+# This section is deliberately separated from the authoritative deterministic evidence.
+st.divider(); st.subheader("Rally Intelligence")
+st.caption("AI interpretation grounded only in the evidence packet above. Rally Data remains authoritative; hypotheses are not facts.")
+try:
+    from alt_asset_explorer.intelligence import IntelligenceConfig, IntelligenceEngine, JsonReportCache, OpenAIResponsesClient
+    from alt_asset_explorer.intelligence.cache import evidence_hash, make_cache_key
+    config=IntelligenceConfig.from_env(); model=config.model; report_type=st.selectbox("Report type",["research_brief","content_brief"],format_func=lambda x:x.replace("_"," ").title())
+    cache=JsonReportCache(ARCHIVE/"intelligence"); digest=evidence_hash(packet)
+    key=make_cache_key(story_id=choice,evidence_digest=digest,prompt_version=config.prompt_version,schema_version=config.schema_version,model=model,report_type=report_type)
+    cached=cache.load(choice,key)
+    if cached:
+        meta=cached.provenance; st.success("Cached report exists · Cache status: HIT")
+        st.markdown(cached.report.article_markdown)
+        with st.expander("Structured report and claim audit"): st.json(cached.report.model_dump())
+        st.caption(f"Generated: {meta.generated_at} · Model: {meta.model} · Prompt: {meta.prompt_version} · Evidence: {meta.evidence_hash[:12]}…")
+        st.caption("Token usage: "+json.dumps(meta.usage.model_dump(exclude_none=True),sort_keys=True))
+        if meta.validation_warnings: st.warning(" ".join(meta.validation_warnings))
+        regenerate=st.button("Regenerate report",help="Makes a new paid API request and preserves the prior generation as a revision.")
+        generate=False
+    else:
+        st.info("No Intelligence report has been generated for this evidence packet.")
+        generate=st.button("Generate Intelligence Report"); regenerate=False
+    if generate or regenerate:
+        api_key=os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            try: api_key=st.secrets.get("OPENAI_API_KEY")
+            except Exception: api_key=None
+        if not api_key: st.error("OPENAI_API_KEY is not configured. Content Lab remains fully available without Intelligence generation.")
+        else:
+            try:
+                with st.spinner("Generating an evidence-grounded report…"):
+                    result=IntelligenceEngine(OpenAIResponsesClient(api_key),cache,config).generate_report(packet,report_type=report_type,model=model,force=regenerate)
+                st.success(f"Report generated · Cache status: {result.cache_status}"); st.rerun()
+            except Exception as exc: st.error(f"Intelligence generation is unavailable: {exc}")
+except Exception as exc:
+    st.warning(f"Rally Intelligence is unavailable, but deterministic Content Lab is unaffected: {exc}")

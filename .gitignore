@@ -24,6 +24,9 @@ data/manual_imports/quarantine/
 # Local custom indexes are not durable or shared.
 data/custom_indices/local/*.json
 
+# On-demand model output is reviewable JSON but local/deployment-runtime state.
+data/processed/content_lab/intelligence/
+
 
 # Deterministic rebuildable analytics; Streamlit computes these from canonical inputs.
 data/cache/
