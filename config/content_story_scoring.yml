@@ -1,12 +1,18 @@
-version: 1
+version: 1.5
 weights:
-  extremeness: 0.24
-  magnitude: 0.18
-  contrast: 0.16
-  persistence: 0.08
-  breadth: 0.08
-  novelty: 0.10
+  extremeness: 0.12
+  magnitude: 0.10
+  contrast: 0.10
+  persistence: 0.07
+  breadth: 0.06
+  novelty: 0.05
   narrative: 0.06
+  historical_rarity: 0.08
+  regime_change: 0.08
+  rank_change: 0.07
+  valuation_gap: 0.06
+  concentration: 0.07
+  benchmark_excess: 0.04
   data_quality: 0.10
 minimum_data_quality: 0.25
 max_per_subject: 2

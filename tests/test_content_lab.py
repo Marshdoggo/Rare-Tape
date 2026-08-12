@@ -2,6 +2,7 @@ import pandas as pd
 import pytest
 
 from alt_asset_explorer.content_lab import ContentLabEngine, ScoringConfig, StoryLead, deduplicate_and_rank, discover_quarters, score_lead
+from alt_asset_explorer.valuation_library.temporal import load_dated_valuation
 
 
 def fixtures():
@@ -61,3 +62,27 @@ def test_missing_valuation_and_insufficient_correlation_are_graceful():
 def test_benchmark_detector_requires_available_endpoints():
     a,o=fixtures(); result=ContentLabEngine(a,o,benchmarks=pd.DataFrame()).discover("2024Q3",families=["benchmark_divergence"])
     assert result.slate==[]
+
+
+def test_valuation_effective_date_and_leakage(tmp_path):
+    import json
+    d=tmp_path/"a"; d.mkdir()
+    (d/"valuation.json").write_text(json.dumps({"asset_id":"a","valuation_date":"2025-01-15","results":{"official_value_available":True,"base_value_usd":400,"conservative_value_usd":300,"optimistic_value_usd":500,"confidence_score":.8}}))
+    v=load_dated_valuation(d); assert v and v.date_source=="valuation_date"
+    a,o=fixtures(); a["share_count"]=1
+    assert ContentLabEngine(a,o,valuations=[v]).discover("2024Q4",families=["fair_value"]).slate==[]
+
+
+def test_valuation_without_defensible_date_fails_closed(tmp_path):
+    import json
+    d=tmp_path/"a"; d.mkdir()
+    (d/"valuation.json").write_text(json.dumps({"asset_id":"a","results":{"official_value_available":True,"base_value_usd":400}}))
+    assert load_dated_valuation(d) is None
+
+
+def test_rank_and_correlation_future_rows_do_not_leak():
+    a,o=fixtures(); lb=pd.DataFrame(columns=["snapshot_date","eligible","metric_key"])
+    future_lb=pd.DataFrame([{"snapshot_date":"2025-03-31","eligible":True,"metric_key":"quarterly_return","subject_id":"asset:a","rank":1,"percentile_rank":1,"eligible_universe_size":4}])
+    base=ContentLabEngine(a,o,leaderboards=lb).discover("2024Q4",families=["rank_history","correlation_regime"]).slate
+    after=ContentLabEngine(a,pd.concat([o,pd.DataFrame([{"asset_id":"a","period_end":"2024-12-31","observed_at":"2025-02-01","price_per_share":999}])]),leaderboards=future_lb).discover("2024Q4",families=["rank_history","correlation_regime"]).slate
+    assert [(x.story_id,x.thesis) for x in base]==[(x.story_id,x.thesis) for x in after]

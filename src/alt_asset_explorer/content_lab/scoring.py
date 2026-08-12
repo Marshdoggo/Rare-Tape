@@ -9,7 +9,7 @@ from .models import StoryLead
 
 @dataclass(frozen=True)
 class ScoringConfig:
-    weights: dict[str, float] = field(default_factory=lambda: {"extremeness": .24, "magnitude": .18, "contrast": .16, "persistence": .08, "breadth": .08, "novelty": .10, "narrative": .06, "data_quality": .10})
+    weights: dict[str, float] = field(default_factory=lambda: {"extremeness":.12,"magnitude":.10,"contrast":.10,"persistence":.07,"breadth":.06,"novelty":.05,"narrative":.06,"historical_rarity":.08,"regime_change":.08,"rank_change":.07,"valuation_gap":.06,"concentration":.07,"benchmark_excess":.04,"data_quality":.10})
     minimum_data_quality: float = .25
     max_per_subject: int = 2
     max_per_family: int = 5
@@ -40,10 +40,20 @@ def deduplicate_and_rank(leads: list[StoryLead], config: ScoringConfig, limit: i
     for lead in eligible:
         fp = (lead.period, lead.primary_subject_id, lead.story_family)
         if fp in fingerprints: continue
-        if subjects.get(lead.primary_subject_id, 0) >= config.max_per_subject: continue
-        if families.get(lead.story_family, 0) >= config.max_per_family: continue
+        if subjects.get(lead.primary_subject_id, 0) >= config.max_per_subject or families.get(lead.story_family, 0) >= config.max_per_family:
+            primary=next((x for x in selected if x.primary_subject_id==lead.primary_subject_id),None)
+            if primary is not None and lead.story_type not in primary.secondary_angles: primary.secondary_angles.append(lead.story_type)
+            continue
         selected.append(lead); fingerprints.add(fp)
         subjects[lead.primary_subject_id] = subjects.get(lead.primary_subject_id, 0) + 1
         families[lead.story_family] = families.get(lead.story_family, 0) + 1
-        if limit is not None and len(selected) >= limit: break
-    return selected
+    if limit is None or len(selected) <= limit: return selected
+    # Seed a slate with each valid family before filling by score. This is a
+    # transparent diversity rule, not a score adjustment or forced candidate.
+    ambassadors=[]; seen=set()
+    for lead in selected:
+        if lead.story_family not in seen:
+            ambassadors.append(lead); seen.add(lead.story_family)
+    if len(ambassadors) >= limit: return ambassadors[:limit]
+    chosen={x.story_id for x in ambassadors}
+    return ambassadors + [x for x in selected if x.story_id not in chosen][:limit-len(ambassadors)]
