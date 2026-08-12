@@ -10,6 +10,7 @@ import pandas as pd
 from alt_asset_explorer.benchmark_lab import validate_benchmark_history
 from .models import StoryLead
 from .scoring import ScoringConfig, deduplicate_and_rank
+from .advanced import detect as detect_advanced
 
 
 def _dates(s: pd.Series) -> pd.Series:
@@ -41,10 +42,13 @@ class DiscoveryResult:
 class ContentLabEngine:
     def __init__(self, assets: pd.DataFrame, observations: pd.DataFrame, *, benchmarks: pd.DataFrame | None = None,
                  liquidity: pd.DataFrame | None = None, exits: pd.DataFrame | None = None,
-                 valuations: list[dict] | None = None, config: ScoringConfig | None = None):
+                 valuations: list | None = None, leaderboards: pd.DataFrame | None = None,
+                 indices: pd.DataFrame | None = None, config: ScoringConfig | None = None):
         self.assets = assets.copy(); self.observations = observations.copy(); self.benchmarks = benchmarks.copy() if benchmarks is not None else pd.DataFrame()
         self.liquidity = liquidity.copy() if liquidity is not None else pd.DataFrame(); self.exits = exits.copy() if exits is not None else pd.DataFrame()
         self.valuations = valuations or []; self.config = config or ScoringConfig()
+        self.leaderboards = leaderboards.copy() if leaderboards is not None else pd.DataFrame()
+        self.indices = indices.copy() if indices is not None else pd.DataFrame()
         self.observations["observed_at"] = _dates(self.observations["observed_at"]); self.observations["period_end"] = _dates(self.observations["period_end"])
         self.observations["price_per_share"] = pd.to_numeric(self.observations["price_per_share"], errors="coerce")
         self.asset_meta = self.assets.drop_duplicates("asset_id").set_index("asset_id", drop=False)
@@ -144,12 +148,13 @@ class ContentLabEngine:
                 leads.append(self._lead("liquidity_staleness","stale_mark",period,start,end,r.asset_id,f"A {int(r.age_days)}-day-old price mark",thesis,[{"metric":"stale_age_days","subject":r.asset_id,"value":int(r.age_days)}],{"stale_age_days":int(r.age_days),"observations":int((self.observations.asset_id==r.asset_id).sum())},{"magnitude":min(1,r.age_days/self.config.stale_days),"novelty":.7,"narrative":.9},max(.3,1-r.age_days/(self.config.stale_days*1.5)),caveats=["Sparse observations can make measured volatility appear artificially low."],charts=["observation timeline","price history"]))
         if enabled("exit_buyout") and not self.exits.empty and "exit_effective_date" in self.exits:
             x=self.exits.copy(); x["exit_effective_date"]=_dates(x["exit_effective_date"]); x=x[x.exit_effective_date.between(start,end)]
+            if "is_confirmed" in x: x=x[x["is_confirmed"].fillna(False)]
             for _,r in x.iterrows():
                 ret=pd.to_numeric(r.get("realized_return"),errors="coerce")
                 if pd.isna(ret): continue
                 thesis=f"{self._name(r.asset_id)} recorded a confirmed {ret:+.1%} exit return in {period}."
                 leads.append(self._lead("exit_buyout","realized_exit",period,start,end,r.asset_id,thesis,thesis,[{"metric":"realized_exit_return","subject":r.asset_id,"value":float(ret)}],{"realized_return":float(ret),"observations":1},{"magnitude":min(1,abs(float(ret))/.7),"novelty":.9,"narrative":.95},.9,caveats=[] if bool(r.get("is_confirmed")) else ["Exit is not marked confirmed."],charts=["exit return vs offering","price history"]))
-        # Valuation artifacts are deliberately ignored unless dated and officially available.
+        leads.extend(detect_advanced(self,period,start,end,returns,enabled))
         quality=[x for x in leads if x.data_quality_score>=self.config.minimum_data_quality]
         slate=deduplicate_and_rank(leads,self.config,limit)
         return DiscoveryResult(period,len(leads),len(quality),len(deduplicate_and_rank(leads,self.config,None)),slate)

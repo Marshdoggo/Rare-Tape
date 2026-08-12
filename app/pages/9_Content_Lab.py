@@ -23,7 +23,13 @@ periods=sorted(leads.period.dropna().unique(),reverse=True); period=st.sidebar.s
 families=sorted(leads.story_family.dropna().unique()); selected_families=st.sidebar.multiselect("Story families",families,default=families)
 categories=sorted(x for x in leads.category.dropna().unique() if str(x).strip()); selected_categories=st.sidebar.multiselect("Categories",categories)
 minimum_quality=st.sidebar.slider("Minimum evidence quality",0.0,1.0,0.25,.05); count=st.sidebar.selectbox("Number of leads",[10,20,50,"All"],index=1)
+minimum_score=st.sidebar.slider("Minimum content score",0.0,100.0,0.0,1.0)
+valuation_only=st.sidebar.checkbox("Valuation-backed only"); regime_only=st.sidebar.checkbox("Regime-change stories only"); exit_only=st.sidebar.checkbox("Confirmed exit stories only")
 view=leads[leads.story_family.isin(selected_families)&(leads.data_quality_score>=minimum_quality)].copy()
+view=view[view.content_score>=minimum_score]
+if valuation_only: view=view[view.story_family.eq("fair_value")]
+if regime_only: view=view[view.story_family.isin(["correlation_regime","volatility_regime"])]
+if exit_only: view=view[view.story_family.isin(["exit_buyout","exit_benchmark"])]
 if period=="Latest": view=view[view.period==periods[0]]
 elif period!="All historical quarters": view=view[view.period==period]
 if selected_categories: view=view[view.category.isin(selected_categories)]
@@ -38,6 +44,9 @@ with left:
     facts=pd.DataFrame(packet.get("facts",[])); st.markdown("#### Evidence"); st.dataframe(facts,hide_index=True,use_container_width=True)
     if len(facts) and "value" in facts: st.plotly_chart(px.bar(facts,x="metric",y="value",title="Evidence metrics"),use_container_width=True)
 with right:
+    st.markdown("#### Point-in-time validity"); st.json(packet.get("temporal_validity",{}))
+    st.markdown("#### Historical context"); st.json(packet.get("historical_context",{}))
+    st.markdown("#### Secondary angles"); st.write(packet.get("secondary_angles",[]) or ["None attached"])
     st.markdown("#### Caveats"); caveats=packet.get("data_quality",{}).get("caveats",[]); st.write(caveats or ["No detector-specific caveat beyond canonical dataset limitations."])
     st.markdown("#### Follow-up research"); st.write(packet.get("unsupported_questions",[]))
     st.markdown("#### Suggested charts"); st.write(packet.get("suggested_visuals",[]))

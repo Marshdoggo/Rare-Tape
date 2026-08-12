@@ -25,11 +25,13 @@ The engine reuses Benchmark Lab validation and follows the canonical quarterly/i
 
 `StoryLead` contains period/as-of/mode, family/type, subjects, thesis, atomic facts, metrics and sample sizes, score dimensions, quality, caveats, allowed claims, unsupported follow-up questions, visual suggestions, formats, franchises, and sources. `to_evidence_packet()` exposes only structured facts and guardrails so a downstream system does not need to extract numbers from prose.
 
-## Detectors shipped
+## Detectors shipped (Build 1.5)
 
-The first functional library covers extreme movers, dataset-period highs/deep drawdowns, benchmark divergence, category leaders/laggards, systematic within-category contrasts, dispersion/breadth, stale-price/data-quality leads, and confirmed exits. Every detector discovers subjects from data; none contains asset-specific rules. Correlation and fair-value families fail closed when overlap or temporally valid valuation evidence is insufficient.
+The library covers the original mover, drawdown, benchmark, category, contrast, breadth, stale-mark and confirmed-exit families plus conservative correlation-regime changes, volatility expansion/compression, quarterly streaks, leaderboard rank jumps, temporally valid experimental fair-value gaps, canonical index attribution/winner concentration, equal- versus market-cap weighting divergence, and confirmed-exit holding-period SPY comparisons. Every detector discovers subjects from data; none contains asset-specific rules.
 
-The modular detector boundary is the family block in `ContentLabEngine.discover`; a future refactor can register detector classes without changing the StoryLead contract. Next priorities are rolling-correlation regime shifts, point-in-time exit benchmark comparisons, index attribution/concentration, valuation manifest dating, volatility compression, and streak/rank-history detectors.
+Advanced detectors live in `advanced.py` and compose Correlation Lab alignment/correlation, canonical index construction and Contribution Lab concentration metrics. Correlation uses comparable observation-count windows and fails closed below configured overlap. Volatility uses observation-to-observation returns and explicitly warns that sparse marking can create apparent compression.
+
+Valuation temporal validity is owned by `valuation_library/temporal.py`. An authored `valuation_date` is high-confidence; a manifest valuation-file timestamp is accepted as low-confidence availability. Filesystem modification time is never authoritative. Missing dates and unofficial values fail closed, and a dated valuation cannot enter a quarter before its effective date. Values remain experimental estimates, never appraisals.
 
 ## Historical and as-of behavior
 
@@ -39,9 +41,9 @@ Stale snapshot values older than 186 days are excluded by default. Historical ra
 
 ## Scoring, quality and deduplication
 
-Weights are configured in `config/content_story_scoring.yml`: extremeness 24%, magnitude 18%, contrast 16%, novelty 10%, quality 10%, persistence 8%, breadth 8%, and deterministic narrative usefulness 6%. Inputs are bounded to `[0,1]`. The weighted score is multiplied by `0.65 + 0.35 × data_quality`, which prevents a spectacular but weak observation from winning solely on magnitude. The minimum quality is 0.25.
+Weights are configured in `config/content_story_scoring.yml`. Build 1.5 adds bounded historical-rarity, regime-change, rank-change, valuation-gap, contribution-concentration and benchmark-excess dimensions alongside the original dimensions. Inputs are bounded to `[0,1]`. The weighted score is multiplied by `0.65 + 0.35 × data_quality`, which prevents a spectacular but weak observation from winning solely on magnitude. The minimum quality is 0.25.
 
-Ranking uses score descending and stable story ID ascending. Deduplication permits one lead per period/subject/family, at most two leads per subject and five per family in a slate. This makes rankings reproducible while retaining more than one genuinely different angle. Archive summaries expose raw, post-quality, post-deduplication, and final-slate counts.
+Ranking uses score descending and stable story ID ascending. Deduplication permits one lead per period/subject/family, at most two leads per subject and five per family in a slate; suppressed subject variants attach as secondary angles. This makes rankings reproducible while retaining more than one genuinely different angle. Archive summaries expose raw, post-quality, post-deduplication, and final-slate counts.
 
 Quality incorporates observation counts, cross-sectional breadth, staleness and detector-specific confirmation. Caveats distinguish low measured volatility from sparse or stale marking. Coincidence is reported as coincidence; causal explanations are always research questions.
 
@@ -65,7 +67,7 @@ The UI offers period, family, category, quality and count filters, a ranked term
 
 ## Known limitations and extension points
 
-Sparse quarterly prices cannot reveal intraperiod paths. Point-in-time share-count/status history is incomplete. Historical category membership uses current canonical identity metadata. Current benchmark comparison uses available committed endpoints rather than a causal model. Exit analytics do not yet compute holding-period benchmark returns. Category means are asset-return summaries, not claims about an investable category portfolio. Correlation, regime-change, valuation-gap, contribution/concentration, streak and full risk-adjusted detectors require further point-in-time infrastructure and therefore fail closed rather than fabricate coverage.
+Sparse quarterly prices cannot reveal intraperiod paths. Point-in-time share-count/status history is incomplete. Historical category membership uses current canonical identity metadata. Category means are asset-return summaries, not claims about an investable category portfolio. Exit comparisons currently guarantee SPY; category and broad Rally holding-period comparisons fail closed until a single exit-aware historical-series resolver is exposed. Valuation-gap closing/expansion also fails closed because the current library has one dated revision per covered asset. Correlations are descriptive and fair values remain experimental.
 
 New detectors should consume a truncated context, emit atomic facts and sample sizes, label estimation explicitly, and add synthetic leakage/insufficient-data tests.
 
