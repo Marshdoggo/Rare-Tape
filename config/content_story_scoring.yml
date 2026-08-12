@@ -1,0 +1,15 @@
+version: 1
+weights:
+  extremeness: 0.24
+  magnitude: 0.18
+  contrast: 0.16
+  persistence: 0.08
+  breadth: 0.08
+  novelty: 0.10
+  narrative: 0.06
+  data_quality: 0.10
+minimum_data_quality: 0.25
+max_per_subject: 2
+max_per_family: 5
+minimum_correlation_observations: 8
+stale_days: 186
