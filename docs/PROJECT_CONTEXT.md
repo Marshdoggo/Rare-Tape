@@ -1,6 +1,6 @@
 # Rally Terminal Project Context
 
-Last audited: 2026-08-02
+Last audited: 2026-08-12
 Verification baseline: Python 3.11, Streamlit 1.51.0, pandas 2.3.3, lxml 6.1.1
 
 ## Purpose And Product State
@@ -17,7 +17,7 @@ A future paper exchange is deliberately outside the shipped scope. Any movement 
 
 ## Architecture And Entry Points
 
-- `app/Home.py` is the Streamlit entrypoint; `app/pages/` contains only the eight production navigation surfaces (Home plus seven research pages) in an explicitly numbered order. Retired development and data-entry views are preserved outside Streamlit's automatic navigation in `app/legacy_pages/`.
+- `app/Home.py` is the Streamlit entrypoint; `app/pages/` contains the numbered production research surfaces, including the deterministic Content Lab editorial assignment desk. Retired development and data-entry views are preserved outside Streamlit's automatic navigation in `app/legacy_pages/`.
 - `src/alt_asset_explorer/` contains schemas, connectors, normalization, research, index, valuation, scoring, export, and storage logic.
 - `scripts/build_dataset.py` builds processed application artifacts from repository data.
 - `scripts/process_manual_research.py` validates and imports manual asset and price research before rebuilding the dataset.
@@ -25,6 +25,13 @@ A future paper exchange is deliberately outside the shipped scope. Any movement 
 - `scripts/fetch_sec_data.py` refreshes the local SEC cache when an appropriate SEC user agent is configured.
 - `scripts/write_report.py --date today` writes a deterministic Markdown market report.
 - `scripts/rebuild_exchange_history.py` rebuilds exchange market-cap, category, return, decomposition, coverage, and reconciliation artifacts.
+- `scripts/build_content_lab.py` scans every eligible historical quarter using actual point-in-time evidence dates and writes deterministic story-lead/evidence archives for the read-only Content Lab page.
+
+## Content Lab (2026-08-12)
+
+Content Lab is a deterministic analytical story-discovery layer, not an LLM or copywriting surface. It produces typed, auditable leads and constrained evidence packets from canonical asset/observation metadata plus committed benchmark and exit context. The initial detectors cover extreme movers, drawdowns/highs, benchmark divergence, category performance, cross-asset contrasts, market breadth/dispersion, stale-mark/data-quality stories, and confirmed exits. Configurable transparent scoring includes a multiplicative evidence-quality penalty, followed by stable subject/family deduplication and slate diversification.
+
+Historical operation is contemporaneous by default: actual `observed_at` timestamps are truncated at the selected boundary, future observations cannot leak backward through an older `period_end`, and stale marks beyond the configured 186-day window are excluded. Version one intentionally fails closed for fair-value and correlation leads when temporal valuation availability or minimum overlap cannot be established. Generated CSV/JSON archives under `data/processed/content_lab/` are committed runtime inputs and can be rebuilt for all, latest, or selected quarters. See `docs/CONTENT_LAB.md` for the full contract and limitations.
 
 The application has no API server or database. Runtime storage is CSV/JSON on the local filesystem. Streamlit pages read committed artifacts from `data/processed/`, `data/normalized/`, `data/reports/`, and reviewed definitions in `data/custom_indices/curated/`.
 

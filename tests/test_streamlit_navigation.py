@@ -17,6 +17,7 @@ def test_production_streamlit_pages_are_focused_and_ordered() -> None:
         "6_Derivatives_Lab.py",
         "7_Integer_Index_Replication.py",
         "8_Valuation_Library.py",
+        "9_Content_Lab.py",
     ]
 
 
