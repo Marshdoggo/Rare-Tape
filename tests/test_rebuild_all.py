@@ -23,15 +23,20 @@ def test_rebuild_all_uses_dependency_order(monkeypatch, tmp_path):
     processed = {"rally_quarterly_indices": pd.DataFrame([{"index_id": "art"}])}
     coverage = pd.DataFrame([{"asset_id": "art-1"}])
     leaderboard = pd.DataFrame([{"subject_id": "asset:art-1"}])
+    content_results = [type("Result", (), {"slate": ["story"]})()]
+    content_paths = (tmp_path / "story_leads.csv",)
 
     monkeypatch.setattr(module, "build_dataset", lambda as_of=None: calls.append("processed") or processed)
     monkeypatch.setattr(module, "build_research_coverage", lambda: calls.append("coverage") or coverage)
     monkeypatch.setattr(module, "build_default_archive", lambda: calls.append("leaderboards") or leaderboard)
     monkeypatch.setattr(module, "write_archive_atomic", lambda frame: calls.append("persist_leaderboards") or tmp_path / "archive.parquet")
+    monkeypatch.setattr(module, "build_content_archive", lambda: calls.append("content_lab") or (content_results, content_paths))
 
     result = module.rebuild_all()
 
-    assert calls == ["processed", "coverage", "leaderboards", "persist_leaderboards"]
+    assert calls == ["processed", "coverage", "leaderboards", "persist_leaderboards", "content_lab"]
     assert result.processed is processed
     assert result.research_coverage is coverage
     assert result.leaderboard_archive is leaderboard
+    assert result.content_lab_results is content_results
+    assert result.content_lab_paths == content_paths

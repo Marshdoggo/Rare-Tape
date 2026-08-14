@@ -28,6 +28,14 @@ def load_engine() -> ContentLabEngine:
         config=ScoringConfig.load(ROOT / "config/content_story_scoring.yml"))
 
 
+def build_content_archive(*, limit: int = 20, output_dir: Path | None = None):
+    """Rebuild the complete Content Lab archive from current canonical inputs."""
+    engine = load_engine()
+    results = engine.discover_all(limit_per_quarter=limit)
+    paths = write_archive(results, output_dir or ROOT / "data/processed/content_lab")
+    return results, paths
+
+
 def main() -> int:
     parser=argparse.ArgumentParser(description="Build deterministic Rally Content Lab story archives.")
     group=parser.add_mutually_exclusive_group(); group.add_argument("--all-quarters",action="store_true"); group.add_argument("--quarter"); group.add_argument("--latest",action="store_true")
