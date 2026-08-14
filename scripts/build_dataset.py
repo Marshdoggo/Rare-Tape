@@ -16,3 +16,4 @@ if __name__ == "__main__":
         print(f"- {name}: {len(frame)} rows")
     print(f"- research_coverage: {len(result.research_coverage)} rows")
     print(f"- quarterly_leaderboard_history: {len(result.leaderboard_archive)} rows")
+    print(f"- content_lab_story_leads: {sum(len(item.slate) for item in result.content_lab_results)} rows")

@@ -63,6 +63,11 @@ The builder writes deterministic, reviewable files under `data/processed/content
 - `story_evidence.json`: complete evidence packets keyed by story ID;
 - `quarterly_story_slates.json`: generation counts and ordered story IDs.
 
+The canonical `python scripts/build_dataset.py` rebuild graph also regenerates the
+complete archive after processed indexes and quarterly leaderboards. Consequently,
+new normalized asset observations are discovered automatically during ordinary
+asset-data uploads; Content Lab has no category or ticker allowlist to maintain.
+
 The UI offers period, family, category, quality and count filters, a ranked terminal-style table, detail view, evidence chart, caveats, research backlog, visual suggestions and transparent JSON.
 
 ## Known limitations and extension points
