@@ -1,7 +1,7 @@
 asset_id,ticker,name,category,status,canonical_status,is_production_asset,is_currently_tradable,is_exited_or_exit_related,has_price_history,history_row_count,first_observation_date,last_observation_date,has_market_cap_history,entered_by_as_of_date,is_universe_eligible,exclusion_reason,quarterly_eligible,equal_weight_eligible,market_cap_weight_eligible,exit_recognized
 rally-00mouton,00MOUTON,2000 Château Mouton Rothschild,wine and whiskey,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-03tache,03TACHE,2003 Domaine de la Romanée-Conti La Tâche,wine and whiskey,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-05jayz,05JAYZ,2005 Topps Jay-Z Autographed Card,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-05jayz,05JAYZ,2005 Topps Jay-Z Autographed Card,trading cards,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-05latour,05LATOUR,2005 Château Latour,wine and whiskey,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-06brm,06BRM,2006 Giacomo Conterno Barolo Riserva Monfortino,wine and whiskey,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-09beaux,09BEAUX,2009 Domaine Leroy Vosne-Romanée Les Beaux Monts,wine and whiskey,trading,active_tradable,True,True,False,True,22,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -68,7 +68,7 @@ rally-beatles2,BEATLES2,"1963 Beatles Fan Club Card, Signed by All Four Beatles"
 rally-birkinblu,BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,exited,exited,True,False,True,True,22,2019-12-31,2025-06-30,True,True,True,included,True,True,True,True
 rally-birkinbor,BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,handbags,buyout_pending,trading_paused,True,False,False,True,23,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-birkintan,BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,handbags,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-blastoise,BLASTOISE,1998 Pokémon Blastoise Test Print Card,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-blastoise,BLASTOISE,1998 Pokémon Blastoise Test Print Card,trading cards,trading,active_tradable,True,True,False,True,15,2022-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-bond1,BOND1,Ian Fleming - Casino Royale (First Edition),books,trading,active_tradable,True,True,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-bondwatch,BONDWATCH,Pierce Brosnan Omega Seamaster James Bond Film-Worn Watch,watches,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-bradbury,BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -91,7 +91,7 @@ rally-faubourg,FAUBOURG,Hermès Faubourg,handbags,exited,exited,True,False,True,
 rally-faubourg2,FAUBOURG2,Hermès Faubourg 2,handbags,exited,exited,True,False,True,True,16,2021-03-31,2025-03-31,True,True,True,included,True,True,True,True
 rally-federal,FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-flash123,FLASH123,1961 DC Comics The Flash #123,comics,trading,active_tradable,True,True,False,True,20,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-fossilbox,FOSSILBOX,1999 Pokémon Fossil First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-fossilbox,FOSSILBOX,1999 Pokémon Fossil First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-frost,FROST,Robert Frost - A Boy's Will (First Edition),books,trading,active_tradable,True,True,False,True,26,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gatsby,GATSBY,The Great Gatsby (Signed First Edition),books,trading,active_tradable,True,True,False,True,23,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-ghost1,GHOST1,1973 Marvel Ghost Rider #1,comics,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -100,7 +100,7 @@ rally-gold1,GOLD1,172 GM Gold Nugget,precious minerals,trading,active_tradable,T
 rally-grapes,GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,21,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-grateful1,GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,trading,active_tradable,True,True,False,True,15,2022-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-gwtw,GWTW,Gone with the Wind (Inscribed First Printing),books,trading,active_tradable,True,True,False,True,17,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-gymbox,GYMBOX,2000 Pokémon Gym Heroes First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-gymbox,GYMBOX,2000 Pokémon Gym Heroes First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,True,20,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-hgwells,HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,19,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-himalaya,HIMALAYA,Hermès 30cm Himalaya Birkin,handbags,buyout_pending,trading_paused,True,False,False,True,25,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-hirst1,HIRST1,"Damien Hirst, The Currency, Painting",art,trading,active_tradable,True,True,False,True,15,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -136,7 +136,7 @@ rally-penguin,PENGUIN,1941 DC Comics Detective Comics #58,comics,trading,active_
 rally-picnic,PICNIC,Hermès 35cm Picnic Kelly,handbags,buyout_pending,trading_paused,True,False,False,True,22,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-pokelugia,POKELUGIA,2000 Pokémon First Edition Neo Genesis Lugia Card,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-pokemon1,POKEMON1,1999 Pokémon First Edition Complete Set,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
-rally-pokemon2,POKEMON2,1999 Pokémon First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-pokemon2,POKEMON2,1999 Pokémon First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-pokemon3,POKEMON3,1999 Pokémon First Edition Complete Set,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-potter,POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-rabbit,RABBIT,The Tale of Peter Rabbit (First Edition),books,trading,active_tradable,True,True,False,True,15,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
