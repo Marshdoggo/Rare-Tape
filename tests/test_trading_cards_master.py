@@ -53,8 +53,27 @@ def test_distinct_complete_set_securities_and_dynamic_pokemon_metadata():
     assert set(cards[cards["significance"].str.startswith("Pokémon", na=False)].index) == {"GYMBOX", "POKEMON2", "FOSSILBOX", "BLASTOISE", "ROCKETBOX", "JUNGLEBOX", "99TMB2", "95TOPSUN", "95CHARZRD", "POKELUGIA", "POKEMON3", "99CHARZRD", "98KNGA", "POKEMON1", "NEOBOX"}
 
 
-def test_trading_cards_have_no_fabricated_price_history_and_registry_validates():
+def test_trading_cards_price_history_preserves_authored_coverage_and_registry_validates():
     cards = _cards()
     observations = pd.read_csv(OBSERVATIONS)
-    assert observations[observations["asset_id"].isin(cards["asset_id"])].empty
+    covered = {"GYMBOX": 21, "POKEMON2": 21, "FOSSILBOX": 23, "BLASTOISE": 16, "05JAYZ": 18}
+    asset_ids = cards.set_index("ticker")["asset_id"]
+    history = observations[observations["asset_id"].isin(asset_ids.loc[list(covered)])]
+
+    actual = history.groupby("asset_id").size()
+    assert {ticker: int(actual[asset_ids[ticker]]) for ticker in covered} == covered
+    assert len(history) == 99
+    assert history["frequency"].value_counts().to_dict() == {"quarterly": 94, "weekly": 5}
+    assert not history.duplicated(["asset_id", "observed_at"]).any()
+    assert set(cards.loc[cards["asset_id"].isin(observations["asset_id"]), "ticker"]) == set(covered)
+
+    shares = cards.set_index("asset_id")["shares_outstanding"]
+    expected_caps = history["price_per_share"] * history["asset_id"].map(shares)
+    assert history["market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+    assert history["implied_market_cap"].to_numpy() == pytest.approx(expected_caps.to_numpy())
+
+    fossilbox = history.query("asset_id == 'rally-fossilbox'").set_index("observed_at")
+    assert fossilbox.loc["2026-06-25T00:00:00Z", "frequency"] == "weekly"
+    assert fossilbox.loc["2026-07-02T00:00:00Z", "frequency"] == "quarterly"
+    assert fossilbox.loc["2026-07-02T00:00:00Z", "period_end"] == "2026-06-30"
     assert validate_asset_registry(cards, observations) == []
