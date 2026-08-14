@@ -13,6 +13,7 @@ class Category(str, Enum):
     cars = "cars"
     wine = "wine"
     cards = "cards"
+    trading_cards = "trading cards"
     memorabilia = "memorabilia"
     comics = "comics"
     books = "books"

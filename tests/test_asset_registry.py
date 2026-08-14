@@ -106,8 +106,8 @@ def test_handbag_pending_offers_preserve_history_and_do_not_create_realized_exit
 def test_lifecycle_counts_reconcile_after_handbag_offer_update():
     registry, _ = _data()
     assert registry["status"].value_counts().to_dict() == {
-        "trading": 120,
-        "exited": 26,
+        "trading": 135,
+        "exited": 33,
         "buyout_pending": 10,
         "exit_pending": 1,
     }
