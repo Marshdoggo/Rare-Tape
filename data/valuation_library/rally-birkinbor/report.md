@@ -1,5 +1,5 @@
 # Hermès 35cm Bordeaux Crocodile Birkin
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Asset ID:** `rally-birkinbor`  
 **Rally Symbol:** `BIRKINBOR`  
@@ -19,7 +19,7 @@
 | Base | **$34,925** |
 | Optimistic | **$35,000** |
 
-Rally Terminal's base fair value for the Hermès 35cm Bordeaux Crocodile Birkin is **$34,925**. The model used five eligible, verified completed-sale comparables. The weighted comparable value is **$33,557**, while the engine-selected base value is the weighted median of **$34,925**.
+Rare Tape's base fair value for the Hermès 35cm Bordeaux Crocodile Birkin is **$34,925**. The model used five eligible, verified completed-sale comparables. The weighted comparable value is **$33,557**, while the engine-selected base value is the weighted median of **$34,925**.
 
 Comparable dispersion is approximately **48.8%**, below the methodology's 75% extreme-dispersion threshold. The valuation therefore did not receive an extreme-dispersion penalty, although the result remains classified as completed with limitations because the subject's current condition is unknown and the handbag category model remains provisional.
 
@@ -179,7 +179,7 @@ Finally, the `handbags_v1` category model is explicitly marked **provisional and
 
 ---
 
-## Rally Terminal View
+## Rare Tape View
 
 **Base fair value: $34,925**  
 **Latest observed market value: $34,000**  
@@ -191,4 +191,4 @@ On the evidence currently available to the engine, the subject appears **approxi
 
 ---
 
-*Research use only. This report is an analytical output of the Rally Terminal valuation methodology and is not an appraisal, investment recommendation, or guarantee of realizable sale value.*
+*Research use only. This report is an analytical output of the Rare Tape valuation methodology and is not an appraisal, investment recommendation, or guarantee of realizable sale value.*

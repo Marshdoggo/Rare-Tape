@@ -1,17 +1,17 @@
 # Hermès 30cm “So Black” Birkin
 
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Ticker:** SOBLACK  
 **Canonical asset ID:** rally-soblack  
 **Category:** Handbags  
 **Valuation date:** August 5, 2026  
-**Methodology:** Rally Terminal Fair Value Methodology v1.0  
+**Methodology:** Rare Tape Fair Value Methodology v1.0<br>
 **Category model:** handbags_v1  
 **Status:** Completed with limitations  
 **Confidence:** 65%
 
-> This report is a structured research estimate based on supplied specifications, documented comparable sales, and Rally Terminal’s provisional deterministic valuation model. It is not an appraisal or investment recommendation.
+> This report is a structured research estimate based on supplied specifications, documented comparable sales, and Rare Tape’s provisional deterministic valuation model. It is not an appraisal or investment recommendation.
 
 ---
 
@@ -172,6 +172,6 @@ The evidence supports the conclusion that SOBLACK appears discounted relative to
 
 ## Disclosure
 
-Rally Terminal is an independent research project and is not affiliated with Rally, Rally Rd, Hermès, Christie’s, Heritage Auctions, or any other referenced institution.
+Rare Tape is an independent research project and is not affiliated with Rally, Rally Rd, Hermès, Christie’s, Heritage Auctions, or any other referenced institution.
 
 This report is for research and educational purposes only. It does not constitute investment advice, an appraisal, an offer to transact, or a guarantee of future value.

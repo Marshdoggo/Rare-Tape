@@ -55,7 +55,7 @@ from alt_asset_explorer.research import calculate_sector_performance, completed_
 from alt_asset_explorer.integer_replication import homepage_summary
 
 
-st.set_page_config(page_title="Rally Terminal", layout="wide")
+st.set_page_config(page_title="Rare Tape", layout="wide")
 render_data_diagnostics()
 
 st.markdown(
@@ -103,7 +103,7 @@ exchange_market_cap = canonical_market.exchange_history.market_cap_history
 current_universe_artifact = canonical_market.current_universe
 current_universe_summary = canonical_market.current_summary
 
-st.title("Rally Terminal")
+st.title("Rare Tape")
 st.caption("Market intelligence for Rally collectibles. Research only, not financial advice.")
 
 with st.expander("Data caveats", expanded=True):
@@ -118,7 +118,7 @@ with st.container(border=True):
     with feature_copy:
         st.markdown('<div class="research-kicker">New Research Laboratory</div>', unsafe_allow_html=True)
         st.markdown("### Rally Derivatives Lab")
-        st.write("Explore how conventional option-pricing models behave when applied to collectible assets and Rally Terminal indexes.")
+        st.write("Explore how conventional option-pricing models behave when applied to collectible assets and Rare Tape indexes.")
     with feature_link:
         st.page_link("pages/6_Derivatives_Lab.py", label="Open Derivatives Lab →", icon="🧪")
 

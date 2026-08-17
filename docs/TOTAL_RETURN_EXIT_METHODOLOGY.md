@@ -1,6 +1,6 @@
 # Exit-Aware Total-Return Methodology
 
-Rally Terminal separates two questions:
+Rare Tape separates two questions:
 
 1. **Tradable Exchange Market Cap** asks how much represented asset value remains active and tradable on Rally. Exited assets leave this series on the effective removal date.
 2. **Total-Return Investment Indexes** ask what an investor's money became under a rules-based index. Realized exit proceeds do not disappear; they become pending settlement or cash and are reinvested at scheduled rebalances.

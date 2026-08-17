@@ -1,6 +1,6 @@
-# Alt Asset Explorer
+# Rare Tape
 
-Standalone research dashboard for fractionalized collectible assets. The current milestone focuses on Rally seed assets, manual comparable sales, NAV estimates, liquidity metrics, deterministic AI context, and an MME-compatible export.
+Rare Tape is a standalone research dashboard for fractionalized collectible assets. The current milestone focuses on Rally seed assets, manual comparable sales, NAV estimates, liquidity metrics, deterministic AI context, and an MME-compatible export.
 
 This software is for research only. Rally shares are securities backed by collectible entities, not direct ownership of physical items. Liquidity may be thin or periodic, comparable sales may be imperfect, and stale marks can materially distort returns.
 
@@ -43,7 +43,7 @@ See `docs/source_strategy.md` for the recommended build order for reliable Rally
 Fetch public SEC/Rally filing data:
 
 ```bash
-SEC_USER_AGENT="AltAssetExplorer/0.1 your-email@example.com" python3 scripts/fetch_sec_data.py --max-filings 40
+SEC_USER_AGENT="RareTape/0.1 your-email@example.com" python3 scripts/fetch_sec_data.py --max-filings 40
 python3 scripts/build_dataset.py
 ```
 

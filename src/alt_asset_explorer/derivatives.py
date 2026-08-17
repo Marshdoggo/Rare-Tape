@@ -50,7 +50,7 @@ class Underlying:
     @property
     def instrument_label(self) -> str:
         return (
-            "Synthetic theoretical option on a non-tradable Rally Terminal index"
+            "Synthetic theoretical option on a non-tradable Rare Tape index"
             if self.is_synthetic
             else "Theoretical option on a Rally share (transferability unconfirmed)"
         )
@@ -206,7 +206,7 @@ def discover_underlyings(
                     category,
                     weighting,
                     history,
-                    "Committed Rally Terminal quarterly index research artifact",
+                    "Committed Rare Tape quarterly index research artifact",
                 )
             )
     if not results:

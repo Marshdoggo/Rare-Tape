@@ -131,7 +131,7 @@ def build_report_package(asset_id: str) -> bytes:
         for fn in ('factors.json','research.json','valuation.json'):
             p=d/fn
             if p.exists(): z.write(p, fn)
-        z.writestr('report_generation_instructions.md', '# Rally Terminal Report Drafting Package\nUse factors.json, research.json, valuation.json, and the methodology document to draft report.md. Do not treat report prose as authoritative structured data.\n')
+        z.writestr('report_generation_instructions.md', '# Rare Tape Report Drafting Package\nUse factors.json, research.json, valuation.json, and the methodology document to draft report.md. Do not treat report prose as authoritative structured data.\n')
     data=zpath.read_bytes(); zpath.unlink(missing_ok=True); return data
 
 

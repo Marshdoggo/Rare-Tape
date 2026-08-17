@@ -7,7 +7,7 @@
   "subcategory": "Hermès Kelly",
   "data_provenance": {
     "rally_asset_specifications": "User-supplied Rally screenshots, 2026-08-08",
-    "canonical_data_precedence": "rally_terminal_repository"
+    "canonical_data_precedence": "rare_tape_repository"
   },
   "rally_data": {
     "initial_offering_price_per_share_usd": 27.0,
@@ -21,7 +21,7 @@
     "last_observed_trade_date": null,
     "quarterly_price_history": [],
     "asset_status": null,
-    "canonical_data_precedence": "rally_terminal_repository"
+    "canonical_data_precedence": "rare_tape_repository"
   },
   "identity": {
     "manufacturer": "Hermès",

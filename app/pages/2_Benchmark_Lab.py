@@ -16,7 +16,7 @@ from alt_asset_explorer.benchmark_lab import (BENCHMARKS, BenchmarkDataError, al
     comparison_dataset, download_benchmark, load_persisted_benchmarks, normalize_to_100,
     relative_metrics, select_local_benchmark, series_metrics)
 
-st.set_page_config(page_title="Benchmark Lab | Rally Terminal", layout="wide")
+st.set_page_config(page_title="Benchmark Lab | Rare Tape", layout="wide")
 render_data_diagnostics()
 st.title("Benchmark Lab")
 st.caption("Compare sparse Rally research observations with liquid public-market proxies. Normalized levels are analytical indexes, not investable dollar portfolios or appraisals.")

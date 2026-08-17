@@ -1,9 +1,9 @@
 # Mosasaur Skeleton
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Asset ID:** `rally-mosasaur`  
 **Valuation date:** 2026-08-10  
-**Methodology:** Rally Terminal valuation methodology v1.0 / fossils_v1  
+**Methodology:** Rare Tape valuation methodology v1.0 / fossils_v1<br>
 **Valuation status:** completed_with_limitations  
 **Confidence:** 55%
 
@@ -17,7 +17,7 @@
 | Base | **$3,597** |
 | Optimistic | **$11,290** |
 
-Rally Terminal's current base fair value estimate for the Mosasaur skeleton is **$3,597**. The model identifies **3 eligible verified comparables**, with a weighted comparable mean of **$11,738** and a weighted-median base value of **$3,597**.
+Rare Tape's current base fair value estimate for the Mosasaur skeleton is **$3,597**. The model identifies **3 eligible verified comparables**, with a weighted comparable mean of **$11,738** and a weighted-median base value of **$3,597**.
 
 This output should be treated cautiously. Comparable dispersion is exceptionally high at **730.6%**, far above the methodology's 75% extreme-dispersion threshold. The fossil category model is also explicitly provisional.
 
@@ -177,4 +177,4 @@ The stronger comparable evidence spans approximately **$11,000 to $30,000**, whi
 
 ---
 
-*Rally Terminal research output. For research and analytical purposes only; not an appraisal or investment recommendation.*
+*Rare Tape research output. For research and analytical purposes only; not an appraisal or investment recommendation.*

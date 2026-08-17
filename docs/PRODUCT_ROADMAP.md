@@ -1,6 +1,6 @@
 # Product Roadmap
 
-This roadmap assumes the product is evolving toward Rally Terminal: a professional market intelligence and valuation layer for Rally and eventually the broader fractional alternative-asset market.
+This roadmap assumes the product is evolving toward Rare Tape: a professional market intelligence and valuation layer for Rally and eventually the broader fractional alternative-asset market.
 
 ## Phase 0 - Repository Audit And Stabilization
 
@@ -23,7 +23,7 @@ Exit criteria:
 
 ## Phase 1 - Canonical Asset Master
 
-Goal: create the authoritative asset table for Rally Terminal.
+Goal: create the authoritative asset table for Rare Tape.
 
 Status: started. `data/processed/canonical_asset_master.csv` now exists and separates current Rally capture rows from SEC-synthesized research rows.
 
@@ -170,7 +170,7 @@ The LLM should never inspect raw unbounded data and invent conclusions. It shoul
 
 ## Phase 9 - Partnership-Ready Product
 
-Goal: demonstrate why Rally Terminal and an official Rally data integration would matter.
+Goal: demonstrate why Rare Tape and an official Rally data integration would matter.
 
 Deliverables:
 

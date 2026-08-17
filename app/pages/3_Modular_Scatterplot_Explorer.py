@@ -30,7 +30,7 @@ from alt_asset_explorer.scatter_explorer import (  # noqa: E402
 )
 
 st.set_page_config(
-    page_title="Modular Scatter Plot Explorer | Rally Terminal", layout="wide"
+    page_title="Modular Scatter Plot Explorer | Rare Tape", layout="wide"
 )
 render_data_diagnostics()
 st.title("Modular Scatter Plot Explorer")

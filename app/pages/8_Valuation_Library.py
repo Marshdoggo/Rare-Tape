@@ -101,7 +101,7 @@ with tab_intake:
         st.session_state.pop('validated_asset_id', None)
         st.session_state['last_intake_selection'] = selected
     ctx=get_asset_financial_context(selected) if selected else {}
-    st.markdown('### Existing Rally Terminal Data')
+    st.markdown('### Existing Rare Tape Data')
     if ctx.get('resolution_status') in ('unknown','ambiguous'):
         st.warning('; '.join(ctx.get('warnings',[])) or 'Selected asset could not be resolved uniquely.')
     hist=ctx.get('quarterly_price_history') or []
@@ -112,7 +112,7 @@ with tab_intake:
         'Number of quarterly observations':len(hist),'First quarterly observation':hist[0] if hist else 'Unavailable','Latest quarterly observation':hist[-1] if hist else 'Unavailable','Asset status':ctx.get('asset_status')
     }
     st.dataframe(display_safe_dataframe([{'field':k,'value':v} for k,v in panel.items()]), hide_index=True, width="stretch")
-    specs_txt=st.text_area('Paste supplemental asset specifications JSON', height=220, help='Rally Terminal will automatically merge existing financial, identity, and price-history data for the selected asset. Paste only the additional collectible specifications available from Rally Rd.')
+    specs_txt=st.text_area('Paste supplemental asset specifications JSON', height=220, help='Rare Tape will automatically merge existing financial, identity, and price-history data for the selected asset. Paste only the additional collectible specifications available from Rally Rd.')
     research_txt=st.text_area('Paste research.json', height=220)
     overwrite=st.checkbox('Overwrite existing files with timestamped revision backups')
     aid_for_summary=ctx.get('asset_id')

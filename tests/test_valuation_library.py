@@ -109,7 +109,7 @@ def test_build_factors_supplemental_only_full_conflict_and_category_mismatch():
     f=build_factors('00MOUTON', {'producer':'Chateau Mouton Rothschild','vintage':2000})
     assert f.rally_data.ticker=='00MOUTON'
     assert f.category_factors['producer']=='Chateau Mouton Rothschild'
-    assert f.field_provenance['rally_data']=='rally_terminal_existing_data'
+    assert f.field_provenance['rally_data']=='rare_tape_existing_data'
     full={'asset_id':'WRONG','category':'books','rally_data':{'latest_share_price_usd':999},'category_factors':{'producer':'X'}}
     f2=build_factors('00MOUTON', full)
     fields={w['field'] for w in f2.merge_warnings}
@@ -147,7 +147,7 @@ def test_report_package_contains_enriched_factors(tmp_path):
     with zipfile.ZipFile(io.BytesIO(pkg)) as z:
         fd=json.loads(z.read('factors.json'))
     assert fd['rally_data']['quarterly_price_history']
-    assert fd['field_provenance']['rally_data']=='rally_terminal_existing_data'
+    assert fd['field_provenance']['rally_data']=='rare_tape_existing_data'
     shutil.rmtree(d)
 
 from datetime import date

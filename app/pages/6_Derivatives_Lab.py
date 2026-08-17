@@ -228,7 +228,7 @@ with st.sidebar:
 est = historical_volatility(observed)
 if selected.is_synthetic:
     st.warning(
-        "Synthetic, non-tradable Rally Terminal research underlying; share capacity and physical hedging are unavailable."
+        "Synthetic, non-tradable Rare Tape research underlying; share capacity and physical hedging are unavailable."
     )
 if stale > 120:
     st.warning(
@@ -470,7 +470,7 @@ sc[5].metric(
     "Spread", f"${spread.absolute_spread:,.3f} ({spread.percentage_spread:.1%})"
 )
 st.caption(
-    "Transparent Rally Terminal research diagnostics—not live quotes, credit ratings, suitability determinations, or regulatory classifications. Deductions: "
+    "Transparent Rare Tape research diagnostics—not live quotes, credit ratings, suitability determinations, or regulatory classifications. Deductions: "
     + ", ".join(set(liq.deductions + conf.deductions))
 )
 st.subheader("Contract Capacity")

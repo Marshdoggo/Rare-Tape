@@ -1,9 +1,9 @@
 # Hermès 30cm Tangerine Ostrich Birkin
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Asset ID:** `rally-birkintan`  
 **Valuation date:** 2026-08-09  
-**Methodology:** Rally Terminal valuation methodology v1.0 / `handbags_v1`  
+**Methodology:** Rare Tape valuation methodology v1.0 / `handbags_v1`<br>
 **Valuation status:** `completed_with_limitations`  
 **Confidence:** 55%
 
@@ -17,7 +17,7 @@
 | Base | **$21,974** |
 | Optimistic | **$32,500** |
 
-Rally Terminal's base fair value for the Hermès 30cm Tangerine Ostrich Birkin is **$21,974**. The valuation is supported by **6 eligible verified comparables**. The engine-selected base value is the weighted median of the comparable set, while the weighted comparable mean is **$24,693**.
+Rare Tape's base fair value for the Hermès 30cm Tangerine Ostrich Birkin is **$21,974**. The valuation is supported by **6 eligible verified comparables**. The engine-selected base value is the weighted median of the comparable set, while the weighted comparable mean is **$24,693**.
 
 The model reports **108.4% comparable dispersion**, above the methodology's 75% extreme-dispersion threshold. This is the principal reason confidence is constrained to **55%**. The subject's current condition is also unknown, and none of the completed-sale comparables is an exact Tangerine realized-price match.
 
@@ -131,11 +131,11 @@ The model is provisional and requires further methodological review. The most im
 
 ## Valuation Conclusion
 
-**Rally Terminal Fair Value Range: $13,970 – $32,500**  
+**Rare Tape Fair Value Range: $13,970 – $32,500**<br>
 **Base Fair Value: $21,974**  
 **Confidence: 55%**
 
-At the base case, Rally Terminal values the Hermès 30cm Tangerine Ostrich Birkin at approximately **$22,000**, versus a last observed Rally market value of **$25,600** and an initial offering valuation of **$28,000**.
+At the base case, Rare Tape values the Hermès 30cm Tangerine Ostrich Birkin at approximately **$22,000**, versus a last observed Rally market value of **$25,600** and an initial offering valuation of **$28,000**.
 
 The current output therefore leans **bearish relative to Rally's market valuation**, but with substantial uncertainty. Better subject-condition evidence and an exact completed Tangerine sale would be the two highest-value additions for improving this estimate.
 

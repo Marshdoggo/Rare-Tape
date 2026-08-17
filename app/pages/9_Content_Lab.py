@@ -8,7 +8,7 @@ import plotly.express as px
 import streamlit as st
 
 ROOT=Path(__file__).resolve().parents[2]; ARCHIVE=ROOT/"data/processed/content_lab"
-st.set_page_config(page_title="Content Lab | Rally Terminal",page_icon="◫",layout="wide")
+st.set_page_config(page_title="Content Lab | Rare Tape",page_icon="◫",layout="wide")
 st.title("Content Lab"); st.caption("Deterministic story discovery · evidence before narrative · not a live Rally feed or appraisal")
 
 @st.cache_data(show_spinner=False)
