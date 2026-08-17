@@ -409,6 +409,8 @@ def test_saved_files_rerun_from_canonical_directory_only():
         for x in (d, upper, lower):
             if x.exists(): shutil.rmtree(x)
         upper.mkdir(parents=True); (upper/'research.json').write_text('{"asset_id":"SOBLACK","research_date":"2026-08-05","comparables":[]}\n')
+        if lower.exists():
+            pytest.skip("case-distinct valuation directories require a case-sensitive filesystem")
         lower.mkdir(parents=True); (lower/'research.json').write_text('{"asset_id":"soblack","research_date":"2026-08-05","comparables":[]}\n')
         f=build_factors('SOBLACK', {'condition': {'grade':'test'}}).model_dump(mode='json')
         save_json(aid,'factors',f); save_json(aid,'research',_soblack_three_research('SOBLACK'))

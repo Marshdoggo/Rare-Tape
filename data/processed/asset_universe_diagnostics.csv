@@ -33,7 +33,7 @@ rally-7orlex,70RLEX,1970 Rolex Watch,watches,exited,exited,True,False,True,True,
 rally-82av1,82AV1,1982 Aston Martin V8 Vantage Oscar India,cars,trading,active_tradable,True,True,False,True,18,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,trading,active_tradable,True,True,False,True,29,2018-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-85gpk,85GPK,1985 Garbage Pail Kids Nasty Nick Sticker Card,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
-rally-85gpk2,85GPK2,"1985 Garbage Pail Kids Wax Box, Sealed",trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-85gpk2,85GPK2,"1985 Garbage Pail Kids Wax Box, Sealed",trading cards,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-91mv1,91MV1,1991 Mitsubishi 3000GT VR-4,cars,buyout_pending,trading_paused,True,False,False,True,28,2018-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-92cc1,92CC1,1992 Chevrolet Corvette ZR-1,cars,trading,active_tradable,True,True,False,True,27,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-92ld1,92LD1,1992 Lancia Delta Martini 5,cars,trading,active_tradable,True,True,False,True,28,2018-12-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -46,7 +46,7 @@ rally-95topsun,95TOPSUN,1995 Pokémon Japanese Topsun Booster Box,trading cards,
 rally-98knga,98KNGA,1998 Pokémon Family Event Kangaskhan Trophy Card,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-99charzrd,99CHARZRD,1999 Pokémon First Edition Charizard Holo #4,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,buyout_pending,trading_paused,True,False,False,True,27,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-99tmb2,99TMB2,1999 Pokémon Tropical Mega Battle Trophy Card,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-99tmb2,99TMB2,1999 Pokémon Tropical Mega Battle Trophy Card,trading cards,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-ac23,AC23,1940 DC Comics Action Comics #23,comics,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-af15,AF15,1962 Marvel Amazing Fantasy #15,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-aghowl,AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -64,7 +64,7 @@ rally-batman181,BATMAN181,1966 DC Comics Batman #181,comics,trading,active_trada
 rally-batman2,BATMAN2,1940 DC Comics Batman #2,comics,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-batman3,BATMAN3,1940 DC Comics Batman #3,comics,trading,active_tradable,True,True,False,True,23,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-batman6,BATMAN6,1941 DC Comics Batman #6,comics,buyout_pending,trading_paused,True,False,False,True,20,2021-03-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-beatles2,BEATLES2,"1963 Beatles Fan Club Card, Signed by All Four Beatles",trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-beatles2,BEATLES2,"1963 Beatles Fan Club Card, Signed by All Four Beatles",trading cards,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-birkinblu,BIRKINBLU,Hermès 25cm Blue Lizard Birkin,handbags,exited,exited,True,False,True,True,22,2019-12-31,2025-06-30,True,True,True,included,True,True,True,True
 rally-birkinbor,BIRKINBOR,Hermès 35cm Bordeaux Crocodile Birkin,handbags,buyout_pending,trading_paused,True,False,False,True,23,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-birkintan,BIRKINTAN,Hermès 30cm Tangerine Ostrich Birkin,handbags,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -112,7 +112,7 @@ rally-hulk1,HULK1,1962 Marvel The Incredible Hulk #1,comics,exited,exited,True,F
 rally-hulk180,HULK180,1974 Marvel The Incredible Hulk #180,comics,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-irobot,IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-jekyll,JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),books,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-junglebox,JUNGLEBOX,1999 Pokémon Jungle First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-junglebox,JUNGLEBOX,1999 Pokémon Jungle First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-justinian,JUSTINIAN,First Depiction of Christ on a Coin,coins,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-justise1,JUSTISE1,1960 DC Comics Justice League of America #1,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-karuizawa,KARUIZAWA,Karuizawa Aqua of Life 50-Year-Old Whisky,wine and whiskey,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -142,7 +142,7 @@ rally-potter,POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,book
 rally-rabbit,RABBIT,The Tale of Peter Rabbit (First Edition),books,trading,active_tradable,True,True,False,True,15,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-riviera,RIVIERA,1965 Rolex 1601 Datejust Joyera Riviera,watches,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-rlexpepsi,RLEXPEPSI,Rolex GMT-Master II Pepsi Jubilee,watches,trading,active_tradable,True,True,False,True,27,2019-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-rocketbox,ROCKETBOX,2000 Pokémon Team Rocket First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-rocketbox,ROCKETBOX,2000 Pokémon Team Rocket First Edition Booster Box,trading cards,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-roosevelt,ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),books,trading,active_tradable,True,True,False,True,25,2020-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-sachs1,SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-shkspr4,SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",books,trading,active_tradable,True,True,False,True,24,2020-09-30,2026-06-30,True,True,True,included,True,True,True,False
