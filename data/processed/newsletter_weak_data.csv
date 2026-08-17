@@ -1,51 +1,51 @@
 ticker,name,category,subcategory,status,metric,value,source_url,notes,last_updated
-ANDYPELE,1977 Andy Warhol Pelé Polaroid,art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-HIRST1,"Damien Hirst, The Currency, Painting",art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-WARHOL1,"1967 Andy Warhol Marilyn Monroe Print, Signed",art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-WARHOL2,"1969 Andy Warhol Campbell’s Soup Print, Signed",art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-ANMLFARM,George Orwell - Animal Farm (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-BOND1,Ian Fleming - Casino Royale (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-CATCHER,J.D. Salinger's The Catcher in the Rye,books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-CONGRESS,Journals of the Continental Congress (1774–1775),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-DUNE,Frank Herbert - Dune (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-EINSTEIN,"Albert Einstein's Philosopher-Scientist, Signed First Edition",books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-FROST,Robert Frost - A Boy's Will (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-GATSBY,The Great Gatsby (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-GWTW,Gone with the Wind (Inscribed First Printing),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-KELLER,Helen Keller 1892 Book (Inscribed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-KEROUAC,Jack Kerouac - On the Road (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-LOTF,William Golding - Lord of the Flies (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-LOTR,J.R.R. Tolkien - The Lord of the Rings Trilogy (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-MARX,Karl Marx - Das Kapital (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-MOBYDICK,Herman Melville - Moby-Dick (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-NEWTON,Isaac Newton - Principia (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-NEWWORLD,Aldous Huxley - Brave New World (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-RABBIT,The Tale of Peter Rabbit (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-TREASURE,Treasure Island (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-ULYSSES,James Joyce - Ulysses (Matisse Signed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-WALDEN,Henry David Thoreau - Walden (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-WILDTHING,Where the Wild Things Are (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
-WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-07-02
+ANDYPELE,1977 Andy Warhol Pelé Polaroid,art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+GRATEFUL1,1966 Grateful Dead Skeleton and Roses Poster,art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+HIRST1,"Damien Hirst, The Currency, Painting",art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+SACHS1,Tom Sachs Rocket Factory “Game Changer”,art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+WARHOL1,"1967 Andy Warhol Marilyn Monroe Print, Signed",art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+WARHOL2,"1969 Andy Warhol Campbell’s Soup Print, Signed",art,art,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+59BOND,Ian Fleming - Goldfinger (Dedication Copy),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+59JFK,John F. Kennedy - Profiles in Courage (Inscribed to Frank Sinatra),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+62BOND,Ian Fleming - The Spy Who Loved Me (Inscribed to RFK),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+AGHOWL,Allen Ginsberg - Howl and Other Poems (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+ALICE,Lewis Carroll - Alice's Adventures in Wonderland (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+ANMLFARM,George Orwell - Animal Farm (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+BOND1,Ian Fleming - Casino Royale (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+BRADBURY,Ray Bradbury - Fahrenheit 451 (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+BROSGRIMM,Grimms' Fairy Tales (Inscribed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+CATCHER,J.D. Salinger's The Catcher in the Rye,books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+CHURCHILL,Winston Churchill - The Second World War (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+CONGRESS,Journals of the Continental Congress (1774–1775),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+DUNE,Frank Herbert - Dune (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+EINSTEIN,"Albert Einstein's Philosopher-Scientist, Signed First Edition",books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+FEDERAL,"Hamilton, Madison, and Jay's The Federalist, First Edition",books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+FROST,Robert Frost - A Boy's Will (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+GATSBY,The Great Gatsby (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+GRAPES,John Steinbeck - The Grapes of Wrath (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+GWTW,Gone with the Wind (Inscribed First Printing),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+HGWELLS,H.G. Wells - The Time Machine (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+IROBOT,"Isaac Asimov - I, Robot (First Edition)",books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+JEKYLL,Dr. Jekyll and Mr. Hyde (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+KELLER,Helen Keller 1892 Book (Inscribed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+KEROUAC,Jack Kerouac - On the Road (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+LOTF,William Golding - Lord of the Flies (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+LOTR,J.R.R. Tolkien - The Lord of the Rings Trilogy (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+MARX,Karl Marx - Das Kapital (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+MOBYDICK,Herman Melville - Moby-Dick (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+NEWTON,Isaac Newton - Principia (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+NEWWORLD,Aldous Huxley - Brave New World (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+POTTER,J.K. Rowling's Harry Potter and the Philosopher's Stone,books,rare books,exited,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+RABBIT,The Tale of Peter Rabbit (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+ROOSEVELT,Theodore Roosevelt - African Game Trails (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+SHKSPR4,"Shakespeare - Comedies, Histories & Tragedies",books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+TKAM,Harper Lee - To Kill a Mockingbird (Signed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+TREASURE,Treasure Island (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+TWOCITIES,Charles Dickens - A Tale of Two Cities (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+ULYSSES,James Joyce - Ulysses (Matisse Signed),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+WALDEN,Henry David Thoreau - Walden (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+WILDTHING,Where the Wild Things Are (Inscribed First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17
+WZRDOFOZ,The Wonderful Wizard of Oz (First Edition),books,rare books,trading,data_completeness,0.0,,"Missing live price, offering cap, comps, or robust NAV confidence.",2026-08-17

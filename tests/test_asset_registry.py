@@ -58,7 +58,7 @@ def test_five_cars_are_halted_pending_buyouts_with_reconciled_offers():
 
 def test_offer_metadata_does_not_change_or_extend_canonical_history():
     registry, observations = _data()
-    assert len(observations) == 3032
+    assert len(observations) == 3132
     for ticker, (date, price, offer, _, _) in OFFERS.items():
         asset_id = registry.loc[registry["ticker"].eq(ticker), "asset_id"].item()
         history = observations[observations["asset_id"].eq(asset_id)].sort_values("observed_at")
@@ -97,7 +97,7 @@ def test_handbag_pending_offers_preserve_history_and_do_not_create_realized_exit
     target_ids = set(registry.loc[registry["ticker"].isin(HANDBAG_OFFERS), "asset_id"])
     exits = pd.read_csv(ROOT / "data/processed/rally_exits.csv")
 
-    assert len(observations) == 3032
+    assert len(observations) == 3132
     assert target_ids.isdisjoint(set(exits["asset_id"]))
     assert target_ids.isdisjoint(set(active_registry(registry)["asset_id"]))
     assert target_ids.issubset(set(historical_registry(registry)["asset_id"]))

@@ -56,14 +56,25 @@ def test_distinct_complete_set_securities_and_dynamic_pokemon_metadata():
 def test_trading_cards_price_history_preserves_authored_coverage_and_registry_validates():
     cards = _cards()
     observations = pd.read_csv(OBSERVATIONS)
-    covered = {"GYMBOX": 21, "POKEMON2": 21, "FOSSILBOX": 23, "BLASTOISE": 16, "05JAYZ": 18}
+    covered = {
+        "GYMBOX": 21,
+        "POKEMON2": 21,
+        "FOSSILBOX": 23,
+        "BLASTOISE": 16,
+        "05JAYZ": 18,
+        "ROCKETBOX": 21,
+        "JUNGLEBOX": 23,
+        "99TMB2": 22,
+        "85GPK2": 17,
+        "BEATLES2": 17,
+    }
     asset_ids = cards.set_index("ticker")["asset_id"]
     history = observations[observations["asset_id"].isin(asset_ids.loc[list(covered)])]
 
     actual = history.groupby("asset_id").size()
     assert {ticker: int(actual[asset_ids[ticker]]) for ticker in covered} == covered
-    assert len(history) == 99
-    assert history["frequency"].value_counts().to_dict() == {"quarterly": 94, "weekly": 5}
+    assert len(history) == 199
+    assert history["frequency"].value_counts().to_dict() == {"quarterly": 188, "weekly": 11}
     assert not history.duplicated(["asset_id", "observed_at"]).any()
     assert set(cards.loc[cards["asset_id"].isin(observations["asset_id"]), "ticker"]) == set(covered)
 
@@ -76,4 +87,10 @@ def test_trading_cards_price_history_preserves_authored_coverage_and_registry_va
     assert fossilbox.loc["2026-06-25T00:00:00Z", "frequency"] == "weekly"
     assert fossilbox.loc["2026-07-02T00:00:00Z", "frequency"] == "quarterly"
     assert fossilbox.loc["2026-07-02T00:00:00Z", "period_end"] == "2026-06-30"
+
+    junglebox = history.query("asset_id == 'rally-junglebox'").set_index("observed_at")
+    assert junglebox.loc["2022-02-14T00:00:00Z", "frequency"] == "weekly"
+    assert junglebox.loc["2022-02-18T00:00:00Z", "frequency"] == "weekly"
+    assert junglebox.loc["2022-03-29T00:00:00Z", "frequency"] == "quarterly"
+    assert set(junglebox.loc[["2022-02-14T00:00:00Z", "2022-02-18T00:00:00Z", "2022-03-29T00:00:00Z"], "period_end"]) == {"2022-03-31"}
     assert validate_asset_registry(cards, observations) == []

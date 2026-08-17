@@ -54,19 +54,19 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 
 | Artifact | Rows |
 | --- | ---: |
-| Canonical asset master | 157 |
-| Rally asset decision universe | 157 |
-| Normalized manual assets | 157 |
-| Normalized manual price observations | 2560 |
-| Processed price history | 2441 |
-| General Rally index rows | 790 |
-| Quarterly Rally index rows | 558 |
+| Canonical asset master | 179 |
+| Rally asset decision universe | 179 |
+| Normalized manual assets | 179 |
+| Normalized manual price observations | 3132 |
+| Processed price history | 3012 |
+| General Rally index rows | 830 |
+| Quarterly Rally index rows | 602 |
 | SEC series context | 0 |
 | Rally exits | 11 |
 | Comparable sales universe | 6 |
 | Asset-to-comp matches | 0 |
-| Research coverage rows | 157 |
-| Asset universe diagnostics rows | 157 |
+| Research coverage rows | 179 |
+| Asset universe diagnostics rows | 179 |
 
 Counts describe the committed research snapshot and are not live market coverage.
 
@@ -79,6 +79,8 @@ The normalized Rally asset master includes two currently trading Precious Minera
 The canonical normalized Asset Registry includes 22 historical Trading Cards securities: 15 trading/active records and seven exited/inactive completed buyouts. Canonical tickers preserve Rally-style spellings, including `05JAYZ`, `95TOPSUN`, and `98KNGA`; `POKEMON1` and `POKEMON3` remain distinct securities for separate copies of a 1999 Pokémon First Edition Complete Set. Month-only offerings use the established first-of-month normalization, while all seven unknown exit dates remain null. Offering totals and authoritative exit totals reconcile to share counts; repeating exit prices are stored at full available precision, and BLASTOISE uses the corrected $250,000 offering market cap. Lightweight collectible type, franchise/significance, and publisher/manufacturer metadata supports dynamic category and Pokémon-universe discovery without hard-coded ticker lists.
 
 The first Trading Cards history batch adds all 99 supplied dated observations for five active registry securities: `GYMBOX` (21), `POKEMON2` (21), `FOSSILBOX` (23), `BLASTOISE` (16), and `05JAYZ` (18). Registry identity, offering, share-count, and lifecycle metadata remain unchanged. Every price-derived market cap reconciles to canonical shares outstanding, dates and prices are retained exactly, and no missing quarters are interpolated. The established closest-to-quarter-end method selects 94 quarterly representatives while retaining five earlier same-quarter observations as higher-frequency evidence. In particular, both FOSSILBOX observations on June 25 and July 2, 2026 remain in the raw observation layer; July 2 is the Q2 representative because it is closest to June 30. Trading Cards coverage is five of 22 historical registry assets and five of 15 active assets. Equal-weight, market-cap-weighted, full-market, exchange-history, coverage, leaderboard, AI-context, export, and runtime analytical consumers were refreshed through the deterministic canonical rebuild graph.
+
+The second Trading Cards history batch adds all 100 supplied dated observations for five more active registry securities: `ROCKETBOX` (21), `JUNGLEBOX` (23), `99TMB2` (22), `85GPK2` (17), and `BEATLES2` (17). Registry metadata remains unchanged, no offering-day observations were invented, and every implied market cap reconciles to canonical shares outstanding. The closest-to-quarter-end method selects 94 quarterly representatives while retaining six earlier same-quarter observations as dated weekly evidence. JUNGLEBOX's February 14 and February 18, 2022 observations are both preserved as weekly evidence while March 29 represents Q1 2022. Trading Cards coverage is now ten of 22 historical registry assets and ten of 15 active assets, with 199 raw observations and 188 quarterly representatives across the covered active securities. Category equal-weight and market-cap-weighted indexes, full-market indexes, exchange history, coverage, leaderboards, Content Lab, AI context, exports, and runtime correlation, scatter, portfolio, custom-index, contribution, benchmark, and integer-replication consumers were refreshed through the canonical rebuild graph.
 
 ## Comics Asset Registry Coverage (2026-08-02)
 
