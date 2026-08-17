@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'src'))
 from alt_asset_explorer.valuation_library.assembler import build_factors
 
-p=argparse.ArgumentParser(description='Build an enriched valuation-library factors.json from Rally Terminal data plus supplemental specs.')
+p=argparse.ArgumentParser(description='Build an enriched valuation-library factors.json from Rare Tape data plus supplemental specs.')
 p.add_argument('--asset', required=True)
 p.add_argument('--spec-file', required=True, type=Path)
 p.add_argument('--write', action='store_true')

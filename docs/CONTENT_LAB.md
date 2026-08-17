@@ -1,4 +1,4 @@
-# Rally Terminal Content Lab
+# Rare Tape Content Lab
 
 ## Purpose and architecture
 

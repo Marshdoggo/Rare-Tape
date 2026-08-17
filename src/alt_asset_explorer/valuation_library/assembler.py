@@ -59,8 +59,8 @@ def build_factors(asset_id: str, supplemental_specs: dict[str,Any], *, save: boo
     if conflicts: warnings.append('canonical_manual_conflicts_retained_canonical_values')
     data={
         'schema_version':'1.1','asset_id':ctx['asset_id'],'rally_symbol':ctx['ticker'],'asset_name':ctx['asset_name'] or ctx['asset_id'],'category':str(ctx.get('category') or '').lower(),'subcategory':ctx.get('subcategory'),
-        'rally_data':ctx,'category_factors':category_factors,'field_provenance':{'rally_data':'rally_terminal_existing_data','category_factors':'manual_rally_specification_transcription'},
-        'merge_warnings':conflicts,'source_notes':['Financial, identity, and historical fields are auto-enriched from committed Rally Terminal artifacts.'],
+        'rally_data':ctx,'category_factors':category_factors,'field_provenance':{'rally_data':'rare_tape_existing_data','category_factors':'manual_rally_specification_transcription'},
+        'merge_warnings':conflicts,'source_notes':['Financial, identity, and historical fields are auto-enriched from committed Rare Tape artifacts.'],
         'missing_fields':warnings,
     }
     f=Factors.model_validate(data)

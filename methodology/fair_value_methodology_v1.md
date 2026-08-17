@@ -1,4 +1,4 @@
-# Rally Terminal Fair Value Methodology v1
+# Rare Tape Fair Value Methodology v1
 
 This methodology is a provisional deterministic framework for asset-level research-library infrastructure. It is not an appraisal standard and must not be presented as definitive fair value.
 

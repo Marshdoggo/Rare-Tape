@@ -1,4 +1,4 @@
-# Rally Terminal Intelligence Layer
+# Rare Tape Intelligence Layer
 
 ## Purpose and boundary
 

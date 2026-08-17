@@ -41,7 +41,7 @@ Rank movement exists only when a subject is eligible at both endpoints. Newly el
 
 ## Revision and coverage warning
 
-Historical rankings reflect the assets currently cataloged in Rally Terminal, not necessarily the complete contemporaneous Rally catalog. Adding newly researched historical assets can revise old rankings. `generated_at`, methodology version, and a source-file fingerprint distinguish rebuilds. The archive is reproducible for that source version, but its historical values may change as manual catalog coverage expands.
+Historical rankings reflect the assets currently cataloged in Rare Tape, not necessarily the complete contemporaneous Rally catalog. Adding newly researched historical assets can revise old rankings. `generated_at`, methodology version, and a source-file fingerprint distinguish rebuilds. The archive is reproducible for that source version, but its historical values may change as manual catalog coverage expands.
 
 ## Refresh contract and prevention
 

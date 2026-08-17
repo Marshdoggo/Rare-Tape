@@ -1,10 +1,10 @@
 # Hermès Picnic Kelly 35
 
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Asset ID:** `rally-picnic`  
 **Valuation date:** 2026-08-08  
-**Methodology:** Rally Terminal Valuation Methodology v1.0 / `handbags_v1`  
+**Methodology:** Rare Tape Valuation Methodology v1.0 / `handbags_v1`<br>
 **Status:** `completed_with_limitations`  
 **Confidence:** **45%**
 
@@ -18,7 +18,7 @@
 | Base | **$32,760** |
 | Optimistic | **$44,450** |
 
-Rally Terminal's base fair value for the Hermès Picnic Kelly 35 is **$32,760**. The valuation is supported by five eligible, verified auction comparables. The weighted comparable mean is **$34,376**, while the engine-selected base value is the weighted median of **$32,760**.
+Rare Tape's base fair value for the Hermès Picnic Kelly 35 is **$32,760**. The valuation is supported by five eligible, verified auction comparables. The weighted comparable mean is **$34,376**, while the engine-selected base value is the weighted median of **$32,760**.
 
 The model reports unusually wide comparable dispersion of **102.8%**, above the methodology's 75% extreme-dispersion threshold. That is the principal reason the valuation remains `completed_with_limitations` and carries a moderate-low **45% confidence score**.
 
@@ -148,4 +148,4 @@ The strongest conclusion supported by the data is not that the asset has a preci
 
 ---
 
-*Research use only. This report reflects Rally Terminal's structured valuation methodology and the supplied research evidence; it is not an appraisal or investment recommendation.*
+*Research use only. This report reflects Rare Tape's structured valuation methodology and the supplied research evidence; it is not an appraisal or investment recommendation.*

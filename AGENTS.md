@@ -1,4 +1,4 @@
-# Rally Terminal Agent Guidance
+# Rare Tape Agent Guidance
 
 Before changing this repository, read `docs/PROJECT_CONTEXT.md`. It is the canonical briefing for the product state, architecture, data provenance, limitations, and current priorities.
 

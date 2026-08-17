@@ -43,7 +43,7 @@ with st.expander("Data status and methodology", expanded=False):
     status[3].metric("Subjects", archive.subject_id.nunique())
     status[4].metric("Methodology", archive.methodology_version.iloc[-1])
     status[5].metric("Source version", archive.source_data_version.iloc[-1])
-    st.warning("Historical rankings reflect assets currently cataloged in Rally Terminal. Adding newly cataloged historical assets can revise prior ranks. Current status metadata is not a point-in-time tradability history; eligibility is inferred from observations. Existing index prototypes are reused, and market capitalization uses available current share-count metadata, so historical market cap is an estimate where share counts changed.")
+    st.warning("Historical rankings reflect assets currently cataloged in Rare Tape. Adding newly cataloged historical assets can revise prior ranks. Current status metadata is not a point-in-time tradability history; eligibility is inferred from observations. Existing index prototypes are reused, and market capitalization uses available current share-count metadata, so historical market cap is an estimate where share counts changed.")
 
 tab_current, tab_history, tab_movement = st.tabs(["Current Leaderboard", "Rank Over Time", "Movement"])
 metric_options = list(METRICS)

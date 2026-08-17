@@ -1,9 +1,9 @@
 # Megalodon Jaw
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Asset ID:** `rally-megalodon`  
 **Valuation date:** 2026-08-10  
-**Methodology:** Rally Terminal valuation methodology v1.0 / `fossils_v1`  
+**Methodology:** Rare Tape valuation methodology v1.0 / `fossils_v1`<br>
 **Valuation status:** `completed_with_limitations`  
 **Confidence:** **75%**
 
@@ -17,7 +17,7 @@
 | Base | **$62,500** |
 | Optimistic | **$74,500** |
 
-Rally Terminal's base fair value for the Megalodon jaw is **$62,500**. The valuation is supported by **two eligible, verified reconstructed-jaw comparables**. The weighted comparable mean is **$68,247**, while the engine-selected base value is the weighted median of **$62,500**.
+Rare Tape's base fair value for the Megalodon jaw is **$62,500**. The valuation is supported by **two eligible, verified reconstructed-jaw comparables**. The weighted comparable mean is **$68,247**, while the engine-selected base value is the weighted median of **$62,500**.
 
 Comparable dispersion is approximately **19.2%**, which is well below the methodology's 75% extreme-dispersion threshold. The engine therefore did **not** apply an extreme-dispersion penalty.
 
@@ -131,7 +131,7 @@ That makes the **$62,500 base value best interpreted as a direct-comparable floo
 
 ## Recommended Secondary Valuation Method
 
-For composite fossil displays such as reconstructed shark jaws, Rally Terminal should eventually supplement the whole-object comparable method with a **sum-of-parts model**.
+For composite fossil displays such as reconstructed shark jaws, Rare Tape should eventually supplement the whole-object comparable method with a **sum-of-parts model**.
 
 A stronger methodology would estimate:
 

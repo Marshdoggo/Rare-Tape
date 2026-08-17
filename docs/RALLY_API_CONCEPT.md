@@ -1,6 +1,6 @@
 # Rally API Concept
 
-This document describes the data Rally Terminal would benefit from if Rally ever offered an official API or partner data feed. It is not an attempt to build an API on Rally's behalf.
+This document describes the data Rare Tape would benefit from if Rally ever offered an official API or partner data feed. It is not an attempt to build an API on Rally's behalf.
 
 ## Why An Official API Matters
 
@@ -184,7 +184,7 @@ Rate-limit headers should expose remaining quota and reset time.
 
 ## Partnership Pitch
 
-Rally Terminal can demonstrate demand for a reliable Rally data layer by showing:
+Rare Tape can demonstrate demand for a reliable Rally data layer by showing:
 
 - How many fields are currently unavailable or stale without official data.
 - Which analytics become possible with reliable quotes and trade history.

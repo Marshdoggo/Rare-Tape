@@ -1,17 +1,17 @@
 # Hermès 30cm Himalaya Birkin
 
-## Rally Terminal Valuation Report
+## Rare Tape Valuation Report
 
 **Ticker:** HIMALAYA  
 **Canonical asset ID:** rally-himalaya  
 **Category:** Handbags  
 **Valuation date:** August 8, 2026  
-**Methodology:** Rally Terminal Fair Value Methodology v1.0  
+**Methodology:** Rare Tape Fair Value Methodology v1.0<br>
 **Category model:** handbags_v1  
 **Status:** Completed with limitations  
 **Confidence:** 45%
 
-> This report is based only on the structured factors, research, and valuation outputs supplied for Rally Terminal. It is a research estimate, not an appraisal or investment recommendation.
+> This report is based only on the structured factors, research, and valuation outputs supplied for Rare Tape. It is a research estimate, not an appraisal or investment recommendation.
 
 ---
 
@@ -211,12 +211,12 @@ The confidence score should be interpreted as evidence-quality confidence, not a
 
 The latest Rally market value of **$93,800** is essentially equal to the model's base fair value.
 
-On the current evidence, HIMALAYA appears **approximately fairly valued relative to Rally Terminal's present comparable-sales model**, with the principal uncertainty coming from subject condition and the unusually wide historical dispersion in Himalaya auction prices.
+On the current evidence, HIMALAYA appears **approximately fairly valued relative to Rare Tape's present comparable-sales model**, with the principal uncertainty coming from subject condition and the unusually wide historical dispersion in Himalaya auction prices.
 
 ---
 
 ## Disclosure
 
-Rally Terminal is an independent research project and is not affiliated with Rally, Rally Rd, Hermès, Christie’s, Heritage Auctions, or any other referenced institution.
+Rare Tape is an independent research project and is not affiliated with Rally, Rally Rd, Hermès, Christie’s, Heritage Auctions, or any other referenced institution.
 
 This report is for research and educational purposes only. It does not constitute investment advice, an appraisal, an offer to transact, or a guarantee of future value.

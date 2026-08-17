@@ -1,4 +1,4 @@
-# Rally Terminal Data Architecture Inventory
+# Rare Tape Data Architecture Inventory
 
 Last audited: 2026-07-27
 

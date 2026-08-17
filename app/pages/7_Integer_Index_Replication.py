@@ -18,7 +18,7 @@ from alt_asset_explorer.integer_replication import (
     simulate_buy_and_hold, tracking_frontier,
 )
 
-st.set_page_config(page_title="Integer Index Replication | Rally Terminal", layout="wide")
+st.set_page_config(page_title="Integer Index Replication | Rare Tape", layout="wide")
 render_data_diagnostics()
 st.title("Integer Index Replication")
 st.caption("Whole-share portfolio research from canonical authored Rally observations — not an executable trading tool or appraisal.")
