@@ -159,7 +159,11 @@ class DirectAssetResolver:
         history = resolve_canonical_history(context.observations, [asset_id], as_of_cutoff=context.as_of_cutoff)
         rows = history.canonical_rows.copy()
         price = pd.to_numeric(rows.get("price_per_share"), errors="coerce")
-        series = pd.DataFrame({"date": rows.get("canonical_period"), "index_level": price}).dropna()
+        series = pd.DataFrame({
+            "date": rows.get("canonical_period"),
+            "available_at": rows.get("available_at"),
+            "index_level": price,
+        }).dropna(subset=["date", "available_at", "index_level"])
         constituents = pd.DataFrame({"date": series["date"], "asset_id": asset_id, "portfolio_weight": 1.0})
         return ResolvedComponent(definition, series, constituents, {"resolver": type(self).__name__, "price_policy": "canonical_no_fill"})
 

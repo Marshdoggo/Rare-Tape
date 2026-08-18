@@ -106,6 +106,15 @@ current_universe_summary = canonical_market.current_summary
 st.title("Rare Tape")
 st.caption("Market intelligence for Rally collectibles. Research only, not financial advice.")
 
+with st.container(border=True):
+    backtest_copy, backtest_link = st.columns([4, 1])
+    with backtest_copy:
+        st.markdown('<div class="research-kicker">Systematic Portfolio Research</div>', unsafe_allow_html=True)
+        st.markdown("### Quarterly Backtesting Suite")
+        st.write("Extend the Portfolio Construction Laboratory with auditable quarter-end rules, explicit cash, turnover, and a buy-and-hold comparison.")
+    with backtest_link:
+        st.page_link("pages/Backtesting_Suite.py", label="Open Backtesting Suite →", icon="📈")
+
 with st.expander("Data caveats", expanded=True):
     st.write(
         "Current tradable assets use the shared canonical universe: production Rally assets with active-tradable status, shares, and a non-stale secondary valuation. "

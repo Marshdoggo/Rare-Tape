@@ -18,6 +18,7 @@ def test_production_streamlit_pages_are_focused_and_ordered() -> None:
         "7_Integer_Index_Replication.py",
         "8_Valuation_Library.py",
         "9_Content_Lab.py",
+        "Backtesting_Suite.py",
     ]
 
 
@@ -26,5 +27,6 @@ def test_home_page_links_use_production_page_paths() -> None:
 
     assert 'st.page_link("pages/6_Derivatives_Lab.py"' in home
     assert 'st.page_link("pages/7_Integer_Index_Replication.py"' in home
+    assert 'st.page_link("pages/Backtesting_Suite.py"' in home
     assert "pages/19_Derivatives_Lab.py" not in home
     assert "pages/20_Integer_Index_Replication.py" not in home
