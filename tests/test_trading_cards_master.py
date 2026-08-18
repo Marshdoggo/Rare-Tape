@@ -67,14 +67,19 @@ def test_trading_cards_price_history_preserves_authored_coverage_and_registry_va
         "99TMB2": 22,
         "85GPK2": 17,
         "BEATLES2": 17,
+        "HOMER": 17,
+        "BART": 19,
+        "95TOPSUN": 21,
+        "85GPK": 21,
+        "STARWARS3": 17,
     }
     asset_ids = cards.set_index("ticker")["asset_id"]
     history = observations[observations["asset_id"].isin(asset_ids.loc[list(covered)])]
 
     actual = history.groupby("asset_id").size()
     assert {ticker: int(actual[asset_ids[ticker]]) for ticker in covered} == covered
-    assert len(history) == 199
-    assert history["frequency"].value_counts().to_dict() == {"quarterly": 188, "weekly": 11}
+    assert len(history) == 294
+    assert history["frequency"].value_counts().to_dict() == {"quarterly": 277, "weekly": 17}
     assert not history.duplicated(["asset_id", "observed_at"]).any()
     assert set(cards.loc[cards["asset_id"].isin(observations["asset_id"]), "ticker"]) == set(covered)
 
@@ -93,4 +98,17 @@ def test_trading_cards_price_history_preserves_authored_coverage_and_registry_va
     assert junglebox.loc["2022-02-18T00:00:00Z", "frequency"] == "weekly"
     assert junglebox.loc["2022-03-29T00:00:00Z", "frequency"] == "quarterly"
     assert set(junglebox.loc[["2022-02-14T00:00:00Z", "2022-02-18T00:00:00Z", "2022-03-29T00:00:00Z"], "period_end"]) == {"2022-03-31"}
+
+    bart = history.query("asset_id == 'rally-bart'").set_index("observed_at")
+    assert bart.loc["2026-07-10T00:00:00Z", "frequency"] == "weekly"
+    assert bart.loc["2026-08-18T00:00:00Z", "frequency"] == "weekly"
+    assert set(bart.loc[["2026-07-10T00:00:00Z", "2026-08-18T00:00:00Z"], "period_end"]) == {"2026-09-30"}
+
+    starwars3 = history.query("asset_id == 'rally-starwars3'").set_index("observed_at")
+    assert starwars3.loc["2026-08-13T00:00:00Z", "frequency"] == "weekly"
+    assert starwars3.loc["2026-08-13T00:00:00Z", "period_end"] == "2026-09-30"
+
+    active_ids = cards.loc[cards["ticker"].isin(ACTIVE), "asset_id"]
+    active_history_ids = set(observations.loc[observations["asset_id"].isin(active_ids), "asset_id"])
+    assert active_history_ids == set(active_ids)
     assert validate_asset_registry(cards, observations) == []

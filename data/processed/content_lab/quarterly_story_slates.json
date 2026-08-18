@@ -348,7 +348,7 @@
       "7161af976b2f",
       "44971873ef5b",
       "9ff716afb766",
-      "0b01ec3e301f",
+      "2896619097d7",
       "3dca985d7337",
       "4d61ca97696a",
       "5119a4673bb5",
@@ -368,8 +368,8 @@
   {
     "deduplicated_candidates": 44,
     "period": "2022Q1",
-    "quality_candidates": 138,
-    "raw_candidates": 138,
+    "quality_candidates": 139,
+    "raw_candidates": 139,
     "story_ids": [
       "ab018bd49c95",
       "62e5e6081161",
@@ -396,15 +396,15 @@
   {
     "deduplicated_candidates": 43,
     "period": "2022Q2",
-    "quality_candidates": 187,
-    "raw_candidates": 187,
+    "quality_candidates": 189,
+    "raw_candidates": 189,
     "story_ids": [
       "9dfed8ddaa1f",
       "d9313c5a32e2",
       "beadfc93c6e9",
       "1a7abdf28956",
       "159e0fafd5b8",
-      "8c4d2c24e651",
+      "73950e76e9e1",
       "605b2be1a180",
       "9a6d8281058e",
       "d75bf1d971d0",
@@ -424,8 +424,8 @@
   {
     "deduplicated_candidates": 42,
     "period": "2022Q3",
-    "quality_candidates": 203,
-    "raw_candidates": 203,
+    "quality_candidates": 204,
+    "raw_candidates": 204,
     "story_ids": [
       "d9f11db1141b",
       "afdaadcded30",
@@ -433,10 +433,10 @@
       "85b581765562",
       "0e379a8c3d80",
       "7d129993ce2e",
-      "a8937dc245b5",
+      "c07417a410d5",
       "f27464a7abf0",
       "3cc36ef93788",
-      "095bb5980759",
+      "29b472f657a8",
       "95938570d22f",
       "b066cdcd15f6",
       "86f0c1a3cc21",
@@ -452,12 +452,12 @@
   {
     "deduplicated_candidates": 43,
     "period": "2022Q4",
-    "quality_candidates": 220,
-    "raw_candidates": 220,
+    "quality_candidates": 224,
+    "raw_candidates": 224,
     "story_ids": [
       "4359a2a85178",
       "d8af652ca4c0",
-      "30947afaf589",
+      "5c03fd40a5ad",
       "95e1119ed5e9",
       "439e1cf42e11",
       "0caec0e1257b",
@@ -468,20 +468,20 @@
       "4223e0681feb",
       "19411236c68c",
       "50d604f29a47",
-      "e4a11d0a8591",
+      "ad5a01afb015",
       "fb254a6885da",
       "9b012720b444",
-      "0b82b6971b53",
+      "e4a11d0a8591",
       "00ef80ee419c",
-      "5c03fd40a5ad",
-      "d3323a919239"
+      "8996339c97cb",
+      "ea0f6515b092"
     ]
   },
   {
     "deduplicated_candidates": 39,
     "period": "2023Q1",
-    "quality_candidates": 227,
-    "raw_candidates": 227,
+    "quality_candidates": 233,
+    "raw_candidates": 233,
     "story_ids": [
       "a6bf1775c603",
       "767ffcfabb99",
@@ -508,8 +508,8 @@
   {
     "deduplicated_candidates": 39,
     "period": "2023Q2",
-    "quality_candidates": 239,
-    "raw_candidates": 239,
+    "quality_candidates": 245,
+    "raw_candidates": 245,
     "story_ids": [
       "9b9027542851",
       "e5227832a350",
@@ -534,18 +534,18 @@
     ]
   },
   {
-    "deduplicated_candidates": 40,
+    "deduplicated_candidates": 39,
     "period": "2023Q3",
-    "quality_candidates": 257,
-    "raw_candidates": 257,
+    "quality_candidates": 262,
+    "raw_candidates": 262,
     "story_ids": [
       "cd461d136fbe",
       "e709d894ffdb",
       "24639fc536d2",
       "1398ea4e58c7",
       "5cf02ce478bf",
+      "9bbcb34d8509",
       "a98e0a130cfe",
-      "d46067e297a0",
       "d1ab8e723a99",
       "7367b339fa08",
       "d5a898fdb3a3",
@@ -555,8 +555,8 @@
       "d7911b9694d0",
       "cb28eb6ba333",
       "1c9aaaf8ef80",
+      "0bf641845c24",
       "9f73b17b5f0d",
-      "cca4a75e9477",
       "3004a6c0b3e3",
       "77c883955cd2"
     ]
@@ -564,8 +564,8 @@
   {
     "deduplicated_candidates": 38,
     "period": "2023Q4",
-    "quality_candidates": 283,
-    "raw_candidates": 283,
+    "quality_candidates": 291,
+    "raw_candidates": 291,
     "story_ids": [
       "0cd50f0307ec",
       "fe8849688928",
@@ -574,7 +574,7 @@
       "dd6a4ddcb06e",
       "1d53d399d50c",
       "d5f6ccc4cd9d",
-      "03d6858c9690",
+      "4dbfb72be4a0",
       "4d8108dbf934",
       "580415252be9",
       "588784153695",
@@ -592,8 +592,8 @@
   {
     "deduplicated_candidates": 47,
     "period": "2024Q1",
-    "quality_candidates": 285,
-    "raw_candidates": 285,
+    "quality_candidates": 293,
+    "raw_candidates": 293,
     "story_ids": [
       "4d514e86786f",
       "892093ac7f6d",
@@ -620,8 +620,8 @@
   {
     "deduplicated_candidates": 42,
     "period": "2024Q2",
-    "quality_candidates": 287,
-    "raw_candidates": 287,
+    "quality_candidates": 296,
+    "raw_candidates": 296,
     "story_ids": [
       "78b8df3108c9",
       "a8a21395c6cb",
@@ -646,21 +646,21 @@
     ]
   },
   {
-    "deduplicated_candidates": 42,
+    "deduplicated_candidates": 43,
     "period": "2024Q3",
-    "quality_candidates": 283,
-    "raw_candidates": 283,
+    "quality_candidates": 291,
+    "raw_candidates": 291,
     "story_ids": [
       "1b9aa81627f0",
       "9315d11305f9",
       "15a1e430e03e",
       "17a0e4a5a7d9",
       "c16c5281dfc9",
-      "5d5fa9f9b412",
-      "513f4b5afdd6",
+      "b6ee8ab8e07e",
+      "68ed9ead5c29",
       "6ef9d0930992",
-      "fac032cc1a0d",
       "efd1bc7557d5",
+      "fac032cc1a0d",
       "067aa666a276",
       "e86284ae59df",
       "96380afbd704",
@@ -668,21 +668,21 @@
       "290d7994f628",
       "28017ec3c56c",
       "9b1ec10b94ff",
+      "b8726aa3ce8d",
       "789c252bc64e",
-      "605a542bf1e8",
-      "36b64d2f2fe9"
+      "605a542bf1e8"
     ]
   },
   {
     "deduplicated_candidates": 41,
     "period": "2024Q4",
-    "quality_candidates": 275,
-    "raw_candidates": 275,
+    "quality_candidates": 285,
+    "raw_candidates": 285,
     "story_ids": [
       "935fb7aaa9e4",
       "303ffb769ccf",
       "2eb0d2f2666c",
-      "7ae35e47149c",
+      "74e581442023",
       "5f21b67202fb",
       "40b2bf75abd1",
       "502155145dcf",
@@ -691,21 +691,21 @@
       "bfd8b0e22570",
       "c77c51bb06eb",
       "c8b1a983ce28",
+      "9620913a1984",
       "bc1741dd4b42",
       "adb5ab11dd70",
       "45f90d3078b3",
-      "8539065e0480",
       "2dd8a943c4a2",
       "16ff2fb505bd",
-      "63dc7dd04d8f",
-      "eab899df1ca7"
+      "378122cc420c",
+      "63dc7dd04d8f"
     ]
   },
   {
     "deduplicated_candidates": 42,
     "period": "2025Q1",
-    "quality_candidates": 299,
-    "raw_candidates": 299,
+    "quality_candidates": 306,
+    "raw_candidates": 306,
     "story_ids": [
       "2d5f826d32dc",
       "3168db2fdc19",
@@ -732,8 +732,8 @@
   {
     "deduplicated_candidates": 45,
     "period": "2025Q2",
-    "quality_candidates": 297,
-    "raw_candidates": 297,
+    "quality_candidates": 304,
+    "raw_candidates": 304,
     "story_ids": [
       "2644e2750b7a",
       "a55fa919af7c",
@@ -760,8 +760,8 @@
   {
     "deduplicated_candidates": 45,
     "period": "2025Q3",
-    "quality_candidates": 309,
-    "raw_candidates": 309,
+    "quality_candidates": 315,
+    "raw_candidates": 315,
     "story_ids": [
       "0261d220b4c1",
       "bc6e29ab647b",
@@ -769,7 +769,7 @@
       "13c9931590e4",
       "879f113303c6",
       "b386afa93966",
-      "35eedb1521f2",
+      "738dab185b47",
       "9d1fdca5c893",
       "6048a51b92fa",
       "ca62371f4e2d",
@@ -786,15 +786,15 @@
     ]
   },
   {
-    "deduplicated_candidates": 42,
+    "deduplicated_candidates": 43,
     "period": "2025Q4",
-    "quality_candidates": 299,
-    "raw_candidates": 299,
+    "quality_candidates": 306,
+    "raw_candidates": 306,
     "story_ids": [
       "01c8cbc7cccb",
       "56f08bd1b863",
-      "001a20ba400e",
       "796836423fd6",
+      "001a20ba400e",
       "2fee75d0161d",
       "a2b4191bf665",
       "2499949894c9",
@@ -816,17 +816,17 @@
   {
     "deduplicated_candidates": 45,
     "period": "2026Q1",
-    "quality_candidates": 278,
-    "raw_candidates": 278,
+    "quality_candidates": 285,
+    "raw_candidates": 285,
     "story_ids": [
       "089f05826235",
       "fa59f67be0bb",
       "f1f2f21b6c8e",
       "22e29196cf1a",
+      "ba4cb45a2f1f",
       "0c854216a976",
       "d394d6a7a5d3",
-      "ba4cb45a2f1f",
-      "06039ffd9fca",
+      "03bb688298b6",
       "78a4665769f2",
       "691e786d4c40",
       "030be6257a27",
@@ -836,16 +836,16 @@
       "39e816c7025b",
       "3a1ac79446fa",
       "74d275bde02d",
-      "a6596ae94640",
-      "fb9dd4489c5b",
-      "7379196e6a29"
+      "a7af95b61b13",
+      "66d749e1c170",
+      "a6596ae94640"
     ]
   },
   {
     "deduplicated_candidates": 46,
     "period": "2026Q2",
-    "quality_candidates": 310,
-    "raw_candidates": 310,
+    "quality_candidates": 317,
+    "raw_candidates": 317,
     "story_ids": [
       "0acfa6ae1b49",
       "2087ea4f89aa",
@@ -870,10 +870,10 @@
     ]
   },
   {
-    "deduplicated_candidates": 38,
+    "deduplicated_candidates": 42,
     "period": "2026Q3",
-    "quality_candidates": 296,
-    "raw_candidates": 296,
+    "quality_candidates": 307,
+    "raw_candidates": 307,
     "story_ids": [
       "3b362e031604",
       "127cd6256dd7",
@@ -885,6 +885,8 @@
       "951a032dbd5f",
       "8fa1309ea957",
       "09bc1f00f149",
+      "d5aa5e8abc09",
+      "5dc66bc389fc",
       "b36ca84334b9",
       "42737352d775",
       "4d43bee30534",
@@ -892,9 +894,7 @@
       "8619e63a30dc",
       "25fea605ef4c",
       "f4ebe92524aa",
-      "a823caf9629e",
-      "3e009ea2b7ca",
-      "a299506aaab9"
+      "a823caf9629e"
     ]
   }
 ]

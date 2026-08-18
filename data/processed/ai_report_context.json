@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-17",
+  "as_of": "2026-08-18",
   "purpose": "Rally-first alternative asset universe with secondary comp NAV support.",
   "diagnostics": [
     {
@@ -35,7 +35,7 @@
     {
       "metric": "rows_with_invalid_dates",
       "value": 0,
-      "notes": "/private/tmp/rare-tape-rebuild.WpzSyd/data/diagnostics/import_errors.csv"
+      "notes": "/Users/marshallwhiteley/Desktop/Coding Projects/Rare-Tape/data/diagnostics/import_errors.csv"
     },
     {
       "metric": "duplicate_possible_lots",

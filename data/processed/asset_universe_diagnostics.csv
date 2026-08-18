@@ -32,7 +32,7 @@ rally-79stella,79STELLA,1979 Rolex Coral Stella Dial Day-Date,watches,trading,ac
 rally-7orlex,70RLEX,1970 Rolex Watch,watches,exited,exited,True,False,True,True,12,2019-12-31,2023-12-31,True,True,True,included,True,True,True,True
 rally-82av1,82AV1,1982 Aston Martin V8 Vantage Oscar India,cars,trading,active_tradable,True,True,False,True,18,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,trading,active_tradable,True,True,False,True,29,2018-09-30,2026-06-30,True,True,True,included,True,True,True,False
-rally-85gpk,85GPK,1985 Garbage Pail Kids Nasty Nick Sticker Card,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-85gpk,85GPK,1985 Garbage Pail Kids Nasty Nick Sticker Card,trading cards,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-85gpk2,85GPK2,"1985 Garbage Pail Kids Wax Box, Sealed",trading cards,trading,active_tradable,True,True,False,True,16,2022-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-91mv1,91MV1,1991 Mitsubishi 3000GT VR-4,cars,buyout_pending,trading_paused,True,False,False,True,28,2018-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-92cc1,92CC1,1992 Chevrolet Corvette ZR-1,cars,trading,active_tradable,True,True,False,True,27,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -42,7 +42,7 @@ rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,trading,active_tradable,True,True,False
 rally-94dv1,94DV1,1994 Dodge Viper RT/10,cars,buyout_pending,trading_paused,True,False,False,True,29,2019-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,buyout_pending,trading_paused,True,False,False,True,26,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-95charzrd,95CHARZRD,1996 Pokémon Japanese No Rarity Charizard,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
-rally-95topsun,95TOPSUN,1995 Pokémon Japanese Topsun Booster Box,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-95topsun,95TOPSUN,1995 Pokémon Japanese Topsun Booster Box,trading cards,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-98knga,98KNGA,1998 Pokémon Family Event Kangaskhan Trophy Card,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-99charzrd,99CHARZRD,1999 Pokémon First Edition Charizard Holo #4,trading cards,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,buyout_pending,trading_paused,True,False,False,True,27,2019-09-30,2026-06-30,True,True,True,included,True,True,True,False
@@ -57,7 +57,7 @@ rally-aproak,APROAK,Audemars Piguet Royal Oak,watches,exited,exited,True,False,T
 rally-avengers1,AVENGERS1,1963 Marvel The Avengers #1,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-avengers57,AVENGERS57,1968 Marvel The Avengers #57,comics,trading,active_tradable,True,True,False,True,21,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-baro,BARO,Barosaurus Skeleton,fossils,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
-rally-bart,BART,1993 SkyBox Bart Simpson Art de Bart Signed Sketch,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-bart,BART,1993 SkyBox Bart Simpson Art de Bart Signed Sketch,trading cards,trading,active_tradable,True,True,False,True,17,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-batman,BATMAN,"1940 DC Comics Batman #1, CGC 8.0",comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-batman1,BATMAN1,"1940 DC Comics Batman #1, CGC 1.5",comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-batman181,BATMAN181,1966 DC Comics Batman #181,comics,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -106,7 +106,7 @@ rally-himalaya,HIMALAYA,Hermès 30cm Himalaya Birkin,handbags,buyout_pending,tra
 rally-hirst1,HIRST1,"Damien Hirst, The Currency, Painting",art,trading,active_tradable,True,True,False,True,15,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-hobbit,HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,trading,active_tradable,True,True,False,True,19,2021-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-homer,HOMER,1993 SkyBox Homer Simpson Art de Bart Signed Sketch,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-homer,HOMER,1993 SkyBox Homer Simpson Art de Bart Signed Sketch,trading cards,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,trading,active_tradable,True,True,False,True,20,2021-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-hulk1,HULK1,1962 Marvel The Incredible Hulk #1,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-hulk180,HULK180,1974 Marvel The Incredible Hulk #180,comics,trading,active_tradable,True,True,False,True,18,2022-03-31,2026-06-30,True,True,True,included,True,True,True,False
@@ -154,7 +154,7 @@ rally-spider1,SPIDER1,1963 Marvel The Amazing Spider-Man #1,comics,trading,activ
 rally-spider10,SPIDER10,1964 Marvel The Amazing Spider-Man #10,comics,trading,active_tradable,True,True,False,True,22,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
 rally-spider129,SPIDER129,1974 Marvel The Amazing Spider-Man #129,comics,trading,active_tradable,True,True,False,True,19,2021-09-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-starwars1,STARWARS1,1977 Marvel Star Wars #1,comics,trading,active_tradable,True,True,False,True,23,2020-12-31,2026-06-30,True,True,True,included,True,True,True,False
-rally-starwars3,STARWARS3,1977 Topps Star Wars Series 1–5 Unopened Boxes,trading cards,trading,active_tradable,True,True,False,False,0,,,False,True,True,included,False,False,False,False
+rally-starwars3,STARWARS3,1977 Topps Star Wars Series 1–5 Unopened Boxes,trading cards,trading,active_tradable,True,True,False,True,16,2022-06-30,2026-06-30,True,True,True,included,True,True,True,False
 rally-steg,STEG,BCQ-24 Stegosaurus Skeleton,fossils,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-super14,SUPER14,1942 DC Comics Superman #14,comics,exited,exited,True,False,True,False,0,,,False,True,True,included,False,False,False,True
 rally-super21,SUPER21,1943 DC Comics Superman #21,comics,trading,active_tradable,True,True,False,True,23,2020-06-30,2026-06-30,True,True,True,included,True,True,True,False

@@ -5,5 +5,5 @@ assets_with_no_comps,179,Rally assets without matched realized sale comps
 comps_missing_sale_price,0,Comps missing realized sale price
 comps_missing_estimate,6,Comps missing estimate low or high
 comps_missing_size_material_color,6,Comps missing at least one matching attribute
-rows_with_invalid_dates,0,/workspace/rally-terminal/data/diagnostics/import_errors.csv
+rows_with_invalid_dates,0,/Users/marshallwhiteley/Desktop/Coding Projects/Rare-Tape/data/diagnostics/import_errors.csv
 duplicate_possible_lots,0,"Same source, auction, title, date, and sale price"

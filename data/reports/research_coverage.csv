@@ -32,7 +32,7 @@ rally-79stella,79STELLA,1979 Rolex Coral Stella Dial Day-Date,watches,True,True,
 rally-7orlex,70RLEX,1970 Rolex Watch,watches,True,True,True,2020-05-12,2023-09-27,10,10,0,0,0,,,,486.0,True,True,,11,,10,,2020-06-30,2023-09-30,,,10,10
 rally-82av1,82AV1,1982 Aston Martin V8 Vantage Oscar India,cars,True,True,True,2022-06-21,2026-06-29,17,17,0,0,0,,,,101.0,True,True,,18,,17,,2022-06-30,2026-06-30,,,17,17
 rally-83fb1,83FB1,1983 Ferrari 512 BBi,cars,True,True,True,2018-11-29,2026-06-26,30,30,0,0,0,,,,258.0,True,True,,31,,28,,2018-12-31,2026-06-30,,2022-09-30; 2024-06-30,30,30
-rally-85gpk,85GPK,1985 Garbage Pail Kids Nasty Nick Sticker Card,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-85gpk,85GPK,1985 Garbage Pail Kids Nasty Nick Sticker Card,trading cards,True,True,True,2021-06-30,2026-06-29,21,21,0,0,0,,,,121.0,True,True,,22,,20,,2021-06-30,2026-06-30,,2022-03-31,21,21
 rally-85gpk2,85GPK2,"1985 Garbage Pail Kids Wax Box, Sealed",trading cards,True,True,True,2022-08-29,2026-06-29,17,17,0,0,0,,,,95.0,True,True,,18,,16,,2022-09-30,2026-06-30,,2022-09-30,17,17
 rally-91mv1,91MV1,1991 Mitsubishi 3000GT VR-4,cars,True,True,True,2019-03-21,2026-06-29,28,28,0,0,0,,,,189.0,True,True,,29,,28,,2019-03-31,2026-06-30,,,28,28
 rally-92cc1,92CC1,1992 Chevrolet Corvette ZR-1,cars,True,True,True,2019-12-01,2026-06-29,28,28,0,0,0,,,,142.0,True,True,,29,,28,,2019-12-31,2026-06-30,,,28,28
@@ -42,7 +42,7 @@ rally-93xj1,93XJ1,1993 Jaguar XJ220,cars,True,True,True,2019-01-29,2026-06-29,30
 rally-94dv1,94DV1,1994 Dodge Viper RT/10,cars,True,True,True,2019-04-04,2026-06-29,29,29,0,0,0,,,,192.0,True,True,,30,,29,,2019-03-31,2026-06-30,,,29,29
 rally-94fs1,94FS1,1994 Ferrari 348 Spider,cars,True,True,True,2020-01-28,2026-06-24,25,25,0,0,0,,,,241.0,True,True,,26,,25,,2019-12-31,2026-06-30,,,25,25
 rally-95charzrd,95CHARZRD,1996 Pokémon Japanese No Rarity Charizard,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-95topsun,95TOPSUN,1995 Pokémon Japanese Topsun Booster Box,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-95topsun,95TOPSUN,1995 Pokémon Japanese Topsun Booster Box,trading cards,True,True,True,2021-06-22,2026-06-24,21,21,0,0,0,,,,141.0,True,True,,22,,20,,2021-06-30,2026-06-30,,2022-03-31,21,21
 rally-98knga,98KNGA,1998 Pokémon Family Event Kangaskhan Trophy Card,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-99charzrd,99CHARZRD,1999 Pokémon First Edition Charizard Holo #4,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-99ss1,99SS1,1999 Shelby Series 1,cars,True,True,True,2020-01-07,2026-06-23,26,26,0,0,0,,,,153.0,True,True,,27,,26,,2019-12-31,2026-06-30,,,26,26
@@ -57,7 +57,7 @@ rally-aproak,APROAK,Audemars Piguet Royal Oak,watches,True,True,True,2020-06-02,
 rally-avengers1,AVENGERS1,1963 Marvel The Avengers #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-avengers57,AVENGERS57,1968 Marvel The Avengers #57,comics,True,True,True,2021-04-20,2026-06-30,22,22,0,0,0,,,,123.0,True,True,,23,,22,,2021-06-30,2026-06-30,,,22,22
 rally-baro,BARO,Barosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
-rally-bart,BART,1993 SkyBox Bart Simpson Art de Bart Signed Sketch,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-bart,BART,1993 SkyBox Bart Simpson Art de Bart Signed Sketch,trading cards,True,True,True,2022-04-19,2026-08-18,19,19,0,0,0,,,,143.0,True,True,,20,,18,,2022-06-30,2026-09-30,,2026-09-30,19,19
 rally-batman,BATMAN,"1940 DC Comics Batman #1, CGC 8.0",comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-batman1,BATMAN1,"1940 DC Comics Batman #1, CGC 1.5",comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-batman181,BATMAN181,1966 DC Comics Batman #181,comics,True,True,True,2022-03-30,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
@@ -106,7 +106,7 @@ rally-himalaya,HIMALAYA,Hermès 30cm Himalaya Birkin,handbags,True,True,True,202
 rally-hirst1,HIRST1,"Damien Hirst, The Currency, Painting",art,True,True,True,2022-10-10,2026-06-29,15,15,0,0,0,,,,179.0,True,True,,16,,15,,2022-10-10,2026-06-30,,,15,15
 rally-hobbit,HOBBIT,"J.R.R. Tolkien's The Hobbit, First Edition",books,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-holmes,HOLMES,Arthur Conan Doyle - Adventures & Memoirs of Sherlock Holmes,books,True,True,True,2022-03-31,2026-06-29,18,18,0,0,0,,,,95.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
-rally-homer,HOMER,1993 SkyBox Homer Simpson Art de Bart Signed Sketch,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-homer,HOMER,1993 SkyBox Homer Simpson Art de Bart Signed Sketch,trading cards,True,True,True,2022-04-19,2026-06-26,17,17,0,0,0,,,,188.0,True,True,,18,,16,,2022-06-30,2026-06-30,,2022-12-31,17,17
 rally-huckfinn,HUCKFINN,Mark Twain - Adventures of Huckleberry Finn (First Edition),books,True,True,True,2021-10-28,2026-06-29,19,19,0,0,0,,,,184.0,True,True,,3,,19,,2021-09-30,2026-06-30,,,19,2
 rally-hulk1,HULK1,1962 Marvel The Incredible Hulk #1,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-hulk180,HULK180,1974 Marvel The Incredible Hulk #180,comics,True,True,True,2022-03-28,2026-06-29,18,18,0,0,0,,,,94.0,True,True,,19,,18,,2022-03-31,2026-06-30,,,18,18
@@ -154,7 +154,7 @@ rally-spider1,SPIDER1,1963 Marvel The Amazing Spider-Man #1,comics,True,True,Tru
 rally-spider10,SPIDER10,1964 Marvel The Amazing Spider-Man #10,comics,True,True,True,2021-02-04,2026-07-01,22,22,0,0,0,,,,133.0,True,True,,23,,22,,2020-12-31,2026-06-30,,,22,22
 rally-spider129,SPIDER129,1974 Marvel The Amazing Spider-Man #129,comics,True,True,True,2021-10-19,2026-06-26,19,19,0,0,0,,,,160.0,True,True,,20,,19,,2021-09-30,2026-06-30,,,19,19
 rally-starwars1,STARWARS1,1977 Marvel Star Wars #1,comics,True,True,True,2020-11-03,2026-06-26,23,23,0,0,0,,,,123.0,True,True,,24,,23,,2020-12-31,2026-06-30,,,23,23
-rally-starwars3,STARWARS3,1977 Topps Star Wars Series 1–5 Unopened Boxes,trading cards,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
+rally-starwars3,STARWARS3,1977 Topps Star Wars Series 1–5 Unopened Boxes,trading cards,True,True,True,2022-05-04,2026-08-13,17,17,0,0,0,,,,222.0,True,True,,18,,17,,2022-06-30,2026-09-30,,,17,17
 rally-steg,STEG,BCQ-24 Stegosaurus Skeleton,fossils,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-super14,SUPER14,1942 DC Comics Superman #14,comics,True,True,True,,,0,0,0,0,0,,,,,False,False,missing_secondary_price_observation; missing_observed_market_cap,3,,0,,,,,,0,0
 rally-super21,SUPER21,1943 DC Comics Superman #21,comics,True,True,True,2020-10-06,2026-06-26,24,24,0,0,0,,,,130.0,True,True,,25,,23,,2020-12-31,2026-06-30,,2022-03-31,24,24

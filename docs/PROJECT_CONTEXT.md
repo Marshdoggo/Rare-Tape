@@ -1,6 +1,6 @@
 # Rare Tape Project Context
 
-Last audited: 2026-08-17
+Last audited: 2026-08-18
 Verification baseline: Python 3.11, Streamlit 1.51.0, pandas 2.3.3, lxml 6.1.1
 
 ## Purpose And Product State
@@ -57,9 +57,9 @@ Current generated snapshot after removing legacy demo/SEC-synthesized rows from 
 | Canonical asset master | 179 |
 | Rally asset decision universe | 179 |
 | Normalized manual assets | 179 |
-| Normalized manual price observations | 3132 |
-| Processed price history | 3012 |
-| General Rally index rows | 830 |
+| Normalized manual price observations | 3227 |
+| Processed price history | 3107 |
+| General Rally index rows | 846 |
 | Quarterly Rally index rows | 602 |
 | SEC series context | 0 |
 | Rally exits | 11 |
@@ -81,6 +81,8 @@ The canonical normalized Asset Registry includes 22 historical Trading Cards sec
 The first Trading Cards history batch adds all 99 supplied dated observations for five active registry securities: `GYMBOX` (21), `POKEMON2` (21), `FOSSILBOX` (23), `BLASTOISE` (16), and `05JAYZ` (18). Registry identity, offering, share-count, and lifecycle metadata remain unchanged. Every price-derived market cap reconciles to canonical shares outstanding, dates and prices are retained exactly, and no missing quarters are interpolated. The established closest-to-quarter-end method selects 94 quarterly representatives while retaining five earlier same-quarter observations as higher-frequency evidence. In particular, both FOSSILBOX observations on June 25 and July 2, 2026 remain in the raw observation layer; July 2 is the Q2 representative because it is closest to June 30. Trading Cards coverage is five of 22 historical registry assets and five of 15 active assets. Equal-weight, market-cap-weighted, full-market, exchange-history, coverage, leaderboard, AI-context, export, and runtime analytical consumers were refreshed through the deterministic canonical rebuild graph.
 
 The second Trading Cards history batch adds all 100 supplied dated observations for five more active registry securities: `ROCKETBOX` (21), `JUNGLEBOX` (23), `99TMB2` (22), `85GPK2` (17), and `BEATLES2` (17). Registry metadata remains unchanged, no offering-day observations were invented, and every implied market cap reconciles to canonical shares outstanding. The closest-to-quarter-end method selects 94 quarterly representatives while retaining six earlier same-quarter observations as dated weekly evidence. JUNGLEBOX's February 14 and February 18, 2022 observations are both preserved as weekly evidence while March 29 represents Q1 2022. Trading Cards coverage is now ten of 22 historical registry assets and ten of 15 active assets, with 199 raw observations and 188 quarterly representatives across the covered active securities. Category equal-weight and market-cap-weighted indexes, full-market indexes, exchange history, coverage, leaderboards, Content Lab, AI context, exports, and runtime correlation, scatter, portfolio, custom-index, contribution, benchmark, and integer-replication consumers were refreshed through the canonical rebuild graph.
+
+The final active Trading Cards history batch adds all 95 supplied dated observations for `HOMER` (17), `BART` (19), `95TOPSUN` (21), `85GPK` (21), and `STARWARS3` (17). All five tickers match exactly one existing canonical registry record, including the established `95TOPSUN` spelling, and registry identity, offering, share-count, collectible, and lifecycle metadata remain unchanged. Every implied market cap reconciles to canonical shares outstanding, repeated prices remain separate dated observations, and no missing periods are interpolated. The closest-to-quarter-end methodology selects 89 quarterly representatives and retains six same-quarter or incomplete-quarter observations as weekly evidence: HOMER on October 24, 2022; 95TOPSUN and 85GPK on January 18, 2022; BART on July 10 and August 18, 2026; and STARWARS3 on August 13, 2026. The BART and STARWARS3 Q3 2026 observations remain in the raw layer and are not used as Q2 representatives. Across all 15 active Trading Cards, 294 raw observations yield 277 quarterly representatives, completing active quarterly coverage at 15 of 15. The seven exited Trading Cards still lack comprehensive intermediate observations, so exited intermediate-history coverage and full historical category price-path coverage remain incomplete. Category equal-weight and market-cap-weighted indexes, full-market indexes, exchange history, coverage, leaderboards, Content Lab, AI context, exports, and runtime correlation, scatter, portfolio, custom-index, contribution, benchmark, and integer-replication consumers were refreshed through the canonical rebuild graph.
 
 ## Comics Asset Registry Coverage (2026-08-02)
 
