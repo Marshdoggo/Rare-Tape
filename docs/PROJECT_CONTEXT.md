@@ -1,6 +1,6 @@
 # Rare Tape Project Context
 
-Last audited: 2026-08-18
+Last audited: 2026-08-19
 Verification baseline: Python 3.11, Streamlit 1.51.0, pandas 2.3.3, lxml 6.1.1
 
 ## Purpose And Product State
@@ -10,6 +10,8 @@ The application brand is **Rare Tape** (slug `rare-tape`; code identifier `rare_
 Rare Tape is a Python and Streamlit research application for fractionalized collectible assets. It combines manually researched Rally asset and quarterly-price observations, SEC offering and exit context, secondary-market comparable sales, prototype indices, liquidity and valuation research, and deterministic report/export outputs. It is research software, not a trading system or appraisal service.
 
 The homepage is the primary product surface. It includes research coverage, sector performance, built-in and saved index exploration, constituent attribution, single-asset price history, a custom-index workshop, and a filterable Rally market table. Additional pages cover Rally assets, category research, comparable sales, exits, liquidity, report context, exports, and broader asset-universe diagnostics.
+
+The homepage also includes **The Tape**, a lightweight terminal-style snapshot surface. Its Board rotates a session-randomized sequence every eight seconds inside a Streamlit fragment, so ordinary rotations do not rerun the full homepage. Board values reuse canonical current/listed asset prices and trailing returns plus committed quarterly equal- and market-cap-weighted index artifacts; exact comparison quarters are required for index QoQ/YoY values. Its browser-animated Wire reads only the saved Content Lab `headline` field from `data/processed/content_lab/story_leads.csv` and never invokes Content Lab building, Intelligence generation, or an external API on page load. Every Board card carries an observation date/quarter and source context, and missing inputs are omitted rather than estimated.
 
 ### Derivatives Lab limitations and future paper-exchange boundary
 

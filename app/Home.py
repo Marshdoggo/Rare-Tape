@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import html
 import json
+import secrets
 import sys
+import time
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -53,6 +56,7 @@ from alt_asset_explorer.portfolio_lab import canonical_index, validate_index_con
 from alt_asset_explorer.market_table import build_market_table, filter_market_table
 from alt_asset_explorer.research import calculate_sector_performance, completed_categories
 from alt_asset_explorer.integer_replication import homepage_summary
+from alt_asset_explorer.tape import build_tape_candidate_pool, build_tape_sequence, load_saved_tape_headlines
 
 
 st.set_page_config(page_title="Rare Tape", layout="wide")
@@ -68,6 +72,26 @@ st.markdown(
     .research-kicker {font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; opacity: .62; margin-bottom: .2rem;}
     .coverage-list {line-height: 1.8; font-size: .9rem; opacity: .9;}
     .custom-badge {display:inline-block; padding:.15rem .48rem; border-radius:999px; background:rgba(88,166,255,.15); color:#58a6ff; font-size:.72rem; font-weight:700; letter-spacing:.04em;}
+    .tape-board, .tape-wire {--tape-surface:light-dark(#f0f2f6,#1b1f26); --tape-border:light-dark(rgba(49,51,63,.20),rgba(250,250,250,.18)); --tape-pl-outline:light-dark(rgba(0,0,0,.82),rgba(0,0,0,.62));}
+    .tape-board {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:1px solid var(--tape-border); border-radius:12px; overflow:hidden; background:var(--tape-surface); color:inherit;}
+    .tape-card {min-width:0; padding:1rem 1.1rem .9rem; border-right:1px solid var(--tape-border);}
+    .tape-card:last-child {border-right:0;}
+    .tape-label {font-size:.75rem; font-weight:750; letter-spacing:.10em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .tape-value {font-size:1.75rem; line-height:1.2; font-weight:750; margin:.32rem 0 .22rem; font-variant-numeric:tabular-nums;}
+    .tape-positive {color:#3fb950;} .tape-negative {color:#f85149;}
+    .tape-positive, .tape-negative {text-shadow:-.5px -.5px 0 var(--tape-pl-outline),.5px -.5px 0 var(--tape-pl-outline),-.5px .5px 0 var(--tape-pl-outline),.5px .5px 0 var(--tape-pl-outline);}
+    .tape-meta {font-size:.73rem; opacity:.62; letter-spacing:.02em;}
+    .tape-wire {display:flex; align-items:center; margin-top:.7rem; border:1px solid var(--tape-border); border-radius:8px; overflow:hidden; background:var(--tape-surface); color:inherit;}
+    .tape-wire-label {position:relative; z-index:2; flex:0 0 auto; padding:.65rem .85rem; background:#1f6feb; color:#fff; font-size:.68rem; font-weight:800; letter-spacing:.12em;}
+    .tape-wire-viewport {overflow:hidden; min-width:0; mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent);}
+    .tape-wire-track {display:flex; width:max-content; animation:raretape-wire 150s linear infinite; will-change:transform;}
+    .tape-wire-group {display:flex; align-items:center; flex-shrink:0;}
+    .tape-wire-item {padding:0 .95rem; white-space:nowrap; font-size:.82rem;}
+    .tape-wire-dot {opacity:.38;}
+    .tape-wire.is-paused .tape-wire-track {animation-play-state:paused;}
+    @keyframes raretape-wire {from {transform:translateX(0)} to {transform:translateX(-50%)}}
+    @media (max-width:700px) {.tape-board {grid-template-columns:1fr;} .tape-card {border-right:0; border-bottom:1px solid var(--tape-border);} .tape-card:last-child {border-bottom:0;} .tape-value {font-size:1.5rem;} .tape-wire-label {padding:.65rem .55rem;}}
+    @media (prefers-reduced-motion:reduce) {.tape-wire-track {animation-play-state:paused;}}
     </style>
     """,
     unsafe_allow_html=True,
@@ -82,6 +106,63 @@ def format_money(value: object) -> str:
 def format_pct(value: object) -> str:
     number = pd.to_numeric(value, errors="coerce")
     return "Unavailable" if pd.isna(number) else f"{number:.1%}"
+
+
+def format_tape_value(item: dict[str, object]) -> tuple[str, str, str]:
+    value = float(item["value"])
+    metric_type = str(item["metric_type"])
+    if metric_type == "latest_price":
+        return f"${value:,.2f}", "Last share price", ""
+    if metric_type == "index_level":
+        return f"{value:,.1f}", "Index level", ""
+    qualifier = "QoQ" if metric_type == "qoq_return" else "YoY"
+    color = "tape-positive" if value > 0 else "tape-negative" if value < 0 else ""
+    return f"{value:+.1%}", qualifier, color
+
+
+def render_tape_panel(panel: list[dict[str, object]]) -> None:
+    cards = []
+    for item in panel:
+        value, qualifier, color = format_tape_value(item)
+        cards.append(
+            '<div class="tape-card" title="{source}">'
+            '<div class="tape-label">{label}</div>'
+            '<div class="tape-value"><span class="{color}">{value}</span> <span style="font-size:.72rem;opacity:.64">{qualifier}</span></div>'
+            '<div class="tape-meta">{as_of}</div>'
+            '</div>'.format(
+                source=html.escape(str(item.get("source_context") or ""), quote=True),
+                label=html.escape(str(item["label"])),
+                color=color,
+                value=html.escape(value),
+                qualifier=html.escape(qualifier),
+                as_of=html.escape(str(item["as_of"])),
+            )
+        )
+    st.markdown(f'<div class="tape-board">{"".join(cards)}</div>', unsafe_allow_html=True)
+
+
+@st.cache_data(show_spinner=False)
+def cached_tape_headlines(path: str, modified_ns: int | None) -> list[str]:
+    del modified_ns  # Included in the cache key so a rebuilt archive is re-read.
+    return load_saved_tape_headlines(Path(path))
+
+
+def render_tape_wire(headlines: list[str], *, paused: bool) -> None:
+    if not headlines:
+        st.caption("No saved Content Lab headlines available.")
+        return
+    items = ''.join(
+        f'<span class="tape-wire-item">{html.escape(headline)}</span><span class="tape-wire-dot">◆</span>'
+        for headline in headlines
+    )
+    paused_class = " is-paused" if paused else ""
+    st.markdown(
+        f'<div class="tape-wire{paused_class}"><div class="tape-wire-label">RARE TAPE WIRE</div>'
+        f'<div class="tape-wire-viewport"><div class="tape-wire-track">'
+        f'<div class="tape-wire-group">{items}</div><div class="tape-wire-group" aria-hidden="true">{items}</div>'
+        f'</div></div></div>',
+        unsafe_allow_html=True,
+    )
 
 
 canonical_market = get_canonical_market()
@@ -102,9 +183,54 @@ exit_analytics = canonical_market.exit_analytics
 exchange_market_cap = canonical_market.exchange_history.market_cap_history
 current_universe_artifact = canonical_market.current_universe
 current_universe_summary = canonical_market.current_summary
+quarterly_indices = load_processed_csv("rally_quarterly_indices")
+market = build_market_table(canonical, decision, prices, liquidity)
 
 st.title("Rare Tape")
 st.caption("Market intelligence for Rally collectibles. Research only, not financial advice.")
+
+allowed_tape_assets = set(current_universe_artifact.get("asset_id", pd.Series(dtype=str)).dropna().astype(str))
+tape_candidates = build_tape_candidate_pool(market, quarterly_indices, allowed_asset_ids=allowed_tape_assets)
+tape_signature = json.dumps(
+    [(item["candidate_id"], item["value"], item["as_of"]) for item in tape_candidates],
+    separators=(",", ":"),
+)
+if st.session_state.get("tape_candidate_signature") != tape_signature:
+    st.session_state["tape_candidate_signature"] = tape_signature
+    st.session_state["tape_sequence"] = build_tape_sequence(
+        tape_candidates,
+        seed=secrets.randbits(64),
+    )
+    st.session_state["tape_panel_index"] = 0
+    st.session_state["tape_last_rotation"] = time.time()
+
+tape_header, tape_control = st.columns([6, 1])
+with tape_header:
+    st.markdown('<div class="research-kicker">Quarterly market signals</div>', unsafe_allow_html=True)
+    st.markdown("### The Tape")
+with tape_control:
+    tape_paused = st.toggle("Pause motion", key="tape_paused")
+
+tape_sequence = st.session_state.get("tape_sequence", [])
+if tape_sequence:
+    @st.fragment(run_every=None if tape_paused else "8s")
+    def tape_board_fragment() -> None:
+        now = time.time()
+        last_rotation = float(st.session_state.get("tape_last_rotation", now))
+        if not st.session_state.get("tape_paused", False) and now - last_rotation >= 7.5:
+            st.session_state["tape_panel_index"] = (int(st.session_state.get("tape_panel_index", 0)) + 1) % len(tape_sequence)
+            st.session_state["tape_last_rotation"] = now
+        panel_index = int(st.session_state.get("tape_panel_index", 0)) % len(tape_sequence)
+        render_tape_panel(tape_sequence[panel_index])
+
+    tape_board_fragment()
+else:
+    st.caption("The Tape will appear when valid current asset or quarterly index observations are available.")
+
+headline_path = ROOT / "data" / "processed" / "content_lab" / "story_leads.csv"
+headline_mtime = headline_path.stat().st_mtime_ns if headline_path.exists() else None
+render_tape_wire(cached_tape_headlines(str(headline_path), headline_mtime), paused=tape_paused)
+st.caption("Authored Rally observations and committed quarterly index prototypes · dates shown on every signal · not a live market feed")
 
 with st.container(border=True):
     backtest_copy, backtest_link = st.columns([4, 1])
@@ -162,7 +288,6 @@ with st.container(border=True):
     with replication_link:
         st.page_link("pages/7_Integer_Index_Replication.py", label="Open Replication Lab →", icon="🧮")
 
-market = build_market_table(canonical, decision, prices, liquidity)
 current = current_universe_artifact.copy() if not current_universe_artifact.empty else market[market["is_current_listed"].fillna(False)]
 summary_row = current_universe_summary.iloc[0].to_dict() if not current_universe_summary.empty else {}
 current_as_of = summary_row.get("as_of_date") or (pd.to_datetime(current["date"], errors="coerce").max().date().isoformat() if "date" in current and not current.empty else "Unavailable")
